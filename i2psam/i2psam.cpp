@@ -21,7 +21,7 @@
 #endif
 
 #define SAM_BUFSIZE         65536
-#define I2P_DESTINATION_SIZE 516
+#define I2P_DESTINATION_SIZE 526  // TODO: 
 
 namespace SAM
 {
@@ -639,7 +639,7 @@ std::string Message::sessionCreate(SessionStyle style, const std::string& sessio
     case sssRaw:      sessionStyle = "RAW";      break;
     }
 
-    static const char* sessionCreateFormat = "SESSION CREATE STYLE=%s ID=%s DESTINATION=%s inbound.nickname=%s %s\n";  // we add inbound.nickname option
+    static const char* sessionCreateFormat = "SESSION CREATE STYLE=%s ID=%s DESTINATION=%s inbound.nickname=%s SIGNATURE_TYPE=7 %s\n";  // we add inbound.nickname option
     return createSAMRequest(sessionCreateFormat, sessionStyle.c_str(), sessionID.c_str(), destination.c_str(), nickname.c_str(), options.c_str());
 }
 
