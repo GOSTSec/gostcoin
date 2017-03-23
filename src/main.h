@@ -1360,11 +1360,6 @@ public:
         vMerkleTree.clear();
     }
 
-    uint256 GetPoWHash() const
-    {
-		return GetHash ();
-    }
-
     CBlockHeader GetBlockHeader() const
     {
         CBlockHeader block;
@@ -1477,7 +1472,7 @@ public:
         }
 
         // Check the header
-        if (!CheckProofOfWork(GetPoWHash(), nBits))
+        if (!CheckProofOfWork(GetHash(), nBits))
             return error("CBlock::ReadFromDisk() : errors in block header");
 
         return true;
@@ -1490,7 +1485,7 @@ public:
         printf("CBlock(hash=%s, input=%s, PoW=%s, ver=%d, hashPrevBlock=%s, hashMerkleRoot=%s, nTime=%u, nBits=%08x, nNonce=%u, vtx=%"PRIszu")\n",
             GetHash().ToString().c_str(),
             HexStr(BEGIN(nVersion),BEGIN(nVersion)+80,false).c_str(),
-            GetPoWHash().ToString().c_str(),
+            GetHash().ToString().c_str(),
             nVersion,
             hashPrevBlock.ToString().c_str(),
             hashMerkleRoot.ToString().c_str(),
