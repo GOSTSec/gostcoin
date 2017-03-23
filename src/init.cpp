@@ -13,6 +13,7 @@
 #include "init.h"
 #include "util.h"
 #include "ui_interface.h"
+#include "api.h" //i2pd
 
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
@@ -137,6 +138,7 @@ void Shutdown()
     UnregisterWallet(pwalletMain);
     if (pwalletMain)
         delete pwalletMain;
+	i2p::api::TerminateI2P ();
     printf("Shutdown : done\n");
 }
 
@@ -175,6 +177,7 @@ void HandleSIGHUP(int)
 #if !defined(QT_GUI)
 bool AppInit(int argc, char* argv[])
 {
+	i2p::api::InitI2P (argc, argv, "unioncoin");	
     boost::thread_group threadGroup;
     boost::thread* detectShutdownThread = NULL;
 

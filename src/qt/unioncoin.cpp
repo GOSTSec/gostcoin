@@ -24,6 +24,7 @@
 #include "paymentserver.h"
 #include "splashscreen.h"
 #include "setupdarknet.h"
+#include "api.h" //i2pd
 
 #include <QMessageBox>
 #if QT_VERSION < 0x050000
@@ -161,6 +162,7 @@ int main(int argc, char *argv[])
 {
     // Command-line options take precedence:
     ParseParameters(argc, argv);
+	i2p::api::InitI2P (argc, argv, "unioncoin");	
 
 #if QT_VERSION < 0x050000
     // Internal string conversion is all UTF-8
@@ -381,6 +383,7 @@ int main(int argc, char *argv[])
     } catch (...) {
         handleRunawayException(NULL);
     }
+	i2p::api::TerminateI2P ();
     return 0;
 }
 #endif // BITCOIN_QT_TEST
