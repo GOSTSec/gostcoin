@@ -1362,12 +1362,7 @@ public:
 
     uint256 GetPoWHash() const
     {
-		// GOST 34.11-256 (GOST 34.11-512 (header))
-		uint8_t digest[64];
-		i2p::crypto::GOSTR3411_2012_512 ((const uint8_t *)&nVersion, 80, digest);
-        uint256 thash;
-		i2p::crypto::GOSTR3411_2012_256 (digest, 64, thash.begin ());
-        return thash;
+		return GetHash ();
     }
 
     CBlockHeader GetBlockHeader() const

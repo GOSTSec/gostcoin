@@ -7,6 +7,7 @@
 
 #include "uint256.h"
 #include "serialize.h"
+#include "Gost.h"
 
 #include <openssl/sha.h>
 #include <openssl/ripemd.h>
@@ -15,11 +16,12 @@
 template<typename T1>
 inline uint256 Hash(const T1 pbegin, const T1 pend)
 {
+	// GOST 34.11-256 (GOST 34.11-512 (...))
     static unsigned char pblank[1];
-    uint256 hash1;
-    SHA256((pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]), (unsigned char*)&hash1);
+    uint8_t hash1[64];
+    i2p::crypto::GOSTR3411_2012_512 ((pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]), hash1);
     uint256 hash2;
-    SHA256((unsigned char*)&hash1, sizeof(hash1), (unsigned char*)&hash2);
+    i2p::crypto::GOSTR3411_2012_256 ((unsigned char*)&hash1, 61, hash2.begin ());
     return hash2;
 }
 
