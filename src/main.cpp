@@ -2897,21 +2897,9 @@ bool InitBlockIndex() {
 
     // Only add the genesis block if not reindexing (in which case we reuse the one already on disk)
     if (!fReindex) {
-// Genesis:
-//2ca51355580bb293fe369c5f34954069c263e9a9e8d70945ebb4c38f05778558
-//238467b132120c9660156a6752663593e01b2f3e79b2abbc21b71308daa22ec4
-//7ce7004d764515f9b43cb9f07547c8e2e00d94c9348b3da33c8681d350f2c736
-//block.nTime = 1370190760
-//block.nNonce = 347089008
-//block.GetHash = 2c85519db50a40c033ccb3d4cb729414016afa537c66537f7d3d52dcd1d484a3
-//CBlock(hash=2c85519db50a40c033cc, PoW=00000be19c5a519257aa, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=7ce7004d76, nTime=1370190760, nBits=1e0ffff0, nNonce=347089008, vtx=1)
-// CTransaction(hash=7ce7004d76, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-// CTxIn(COutPoint(0000000000, -1), coinbase 04ffff001d01044c5e30322f4a756e2f323031333a202054686520556e6976657273652c20776527726520616c6c206f6e652e20427574207265616c6c792c206675636b207468652043656e7472616c2062616e6b732e202d20416e6f6e796d6f757320343230)
-// CTxOut(error)
-// vMerkleTree: 7ce7004d76
 
         // Genesis block
-        const char* pszTimestamp = "02/Jun/2013:  The Universe, we're all one. But really, fuck the Central banks. - Anonymous 420";
+        const char* pszTimestamp = "03/Mar/2017:  GOST R 34.11-2012";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2923,9 +2911,9 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1370190760;
+        block.nTime    = 1490300171;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 347089008;
+        block.nNonce   = 517204426;
 
         if (fTestNet)
         {
@@ -2935,10 +2923,10 @@ bool InitBlockIndex() {
 
         //// debug print
         uint256 hash = block.GetHash();
-        printf("%s\n", hash.ToString().c_str());
-        printf("%s\n", hashGenesisBlock.ToString().c_str());
-        printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x7ce7004d764515f9b43cb9f07547c8e2e00d94c9348b3da33c8681d350f2c736"));
+        printf("hash %s\n", hash.ToString().c_str());
+        printf("hashGenesisBlock %s\n", hashGenesisBlock.ToString().c_str());
+        printf("block.hashMerkleRoot %s\n", block.hashMerkleRoot.ToString().c_str());
+        assert(block.hashMerkleRoot == uint256("0x492225622fd9cff49575075863b98f20c5340f7dd22d6d9c71dda1683c658e56"));
         block.print();
         assert(hash == hashGenesisBlock);
 
