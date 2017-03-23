@@ -4754,7 +4754,8 @@ void static LitecoinMiner(CWallet *pwallet)
             unsigned int nHashesDone = 0;
 
             uint256 thash;
-            char scratchpad[SCRYPT_SCRATCHPAD_SIZE];
+			// TODO:
+            //char scratchpad[SCRYPT_SCRATCHPAD_SIZE];
             loop
             {
 #if defined(USE_SSE2)
@@ -4762,14 +4763,14 @@ void static LitecoinMiner(CWallet *pwallet)
                 // it is faster to use directly than to use a function pointer or conditional.
 #if defined(_M_X64) || defined(__x86_64__) || defined(_M_AMD64) || (defined(MAC_OSX) && defined(__i386__))
                 // Always SSE2: x86_64 or Intel MacOS X
-                scrypt_1024_1_1_256_sp_sse2(BEGIN(pblock->nVersion), BEGIN(thash), scratchpad);
+               // scrypt_1024_1_1_256_sp_sse2(BEGIN(pblock->nVersion), BEGIN(thash), scratchpad);
 #else
                 // Detect SSE2: 32bit x86 Linux or Windows
-                scrypt_1024_1_1_256_sp(BEGIN(pblock->nVersion), BEGIN(thash), scratchpad);
+                //scrypt_1024_1_1_256_sp(BEGIN(pblock->nVersion), BEGIN(thash), scratchpad);
 #endif
 #else
                 // Generic scrypt
-                scrypt_1024_1_1_256_sp_generic(BEGIN(pblock->nVersion), BEGIN(thash), scratchpad);
+                //scrypt_1024_1_1_256_sp_generic(BEGIN(pblock->nVersion), BEGIN(thash), scratchpad);
 #endif
 
                 if (thash <= hashTarget)
