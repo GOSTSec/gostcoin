@@ -15,6 +15,7 @@ using namespace boost;
 #include "main.h"
 #include "sync.h"
 #include "util.h"
+#include "Gost.h"
 
 bool CheckSig(vector<unsigned char> vchSig, const vector<unsigned char> &vchPubKey, const CScript &scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType, int flags);
 
@@ -194,7 +195,7 @@ const char* GetOpName(opcodetype opcode)
     // crypto
     case OP_RIPEMD160              : return "OP_RIPEMD160";
     case OP_SHA1                   : return "OP_SHA1";
-    case OP_SHA256                 : return "OP_SHA256";
+    case OP_GOST3411               : return "OP_GOST3411";
     case OP_HASH160                : return "OP_HASH160";
     case OP_HASH256                : return "OP_HASH256";
     case OP_CODESEPARATOR          : return "OP_CODESEPARATOR";
@@ -784,7 +785,7 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                 //
                 case OP_RIPEMD160:
                 case OP_SHA1:
-                case OP_SHA256:
+                case OP_GOST3411:
                 case OP_HASH160:
                 case OP_HASH256:
                 {
@@ -797,8 +798,8 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                         RIPEMD160(&vch[0], vch.size(), &vchHash[0]);
                     else if (opcode == OP_SHA1)
                         SHA1(&vch[0], vch.size(), &vchHash[0]);
-                    else if (opcode == OP_SHA256)
-                        SHA256(&vch[0], vch.size(), &vchHash[0]);
+                    else if (opcode == OP_GOST3411)
+                        i2p::crypto::GOSTR3411_2012_256 (&vch[0], vch.size(), &vchHash[0]);
                     else if (opcode == OP_HASH160)
                     {
                         uint160 hash160 = Hash160(vch);
