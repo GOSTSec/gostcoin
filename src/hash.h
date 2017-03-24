@@ -12,6 +12,7 @@
 #include <openssl/sha.h>
 #include <openssl/ripemd.h>
 #include <vector>
+#include <sstream>
 
 template<typename T1>
 inline uint256 Hash(const T1 pbegin, const T1 pend)
@@ -21,21 +22,21 @@ inline uint256 Hash(const T1 pbegin, const T1 pend)
     uint8_t hash1[64];
     i2p::crypto::GOSTR3411_2012_512 ((pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]), hash1);
     uint256 hash2;
-    i2p::crypto::GOSTR3411_2012_256 ((unsigned char*)&hash1, 61, hash2.begin ());
+    i2p::crypto::GOSTR3411_2012_256 (hash1, 61, hash2.begin ());
     return hash2;
 }
 
 class CHashWriter
 {
 private:
-    SHA256_CTX ctx;
+    std::stringstream ctx;
 
 public:
     int nType;
     int nVersion;
 
     void Init() {
-        SHA256_Init(&ctx);
+        ctx.str("");
     }
 
     CHashWriter(int nTypeIn, int nVersionIn) : nType(nTypeIn), nVersion(nVersionIn) {
@@ -43,16 +44,16 @@ public:
     }
 
     CHashWriter& write(const char *pch, size_t size) {
-        SHA256_Update(&ctx, pch, size);
+		ctx.write (pch, size);
         return (*this);
     }
 
     // invalidates the object
     uint256 GetHash() {
-        uint256 hash1;
-        SHA256_Final((unsigned char*)&hash1, &ctx);
+		uint8_t hash1[64];
+    	i2p::crypto::GOSTR3411_2012_512 ((uint8_t *)ctx.str ().c_str (), ctx.str ().length (), hash1);
         uint256 hash2;
-        SHA256((unsigned char*)&hash1, sizeof(hash1), (unsigned char*)&hash2);
+        i2p::crypto::GOSTR3411_2012_256 (hash1, 64, (unsigned char*)&hash2);
         return hash2;
     }
 
@@ -112,7 +113,7 @@ inline uint160 Hash160(const T1 pbegin, const T1 pend)
 {
     static unsigned char pblank[1];
     uint256 hash1;
-    SHA256((pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]), (unsigned char*)&hash1);
+    i2p::crypto::GOSTR3411_2012_256((pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]), (unsigned char*)&hash1);
     uint160 hash2;
     RIPEMD160((unsigned char*)&hash1, sizeof(hash1), (unsigned char*)&hash2);
     return hash2;
