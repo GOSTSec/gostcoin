@@ -5,6 +5,7 @@
 #include <openssl/ecdsa.h>
 #include <openssl/rand.h>
 #include <openssl/obj_mac.h>
+#include "Crypto.h" // i2pd
 #include "Gost.h" // i2pd
 
 #include "key.h"
@@ -197,24 +198,38 @@ public:
         return o2i_ECPublicKey(&pkey, &pbegin, pubkey.size());
     }
 
-    bool Sign(const uint256 &hash, std::vector<unsigned char>& vchSig) {
-        unsigned int nSize = ECDSA_size(pkey);
-        vchSig.resize(nSize); // Make sure it is big enough
-        assert(ECDSA_sign(0, (unsigned char*)&hash, sizeof(hash), &vchSig[0], &nSize, pkey));
-        vchSig.resize(nSize); // Shrink to fit actual size
+    bool Sign(const uint256 &hash, std::vector<unsigned char>& vchSig) 
+	{
+		const BIGNUM * priv = EC_KEY_get0_private_key(pkey);
+		BIGNUM * r = BN_new (), * s = BN_new ();
+		BIGNUM * d = BN_bin2bn (hash.begin (), 32, nullptr); 
+		i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->Sign (priv, d, r, s);
+		vchSig.resize(64);
+		i2p::crypto::bn2buf (r, &vchSig[0], 32);
+		i2p::crypto::bn2buf (s, &vchSig[32], 32); 
+		BN_free (d); BN_free (r); BN_free (s);	
         return true;
     }
 
-    bool Verify(const uint256 &hash, const std::vector<unsigned char>& vchSig) {
-        // -1 = error, 0 = bad sig, 1 = good
-        if (ECDSA_verify(0, (unsigned char*)&hash, sizeof(hash), &vchSig[0], vchSig.size(), pkey) != 1)
-            return false;
-        return true;
+    bool Verify(const uint256 &hash, const std::vector<unsigned char>& vchSig) 
+	{
+		const EC_POINT * pub = EC_KEY_get0_public_key(pkey);
+		BIGNUM * d = BN_bin2bn (hash.begin (), 32, nullptr);
+		BIGNUM * r = BN_bin2bn (&vchSig[0], 32, NULL);
+		BIGNUM * s = BN_bin2bn (&vchSig[32], 32, NULL);
+		bool ret = i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->Verify (pub, d, r, s);
+		BN_free (d); BN_free (r); BN_free (s);
+		return ret;
     }
 
-    bool SignCompact(const uint256 &hash, unsigned char *p64, int &rec) {
+    bool SignCompact(const uint256 &hash, unsigned char *p64, int &rec) 
+	{
         bool fOk = false;
-        ECDSA_SIG *sig = ECDSA_do_sign((unsigned char*)&hash, sizeof(hash), pkey);
+        ECDSA_SIG *sig = ECDSA_SIG_new ();
+		const BIGNUM * priv = EC_KEY_get0_private_key(pkey);
+		BIGNUM * d = BN_bin2bn (hash.begin (), 32, nullptr);
+		i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->Sign (priv, d, sig->r, sig->s);
+		BN_free (d);
         if (sig==NULL)
             return false;
         memset(p64, 0, 64);
