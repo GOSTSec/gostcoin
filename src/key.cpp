@@ -5,6 +5,7 @@
 #include <openssl/ecdsa.h>
 #include <openssl/rand.h>
 #include <openssl/obj_mac.h>
+#include "Gost.h" // i2pd
 
 #include "key.h"
 
@@ -129,9 +130,12 @@ private:
     EC_KEY *pkey;
 
 public:
-    CECKey() {
-        pkey = EC_KEY_new_by_curve_name(NID_secp256k1);
-        assert(pkey != NULL);
+    CECKey() 
+	{
+		pkey = EC_KEY_new ();
+		// GOST 34.10-2012
+		auto ret = EC_KEY_set_group(pkey, i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->GetGroup ());
+		assert (ret == 1);
     }
 
     ~CECKey() {

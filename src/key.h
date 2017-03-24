@@ -12,7 +12,7 @@
 #include "uint256.h"
 #include "hash.h"
 
-// secp256k1:
+// GOST R 34.10-2012
 // const unsigned int PRIVATE_KEY_SIZE = 279;
 // const unsigned int PUBLIC_KEY_SIZE  = 65;
 // const unsigned int SIGNATURE_SIZE   = 72;
