@@ -70,35 +70,21 @@ template<typename T1, typename T2>
 inline uint256 Hash(const T1 p1begin, const T1 p1end,
                     const T2 p2begin, const T2 p2end)
 {
-    static unsigned char pblank[1];
-    uint256 hash1;
-    SHA256_CTX ctx;
-    SHA256_Init(&ctx);
-    SHA256_Update(&ctx, (p1begin == p1end ? pblank : (unsigned char*)&p1begin[0]), (p1end - p1begin) * sizeof(p1begin[0]));
-    SHA256_Update(&ctx, (p2begin == p2end ? pblank : (unsigned char*)&p2begin[0]), (p2end - p2begin) * sizeof(p2begin[0]));
-    SHA256_Final((unsigned char*)&hash1, &ctx);
-    uint256 hash2;
-    SHA256((unsigned char*)&hash1, sizeof(hash1), (unsigned char*)&hash2);
+	static unsigned char pblank[1];
+	size_t s1 = (p1end - p1begin) * sizeof(p1begin[0]),
+		   s2 = (p2end - p2begin) * sizeof(p2begin[0]);	
+
+	uint8_t * buf = new uint8_t[s1+s2];
+	memcpy (buf, (unsigned char*)&p1begin[0], s1);
+	memcpy (buf + s1, (unsigned char*)&p1begin[0], s2);
+	uint8_t hash1[64];
+	i2p::crypto::GOSTR3411_2012_512 ((s1 + s2) ? buf : pblank, s1 + s2, hash1); 
+	delete[] buf;	
+	uint256 hash2;
+	i2p::crypto::GOSTR3411_2012_256 (hash1, 64, (unsigned char*)&hash2);
     return hash2;
 }
 
-template<typename T1, typename T2, typename T3>
-inline uint256 Hash(const T1 p1begin, const T1 p1end,
-                    const T2 p2begin, const T2 p2end,
-                    const T3 p3begin, const T3 p3end)
-{
-    static unsigned char pblank[1];
-    uint256 hash1;
-    SHA256_CTX ctx;
-    SHA256_Init(&ctx);
-    SHA256_Update(&ctx, (p1begin == p1end ? pblank : (unsigned char*)&p1begin[0]), (p1end - p1begin) * sizeof(p1begin[0]));
-    SHA256_Update(&ctx, (p2begin == p2end ? pblank : (unsigned char*)&p2begin[0]), (p2end - p2begin) * sizeof(p2begin[0]));
-    SHA256_Update(&ctx, (p3begin == p3end ? pblank : (unsigned char*)&p3begin[0]), (p3end - p3begin) * sizeof(p3begin[0]));
-    SHA256_Final((unsigned char*)&hash1, &ctx);
-    uint256 hash2;
-    SHA256((unsigned char*)&hash1, sizeof(hash1), (unsigned char*)&hash2);
-    return hash2;
-}
 
 template<typename T>
 uint256 SerializeHash(const T& obj, int nType=SER_GETHASH, int nVersion=PROTOCOL_VERSION)
@@ -112,10 +98,10 @@ template<typename T1>
 inline uint160 Hash160(const T1 pbegin, const T1 pend)
 {
     static unsigned char pblank[1];
-    uint256 hash1;
-    i2p::crypto::GOSTR3411_2012_256((pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]), (unsigned char*)&hash1);
+    uint8_t hash1[64];
+    i2p::crypto::GOSTR3411_2012_512((pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]), hash1);
     uint160 hash2;
-    RIPEMD160((unsigned char*)&hash1, sizeof(hash1), (unsigned char*)&hash2);
+    RIPEMD160(hash1, 64, (unsigned char*)&hash2);
     return hash2;
 }
 
