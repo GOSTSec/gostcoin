@@ -4729,8 +4729,8 @@ void static UnioncoinMiner(CWallet *pwallet)
     unsigned int nExtraNonce = 0;
 
     try { loop {
-        while (vNodes.empty())
-            MilliSleep(1000);
+       /* while (vNodes.empty())
+            MilliSleep(1000);*/
 
         //
         // Create new block
@@ -4803,8 +4803,8 @@ void static UnioncoinMiner(CWallet *pwallet)
 
             // Check for stop or if block needs to be rebuilt
             boost::this_thread::interruption_point();
-            if (vNodes.empty())
-                break;
+          /*  if (vNodes.empty())
+                break;*/
             if (pblock->nNonce >= 0xffff0000)
                 break;
             if (nTransactionsUpdated != nTransactionsUpdatedLast && GetTime() - nStart > 60)
@@ -4827,7 +4827,7 @@ void GenerateBitcoins(bool fGenerate, CWallet* pwallet)
 {
     static boost::thread_group* minerThreads = NULL;
 
-    int nThreads = GetArg("-genproclimit", -1);
+    int nThreads = 1; //GetArg("-genproclimit", -1);
     if (nThreads < 0)
         nThreads = boost::thread::hardware_concurrency();
 
@@ -4838,8 +4838,8 @@ void GenerateBitcoins(bool fGenerate, CWallet* pwallet)
         minerThreads = NULL;
     }
 
-    if (nThreads == 0 || !fGenerate)
-        return;
+    /*if (nThreads == 0 || !fGenerate)
+        return;*/
 
     minerThreads = new boost::thread_group();
     for (int i = 0; i < nThreads; i++)

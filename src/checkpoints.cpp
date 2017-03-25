@@ -75,7 +75,9 @@ namespace Checkpoints
 
     bool CheckBlock(int nHeight, const uint256& hash)
     {
-        if (fTestNet) return true; // Testnet has no checkpoints
+		// TODO:
+		return true;
+        /*if (fTestNet) return true; // Testnet has no checkpoints
         if (!GetBoolArg("-checkpoints", true))
             return true;
 
@@ -83,7 +85,7 @@ namespace Checkpoints
 
         MapCheckpoints::const_iterator i = checkpoints.find(nHeight);
         if (i == checkpoints.end()) return true;
-        return hash == i->second;
+        return hash == i->second;*/
     }
 
     // Guess how far we are in the verification process at the given block index
