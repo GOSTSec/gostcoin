@@ -4718,7 +4718,7 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     return true;
 }
 
-void static LitecoinMiner(CWallet *pwallet)
+void static UnioncoinMiner(CWallet *pwallet)
 {
     printf("UnioncoinMiner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
@@ -4748,21 +4748,7 @@ void static LitecoinMiner(CWallet *pwallet)
                ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
         //
-        // Pre-build hash buffers
-        //
-        char pmidstatebuf[32+16]; char* pmidstate = alignup<16>(pmidstatebuf);
-        char pdatabuf[128+16];    char* pdata     = alignup<16>(pdatabuf);
-        char phash1buf[64+16];    char* phash1    = alignup<16>(phash1buf);
-
-        FormatHashBuffers(pblock, pmidstate, pdata, phash1);
-
-        unsigned int& nBlockTime = *(unsigned int*)(pdata + 64 + 4);
-        unsigned int& nBlockBits = *(unsigned int*)(pdata + 64 + 8);
-        //unsigned int& nBlockNonce = *(unsigned int*)(pdata + 64 + 12);
-
-
-        //
-        // Search
+        // Solve
         //
         int64 nStart = GetTime();
         uint256 hashTarget = CBigNum().SetCompact(pblock->nBits).getuint256();
@@ -4770,16 +4756,9 @@ void static LitecoinMiner(CWallet *pwallet)
         {
             unsigned int nHashesDone = 0;
 
-            uint256 thash;
             loop
             {
-				// GOST 34.11-256 (GOST 34.11-512 (pblock->header))
-				uint8_t digest[64];
-				i2p::crypto::GOSTR3411_2012_512 ((const uint8_t *)(&pblock->nVersion), 80, digest);
-				i2p::crypto::GOSTR3411_2012_256 (digest, 64, thash.begin ());    
-
-
-                if (thash <= hashTarget)
+                if (pblock->GetHash() <= hashTarget)
                 {
                     // Found a solution
                     SetThreadPriority(THREAD_PRIORITY_NORMAL);
@@ -4835,18 +4814,11 @@ void static LitecoinMiner(CWallet *pwallet)
 
             // Update nTime every few seconds
             pblock->UpdateTime(pindexPrev);
-            nBlockTime = ByteReverse(pblock->nTime);
-            if (fTestNet)
-            {
-                // Changing pblock->nTime can change work required on testnet:
-                nBlockBits = ByteReverse(pblock->nBits);
-                hashTarget = CBigNum().SetCompact(pblock->nBits).getuint256();
-            }
         }
     } }
     catch (boost::thread_interrupted)
     {
-        printf("AnoncoinMiner terminated\n");
+        printf("UnioncoinMiner terminated\n");
         throw;
     }
 }
@@ -4871,7 +4843,7 @@ void GenerateBitcoins(bool fGenerate, CWallet* pwallet)
 
     minerThreads = new boost::thread_group();
     for (int i = 0; i < nThreads; i++)
-        minerThreads->create_thread(boost::bind(&LitecoinMiner, pwallet));
+        minerThreads->create_thread(boost::bind(&UnioncoinMiner, pwallet));
 }
 
 // Amount compression:
