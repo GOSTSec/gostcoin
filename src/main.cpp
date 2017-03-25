@@ -4729,6 +4729,7 @@ void static UnioncoinMiner(CWallet *pwallet)
     unsigned int nExtraNonce = 0;
 
     try { loop {
+		// TODO:
        /* while (vNodes.empty())
             MilliSleep(1000);*/
 
@@ -4803,6 +4804,7 @@ void static UnioncoinMiner(CWallet *pwallet)
 
             // Check for stop or if block needs to be rebuilt
             boost::this_thread::interruption_point();
+			// TODO:
           /*  if (vNodes.empty())
                 break;*/
             if (pblock->nNonce >= 0xffff0000)
@@ -4836,8 +4838,11 @@ void GenerateBitcoins(bool fGenerate, CWallet* pwallet)
         minerThreads->interrupt_all();
         delete minerThreads;
         minerThreads = NULL;
+
+		return; // TODO: temporary
     }
 
+	// TODO:
     /*if (nThreads == 0 || !fGenerate)
         return;*/
 
