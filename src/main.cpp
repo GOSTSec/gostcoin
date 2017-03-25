@@ -32,7 +32,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x2c85519db50a40c033ccb3d4cb729414016afa537c66537f7d3d52dcd1d484a3");
+uint256 hashGenesisBlock("0x854af134ca532bc1024668fef72b867285c377939fadad725fe44fa8dc5ce071");
 static CBigNum bnProofOfWorkLimit( CBigNum().SetCompact(0x1e0ffff0) );
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2926,7 +2926,7 @@ bool InitBlockIndex() {
         printf("hash %s\n", hash.ToString().c_str());
         printf("hashGenesisBlock %s\n", hashGenesisBlock.ToString().c_str());
         printf("block.hashMerkleRoot %s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x492225622fd9cff49575075863b98f20c5340f7dd22d6d9c71dda1683c658e56"));
+        assert(block.hashMerkleRoot == uint256("0x493a01b36e03c86538119feb5d5f55b728139da411297743895f490a817a17ee"));
         block.print();
         assert(hash == hashGenesisBlock);
 
