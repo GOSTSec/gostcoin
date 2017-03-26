@@ -205,12 +205,12 @@ int main(int argc, char *argv[])
 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
-    QApplication::setOrganizationName("Anoncoin");
-    QApplication::setOrganizationDomain("anoncoin.net");
+    QApplication::setOrganizationName("Unioncoin");
+    QApplication::setOrganizationDomain("unioncoin.net");
     if(GetBoolArg("-testnet")) // Separate UI settings for testnet
-        QApplication::setApplicationName("Anoncoin-Qt-testnet");
+        QApplication::setApplicationName("Unioncoin-Qt-testnet");
     else
-        QApplication::setApplicationName("Anoncoin-Qt");
+        QApplication::setApplicationName("Unioncoin-Qt");
 
     // ... then GUI settings:
     OptionsModel optionsModel;
