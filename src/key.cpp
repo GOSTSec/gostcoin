@@ -60,8 +60,9 @@ static int ECDSA_SIG_recover_key_GFp(EC_KEY *eckey, ECDSA_SIG *ecsig, const unsi
 	BIGNUM * d = BN_bin2bn (msg, msglen, nullptr); 
 	const auto& curve = i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA);
 	EC_POINT * pub = curve->RecoverPublicKey (d, ecsig->r, ecsig->s, recid % 2);
-	EC_KEY_set_public_key(eckey, pub);
 	BN_free (d);
+	if (!pub) return 0;
+	EC_KEY_set_public_key(eckey, pub);	
 	EC_POINT_free (pub);
 	return 1;
 }
@@ -179,7 +180,7 @@ public:
         if (nBitsR <= 256 && nBitsS <= 256) {
             CPubKey pubkey;
             GetPubKey(pubkey, true);
-            for (int i=0; i<1; i++) {
+            for (int i=0; i<2; i++) {
                 CECKey keyRec;
                 if (ECDSA_SIG_recover_key_GFp(keyRec.pkey, sig, (unsigned char*)&hash, sizeof(hash), i, 1) == 1) {
                     CPubKey pubkeyRec;
