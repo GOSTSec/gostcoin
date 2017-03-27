@@ -723,8 +723,8 @@ bool CNetAddr::IsTor() const
 
 bool CNetAddr::IsNativeI2P() const
 {
-    static const unsigned char pchAAAA[] = {'A','A','A','A'};
-    return (memcmp(i2pDest + NATIVE_I2P_DESTINATION_SIZE - sizeof(pchAAAA), pchAAAA, sizeof(pchAAAA)) == 0);
+    static const unsigned char pchAAA[] = {'A','A','A','='}; // EdDSA, TODO:
+    return (memcmp(i2pDest + NATIVE_I2P_DESTINATION_SIZE - sizeof(pchAAA), pchAAA, sizeof(pchAAA)) == 0);
 }
 
 std::string CNetAddr::GetI2PDestination() const
