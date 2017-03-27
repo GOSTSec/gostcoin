@@ -593,7 +593,7 @@ bool CNetAddr::SetSpecial(const std::string &strName)
     const bool isBase32Addr = (strName.size() == NATIVE_I2P_B32ADDR_SIZE) && (strName.substr(strName.size() - 8, 8) == ".b32.i2p");
     const std::string addr = isBase32Addr ? I2PSession::Instance().namingLookup(strName) : strName;
 
-    if ((addr.size() == NATIVE_I2P_DESTINATION_SIZE) && (addr.substr(addr.size() - 4, 4) == "AAAA")) { // last 4 symbols of b64-destination must be AAAA
+    if ((addr.size() == NATIVE_I2P_DESTINATION_SIZE) && (addr.substr(addr.size() - 5, 5) == "AAA==")) { // last 5 symbols of b64-destination must be AAA==
         memcpy(i2pDest, addr.c_str(), NATIVE_I2P_DESTINATION_SIZE);
         return true;
     }
@@ -723,7 +723,7 @@ bool CNetAddr::IsTor() const
 
 bool CNetAddr::IsNativeI2P() const
 {
-    static const unsigned char pchAAA[] = {'A','A','A','='}; // EdDSA, TODO:
+    static const unsigned char pchAAA[] = {'A','A','A','=','='}; // EdDSA, TODO:
     return (memcmp(i2pDest + NATIVE_I2P_DESTINATION_SIZE - sizeof(pchAAA), pchAAA, sizeof(pchAAA)) == 0);
 }
 

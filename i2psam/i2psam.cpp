@@ -21,7 +21,7 @@
 #endif
 
 #define SAM_BUFSIZE         65536
-#define I2P_DESTINATION_SIZE 522  // EcDSA, GOST and EdDSA
+#define I2P_DESTINATION_SIZE 524  // EcDSA, GOST and EdDSA
 
 namespace SAM
 {

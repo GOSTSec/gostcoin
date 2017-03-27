@@ -17,7 +17,7 @@ extern int nConnectTimeout;
 #undef SetPort
 #endif
 
-#define NATIVE_I2P_DESTINATION_SIZE     522
+#define NATIVE_I2P_DESTINATION_SIZE     524
 #define NATIVE_I2P_B32ADDR_SIZE         60
 #define NATIVE_I2P_NET_STRING           "i2p"
 
