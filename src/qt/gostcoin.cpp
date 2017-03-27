@@ -162,7 +162,7 @@ int main(int argc, char *argv[])
 {
     // Command-line options take precedence:
     ParseParameters(argc, argv);
-	i2p::api::InitI2P (argc, argv, "unioncoin");	
+	i2p::api::InitI2P (argc, argv, "gostcoin");	
 
 #if QT_VERSION < 0x050000
     // Internal string conversion is all UTF-8
@@ -205,12 +205,12 @@ int main(int argc, char *argv[])
 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
-    QApplication::setOrganizationName("Unioncoin");
-    QApplication::setOrganizationDomain("unioncoin.net");
+    QApplication::setOrganizationName("GOSTSec");
+    QApplication::setOrganizationDomain("gostcoin.net");
     if(GetBoolArg("-testnet")) // Separate UI settings for testnet
-        QApplication::setApplicationName("Unioncoin-Qt-testnet");
+        QApplication::setApplicationName("GOSTcoin-Qt-testnet");
     else
-        QApplication::setApplicationName("Unioncoin-Qt");
+        QApplication::setApplicationName("GOSTcoin-Qt");
 
     // ... then GUI settings:
     OptionsModel optionsModel;

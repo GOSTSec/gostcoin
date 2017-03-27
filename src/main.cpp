@@ -4718,11 +4718,11 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     return true;
 }
 
-void static UnioncoinMiner(CWallet *pwallet)
+void static GostcoinMiner(CWallet *pwallet)
 {
-    printf("UnioncoinMiner started\n");
+    printf("GostcoinMiner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("unioncoin-miner");
+    RenameThread("gostcoin-miner");
 
     // Each thread has its own key and counter
     CReserveKey reservekey(pwallet);
@@ -4745,7 +4745,7 @@ void static UnioncoinMiner(CWallet *pwallet)
         CBlock *pblock = &pblocktemplate->block;
         IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-        printf("Running UnioncoinMiner with %"PRIszu" transactions in block (%u bytes)\n", pblock->vtx.size(),
+        printf("Running GostcoinMiner with %"PRIszu" transactions in block (%u bytes)\n", pblock->vtx.size(),
                ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
         //
@@ -4820,7 +4820,7 @@ void static UnioncoinMiner(CWallet *pwallet)
     } }
     catch (boost::thread_interrupted)
     {
-        printf("UnioncoinMiner terminated\n");
+        printf("GostcoinMiner terminated\n");
         throw;
     }
 }
@@ -4846,7 +4846,7 @@ void GenerateBitcoins(bool fGenerate, CWallet* pwallet)
 
     minerThreads = new boost::thread_group();
     for (int i = 0; i < nThreads; i++)
-        minerThreads->create_thread(boost::bind(&UnioncoinMiner, pwallet));
+        minerThreads->create_thread(boost::bind(&GostcoinMiner, pwallet));
 }
 
 // Amount compression:

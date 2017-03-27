@@ -1014,7 +1014,7 @@ bool writeFirstConfig(bool i2pOnlyEnabled, bool torOnlyEnabled, bool i2pEnabled,
         pt.put("proxy", "127.0.0.1:9050");
     unsigned char rand_pwd[32];
     RAND_bytes(rand_pwd, 32);
-    pt.put("rpcuser", "unioncoinrpc");
+    pt.put("rpcuser", "gostcoinrpc");
     pt.put("rpcpassword", EncodeBase58(&rand_pwd[0],&rand_pwd[0]+32).c_str());
     pt.put("daemon", 1);
     pt.put("server", 1);
@@ -1035,7 +1035,7 @@ static std::string FormatException(std::exception* pex, const char* pszThread)
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "unioncoin";
+    const char* pszModule = "gostcoin";
 #endif
     if (pex)
         return strprintf(
@@ -1077,7 +1077,7 @@ boost::filesystem::path GetDefaultDataDir()
     // Unix: ~/.bitcoin
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Unioncoin";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "Gostcoin";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -1089,10 +1089,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     fs::create_directory(pathRet);
-    return pathRet / "Unioncoin";
+    return pathRet / "Gostcoin";
 #else
     // Unix
-    return pathRet / ".unioncoin";
+    return pathRet / ".gostcoin";
 #endif
 #endif
 }
@@ -1133,7 +1133,7 @@ const boost::filesystem::path &GetDataDir(bool fNetSpecific)
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "unioncoin.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "gostcoin.conf"));
     if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir(false) / pathConfigFile;
     return pathConfigFile;
 }
@@ -1167,7 +1167,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", "unioncoind.pid"));
+    boost::filesystem::path pathPidFile(GetArg("-pid", "gostcoind.pid"));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }

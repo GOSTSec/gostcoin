@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = unioncoin-qt
-macx:TARGET = "Unioncoin-Qt"
+TARGET = gostcoin-qt
+macx:TARGET = "GOSTcoin-Qt"
 VERSION = 0.8.5.6
 INCLUDEPATH += src src/json src/qt i2psam i2pd
 QT += core gui network
@@ -226,7 +226,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/i2poptionswidget.h \
     src/qt/setupdarknet.h
 
-SOURCES += src/qt/unioncoin.cpp \
+SOURCES += src/qt/gostcoin.cpp \
     src/qt/bitcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
     src/qt/addresstablemodel.cpp \

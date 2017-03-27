@@ -177,7 +177,7 @@ void HandleSIGHUP(int)
 #if !defined(QT_GUI)
 bool AppInit(int argc, char* argv[])
 {
-	i2p::api::InitI2P (argc, argv, "unioncoin");	
+	i2p::api::InitI2P (argc, argv, "gostcoin");	
     boost::thread_group threadGroup;
     boost::thread* detectShutdownThread = NULL;
 
@@ -199,12 +199,12 @@ bool AppInit(int argc, char* argv[])
         if (mapArgs.count("-?") || mapArgs.count("--help"))
         {
             // First part of help message is specific to bitcoind / RPC client
-            std::string strUsage = _("Anoncoin version") + " " + FormatFullVersion() + "\n\n" +
+            std::string strUsage = _("GOSTcoin version") + " " + FormatFullVersion() + "\n\n" +
                 _("Usage:") + "\n" +
-                  "  anoncoind [options]                     " + "\n" +
-                  "  anoncoind [options] <command> [params]  " + _("Send command to -server or anoncoind") + "\n" +
-                  "  anoncoind [options] help                " + _("List commands") + "\n" +
-                  "  anoncoind [options] help <command>      " + _("Get help for a command") + "\n";
+                  "  gostcoind [options]                     " + "\n" +
+                  "  gostcoind [options] <command> [params]  " + _("Send command to -server or gostcoind") + "\n" +
+                  "  gostcoind [options] help                " + _("List commands") + "\n" +
+                  "  gostcoind [options] help <command>      " + _("Get help for a command") + "\n";
 
             strUsage += "\n" + HelpMessage();
 
@@ -436,7 +436,7 @@ struct CImportingNow
 
 void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
 {
-    RenameThread("anoncoin-loadblk");
+    RenameThread("gostcoin-loadblk");
 
     // -reindex
     if (fReindex) {
