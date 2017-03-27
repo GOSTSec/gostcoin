@@ -121,18 +121,22 @@ namespace Checkpoints
 
     int GetTotalBlocksEstimate()
     {
-        if (fTestNet) return 0; // Testnet has no checkpoints
+		return 0;	
+		// TODO:
+        /*if (fTestNet) return 0; // Testnet has no checkpoints
         if (!GetBoolArg("-checkpoints", true))
             return 0;
 
         const MapCheckpoints& checkpoints = *Checkpoints().mapCheckpoints;
 
-        return checkpoints.rbegin()->first;
+        return checkpoints.rbegin()->first;*/
     }
 
     CBlockIndex* GetLastCheckpoint(const std::map<uint256, CBlockIndex*>& mapBlockIndex)
     {
-        if (fTestNet) return NULL; // Testnet has no checkpoints
+		return NULL;
+		// TODO:
+        /*if (fTestNet) return NULL; // Testnet has no checkpoints
         if (!GetBoolArg("-checkpoints", true))
             return NULL;
 
@@ -145,6 +149,6 @@ namespace Checkpoints
             if (t != mapBlockIndex.end())
                 return t->second;
         }
-        return NULL;
+        return NULL;*/
     }
 }
