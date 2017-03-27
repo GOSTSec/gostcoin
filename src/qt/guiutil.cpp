@@ -139,9 +139,9 @@ bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
     //
     //    Cannot handle this later, because bitcoin:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if(uri.startsWith("anoncoin://"))
+    if(uri.startsWith("gostcoin://"))
     {
-        uri.replace(0, 11, "anoncoin:");
+        uri.replace(0, 11, "gostcoin:");
     }
     QUrl uriInstance(uri);
     return parseBitcoinURI(uriInstance, out);
@@ -495,10 +495,10 @@ bool SetStartOnSystemStartup(bool fAutoStart) { return false; }
 HelpMessageBox::HelpMessageBox(QWidget *parent) :
     QMessageBox(parent)
 {
-    header = tr("Anoncoin-Qt") + " " + tr("version") + " " +
+    header = tr("Gostcoin-Qt") + " " + tr("version") + " " +
         QString::fromStdString(FormatFullVersion()) + "\n\n" +
         tr("Usage:") + "\n" +
-        "  anoncoin-qt [" + tr("command-line options") + "]                     " + "\n";
+        "  gostcoin-qt [" + tr("command-line options") + "]                     " + "\n";
 
     coreOptions = QString::fromStdString(HelpMessage());
 
@@ -507,7 +507,7 @@ HelpMessageBox::HelpMessageBox(QWidget *parent) :
         "  -min                   " + tr("Start minimized") + "\n" +
         "  -splash                " + tr("Show splash screen on startup (default: 1)") + "\n";
 
-    setWindowTitle(tr("Anoncoin-Qt"));
+    setWindowTitle(tr("Gostcoin-Qt"));
     setTextFormat(Qt::PlainText);
     // setMinimumWidth is ignored for QMessageBox so put in non-breaking spaces to make it wider.
     setText(header + QString(QChar(0x2003)).repeated(50));

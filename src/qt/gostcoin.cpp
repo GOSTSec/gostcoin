@@ -190,7 +190,7 @@ int main(int argc, char *argv[])
     {
         // This message can not be translated, as translation is not initialized yet
         // (which not yet possible because lang=XX can be overridden in bitcoin.conf in the data directory)
-        QMessageBox::critical(0, "Anoncoin",
+        QMessageBox::critical(0, "Gostcoin",
                               QString("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(mapArgs["-datadir"])));
         return 1;
     }

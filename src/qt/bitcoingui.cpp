@@ -682,7 +682,7 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
 
 void BitcoinGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
 {
-    QString strTitle = tr("Anoncoin"); // default title
+    QString strTitle = tr("Gostcoin"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
