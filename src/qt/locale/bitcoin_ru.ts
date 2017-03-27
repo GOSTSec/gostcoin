@@ -4,13 +4,13 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About Anoncoin</source>
-        <translation>&amp;О Anoncoin</translation>
+        <source>About Gostcoin</source>
+        <translation>О ГОСТкойне</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;Anoncoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Anoncoin&lt;/b&gt; версия</translation>
+        <source>&lt;b&gt;Gostcoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;ГОСТкойн&lt;/b&gt; версия</translation>
     </message>
     <message>
         <location line="+57"/>
