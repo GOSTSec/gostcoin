@@ -21,7 +21,7 @@
 #endif
 
 #define SAM_BUFSIZE         65536
-#define I2P_DESTINATION_SIZE 524  // EcDSA, GOST and EdDSA
+#define I2P_DESTINATION_SIZE 521  // EcDSA, GOST and EdDSA, actual size is 224 with trailing A==
 
 namespace SAM
 {
@@ -417,7 +417,7 @@ FullDestination StreamSession::createStreamSession(const std::string& destinatio
         fallSick();
         return FullDestination();
     }
-    return FullDestination(answer.value.substr(0, I2P_DESTINATION_SIZE), answer.value, (destination == SAM_GENERATE_MY_DESTINATION));
+    return FullDestination(answer.value.substr(0, I2P_DESTINATION_SIZE) + "A==", answer.value, (destination == SAM_GENERATE_MY_DESTINATION));
 }
 
 void StreamSession::fallSick() const
