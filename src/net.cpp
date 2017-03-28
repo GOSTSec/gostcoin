@@ -1858,7 +1858,7 @@ bool BindListenNativeI2P(SOCKET& hSocket)
     if (!SetSocketOptions(hSocket) || hSocket == INVALID_SOCKET)
         return false;
     CService addrBind(I2PSession::Instance().getMyDestination().pub, 0);
-    if (addrBind.IsRoutable() && fDiscover)
+    if (addrBind.IsRoutable())
         AddLocal(addrBind, LOCAL_BIND);
     return true;
 }
