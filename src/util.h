@@ -247,7 +247,7 @@ std::string FormatI2PNativeFullVersion();
 
 inline std::string i64tostr(int64 n)
 {
-    return strprintf("%"PRI64d, n);
+    return strprintf("%" PRI64d, n);
 }
 
 inline std::string itostr(int n)
