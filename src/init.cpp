@@ -866,7 +866,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     // see Step 2: parameter interactions for more information about these
     fNoListen = !GetBoolArg("-listen", true);
-    fDiscover = GetBoolArg("-discover", true); 
+    fDiscover = true; //GetBoolArg("-discover", true); TODO
     fNameLookup = GetBoolArg("-dns", true);
 
     // -i2p can override both tor and proxy
