@@ -7,9 +7,9 @@
 
 // These need to be macros, as version.cpp's and bitcoin-qt.rc's voodoo requires it
 #define CLIENT_VERSION_MAJOR       0
-#define CLIENT_VERSION_MINOR       8
-#define CLIENT_VERSION_REVISION    5
-#define CLIENT_VERSION_BUILD       6
+#define CLIENT_VERSION_MINOR       1
+#define CLIENT_VERSION_REVISION    0
+#define CLIENT_VERSION_BUILD       0
 
 #define ANONOCOIN_RELEASE          7
 
