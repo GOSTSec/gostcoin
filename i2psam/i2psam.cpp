@@ -21,7 +21,7 @@
 #endif
 
 #define SAM_BUFSIZE         65536
-#define I2P_DESTINATION_SIZE 521  // EcDSA, GOST and EdDSA, actual size is 224 with trailing A==
+#define I2P_DESTINATION_SIZE 521  // EcDSA, GOST and EdDSA, actual size is 524 with trailing A==
 
 namespace SAM
 {
@@ -729,7 +729,7 @@ std::string Message::destGenerate()
 //
 ///////////////////////////////////////////////////////////
 
-    static const char* destGenerateFormat = "DEST GENERATE\n";
+    static const char* destGenerateFormat = "DEST GENERATE SIGNATURE_TYPE=7\n";
     return createSAMRequest(destGenerateFormat);
 }
 
