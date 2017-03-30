@@ -11,7 +11,7 @@
 #define I2P_NET_NAME_PARAM              "-i2p"
 
 #define I2P_SESSION_NAME_PARAM          "-i2psessionname"
-#define I2P_SESSION_NAME_DEFAULT        "Anoncoin-client"
+#define I2P_SESSION_NAME_DEFAULT        "GOSTcoin-client"
 
 #define I2P_SAM_HOST_PARAM              "-samhost"
 #define I2P_SAM_HOST_DEFAULT            SAM_DEFAULT_ADDRESS
