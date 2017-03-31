@@ -714,12 +714,12 @@ bool AppInit2(boost::thread_group& threadGroup)
     if (file) fclose(file);
     static boost::interprocess::file_lock lock(pathLockFile.string().c_str());
     if (!lock.try_lock())
-        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Anoncoin is probably already running."), strDataDir.c_str()));
+        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Gostcoin is probably already running."), strDataDir.c_str()));
 
     if (GetBoolArg("-shrinkdebugfile", !fDebug))
         ShrinkDebugFile();
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    printf("Anoncoin version %s (%s)\n", FormatFullVersion().c_str(), CLIENT_DATE.c_str());
+    printf("Gostcoin version %s (%s)\n", FormatFullVersion().c_str(), CLIENT_DATE.c_str());
     printf("I2P module version %s\n", FormatI2PNativeFullVersion().c_str());
     printf("Using OpenSSL version %s\n", SSLeay_version(SSLEAY_VERSION));
     if (!fLogTimestamps)
@@ -730,12 +730,10 @@ bool AppInit2(boost::thread_group& threadGroup)
     std::ostringstream strErrors;
 
     if (fDaemon)
-        fprintf(stdout, "Anoncoin server starting\n");
+        fprintf(stdout, "Gostcoin server starting\n");
 
     if (!GetBoolArg("-stfu", false)) {
-        if (!IsBehindDarknet()) {
-	InitWarning("Anoncoin is running on clearnet!\n");
-        }
+	InitWarning("Gostcoin is running on clearnet!\n");
     }
 
     if (nScriptCheckThreads) {

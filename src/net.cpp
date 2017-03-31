@@ -124,15 +124,6 @@ bool GetLocal(CService& addr, const CNetAddr *paddrPeer)
     return nBestScore >= 0;
 }
 
-bool IsDarknetOnly()
-{
-    if (IsI2POnly())
-	return true;
-    if ((mapArgs.count("-proxy") && mapArgs["-proxy"] != "0") && (mapArgs.count("-i2p") && mapArgs["-i2p"] != "0"))
-	return true;
-    return false;
-}
-
 bool IsI2POnly()
 {
     bool i2pOnly = false;
@@ -156,14 +147,6 @@ bool IsI2PEnabled()
     return false;
 }
 
-bool IsBehindDarknet()
-{
-    if (IsI2POnly())
-        return true;
-    if (IsDarknetOnly())
-        return true;
-    return false;
-}
 
 // get best local address for a particular peer as a CAddress
 CAddress GetLocalAddress(const CNetAddr *paddrPeer)

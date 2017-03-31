@@ -65,9 +65,6 @@ public:
     QString getPrivateI2PKey() const;
     bool isI2PAddressGenerated() const;
     bool isI2POnly() const;
-    bool isTorOnly() const;
-    bool isDarknetOnly() const;
-    bool isBehindDarknet() const;
     QString getB32Address(const QString& destination) const;
     void generateI2PDestination(QString& pub, QString& priv) const;
 //    I2PSession& getI2PSession() const;      // ??
