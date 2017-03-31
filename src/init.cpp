@@ -732,7 +732,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     if (fDaemon)
         fprintf(stdout, "Gostcoin server starting\n");
 
-    if (!GetBoolArg("-stfu", false)) {
+    if (!GetBoolArg("-stfu", false) && !IsI2POnly()) {
 	InitWarning("Gostcoin is running on clearnet!\n");
     }
 
