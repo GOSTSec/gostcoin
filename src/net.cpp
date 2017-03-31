@@ -1262,12 +1262,6 @@ void ThreadSocketHandler()
 
 
 
-
-
-
-
-
-
 #ifdef USE_UPNP
 void ThreadMapPort()
 {
@@ -1379,9 +1373,8 @@ void MapPort(bool)
 
 
 static const char *strI2PDNSSeed[][2] = {
-/*    {"cblulrose7qdxdgl6qpnduazj6vc6syg7rcrg7hb3giziovo7hdq.b32.i2p", "cblulrose7qdxdgl6qpnduazj6vc6syg7rcrg7hb3giziovo7hdq.b32.i2p"} ,
-	{"fgk23qeerln5ajlwba6x4rxuib2vvl3uzywtxcanz5erbjae6ina.b32.i2p",
-"fgk23qeerln5ajlwba6x4rxuib2vvl3uzywtxcanz5erbjae6ina.b32.i2p"}*/
+	{"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p",
+"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p"} // xcps
 };
 
 
@@ -1394,13 +1387,12 @@ static const char *strI2PDNSSeed[][2] = {
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetDNSSeed[][2] = {
-    {"coinpool.in", "anoncoin.dnsseed.coinpool.in"},
-    {"anoncoin.net", "dnsseed01.anoncoin.net"},
+    {"coinpool.in", "gostcoin.dnsseed.coinpool.in"},
+   // {"anoncoin.net", "dnsseed01.anoncoin.net"},
     {NULL, NULL}
 };
 
 static const char *strTestNetDNSSeed[][2] = {
-    {"anoncoin.net", "dnsseed01.anoncoin.net"},
     {NULL, NULL}
 };
 
@@ -1460,16 +1452,6 @@ void ThreadDNSAddressSeed()
 
     printf("%d addresses found from DNS seeds\n", found);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 unsigned int pnSeed[] =
