@@ -143,13 +143,17 @@ public:
     bool Sign(const uint256 &hash, std::vector<unsigned char>& vchSig) 
 	{
 		const BIGNUM * priv = EC_KEY_get0_private_key(pkey);
-		BIGNUM * r = BN_new (), * s = BN_new ();
 		BIGNUM * d = BN_bin2bn (hash.begin (), 32, nullptr); 
-		i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->Sign (priv, d, r, s);
-		vchSig.resize(64);
-		i2p::crypto::bn2buf (r, &vchSig[0], 32);
-		i2p::crypto::bn2buf (s, &vchSig[32], 32); 
-		BN_free (d); BN_free (r); BN_free (s);	
+		ECDSA_SIG *sig = ECDSA_SIG_new ();	
+		i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->Sign (priv, d, sig->r, sig->s);
+		// encode signature is in DER format		
+		auto nSize = ECDSA_size (pkey); // max size
+		vchSig.resize(nSize);
+		auto p = &vchSig[0];
+		nSize = i2d_ECDSA_SIG (sig, &p);
+		vchSig.resize(nSize); // acutal size
+		BN_free (d);	
+		ECDSA_SIG_free(sig);
         return true;
     }
 
