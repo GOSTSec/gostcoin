@@ -149,10 +149,6 @@ bool ClientModel::isI2POnly() const
     return IsI2POnly();
 }
 
-bool ClientModel::isTorOnly() const
-{
-    return IsTorOnly();
-}
 
 bool ClientModel::isDarknetOnly() const
 {

@@ -347,11 +347,6 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
             labelI2POnly->setText("I2P");
             labelI2POnly->setToolTip(tr("Wallet is using I2P-network only"));
         }
-	else if (clientModel->isTorOnly())
-	{
-	    labelI2POnly->setText("Tor");
-	    labelI2POnly->setToolTip(tr("Wallet is using Tor-network only"));
-	}
 	else if (clientModel->isDarknetOnly())
 	{
 	    labelI2POnly->setText("I&T");

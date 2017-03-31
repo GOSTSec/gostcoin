@@ -23,7 +23,6 @@
 #include <miniupnpc/upnperrors.h>
 #endif
 
-#define TOR_NET_STRING "tor"
 
 // Dump addresses to peers.dat every 15 minutes (900s)
 #define DUMP_ADDRESSES_INTERVAL 900
@@ -129,20 +128,9 @@ bool IsDarknetOnly()
 {
     if (IsI2POnly())
 	return true;
-    if (IsTorOnly())
-	return true;
-    if (((mapArgs.count("-proxy") && mapArgs["-proxy"] != "0") || (mapArgs.count("-tor") &&
-	mapArgs["-tor"] != "0")) && (mapArgs.count("-i2p") && mapArgs["-i2p"] != "0"))
+    if ((mapArgs.count("-proxy") && mapArgs["-proxy"] != "0") && (mapArgs.count("-i2p") && mapArgs["-i2p"] != "0"))
 	return true;
     return false;
-}
-
-bool IsTorOnly()
-{
-    bool i2pOnly = false;
-    const std::vector<std::string>& onlyNets = mapMultiArgs["-onlynet"];
-    i2pOnly = (onlyNets.size() == 1 && onlyNets[0] == TOR_NET_STRING);
-    return i2pOnly;
 }
 
 bool IsI2POnly()
@@ -172,11 +160,7 @@ bool IsBehindDarknet()
 {
     if (IsI2POnly())
         return true;
-    if (IsTorOnly())
-        return true;
     if (IsDarknetOnly())
-        return true;
-    if ((mapArgs.count("-tor") && mapArgs["-tor"] != "0"))
         return true;
     return false;
 }
