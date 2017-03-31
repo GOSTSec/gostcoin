@@ -4809,10 +4809,9 @@ void GenerateBitcoins(bool fGenerate, CWallet* pwallet)
 {
     static boost::thread_group* minerThreads = NULL;
 
-	// TODO:
-    int nThreads = 1; //GetArg("-genproclimit", -1);
-    if (nThreads < 0)
-        nThreads = boost::thread::hardware_concurrency();
+    int nThreads = GetArg("-genproclimit", 1);
+   /* if (nThreads < 0)
+        nThreads = boost::thread::hardware_concurrency();*/
 
     if (minerThreads != NULL)
     {
