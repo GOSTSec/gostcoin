@@ -4704,96 +4704,100 @@ void static GostcoinMiner(CWallet *pwallet)
     CReserveKey reservekey(pwallet);
     unsigned int nExtraNonce = 0;
 
-    try { loop {
-		// TODO:
-       /* while (vNodes.empty())
-            MilliSleep(1000);*/
+    try 
+	{ 
+		loop 
+		{
+		
+		   while (vNodes.empty())
+		        MilliSleep(1000);
 
-        //
-        // Create new block
-        //
-        unsigned int nTransactionsUpdatedLast = nTransactionsUpdated;
-        CBlockIndex* pindexPrev = pindexBest;
+		    //
+		    // Create new block
+		    //
+		    unsigned int nTransactionsUpdatedLast = nTransactionsUpdated;
+		    CBlockIndex* pindexPrev = pindexBest;
 
-        auto_ptr<CBlockTemplate> pblocktemplate(CreateNewBlockWithKey(reservekey));
-        if (!pblocktemplate.get())
-            return;
-        CBlock *pblock = &pblocktemplate->block;
-        IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
+		    auto_ptr<CBlockTemplate> pblocktemplate(CreateNewBlockWithKey(reservekey));
+		    if (!pblocktemplate.get())
+		        return;
+		    CBlock *pblock = &pblocktemplate->block;
+			RAND_bytes ((uint8_t *)&pblock->nNonce, 4);
+		    IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-        printf("Running GostcoinMiner with %" PRIszu " transactions in block (%u bytes)\n", pblock->vtx.size(),
-               ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
+		    printf("Running GostcoinMiner with %" PRIszu " transactions in block (%u bytes)\n", pblock->vtx.size(),
+		           ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
-        //
-        // Solve
-        //
-        int64 nStart = GetTime();
-        uint256 hashTarget = CBigNum().SetCompact(pblock->nBits).getuint256();
-        loop
-        {
-            unsigned int nHashesDone = 0;
+		    //
+		    // Solve
+		    //
+		    int64 nStart = GetTime();
+		    uint256 hashTarget = CBigNum().SetCompact(pblock->nBits).getuint256();
+		    loop
+		    {
+		        unsigned int nHashesDone = 0;
 
-            loop
-            {
-                if (pblock->GetHash() <= hashTarget)
-                {
-                    // Found a solution
-                    SetThreadPriority(THREAD_PRIORITY_NORMAL);
-                    CheckWork(pblock, *pwallet, reservekey);
-                    SetThreadPriority(THREAD_PRIORITY_LOWEST);
-                    break;
-                }
-                pblock->nNonce += 1;
-                nHashesDone += 1;
-                if ((pblock->nNonce & 0xFF) == 0)
-                    break;
-            }
+		        loop
+		        {
+		            if (pblock->GetHash() <= hashTarget)
+		            {
+		                // Found a solution
+		                SetThreadPriority(THREAD_PRIORITY_NORMAL);
+		                CheckWork(pblock, *pwallet, reservekey);
+		                SetThreadPriority(THREAD_PRIORITY_LOWEST);
+		                break;
+		            }
+		            pblock->nNonce += 1;
+		            nHashesDone += 1;
+		            if ((pblock->nNonce & 0xFF) == 0)
+		                break;
+		        }
 
-            // Meter hashes/sec
-            static int64 nHashCounter;
-            if (nHPSTimerStart == 0)
-            {
-                nHPSTimerStart = GetTimeMillis();
-                nHashCounter = 0;
-            }
-            else
-                nHashCounter += nHashesDone;
-            if (GetTimeMillis() - nHPSTimerStart > 4000)
-            {
-                static CCriticalSection cs;
-                {
-                    LOCK(cs);
-                    if (GetTimeMillis() - nHPSTimerStart > 4000)
-                    {
-                        dHashesPerSec = 1000.0 * nHashCounter / (GetTimeMillis() - nHPSTimerStart);
-                        nHPSTimerStart = GetTimeMillis();
-                        nHashCounter = 0;
-                        static int64 nLogTime;
-                        if (GetTime() - nLogTime > 30 * 60)
-                        {
-                            nLogTime = GetTime();
-                            printf("hashmeter %6.0f khash/s\n", dHashesPerSec/1000.0);
-                        }
-                    }
-                }
-            }
+		        // Meter hashes/sec
+		        static int64 nHashCounter;
+		        if (nHPSTimerStart == 0)
+		        {
+		            nHPSTimerStart = GetTimeMillis();
+		            nHashCounter = 0;
+		        }
+		        else
+		            nHashCounter += nHashesDone;
+		        if (GetTimeMillis() - nHPSTimerStart > 4000)
+		        {
+		            static CCriticalSection cs;
+		            {
+		                LOCK(cs);
+		                if (GetTimeMillis() - nHPSTimerStart > 4000)
+		                {
+		                    dHashesPerSec = 1000.0 * nHashCounter / (GetTimeMillis() - nHPSTimerStart);
+		                    nHPSTimerStart = GetTimeMillis();
+		                    nHashCounter = 0;
+		                    static int64 nLogTime;
+		                    if (GetTime() - nLogTime > 30 * 60)
+		                    {
+		                        nLogTime = GetTime();
+		                        printf("hashmeter %6.0f khash/s\n", dHashesPerSec/1000.0);
+		                    }
+		                }
+		            }
+		        }
 
-            // Check for stop or if block needs to be rebuilt
-            boost::this_thread::interruption_point();
-			// TODO:
-          /*  if (vNodes.empty())
-                break;*/
-            if (pblock->nNonce >= 0xffff0000)
-                break;
-            if (nTransactionsUpdated != nTransactionsUpdatedLast && GetTime() - nStart > 60)
-                break;
-            if (pindexPrev != pindexBest)
-                break;
+		        // Check for stop or if block needs to be rebuilt
+		        boost::this_thread::interruption_point();
+		        if (vNodes.empty())
+		            break;
+		        if (pblock->nNonce >= 0xffff0000)
+		            break;
+		        if (nTransactionsUpdated != nTransactionsUpdatedLast && GetTime() - nStart > 60)
+		            break;
+		        if (pindexPrev != pindexBest)
+		            break;
 
-            // Update nTime every few seconds
-            pblock->UpdateTime(pindexPrev);
-        }
-    } }
+		        // Update nTime every few seconds
+		        pblock->UpdateTime(pindexPrev);
+		    }
+	    } 
+	}
     catch (boost::thread_interrupted)
     {
         printf("GostcoinMiner terminated\n");
