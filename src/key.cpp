@@ -159,12 +159,15 @@ public:
 
     bool Verify(const uint256 &hash, const std::vector<unsigned char>& vchSig) 
 	{
+		// decode from DER
+		ECDSA_SIG *sig = nullptr;
+		auto p = &vchSig[0];	
+		d2i_ECDSA_SIG (&sig, &p, vchSig.size());	
 		const EC_POINT * pub = EC_KEY_get0_public_key(pkey);
 		BIGNUM * d = BN_bin2bn (hash.begin (), 32, nullptr);
-		BIGNUM * r = BN_bin2bn (&vchSig[0], 32, NULL);
-		BIGNUM * s = BN_bin2bn (&vchSig[32], 32, NULL);
-		bool ret = i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->Verify (pub, d, r, s);
-		BN_free (d); BN_free (r); BN_free (s);
+		bool ret = i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->Verify (pub, d, sig->r, sig->s);
+		BN_free (d); 
+		ECDSA_SIG_free(sig);
 		return ret;
     }
 
