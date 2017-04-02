@@ -2926,7 +2926,7 @@ bool InitBlockIndex() {
         }
 
 		// temporary code for finding nonce for genesis, should be removed later one
-		uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();	
+	/*	uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();	
 		printf("hash target %s\n", hashTarget.ToString().c_str());		
 		while(true)
         {
@@ -2945,7 +2945,7 @@ bool InitBlockIndex() {
             }
         }
         printf("block.nTime = %u \n", block.nTime);
-        printf("block.nNonce = %u \n", block.nNonce);	
+        printf("block.nNonce = %u \n", block.nNonce);	*/
 
 		/////////////////////////////////////////////////////////////
 
