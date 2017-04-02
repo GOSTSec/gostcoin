@@ -32,7 +32,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x0000022ebc4fc755b87492cc6733b953cc08f11adca0b0e566bd67165ea17cb7");
+uint256 hashGenesisBlock("0x00000dd00df9728558f339d2e034e2c862329d509018b56d699aec5b6fa6ba1f");
 static CBigNum bnProofOfWorkLimit( CBigNum().SetCompact(0x1e0ffff0) );
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2911,13 +2911,13 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1491140178;
+        block.nTime    = 1491156549;
         block.nBits    = 0x1e0ffff0;
 		/*CBigNum n;
 		n.SetHex ("0000ffff00000000000000000000000000000000000000000000000000000000"); // 4
 		block.nBits = n.GetCompact ();
 		printf("nbits %x\n", block.nBits);*/
-        block.nNonce   = 517611960;
+        block.nNonce   = 517725659;
 
         if (fTestNet)
         {
@@ -2926,7 +2926,7 @@ bool InitBlockIndex() {
         }
 
 		// temporary code for finding nonce for genesis, should be removed later one
-	/*	uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();	
+		/*uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();	
 		printf("hash target %s\n", hashTarget.ToString().c_str());		
 		while(true)
         {
@@ -4662,11 +4662,8 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     uint256 hashTarget = CBigNum().SetCompact(pblock->nBits).getuint256();
 
     if (hash > hashTarget)
-	{
-		printf ("Block failed %s\n", hash.GetHex().c_str());
-		pblock->print ();
         return false;
-	}
+
     //// debug print
     printf("AnoncoinMiner:\n");
     printf("proof-of-work found  \n  hash: %s  \ntarget: %s\n", hash.GetHex().c_str(), hashTarget.GetHex().c_str());
