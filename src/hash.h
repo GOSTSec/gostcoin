@@ -22,7 +22,7 @@ inline uint256 Hash(const T1 pbegin, const T1 pend)
     uint8_t hash1[64];
     i2p::crypto::GOSTR3411_2012_512 ((pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]), hash1);
     uint256 hash2;
-    i2p::crypto::GOSTR3411_2012_256 (hash1, 61, hash2.begin ());
+    i2p::crypto::GOSTR3411_2012_256 (hash1, 64, hash2.begin ());
     return hash2;
 }
 

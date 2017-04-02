@@ -32,7 +32,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x00000c54d37a460c742a00cffcfbd90a07be5d31cfece2fdc8ef2cd181820939");
+uint256 hashGenesisBlock("0x0000022ebc4fc755b87492cc6733b953cc08f11adca0b0e566bd67165ea17cb7");
 static CBigNum bnProofOfWorkLimit( CBigNum().SetCompact(0x1e0ffff0) );
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2899,7 +2899,7 @@ bool InitBlockIndex() {
     if (!fReindex) {
 
         // Genesis block
-        const char* pszTimestamp = "26/Mar/2017:  GOST R 34.11-2012 - orignal";
+        const char* pszTimestamp = "02/Apr/2017:  GOST R 34.11-2012 - orignal";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2911,13 +2911,13 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1490566849;
+        block.nTime    = 1491140178;
         block.nBits    = 0x1e0ffff0;
 		/*CBigNum n;
 		n.SetHex ("0000ffff00000000000000000000000000000000000000000000000000000000"); // 4
 		block.nBits = n.GetCompact ();
 		printf("nbits %x\n", block.nBits);*/
-        block.nNonce   = 517537227;
+        block.nNonce   = 517611960;
 
         if (fTestNet)
         {
@@ -2926,7 +2926,7 @@ bool InitBlockIndex() {
         }
 
 		// temporary code for finding nonce for genesis, should be removed later one
-		/*uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();	
+		uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();	
 		printf("hash target %s\n", hashTarget.ToString().c_str());		
 		while(true)
         {
@@ -2945,7 +2945,7 @@ bool InitBlockIndex() {
             }
         }
         printf("block.nTime = %u \n", block.nTime);
-        printf("block.nNonce = %u \n", block.nNonce);	*/
+        printf("block.nNonce = %u \n", block.nNonce);	
 
 		/////////////////////////////////////////////////////////////
 
@@ -2954,7 +2954,7 @@ bool InitBlockIndex() {
         printf("hash %s\n", hash.ToString().c_str());
         printf("hashGenesisBlock %s\n", hashGenesisBlock.ToString().c_str());
         printf("block.hashMerkleRoot %s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x7998962bab9feadedb984f27ff3da8cf48f6ad6886c2a441f549e5c5d094e88f"));
+        assert(block.hashMerkleRoot == uint256("0x1cf1e5211650ba5218b5b869c48c4bc480c4fd1bc849fdc1a81d68547b9f4d58"));
         block.print();
         assert(hash == hashGenesisBlock);
 
@@ -4662,8 +4662,11 @@ bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     uint256 hashTarget = CBigNum().SetCompact(pblock->nBits).getuint256();
 
     if (hash > hashTarget)
+	{
+		printf ("Block failed %s\n", hash.GetHex().c_str());
+		pblock->print ();
         return false;
-
+	}
     //// debug print
     printf("AnoncoinMiner:\n");
     printf("proof-of-work found  \n  hash: %s  \ntarget: %s\n", hash.GetHex().c_str(), hashTarget.GetHex().c_str());

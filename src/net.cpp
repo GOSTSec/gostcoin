@@ -1340,8 +1340,8 @@ void MapPort(bool)
 
 
 static const char *strI2PDNSSeed[][2] = {
-	{"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p",
-"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p"} // xcps
+	/*{"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p",
+"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p"} // xcps*/
 };
 
 
