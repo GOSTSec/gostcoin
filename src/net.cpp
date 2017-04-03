@@ -10,6 +10,7 @@
 #include "ui_interface.h"
 #include "script.h"
 #include "irc.h"
+#include "Log.h"
 #include "i2p.h"
 
 #ifdef WIN32
@@ -689,6 +690,36 @@ bool CNode::ReceiveMsgBytes(const char *pch, unsigned int nBytes)
     return true;
 }
 
+void CNode::I2PStreamReceive ()
+{
+	if (i2pStream)
+	{
+		auto buf = std::make_shared<I2PCNodeBuffer>();
+		i2pStream->AsyncReceive (boost::asio::buffer (*buf),
+			std::bind (&CNode::HandleI2PStreamReceive, this,
+			std::placeholders::_1, std::placeholders::_2, buf), 600); // idle time is 10 minutes
+	}
+}
+
+void CNode::HandleI2PStreamReceive (const boost::system::error_code& ecode, size_t bytes_transferred, std::shared_ptr<I2PCNodeBuffer> buf)
+{
+	LOCK(cs_vRecvMsg);
+	if (ecode)
+	{
+		LogPrint (eLogInfo, "I2P stream receive error: ", ecode.message ());
+		CloseSocketDisconnect();
+	}
+	else
+	{
+		if (!ReceiveMsgBytes((const char *)buf->data (), bytes_transferred))
+        	CloseSocketDisconnect();
+        nLastRecv = GetTime();
+        nRecvBytes += bytes_transferred;
+	}	
+	if (!fDisconnect)
+		I2PStreamReceive ();
+}
+
 void AddIncomingConnection(SOCKET hSocket, const CAddress& addr)
 {
     int nInbound = 0;
@@ -731,6 +762,30 @@ void AddIncomingConnection(SOCKET hSocket, const CAddress& addr)
         }
     }
 }
+
+void AddIncomingI2PStream (std::shared_ptr<i2p::stream::Stream> stream)
+{
+	if (!stream) return;
+	CAddress addr;
+    addr.SetSpecial (stream->GetRemoteIdentity ()->ToBase64 ());
+	int nInbound = 0;
+    {
+        LOCK(cs_vNodes);
+        BOOST_FOREACH(CNode* pnode, vNodes)
+            if (pnode->fInbound)
+                nInbound++;
+    }
+	printf("accepted connection %s\n", addr.ToString().c_str());
+    CNode* pnode = new CNode(INVALID_SOCKET, addr, "", true);
+	pnode->SetI2PStream (stream);
+	pnode->I2PStreamReceive ();	
+    pnode->AddRef();
+    {
+        LOCK(cs_vNodes);
+        vNodes.push_back(pnode);
+    }
+}
+
 
 int CNetMessage::readHeader(const char *pch, unsigned int nBytes)
 {
