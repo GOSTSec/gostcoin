@@ -16,6 +16,8 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f) :
     int line2 = 13;
     int line3 = 26;
     int line4 = 39;
+	int line5 = 52;
+	int line6 = 65;	
 
     float fontFactor            = 1.0;
 
@@ -43,15 +45,15 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f) :
     pixPaint.setPen(QColor(70,70,70));
 
     pixPaint.setFont(QFont(font, 9*fontFactor));
-    pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line4,versionText);
+    pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line6,versionText);
 
     // draw copyright stuff
     pixPaint.setFont(QFont(font, 9*fontFactor));
     pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line1,copyrightText1);
     pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line2,copyrightText2);
     pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line3,copyrightText3);
-	pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line3,copyrightText4);
-	pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line3,copyrightText5);
+	pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line4,copyrightText4);
+	pixPaint.drawText(paddingLeftCol2,paddingTopCol2+line5,copyrightText5);
 
     pixPaint.end();
 
