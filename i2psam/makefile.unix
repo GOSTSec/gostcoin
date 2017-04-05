@@ -11,7 +11,7 @@
 CC            = gcc
 CXX           = g++
 CFLAGS        = -pipe -O2 -fPIC -Wall -W -D_REENTRANT $(DEFINES)
-CXXFLAGS      = -pipe -O2 -fPIC -Wall -W -D_REENTRANT $(DEFINES)
+CXXFLAGS      = -pipe -O2 -std=c++11 -fPIC -Wall -W -D_REENTRANT $(DEFINES)
 AR            = ar cqs
 RANLIB        = 
 TAR           = tar -cf

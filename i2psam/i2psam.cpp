@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdarg.h>
+#include <fstream>
 
 #ifndef WIN32
 #include <errno.h>
@@ -29,9 +30,9 @@ namespace SAM
 static void print_error(const std::string& err)
 {
 #ifdef WIN32
-    std::cout << err << "(" << WSAGetLastError() << ")" << std::endl;
+    StreamSession::getLogStream () << err << "(" << WSAGetLastError() << ")" << std::endl;
 #else
-    std::cout << err << "(" << errno << ")" << std::endl;
+    StreamSession::getLogStream () << err << "(" << errno << ")" << std::endl;
 #endif
 }
 
@@ -149,7 +150,7 @@ void Socket::write(const std::string& msg)
         print_error("Failed to send data because socket is closed");
         return;
     }
-    std::cout << "Send: " << msg << std::endl;
+    StreamSession::getLogStream () << "Send: " << msg << std::endl;
     ssize_t sentBytes = send(socket_, msg.c_str(), msg.length(), 0);
     if (sentBytes == SAM_SOCKET_ERROR)
     {
@@ -186,7 +187,7 @@ std::string Socket::read()
         close();
         print_error("Socket was closed");
     }
-    std::cout << "Reply: " << buffer << std::endl;
+    StreamSession::getLogStream () << "Reply: " << buffer << std::endl;
     return std::string(buffer);
 }
 
@@ -250,7 +251,7 @@ StreamSession::StreamSession(
     , isSick_(false)
 {
     myDestination_ = createStreamSession(destination);
-    std::cout << "Created a brand new SAM session (" << sessionID_ << ")" << std::endl;
+    getLogStream () << "Created a brand new SAM session (" << sessionID_ << ")" << std::endl;
 }
 
 StreamSession::StreamSession(StreamSession& rhs)
@@ -268,13 +269,13 @@ StreamSession::StreamSession(StreamSession& rhs)
     for(ForwardedStreamsContainer::const_iterator it = rhs.forwardedStreams_.begin(), end = rhs.forwardedStreams_.end(); it != end; ++it)
         forward(it->host, it->port, it->silent);
 
-    std::cout << "Created a new SAM session (" << sessionID_ << ")  from another (" << rhs.sessionID_ << ")" << std::endl;
+    getLogStream () << "Created a new SAM session (" << sessionID_ << ")  from another (" << rhs.sessionID_ << ")" << std::endl;
 }
 
 StreamSession::~StreamSession()
 {
     stopForwardingAll();
-    std::cout << "Closing SAM session (" << sessionID_ << ") ..." << std::endl;
+    getLogStream () << "Closing SAM session (" << sessionID_ << ") ..." << std::endl;
 }
 
 /*static*/
@@ -297,16 +298,16 @@ std::string StreamSession::generateSessionID()
     return result;
 }
 
-RequestResult<std::auto_ptr<Socket> > StreamSession::accept(bool silent)
+RequestResult<std::shared_ptr<Socket> > StreamSession::accept(bool silent)
 {
-    typedef RequestResult<std::auto_ptr<Socket> > ResultType;
+    typedef RequestResult<std::shared_ptr<Socket> > ResultType;
 
-    std::auto_ptr<Socket> streamSocket(new Socket(socket_));
+    std::shared_ptr<Socket> streamSocket(new Socket(socket_));
     const Message::eStatus status = accept(*streamSocket, sessionID_, silent);
     switch(status)
     {
     case Message::OK:
-        return RequestResult<std::auto_ptr<Socket> >(streamSocket);
+        return std::move (RequestResult<std::shared_ptr<Socket> >(streamSocket));
     case Message::EMPTY_ANSWER:
     case Message::CLOSED_SOCKET:
     case Message::INVALID_ID:
@@ -319,11 +320,11 @@ RequestResult<std::auto_ptr<Socket> > StreamSession::accept(bool silent)
     return ResultType();
 }
 
-RequestResult<std::auto_ptr<Socket> > StreamSession::connect(const std::string& destination, bool silent)
+RequestResult<std::shared_ptr<Socket> > StreamSession::connect(const std::string& destination, bool silent)
 {
-    typedef RequestResult<std::auto_ptr<Socket> > ResultType;
+    typedef RequestResult<std::shared_ptr<Socket> > ResultType;
 
-    std::auto_ptr<Socket> streamSocket(new Socket(socket_));
+    std::shared_ptr<Socket> streamSocket(new Socket(socket_));
     const Message::eStatus status = connect(*streamSocket, sessionID_, destination, silent);
     switch(status)
     {
@@ -345,13 +346,13 @@ RequestResult<void> StreamSession::forward(const std::string& host, uint16_t por
 {
     typedef RequestResult<void> ResultType;
 
-    std::auto_ptr<Socket> newSocket(new Socket(socket_));
+    std::shared_ptr<Socket> newSocket(new Socket(socket_));
     const Message::eStatus status = forward(*newSocket, sessionID_, host, port, silent);
     switch(status)
     {
     case Message::OK:
         forwardedStreams_.push_back(ForwardedStream(newSocket.get(), host, port, silent));
-        newSocket.release();    // release after successful push_back only
+        newSocket = nullptr;    // release after successful push_back only
         return ResultType(true);
     case Message::EMPTY_ANSWER:
     case Message::CLOSED_SOCKET:
@@ -370,7 +371,7 @@ RequestResult<const std::string> StreamSession::namingLookup(const std::string& 
     typedef RequestResult<const std::string> ResultType;
     typedef Message::Answer<const std::string> AnswerType;
 
-    std::auto_ptr<Socket> newSocket(new Socket(socket_));
+    std::shared_ptr<Socket> newSocket(new Socket(socket_));
     const AnswerType answer = namingLookup(*newSocket, name);
     switch(answer.status)
     {
@@ -391,7 +392,7 @@ RequestResult<const FullDestination> StreamSession::destGenerate() const
     typedef RequestResult<const FullDestination> ResultType;
     typedef Message::Answer<const FullDestination> AnswerType;
 
-    std::auto_ptr<Socket> newSocket(new Socket(socket_));
+    std::shared_ptr<Socket> newSocket(new Socket(socket_));
     const AnswerType answer = destGenerate(*newSocket);
     switch(answer.status)
     {
@@ -574,6 +575,23 @@ const std::string& StreamSession::getSAMMaxVer() const
 const std::string& StreamSession::getSAMVersion() const
 {
     return socket_.getVersion();
+}
+
+std::shared_ptr<std::ostream> StreamSession::logStream;
+
+std::ostream& StreamSession::getLogStream () 
+{
+	return logStream ? *logStream : std::cout;
+}
+
+void StreamSession::SetLogFile (const std::string& filename)
+{
+	logStream = std::make_shared<std::ofstream> (filename, std::ofstream::out | std::ofstream::app);
+}
+
+void StreamSession::CloseLogFile ()
+{
+	logStream = nullptr;
 }
 
 //--------------------------------------------------------------------------------------------------

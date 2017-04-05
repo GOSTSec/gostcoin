@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include <memory>
 #include <utility>
+#include <ostream>
 
 #ifdef WIN32
 //#define _WIN32_WINNT 0x0501
@@ -278,7 +279,7 @@ struct RequestResult
 };
 
 template<class T>
-struct RequestResult<std::auto_ptr<T> >
+struct RequestResult<std::shared_ptr<T> >
 {
     // a class-helper for resolving a problem with conversion from temporary RequestResult to non-const RequestResult&
     struct RequestResultRef
@@ -291,12 +292,12 @@ struct RequestResult<std::auto_ptr<T> >
     };
 
     bool isOk;
-    std::auto_ptr<T> value;
+    std::shared_ptr<T> value;
 
     RequestResult()
         : isOk(false) {}
 
-    explicit RequestResult(std::auto_ptr<T>& value)
+    explicit RequestResult(std::shared_ptr<T>& value)
         : isOk(true), value(value) {}
 
 
@@ -348,8 +349,8 @@ public:
 
     static std::string generateSessionID();
 
-    RequestResult<std::auto_ptr<Socket> > accept(bool silent);
-    RequestResult<std::auto_ptr<Socket> > connect(const std::string& destination, bool silent);
+    RequestResult<std::shared_ptr<Socket> > accept(bool silent);
+    RequestResult<std::shared_ptr<Socket> > connect(const std::string& destination, bool silent);
     RequestResult<void> forward(const std::string& host, uint16_t port, bool silent);
     RequestResult<const std::string> namingLookup(const std::string& name) const;
     RequestResult<const FullDestination> destGenerate() const;
@@ -370,6 +371,10 @@ public:
     const std::string& getOptions() const;
 
     bool isSick() const;
+
+	static std::ostream& getLogStream ();
+	static void SetLogFile (const std::string& filename);
+	static void CloseLogFile ();
 
 private:
     StreamSession(const StreamSession& rhs);
@@ -395,6 +400,7 @@ private:
     const std::string i2pOptions_;
     ForwardedStreamsContainer forwardedStreams_;
     mutable bool isSick_;
+	static std::shared_ptr<std::ostream> logStream;
 
     void fallSick() const;
     FullDestination createStreamSession(const std::string &destination);
