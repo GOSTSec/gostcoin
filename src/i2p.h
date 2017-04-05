@@ -67,7 +67,7 @@ public:
 private:
     class SessionHolder;
 
-    std::auto_ptr<SessionHolder> sessionHolder_;
+    std::shared_ptr<SessionHolder> sessionHolder_;
 };
 
 } // namespace SAM

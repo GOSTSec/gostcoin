@@ -13,7 +13,7 @@ namespace SAM
 class StreamSessionAdapter::SessionHolder
 {
 public:
-    explicit SessionHolder(std::auto_ptr<SAM::StreamSession> session);
+    explicit SessionHolder(std::shared_ptr<SAM::StreamSession> session);
 
     const SAM::StreamSession& getSession() const;
     SAM::StreamSession& getSession();
@@ -21,12 +21,12 @@ private:
     void heal() const;
     void reborn() const;
 
-    mutable std::auto_ptr<SAM::StreamSession> session_;
+    mutable std::shared_ptr<SAM::StreamSession> session_;
     typedef boost::shared_mutex mutex_type;
     mutable mutex_type mtx_;
 };
 
-StreamSessionAdapter::SessionHolder::SessionHolder(std::auto_ptr<SAM::StreamSession> session)
+StreamSessionAdapter::SessionHolder::SessionHolder(std::shared_ptr<SAM::StreamSession> session)
     : session_(session)
 {}
 
@@ -61,7 +61,7 @@ void StreamSessionAdapter::SessionHolder::reborn() const
 {
     if (!session_->isSick())
         return;
-    std::auto_ptr<SAM::StreamSession> newSession(new SAM::StreamSession(*session_));
+    std::shared_ptr<SAM::StreamSession> newSession(new SAM::StreamSession(*session_));
     if (!newSession->isSick() && session_->isSick())
         session_ = newSession;
 }
@@ -87,14 +87,14 @@ StreamSessionAdapter::~StreamSessionAdapter()
 
 SAM::SOCKET StreamSessionAdapter::accept(bool silent)
 {
-    SAM::RequestResult<std::auto_ptr<SAM::Socket> > result = sessionHolder_->getSession().accept(silent);
+    SAM::RequestResult<std::shared_ptr<SAM::Socket> > result = sessionHolder_->getSession().accept(silent);
     // call Socket::release
     return result.isOk ? result.value->release() : SAM_INVALID_SOCKET;
 }
 
 SAM::SOCKET StreamSessionAdapter::connect(const std::string& destination, bool silent)
 {
-    SAM::RequestResult<std::auto_ptr<SAM::Socket> > result = sessionHolder_->getSession().connect(destination, silent);
+    SAM::RequestResult<std::shared_ptr<SAM::Socket> > result = sessionHolder_->getSession().connect(destination, silent);
     // call Socket::release
     return result.isOk ? result.value->release() : SAM_INVALID_SOCKET;
 }
