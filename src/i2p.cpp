@@ -14,6 +14,7 @@ class StreamSessionAdapter::SessionHolder
 {
 public:
     explicit SessionHolder(std::shared_ptr<SAM::StreamSession> session);
+	~SessionHolder();
 
     const SAM::StreamSession& getSession() const;
     SAM::StreamSession& getSession();
@@ -28,7 +29,12 @@ private:
 
 StreamSessionAdapter::SessionHolder::SessionHolder(std::shared_ptr<SAM::StreamSession> session)
     : session_(session)
-{}
+{
+}
+
+StreamSessionAdapter::SessionHolder::~SessionHolder()
+{
+}
 
 const SAM::StreamSession& StreamSessionAdapter::SessionHolder::getSession() const
 {
@@ -76,14 +82,18 @@ StreamSessionAdapter::StreamSessionAdapter(
         const std::string& i2pOptions    /*= SAM_DEFAULT_I2P_OPTIONS*/,
         const std::string& minVer        /*= SAM_DEFAULT_MIN_VER*/,
         const std::string& maxVer        /*= SAM_DEFAULT_MAX_VER*/)
-    : sessionHolder_(
-          new SessionHolder(
-              std::auto_ptr<SAM::StreamSession>(
-                  new SAM::StreamSession(nickname, SAMHost, SAMPort, myDestination, i2pOptions, minVer, maxVer))))
-{}
+{
+	SAM::StreamSession::SetLogFile ((GetDataDir() / "sam.log").string ());
+	std::cout << "Creating SAM session ..." << std::endl;
+	auto s = std::make_shared<SAM::StreamSession>(nickname, SAMHost, SAMPort, myDestination, i2pOptions, minVer, maxVer);
+	sessionHolder_ = std::make_shared<SessionHolder>(s);
+	std::cout << "SAM session created" << std::endl;
+}
 
 StreamSessionAdapter::~StreamSessionAdapter()
-{}
+{
+	SAM::StreamSession::CloseLogFile ();
+}
 
 SAM::SOCKET StreamSessionAdapter::accept(bool silent)
 {

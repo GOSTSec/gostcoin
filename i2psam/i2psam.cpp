@@ -586,7 +586,7 @@ std::ostream& StreamSession::getLogStream ()
 
 void StreamSession::SetLogFile (const std::string& filename)
 {
-	logStream = std::make_shared<std::ofstream> (filename, std::ofstream::out | std::ofstream::app);
+	logStream = std::make_shared<std::ofstream> (filename, std::ofstream::out | std::ofstream::trunc);
 }
 
 void StreamSession::CloseLogFile ()
