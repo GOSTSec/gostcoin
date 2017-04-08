@@ -552,12 +552,13 @@ void RenameThread(const char* name);
 
 inline uint32_t ByteReverse(uint32_t value)
 {
-#if 0
-// #if defined(__x86_64__)
+#if defined(__x86_64__) || defined(__i386__)
 	__asm__
 	(
-		"bswap %%eax"
-		: "=a"(value) ::
+		"bswap %0"
+		: "=r"(value) 
+		: "0"(value)
+		:
 	);
 	return value;
 #else

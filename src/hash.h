@@ -22,12 +22,12 @@ inline uint256 Hash(const T1 pbegin, const T1 pend)
     static unsigned char pblank[1];
     uint8_t hash1[64];
     i2p::crypto::GOSTR3411_2012_512 ((pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]), hash1);	
-	uint8_t digest[32];
-    i2p::crypto::GOSTR3411_2012_256 (hash1, 64, digest);
+	uint32_t digest[8];
+    i2p::crypto::GOSTR3411_2012_256 (hash1, 64, (uint8_t *)digest);
 	// to little endian
 	uint256 hash2;	
-	for (int i = 0; i < 32; i++)
-		hash2.begin ()[i] = digest[31-i];		
+	for (int i = 0; i < 8; i++)
+		hash2.pn[i] = ByteReverse (digest[7-i]);
     return hash2;
 }
 

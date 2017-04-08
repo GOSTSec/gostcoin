@@ -26,10 +26,9 @@ inline int Testuint256AdHoc(std::vector<std::string> vArg);
 template<unsigned int BITS>
 class base_uint
 {
-protected:
+public:
     enum { WIDTH=BITS/32 };
     uint32_t pn[WIDTH];
-public:
 
     bool operator!() const
     {
