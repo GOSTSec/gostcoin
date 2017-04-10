@@ -21,7 +21,6 @@
 #include "addrman.h"
 #include "hash.h"
 #include "bloom.h"
-#include "api.h" // i2pd
 
 class CNode;
 class CBlockIndex;
@@ -51,7 +50,6 @@ bool BindListenNativeI2P(SOCKET& hSocket);
 bool IsI2POnly();
 bool IsI2PEnabled();
 
-void AddIncomingI2PStream (std::shared_ptr<i2p::stream::Stream> stream);
 
 enum
 {
@@ -157,9 +155,6 @@ public:
 };
 
 
-const size_t I2P_CNODE_BUFFER_SIZE = 0x10000; // 64k
-typedef std::array<uint8_t, I2P_CNODE_BUFFER_SIZE> I2PCNodeBuffer;
-
 /** Information about a peer */
 class CNode
 {
@@ -167,7 +162,6 @@ public:
     // socket
     uint64 nServices;
     SOCKET hSocket;
-	std::shared_ptr<i2p::stream::Stream> i2pStream; // non-null means built-in I2P
 
     CDataStream ssSend;
     size_t nSendSize; // total size of all vSendMsg entries
@@ -295,13 +289,6 @@ private:
     int nSendStreamType;
     int nRecvStreamType;
 public:
-
-	void SetI2PStream (std::shared_ptr<i2p::stream::Stream> s)
-	{
-  		i2pStream = s;
-		if (i2pStream && !fInbound)
-            PushVersion();
-	}
 
     void SetSendStreamType(int nType)
     {
@@ -680,9 +667,6 @@ public:
     static bool IsBanned(CNetAddr ip);
     bool Misbehaving(int howmuch); // 1 == a little, 100 == a lot
     void copyStats(CNodeStats &stats);
-
-	void I2PStreamReceive ();
-	void HandleI2PStreamReceive (const boost::system::error_code& ecode, size_t bytes_transferred, std::shared_ptr<I2PCNodeBuffer> buf);
 };
 
 

@@ -5,8 +5,7 @@
 #include <openssl/ecdsa.h>
 #include <openssl/rand.h>
 #include <openssl/obj_mac.h>
-#include "Crypto.h" // i2pd
-#include "Gost.h" // i2pd
+#include "Gost.h" 
 
 #include "key.h"
 
