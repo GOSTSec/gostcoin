@@ -196,6 +196,7 @@ obj/%.o: %.cpp
 	  rm -f $(@:%.o=%.d)
 
 gostcoind: $(OBJS:obj/%=obj/%)
+	@(cd ../i2psam; make -f makefile.unix )
 	$(LINK) $(xCXXFLAGS) -o $@ $^ $(xLDFLAGS) $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -217,6 +218,7 @@ clean:
 	-rm -f obj/*.P
 	-rm -f obj-test/*.P
 	-rm -f obj/build.h
+	-cd ../i2psam && $(MAKE) -f makefile.unix clean || true
 	-cd leveldb && $(MAKE) clean || true
 
 FORCE:
