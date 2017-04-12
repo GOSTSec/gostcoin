@@ -553,8 +553,11 @@ bool AppInit2(boost::thread_group& threadGroup)
 #endif
 #endif
 
-	uiInterface.InitMessage(_("Creating SAM session..."));
-	I2PSession::Instance ().Start ();
+	if (GetBoolArg("-i2p", false))
+	{
+		uiInterface.InitMessage(_("Creating SAM session..."));
+		I2PSession::Instance ().Start ();
+	}
 
     // ********************************************************* Step 2: parameter interactions
 
