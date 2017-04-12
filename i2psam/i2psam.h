@@ -1,8 +1,9 @@
 // Copyright (c) 2012-2013 giv
+// Copyright (c) 2017 orignal
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //--------------------------------------------------------------------------------------------------
-// see full documentation about SAM at http://www.i2p2.i2p/samv3.html
+// EdDSA assumed
 #ifndef I2PSAM_H
 #define I2PSAM_H
 
