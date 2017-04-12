@@ -74,7 +74,17 @@ void StreamSessionAdapter::SessionHolder::reborn() const
 
 //--------------------------------------------------------------------------------------------------
 
-StreamSessionAdapter::StreamSessionAdapter(
+StreamSessionAdapter::StreamSessionAdapter()
+{
+	SAM::StreamSession::SetLogFile ((GetDataDir() / "sam.log").string ());
+}
+
+StreamSessionAdapter::~StreamSessionAdapter()
+{
+	SAM::StreamSession::CloseLogFile ();
+}
+
+void StreamSessionAdapter::StartSession (
         const std::string& nickname,
         const std::string& SAMHost       /*= SAM_DEFAULT_ADDRESS*/,
               uint16_t     SAMPort       /*= SAM_DEFAULT_PORT*/,
@@ -83,16 +93,32 @@ StreamSessionAdapter::StreamSessionAdapter(
         const std::string& minVer        /*= SAM_DEFAULT_MIN_VER*/,
         const std::string& maxVer        /*= SAM_DEFAULT_MAX_VER*/)
 {
-	SAM::StreamSession::SetLogFile ((GetDataDir() / "sam.log").string ());
 	std::cout << "Creating SAM session ..." << std::endl;
 	auto s = std::make_shared<SAM::StreamSession>(nickname, SAMHost, SAMPort, myDestination, i2pOptions, minVer, maxVer);
 	sessionHolder_ = std::make_shared<SessionHolder>(s);
 	std::cout << "SAM session created" << std::endl;
 }
 
-StreamSessionAdapter::~StreamSessionAdapter()
+void StreamSessionAdapter::StopSession ()
 {
-	SAM::StreamSession::CloseLogFile ();
+	std::cout << "Terminating SAM session ..." << std::endl;
+	sessionHolder_ = nullptr;
+	std::cout << "SAM session terminated" << std::endl;
+}
+
+void StreamSessionAdapter::Start ()
+{
+	StartSession(
+          GetArg(I2P_SESSION_NAME_PARAM, I2P_SESSION_NAME_DEFAULT),
+          GetArg(I2P_SAM_HOST_PARAM, I2P_SAM_HOST_DEFAULT),
+          (uint16_t)GetArg(I2P_SAM_PORT_PARAM, I2P_SAM_PORT_DEFAULT),
+          GetArg(I2P_SAM_MY_DESTINATION_PARAM, I2P_SAM_MY_DESTINATION_DEFAULT),
+          GetArg(I2P_SAM_I2P_OPTIONS_PARAM, SAM_DEFAULT_I2P_OPTIONS));
+}
+
+void StreamSessionAdapter::Stop ()
+{
+	StopSession ();
 }
 
 SAM::SOCKET StreamSessionAdapter::accept(bool silent)
@@ -186,16 +212,11 @@ const std::string& StreamSessionAdapter::getOptions() const
 //--------------------------------------------------------------------------------------------------
 
 I2PSession::I2PSession()
-    : SAM::StreamSessionAdapter(
-          GetArg(I2P_SESSION_NAME_PARAM, I2P_SESSION_NAME_DEFAULT),
-          GetArg(I2P_SAM_HOST_PARAM, I2P_SAM_HOST_DEFAULT),
-          (uint16_t)GetArg(I2P_SAM_PORT_PARAM, I2P_SAM_PORT_DEFAULT),
-          GetArg(I2P_SAM_MY_DESTINATION_PARAM, I2P_SAM_MY_DESTINATION_DEFAULT),
-          GetArg(I2P_SAM_I2P_OPTIONS_PARAM, SAM_DEFAULT_I2P_OPTIONS))
 {}
 
 I2PSession::~I2PSession()
 {}
+
 
 /*static*/
 std::string I2PSession::GenerateB32AddressFromDestination(const std::string& destination)

@@ -33,16 +33,12 @@ namespace SAM
 class StreamSessionAdapter
 {
 public:
-    StreamSessionAdapter(
-            const std::string& nickname,
-            const std::string& SAMHost       = SAM_DEFAULT_ADDRESS,
-                  uint16_t     SAMPort       = SAM_DEFAULT_PORT,
-            const std::string& myDestination = SAM_GENERATE_MY_DESTINATION,
-            const std::string& i2pOptions    = SAM_DEFAULT_I2P_OPTIONS,
-            const std::string& minVer        = SAM_DEFAULT_MIN_VER,
-            const std::string& maxVer        = SAM_DEFAULT_MAX_VER);
 
+    StreamSessionAdapter();
     ~StreamSessionAdapter();
+
+	void Start ();
+	void Stop ();
 
     SAM::SOCKET accept(bool silent);
     SAM::SOCKET connect(const std::string& destination, bool silent);
@@ -63,6 +59,19 @@ public:
     const std::string& getSAMMaxVer() const;
     const std::string& getSAMVersion() const;
     const std::string& getOptions() const;
+
+private:
+
+	void StartSession(
+			const std::string& nickname,
+            const std::string& SAMHost       = SAM_DEFAULT_ADDRESS,
+                  uint16_t     SAMPort       = SAM_DEFAULT_PORT,
+            const std::string& myDestination = SAM_GENERATE_MY_DESTINATION,
+            const std::string& i2pOptions    = SAM_DEFAULT_I2P_OPTIONS,
+            const std::string& minVer        = SAM_DEFAULT_MIN_VER,
+            const std::string& maxVer        = SAM_DEFAULT_MAX_VER);
+	void StopSession ();
+	
 
 private:
     class SessionHolder;

@@ -137,6 +137,9 @@ void Shutdown()
     UnregisterWallet(pwalletMain);
     if (pwalletMain)
         delete pwalletMain;
+
+	I2PSession::Instance ().Stop ();
+
     printf("Shutdown : done\n");
 }
 
@@ -550,8 +553,10 @@ bool AppInit2(boost::thread_group& threadGroup)
 #endif
 #endif
 
-    // ********************************************************* Step 2: parameter interactions
+	uiInterface.InitMessage(_("Creating SAM session..."));
+	I2PSession::Instance ().Start ();
 
+    // ********************************************************* Step 2: parameter interactions
 
     if (GetBoolArg(I2P_SAM_GENERATE_DESTINATION_PARAM))
     {
@@ -1183,6 +1188,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     printf("Loaded %i addresses from peers.dat  %" PRI64d "ms\n",
            addrman.size(), GetTimeMillis() - nStart);
+
 
     // ********************************************************* Step 11: start node
 
