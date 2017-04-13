@@ -211,7 +211,6 @@ HEADERS += src/qt/bitcoingui.h \
     src/allocators.h \
     src/ui_interface.h \
     src/qt/rpcconsole.h \
-    src/irc.h \
     src/i2p.h \
 	src/Gost.h \
     src/version.h \
@@ -292,7 +291,6 @@ SOURCES += src/qt/gostcoin.cpp \
     src/qt/notificator.cpp \
     src/qt/paymentserver.cpp \
     src/qt/rpcconsole.cpp \
-    src/irc.cpp \
     src/i2p.cpp \
 	src/Gost.cpp \
     src/noui.cpp \

@@ -356,7 +356,12 @@ namespace crypto
 						bit >>= 1;
 					}
 				}	
+#ifdef WIN32
+				for (int k = 0; k < 8; k++)
+					buf[k] = ((uint8_t *)&c)[7-k];			
+#else
 				ll[i] = htobe64 (c); // TODO:	
+#endif
 			}	
 		}	
 
