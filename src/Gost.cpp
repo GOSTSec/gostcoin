@@ -3,6 +3,9 @@
 #include <array>
 #include <openssl/sha.h>
 #include <openssl/evp.h>
+#ifdef WIN32
+#include <winsock2.h> // for htoll
+#endif
 #include "Gost.h"
 
 namespace i2p
@@ -356,7 +359,11 @@ namespace crypto
 						bit >>= 1;
 					}
 				}	
+#ifdef WIN32
+				ll[i] = htoll (c);			
+#else
 				ll[i] = htobe64 (c); // TODO:	
+#endif
 			}	
 		}	
 
