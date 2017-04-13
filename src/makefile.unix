@@ -126,7 +126,6 @@ OBJS= \
     obj/db.o \
     obj/init.o \
     obj/keystore.o \
-    obj/irc.o \
     obj/i2p.o \
 	obj/Gost.o \
     obj/main.o \
