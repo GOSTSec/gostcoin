@@ -1,3 +1,10 @@
+/*
+* Copyright (c) 2013-2017, The PurpleI2P Project
+*
+* This file is part of Purple i2pd project and licensed under BSD3
+*
+*/
+
 #ifndef GOST_H__
 #define GOST_H__
 
@@ -48,14 +55,6 @@ namespace crypto
 // Big Endian
 	void GOSTR3411_2012_256 (const uint8_t * buf, size_t len, uint8_t * digest);
 	void GOSTR3411_2012_512 (const uint8_t * buf, size_t len, uint8_t * digest);	
-
-// Little Endian
-	struct GOSTR3411_2012_CTX;
-	GOSTR3411_2012_CTX * GOSTR3411_2012_CTX_new ();
-	void GOSTR3411_2012_CTX_Init (GOSTR3411_2012_CTX * ctx, bool is512 = true);
-	void GOSTR3411_2012_CTX_Update (const uint8_t * buf, size_t len, GOSTR3411_2012_CTX * ctx);
-	void GOSTR3411_2012_CTX_Finish (uint8_t * digest, GOSTR3411_2012_CTX * ctx);	
-	void GOSTR3411_2012_CTX_free (GOSTR3411_2012_CTX * ctx);
 }
 }
 
