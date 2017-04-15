@@ -1339,16 +1339,10 @@ void MapPort(bool)
 }
 #endif
 
-
 static const char *strI2PDNSSeed[][2] = {
-	/*{"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p",
-"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p"} // xcps*/
+    /*{"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p","cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p"} // xcps*/
+    {"6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p","6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p"} // R4SAS
 };
-
-
-
-
-
 
 // DNS seeds
 // Each pair gives a source name and a seed name.
@@ -1356,7 +1350,7 @@ static const char *strI2PDNSSeed[][2] = {
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetDNSSeed[][2] = {
     {"coinpool.in", "gostcoin.dnsseed.coinpool.in"},
-   // {"anoncoin.net", "dnsseed01.anoncoin.net"},
+    // {"anoncoin.net", "dnsseed01.anoncoin.net"},
     {NULL, NULL}
 };
 
