@@ -1,4 +1,8 @@
 *.a
 *.o
+*.qm
+build/
+Makefile
+qrc_bitcoin.cpp
 gostcoin-qt
 gostcoind
