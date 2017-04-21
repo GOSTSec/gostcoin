@@ -156,7 +156,7 @@ void OptionsDialog::setMapper()
     mapper->addMapping(ui->minimizeToTray, OptionsModel::MinimizeToTray);
     mapper->addMapping(ui->minimizeOnClose, OptionsModel::MinimizeOnClose);
 #endif
-  //  mapper->addMapping(ui->silentMode, OptionsModel::SilentMode);
+    mapper->addMapping(ui->silentMode, OptionsModel::SilentMode);
 
     /* Display */
     mapper->addMapping(ui->lang, OptionsModel::Language);
