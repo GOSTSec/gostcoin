@@ -111,6 +111,7 @@ void OptionsModel::Init()
     nDisplayUnit = settings.value("nDisplayUnit", BitcoinUnits::BTC).toInt();
     bDisplayAddresses = settings.value("bDisplayAddresses", false).toBool();
     fMinimizeToTray = settings.value("fMinimizeToTray", false).toBool();
+    fSilentMode = settings.value("fSilentMode", false).toBool();
     fMinimizeOnClose = settings.value("fMinimizeOnClose", false).toBool();
     nTransactionFee = settings.value("nTransactionFee").toLongLong();
     language = settings.value("language", "").toString();
@@ -223,7 +224,7 @@ bool OptionsModel::Upgrade()
         }
     }
     QList<QString> boolOptions;
-    boolOptions << "bDisplayAddresses" << "fMinimizeToTray" << "fMinimizeOnClose" << "fUseProxy" << "fUseUPnP";
+    boolOptions << "bDisplayAddresses" << "fMinimizeToTray" << "fSilentMode" << "fMinimizeOnClose" << "fUseProxy" << "fUseUPnP";
     foreach(QString key, boolOptions)
     {
         bool value = false;
@@ -275,6 +276,8 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
             return QVariant(GUIUtil::GetStartOnSystemStartup());
         case MinimizeToTray:
             return QVariant(fMinimizeToTray);
+        case SilentMode:
+            return QVariant(fSilentMode);
         case MapPortUPnP:
 #ifdef USE_UPNP
             return settings.value("fUseUPnP", GetBoolArg("-upnp", true));
@@ -392,6 +395,10 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
         case MinimizeToTray:
             fMinimizeToTray = value.toBool();
             settings.setValue("fMinimizeToTray", fMinimizeToTray);
+            break;
+        case SilentMode:
+            fSilentMode = value.toBool();
+            settings.setValue("fSilentMode", fSilentMode);
             break;
         case MapPortUPnP:
             settings.setValue("fUseUPnP", value.toBool());

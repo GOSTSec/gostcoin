@@ -6,3 +6,4 @@ Makefile
 qrc_bitcoin.cpp
 gostcoin-qt
 gostcoind
+*.pro.user

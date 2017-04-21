@@ -49,6 +49,7 @@ public:
         I2POutboundAllowZeroHop,    // bool
         I2POutboundIPRestriction,   // int
         I2POutboundPriority,        // int
+        SilentMode,    // bool
         OptionIDRowCount,
     };
 
@@ -65,6 +66,7 @@ public:
     /* Explicit getters */
     qint64 getTransactionFee();
     bool getMinimizeToTray() { return fMinimizeToTray; }
+    bool isSilentMode() { return fSilentMode; }
     bool getMinimizeOnClose() { return fMinimizeOnClose; }
     int getDisplayUnit() { return nDisplayUnit; }
     bool getDisplayAddresses() { return bDisplayAddresses; }
@@ -75,6 +77,7 @@ private:
     int nDisplayUnit;
     bool bDisplayAddresses;
     bool fMinimizeToTray;
+    bool fSilentMode;
     bool fMinimizeOnClose;
     QString language;
     bool fCoinControlFeatures;
