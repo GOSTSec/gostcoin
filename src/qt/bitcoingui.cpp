@@ -99,9 +99,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent) :
     // Create the toolbars
     createToolBars();
 
-    // Create system tray icon and notification
-    createTrayIcon();
-
     // Create status bar
     statusBar();
 
@@ -310,6 +307,9 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
     this->clientModel = clientModel;
     if(clientModel)
     {
+        // Create system tray icon and notification
+        createTrayIcon();
+
         // Replace some strings and icons, when using the testnet
         if(clientModel->isTestNet())
         {
@@ -416,7 +416,7 @@ void BitcoinGUI::createTrayIcon()
     trayIcon->show();
 #endif
 
-    notificator = new Notificator(QApplication::applicationName(), trayIcon);
+    notificator = new Notificator(clientModel->getOptionsModel(), QApplication::applicationName(), trayIcon);
 }
 
 void BitcoinGUI::createTrayIconMenu()

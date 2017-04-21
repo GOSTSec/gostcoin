@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QIcon>
 
+#include "optionsmodel.h"
+
 QT_BEGIN_NAMESPACE
 class QSystemTrayIcon;
 #ifdef USE_DBUS
@@ -20,7 +22,7 @@ public:
     /** Create a new notificator.
        @note Ownership of trayIcon is not transferred to this object.
     */
-    Notificator(const QString &programName=QString(), QSystemTrayIcon *trayIcon=0, QWidget *parent=0);
+    Notificator(OptionsModel* options, const QString &programName=QString(), QSystemTrayIcon *trayIcon=0, QWidget *parent=0);
     ~Notificator();
 
     // Message class
@@ -66,6 +68,7 @@ private:
     void notifyGrowl(Class cls, const QString &title, const QString &text, const QIcon &icon);
     void notifyMacUserNotificationCenter(Class cls, const QString &title, const QString &text, const QIcon &icon);
 #endif
+    OptionsModel* fOptions;
 };
 
 #endif // NOTIFICATOR_H

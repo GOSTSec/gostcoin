@@ -24,7 +24,7 @@
 // https://wiki.ubuntu.com/NotificationDevelopmentGuidelines recommends at least 128
 const int FREEDESKTOP_NOTIFICATION_ICON_SIZE = 128;
 
-Notificator::Notificator(const QString &programName, QSystemTrayIcon *trayicon, QWidget *parent):
+Notificator::Notificator(OptionsModel* optionsModel, const QString &programName, QSystemTrayIcon *trayicon, QWidget *parent):
     QObject(parent),
     parent(parent),
     programName(programName),
@@ -33,6 +33,7 @@ Notificator::Notificator(const QString &programName, QSystemTrayIcon *trayicon, 
 #ifdef USE_DBUS
     ,interface(0)
 #endif
+    ,fOptions(optionsModel)
 {
     if(trayicon && trayicon->supportsMessages())
     {
@@ -287,6 +288,9 @@ void Notificator::notifyMacUserNotificationCenter(Class cls, const QString &titl
 
 void Notificator::notify(Class cls, const QString &title, const QString &text, const QIcon &icon, int millisTimeout)
 {
+    //skip non-crit notifications in silent mode
+    if(cls != Critical) if(fOptions->isSilentMode()) return;
+
     switch(mode)
     {
 #ifdef USE_DBUS
