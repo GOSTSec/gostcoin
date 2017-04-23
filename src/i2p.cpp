@@ -84,7 +84,7 @@ StreamSessionAdapter::~StreamSessionAdapter()
 	SAM::StreamSession::CloseLogFile ();
 }
 
-void StreamSessionAdapter::StartSession (
+bool StreamSessionAdapter::StartSession (
         const std::string& nickname,
         const std::string& SAMHost       /*= SAM_DEFAULT_ADDRESS*/,
               uint16_t     SAMPort       /*= SAM_DEFAULT_PORT*/,
@@ -96,7 +96,12 @@ void StreamSessionAdapter::StartSession (
 	std::cout << "Creating SAM session ..." << std::endl;
 	auto s = std::make_shared<SAM::StreamSession>(nickname, SAMHost, SAMPort, myDestination, i2pOptions, minVer, maxVer);
 	sessionHolder_ = std::make_shared<SessionHolder>(s);
-	std::cout << "SAM session created" << std::endl;
+	bool isReady = s->isReady ();
+	if (isReady)
+		std::cout << "SAM session created" << std::endl;
+	else
+		std::cout << "SAM session failed" << std::endl;
+	return isReady;
 }
 
 void StreamSessionAdapter::StopSession ()
@@ -106,9 +111,9 @@ void StreamSessionAdapter::StopSession ()
 	std::cout << "SAM session terminated" << std::endl;
 }
 
-void StreamSessionAdapter::Start ()
+bool StreamSessionAdapter::Start ()
 {
-	StartSession(
+	return StartSession(
           GetArg(I2P_SESSION_NAME_PARAM, I2P_SESSION_NAME_DEFAULT),
           GetArg(I2P_SAM_HOST_PARAM, I2P_SAM_HOST_DEFAULT),
           (uint16_t)GetArg(I2P_SAM_PORT_PARAM, I2P_SAM_PORT_DEFAULT),

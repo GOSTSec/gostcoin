@@ -555,7 +555,8 @@ bool AppInit2(boost::thread_group& threadGroup)
 //	if (GetBoolArg("-i2p", false))
 //	{
 		uiInterface.InitMessage(_("Creating SAM session..."));
-		I2PSession::Instance ().Start ();
+		if (!I2PSession::Instance ().Start () && IsI2POnly()) 
+			return InitError("Can't connect to SAM\n");
 //	}
 
     // ********************************************************* Step 2: parameter interactions

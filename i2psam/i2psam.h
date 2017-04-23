@@ -372,6 +372,7 @@ public:
     const std::string& getOptions() const;
 
     bool isSick() const;
+	bool isReady () const { return socket_.isOk() && !isSick (); };
 
 	static std::ostream& getLogStream ();
 	static void SetLogFile (const std::string& filename);

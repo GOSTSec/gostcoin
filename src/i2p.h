@@ -37,7 +37,7 @@ public:
     StreamSessionAdapter();
     ~StreamSessionAdapter();
 
-	void Start ();
+	bool Start ();
 	void Stop ();
 
     SAM::SOCKET accept(bool silent);
@@ -62,7 +62,7 @@ public:
 
 private:
 
-	void StartSession(
+	bool StartSession(
 			const std::string& nickname,
             const std::string& SAMHost       = SAM_DEFAULT_ADDRESS,
                   uint16_t     SAMPort       = SAM_DEFAULT_PORT,
