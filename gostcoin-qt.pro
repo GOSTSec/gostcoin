@@ -34,6 +34,9 @@ contains(RELEASE, 1) {
         # Linux: static link and extra security (see: https://wiki.debian.org/Hardening)
         LIBS += -Wl,-Bstatic -Wl,-z,relro -Wl,-z,now
     }
+    win32 {
+        QMAKE_LFLAGS += -Wl,-Bstatic
+    }
 }
 
 !win32 {
@@ -51,6 +54,7 @@ win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat
 win32:QMAKE_LFLAGS *= -Wl,--large-address-aware
 # i686-w64-mingw32
 win32:QMAKE_LFLAGS *= -static-libgcc -static-libstdc++
+win32:LIBS *= -lstdc++ -lpthread 
 
 # use: qmake "USE_QRCODE=1"
 # libqrencode (http://fukuchi.org/works/qrencode/index.en.html) must be installed for support
@@ -178,7 +182,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/json/json_spirit_reader.h \
     src/json/json_spirit_error_position.h \
     src/json/json_spirit.h \
-	i2psam/i2psam.h \ 
+    i2psam/i2psam.h \ 
     src/qt/clientmodel.h \
     src/qt/guiutil.h \
     src/qt/transactionrecord.h \
@@ -212,7 +216,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/ui_interface.h \
     src/qt/rpcconsole.h \
     src/i2p.h \
-	src/Gost.h \
+    src/Gost.h \
     src/version.h \
     src/netbase.h \
     src/clientversion.h \
@@ -292,7 +296,7 @@ SOURCES += src/qt/gostcoin.cpp \
     src/qt/paymentserver.cpp \
     src/qt/rpcconsole.cpp \
     src/i2p.cpp \
-	src/Gost.cpp \
+    src/Gost.cpp \
     src/noui.cpp \
     src/leveldb.cpp \
     src/txdb.cpp \
@@ -300,7 +304,7 @@ SOURCES += src/qt/gostcoin.cpp \
     src/qt/showi2paddresses.cpp \
     src/qt/i2poptionswidget.cpp \
     src/qt/setupdarknet.cpp \
-	i2psam/i2psam.cpp
+    i2psam/i2psam.cpp
 
 RESOURCES += src/qt/bitcoin.qrc
 
@@ -379,7 +383,7 @@ OTHER_FILES += README.md \
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
     macx:BOOST_LIB_SUFFIX = -mt
-    win32:BOOST_LIB_SUFFIX = -mgw44-mt-s-1_50
+    win32:BOOST_LIB_SUFFIX = -mt
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {
@@ -400,10 +404,12 @@ isEmpty(BDB_INCLUDE_PATH) {
 
 isEmpty(BOOST_LIB_PATH) {
     macx:BOOST_LIB_PATH = /opt/local/lib
+    win32:BOOST_LIB_PATH = /mingw32/lib
 }
 
 isEmpty(BOOST_INCLUDE_PATH) {
     macx:BOOST_INCLUDE_PATH = /opt/local/include
+    win32:BOOST_INCLUDE_PATH = /mingw32/include
 }
 
 win32:DEFINES += WIN32
@@ -440,7 +446,8 @@ macx:QMAKE_INFO_PLIST = share/qt/Info.plist
 # Set libraries and includes at end, to use platform-defined defaults if not overridden
 INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH
 LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
-LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX -lz -ldl
+LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX -lz
+!win32:LIBS += -ldl
 # -lgdi32 has to happen after -lcrypto (see  #681)
 win32:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
 LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX 

@@ -2,8 +2,14 @@
 *.o
 *.qm
 build/
-Makefile
+debug/
+release/
+Makefile*
 qrc_bitcoin.cpp
 gostcoin-qt
 gostcoind
 *.pro.user
+.qmake.stash
+gostcoin-qt_plugin_import.cpp
+object_script.gostcoin-qt.Debug
+object_script.gostcoin-qt.Release
