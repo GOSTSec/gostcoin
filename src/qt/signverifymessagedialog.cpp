@@ -24,11 +24,11 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
 
 #if (QT_VERSION >= 0x040700)
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
-    ui->addressIn_SM->setPlaceholderText(tr("Enter a Anoncoin address (e.g. AMeehr1AtpyMaZKVLv4Tb1wdRtVfx3wDj3)"));
+    ui->addressIn_SM->setPlaceholderText(tr("Enter a Gostcoin address (e.g. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)"));
     ui->signatureOut_SM->setPlaceholderText(tr("Click \"Sign Message\" to generate signature"));
 
-    ui->addressIn_VM->setPlaceholderText(tr("Enter a Anoncoin address (e.g. AMeehr1AtpyMaZKVLv4Tb1wdRtVfx3wDj3)"));
-    ui->signatureIn_VM->setPlaceholderText(tr("Enter Anoncoin signature"));
+    ui->addressIn_VM->setPlaceholderText(tr("Enter a Gostcoin address (e.g. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)"));
+    ui->signatureIn_VM->setPlaceholderText(tr("Enter Gostcoin signature"));
 #endif
 
     GUIUtil::setupAddressWidget(ui->addressIn_SM, this);
