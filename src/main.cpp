@@ -1070,7 +1070,7 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
     int64 nSubsidy = 5 * COIN;
-    // Some adjustments to the start of the lifetime to Anoncoin
+    // Some adjustments to the start of the lifetime to Gostcoin
     if (nHeight < 42000) {
         nSubsidy = 4.2 * COIN;
     } else if (nHeight < 77777) { // All luck is seven ;)
@@ -1078,15 +1078,15 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     } else if (nHeight == 77778) {
         nSubsidy = 10 * COIN;
     } else {
-        nSubsidy >>= (nHeight / 306600); // Anoncoin: 306600 blocks in ~2 years
+        nSubsidy >>= (nHeight / 306600); // Gostcoin: 306600 blocks in ~2 years
     }
     return nSubsidy + nFees;
 }
 
 // Protocol 1 & 2
 
-static const int64 nTargetTimespan = 86184; //420 * 205.2; = 86184 // Anoncoin: 420 blocks
-static const int64 nTargetSpacing = 205;//3.42 * 60; // Anoncoin: 3.42 minutes
+static const int64 nTargetTimespan = 86184; //420 * 205.2; = 86184 // Gostcoin: 420 blocks
+static const int64 nTargetSpacing = 205;//3.42 * 60; // Gostcoin: 3.42 minutes
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
 static const int nDifficultySwitchHeight = 15420;
@@ -1098,7 +1098,7 @@ static const int nDifficultyProtocol3 = 87777;
 
 
 unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBlockHeader *pblock, uint64 TargetBlocksSpacingSeconds, uint64 PastBlocksMin, uint64 PastBlocksMax) {
-    /* current difficulty formula, Anoncoin - kimoto gravity well */
+    /* current difficulty formula, Gostcoin - kimoto gravity well */
     const CBlockIndex *BlockLastSolved = pindexLast;
     const CBlockIndex *BlockReading = pindexLast;
     const CBlockHeader *BlockCreating = pblock;
@@ -1201,7 +1201,7 @@ unsigned int static OldGetNextWorkRequired(const CBlockIndex* pindexLast, const 
     if (pindexLast == NULL)
         return nProofOfWorkLimit;
 
-    // Anoncoin difficulty adjustment protocol switch (Thanks to FeatherCoin for this idea)
+    // Gostcoin difficulty adjustment protocol switch (Thanks to FeatherCoin for this idea)
 
     static const int newTargetTimespan = 2050;
     int nHeight = pindexLast->nHeight + 1;
@@ -1229,7 +1229,7 @@ unsigned int static OldGetNextWorkRequired(const CBlockIndex* pindexLast, const 
         return pindexLast->nBits;
     }
 
-    // Anoncoin: This fixes an issue where a 51% attack can change difficulty at will.
+    // Gostcoin: This fixes an issue where a 51% attack can change difficulty at will.
     // Go back the full period unless it's the first retarget after genesis. Code courtesy of Art Forz
     int blockstogoback = nInterval-1;
     if ((pindexLast->nHeight+1) != nInterval)

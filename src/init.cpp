@@ -214,7 +214,7 @@ bool AppInit(int argc, char* argv[])
 
         // Command-line RPC
         for (int i = 1; i < argc; i++)
-            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "anoncoin:"))
+            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "gostcoin:"))
                 fCommandLine = true;
 
         if (fCommandLine)
@@ -323,8 +323,8 @@ std::string HelpMessage()
 {
     string strUsage = _("Options:") + "\n" +
         "  -?                     " + _("This help message") + "\n" +
-        "  -conf=<file>           " + _("Specify configuration file (default: anoncoin.conf)") + "\n" +
-        "  -pid=<file>            " + _("Specify pid file (default: anoncoind.pid)") + "\n" +
+        "  -conf=<file>           " + _("Specify configuration file (default: gostcoin.conf)") + "\n" +
+        "  -pid=<file>            " + _("Specify pid file (default: gostcoind.pid)") + "\n" +
         "  -gen                   " + _("Generate coins (default: 0)") + "\n" +
         "  -datadir=<dir>         " + _("Specify data directory") + "\n" +
         "  -dbcache=<n>           " + _("Set database cache size in megabytes (default: 25)") + "\n" +
@@ -400,7 +400,7 @@ std::string HelpMessage()
         "  -blockmaxsize=<n>      "   + _("Set maximum block size in bytes (default: 250000)") + "\n" +
         "  -blockprioritysize=<n> "   + _("Set maximum size of high-priority/low-fee transactions in bytes (default: 27000)") + "\n" +
 
-        "\n" + _("SSL options: (see the Anoncoin Wiki for SSL setup instructions)") + "\n" +
+        "\n" + _("SSL options: (see the Gostcoin Wiki for SSL setup instructions)") + "\n" +
         "  -rpcssl                                  " + _("Use OpenSSL (https) for JSON-RPC connections") + "\n" +
         "  -rpcsslcertificatechainfile=<file.cert>  " + _("Server certificate file (default: server.cert)") + "\n" +
         "  -rpcsslprivatekeyfile=<file.pem>         " + _("Server private key (default: server.pem)") + "\n" +
@@ -410,7 +410,7 @@ std::string HelpMessage()
         "  -generatei2pdestination                " + _("Generate an I2P destination, print it and exit.")+ "\n" +
         "  -i2p=1                        " + _("Enable I2P.") + "\n" +
         "  -onlynet=i2p                       " + _("Enable I2P only mode.") + "\n" +
-        "  -i2psessionname=<session name>         " + _("Name of an I2P session. If it is not specified, value will be \"Anoncoin-client\"") + "\n" +
+        "  -i2psessionname=<session name>         " + _("Name of an I2P session. If it is not specified, value will be \"Gostcoin-client\"") + "\n" +
         "  -samhost=<ip or host name>           " + _("Address of the SAM bridge host. If it is not specified, value will be \"127.0.0.1\".") + "\n" +
         "  -samport=<port>                    " + _("Port number of the SAM bridge host. If it is not specified, value will be \"7656\".") + "\n" +
         "  -mydestination=<pub+priv i2p-keys>    " + _("Your full destination (public+private keys). If it is not specified, the client will geneterate a random destination for you. See below (Starting wallet with a permanent i2p-address) more details about this option.") +
@@ -1089,10 +1089,10 @@ bool AppInit2(boost::thread_group& threadGroup)
                 InitWarning(msg);
             }
             else if (nLoadWalletRet == DB_TOO_NEW)
-                strErrors << _("Error loading wallet.dat: Wallet requires newer version of Anoncoin") << "\n";
+                strErrors << _("Error loading wallet.dat: Wallet requires newer version of Gostcoin") << "\n";
             else if (nLoadWalletRet == DB_NEED_REWRITE)
             {
-                strErrors << _("Wallet needed to be rewritten: restart Anoncoin to complete") << "\n";
+                strErrors << _("Wallet needed to be rewritten: restart Gostcoin to complete") << "\n";
                 printf("%s", strErrors.str().c_str());
                 return InitError(strErrors.str());
             }

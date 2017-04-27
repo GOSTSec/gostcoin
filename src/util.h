@@ -27,7 +27,7 @@
 #include <boost/date_time/gregorian/gregorian_types.hpp>
 #include <boost/date_time/posix_time/posix_time_types.hpp>
 
-// Anoncoin
+// Gostcoin
 // For writing config file
 #include <boost/property_tree/ptree.hpp>
 
@@ -131,7 +131,7 @@ inline void MilliSleep(int64 n)
 #endif
 
 
-// Anoncoin
+// Gostcoin
 bool WriteConfig(boost::filesystem::path configFile, boost::property_tree::ptree data);
 bool writeFirstConfig(bool i2pOnlyEnabled, bool torOnlyEnabled, bool i2pEnabled, bool torEnabled);
 
@@ -576,7 +576,7 @@ inline uint32_t ByteReverse(uint32_t value)
 //    threadGroup.create_thread(boost::bind(&LoopForever<boost::function<void()> >, "nothing", f, milliseconds));
 template <typename Callable> void LoopForever(const char* name,  Callable func, int64 msecs)
 {
-    std::string s = strprintf("anoncoin-%s", name);
+    std::string s = strprintf("gostcoin-%s", name);
     RenameThread(s.c_str());
     printf("%s thread start\n", name);
     try
