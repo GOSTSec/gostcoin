@@ -119,8 +119,6 @@ void OptionsModel::Init()
 
     // These are shared with core Bitcoin; we want
     // command-line options to override the GUI settings:
-    if (settings.contains("fUseUPnP"))
-        SoftSetBoolArg("-upnp", settings.value("fUseUPnP").toBool());
     if (settings.contains("addrProxy") && settings.value("fUseProxy").toBool())
         SoftSetArg("-proxy", settings.value("addrProxy").toString().toStdString());
     if (settings.contains("nSocksVersion") && settings.value("fUseProxy").toBool())
@@ -224,7 +222,7 @@ bool OptionsModel::Upgrade()
         }
     }
     QList<QString> boolOptions;
-    boolOptions << "bDisplayAddresses" << "fMinimizeToTray" << "fSilentMode" << "fMinimizeOnClose" << "fUseProxy" << "fUseUPnP";
+    boolOptions << "bDisplayAddresses" << "fMinimizeToTray" << "fSilentMode" << "fMinimizeOnClose" << "fUseProxy";
     foreach(QString key, boolOptions)
     {
         bool value = false;
@@ -278,12 +276,6 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
             return QVariant(fMinimizeToTray);
         case SilentMode:
             return QVariant(fSilentMode);
-        case MapPortUPnP:
-#ifdef USE_UPNP
-            return settings.value("fUseUPnP", GetBoolArg("-upnp", true));
-#else
-            return QVariant(false);
-#endif
         case MinimizeOnClose:
             return QVariant(fMinimizeOnClose);
         case ProxyUse: {
@@ -399,10 +391,6 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
         case SilentMode:
             fSilentMode = value.toBool();
             settings.setValue("fSilentMode", fSilentMode);
-            break;
-        case MapPortUPnP:
-            settings.setValue("fUseUPnP", value.toBool());
-            MapPort(value.toBool());
             break;
         case MinimizeOnClose:
             fMinimizeOnClose = value.toBool();
