@@ -9,7 +9,7 @@ Why GOSTCoin?
 
 GOSTCoin uses Soviet and Russian government standard cryptography: 
 GOST R 34.10-2012 for signature and GOST R 34.11-2012 for hash. 
-[https://github.com/GOSTSec/gostcoin/wiki/Cryptography](More info about crypto).
+[More info about crypto](https://github.com/GOSTSec/gostcoin/wiki/Cryptography).
 
 GOSTCoin is using [Invisible Internet](https://github.com/PurpleI2P/i2pd) (I2P) as a secure network layer.
 
@@ -57,7 +57,7 @@ Building GOSTCoin
 Mining tools
 ------------
 
-Dedicated mining tools are available: [https://github.com/GOSTSec/cpuminer-x11-gost](cpuminer for CPU) and [https://github.com/GOSTSec/ccminer](ccminer for GPU)
+Dedicated mining tools are available: [cpuminer for CPU](https://github.com/GOSTSec/cpuminer-x11-gost) and [ccminer for GPU](https://github.com/GOSTSec/ccminer)
 
 License
 -------
