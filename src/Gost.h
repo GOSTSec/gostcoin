@@ -9,6 +9,7 @@
 #define GOST_H__
 
 #include <memory>
+#include <inttypes.h>
 #include <openssl/ec.h>
 
 namespace i2p
