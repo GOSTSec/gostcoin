@@ -5,6 +5,7 @@
 # :=1 --> Enable IPv6 support
 # :=0 --> Disable IPv6 support
 USE_IPV6:=1
+USE_DEBUG:=0
 
 LINK:=$(CXX)
 
@@ -85,7 +86,7 @@ LIBS += \
     HARDENING+=-D_FORTIFY_SOURCE=2
 #
 
-ifneq (${USE_DEBUG}, no)
+ifneq (${USE_DEBUG}, 0)
 	DEBUGFLAGS=-g
 endif
 
