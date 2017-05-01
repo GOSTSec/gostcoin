@@ -376,6 +376,7 @@ isEmpty(BOOST_THREAD_LIB_SUFFIX) {
 
 isEmpty(BDB_LIB_PATH) {
     macx:BDB_LIB_PATH = /opt/local/lib/db48
+    win32:BDB_LIB_PATH = /usr/local/lib
 }
 
 isEmpty(BDB_LIB_SUFFIX) {
@@ -384,6 +385,7 @@ isEmpty(BDB_LIB_SUFFIX) {
 
 isEmpty(BDB_INCLUDE_PATH) {
     macx:BDB_INCLUDE_PATH = /opt/local/include/db48
+    win32:BDB_INCLUDE_PATH = /usr/local/include
 }
 
 isEmpty(BOOST_LIB_PATH) {
