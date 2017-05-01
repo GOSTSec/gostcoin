@@ -49,7 +49,7 @@ Building GOSTCoin
 **Optional: Build QT GUI**
 
     # install requirements 
-    apt-get install libqt5gui5 libqt5core5 libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev
+    apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev
     # build GUI
     cd ~/gostcoin
     qmake && make
