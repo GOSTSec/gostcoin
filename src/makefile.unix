@@ -52,10 +52,6 @@ LIBS+= \
    -l pthread \
    -l i2psam
 
-# I2P Support
-DEFS +=  -DUSE_NATIVE_I2P -I"../i2psam" 
-LIBS += -L"../i2psam"
-
 # Hardening
 # Make some classes of vulnerabilities unexploitable in case one is discovered.
 #
@@ -102,6 +98,7 @@ xCXXFLAGS=-std=c++11 -O2 -pthread -Wall -Wextra -Wformat -Wformat-security -Wno-
 xLDFLAGS=$(LDHARDENING) $(LDFLAGS)
 
 OBJS= \
+    ../i2psam/libi2psam.a \
     leveldb/libleveldb.a \
     obj/alert.o \
     obj/version.o \
@@ -114,7 +111,7 @@ OBJS= \
     obj/init.o \
     obj/keystore.o \
     obj/i2p.o \
-	obj/Gost.o \
+    obj/Gost.o \
     obj/main.o \
     obj/net.o \
     obj/protocol.o \
@@ -157,6 +154,12 @@ DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
 leveldb/libleveldb.a:
 	@echo "Building LevelDB ..." && cd leveldb && $(MAKE) CC=$(CC) CXX=$(CXX) OPT="$(xCXXFLAGS)" libleveldb.a libmemenv.a && cd ..
+
+# I2P Support
+LIBS += -L"../i2psam"
+DEFS +=  -DUSE_NATIVE_I2P -I"../i2psam" 
+../i2psam/libi2psam.a:
+	@echo "Building libi2psam ..." && cd ../i2psam && $(MAKE) -f makefile.unix && cd ../src
 
 # auto-generated dependencies:
 -include obj/*.P

@@ -60,19 +60,16 @@ TESTDEFS = -DTEST_DATA_DIR=$(abspath test/data)
 
 
 ifneq (${USE_IPV6}, -)
-	DEFS += -DUSE_IPV6=$(USE_IPV6)
+    DEFS += -DUSE_IPV6=$(USE_IPV6)
 endif
 
 LIBS += -l stdc++ -l mingwthrd -l kernel32 -l user32 -l gdi32 -l comdlg32 -l winspool -l winmm -l shell32 -l comctl32 -l ole32 -l oleaut32 -l uuid -l rpcrt4 -l advapi32 -l ws2_32 -l mswsock -l shlwapi -l pthread
-
-# I2P Support
-DEFS +=  -DUSE_NATIVE_I2P -I"../i2psam"
-LIBS += -L"../i2psam"
 
 # TODO: make the mingw builds smarter about dependencies, like the linux/osx builds are
 HEADERS = $(wildcard *.h)
 
 OBJS= \
+    ../i2psam/libi2psam.a \
     leveldb/libleveldb.a \
     obj/alert.o \
     obj/version.o \
@@ -105,7 +102,7 @@ OBJS= \
     obj/noui.o \
     obj/leveldb.o \
     obj/txdb.o \
-	obj/Gost.o
+    obj/Gost.o
 
 ifdef USE_SSE2
 DEFS += -DUSE_SSE2
@@ -126,6 +123,13 @@ DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
 
 leveldb/libleveldb.a:
 	cd leveldb && $(MAKE) CC=$(CC) CXX=$(CXX) OPT="$(CFLAGS)" TARGET_OS=NATIVE_WINDOWS libleveldb.a libmemenv.a && cd ..
+
+# I2P Support
+DEFS +=  -DUSE_NATIVE_I2P -I"../i2psam"
+LIBS += -L"../i2psam"
+
+../i2psam/libi2psam.a:
+	cd ../i2psam && $(MAKE) -f makefile.mingw && cd ../src
 
 obj/%-sse2.o: %-sse2.cpp
 	$(CXX) -c $(CFLAGS) -msse2 -mstackrealign -o $@ $<
@@ -149,5 +153,6 @@ clean:
 	rm -f obj/*
 	rm -f obj-test/*
 	cd leveldb && $(MAKE) TARGET_OS=NATIVE_WINDOWS clean && cd ..
+	cd ../i2psam && $(MAKE) -f makefile.mingw clean && cd ../src
 
 FORCE:
