@@ -58,7 +58,6 @@ LDFLAGS=-Wl,--dynamicbase -Wl,--nxcompat -Wl,--large-address-aware -Wl,-Bstatic 
 
 TESTDEFS = -DTEST_DATA_DIR=$(abspath test/data)
 
-
 ifneq (${USE_IPV6}, -)
     DEFS += -DUSE_IPV6=$(USE_IPV6)
 endif
@@ -125,11 +124,16 @@ leveldb/libleveldb.a:
 	cd leveldb && $(MAKE) CC=$(CC) CXX=$(CXX) OPT="$(CFLAGS)" TARGET_OS=NATIVE_WINDOWS libleveldb.a libmemenv.a && cd ..
 
 # I2P Support
-DEFS +=  -DUSE_NATIVE_I2P -I"../i2psam"
-LIBS += -L"../i2psam"
+DEFS += -DUSE_NATIVE_I2P
 
 ../i2psam/libi2psam.a:
 	cd ../i2psam && $(MAKE) -f makefile.mingw && cd ../src
+
+obj/build.h: FORCE
+	/bin/sh ../share/genbuild.sh obj/build.h
+version.cpp: obj/build.h
+DEFS += -DHAVE_BUILD_INFO
+INCLUDEPATHS += -I"obj"
 
 obj/%-sse2.o: %-sse2.cpp
 	$(CXX) -c $(CFLAGS) -msse2 -mstackrealign -o $@ $<
