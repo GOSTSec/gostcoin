@@ -1090,11 +1090,11 @@ static const int64 nTargetSpacing = 205;//3.42 * 60; // Gostcoin: 3.42 minutes
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
 static const int nDifficultySwitchHeight = 15420;
-static const int nDifficultySwitchHeight2 = 77777;
+static const int nDifficultySwitchHeight2 = 21570;
 
 // Protocol 3
 
-static const int nDifficultyProtocol3 = 87777;
+static const int nDifficultyProtocol3 = 33333;
 
 
 unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBlockHeader *pblock, uint64 TargetBlocksSpacingSeconds, uint64 PastBlocksMin, uint64 PastBlocksMax) {
