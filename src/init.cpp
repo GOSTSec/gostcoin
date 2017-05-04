@@ -194,6 +194,10 @@ bool AppInit(int argc, char* argv[])
             fprintf(stderr, "Error: Specified directory does not exist\n");
             Shutdown();
         }
+		if (!boost::filesystem::exists(GetConfigFile().string()))
+		{
+		   	writeFirstConfig(); // create default config
+		}
         ReadConfigFile(mapArgs, mapMultiArgs);
 
         if (mapArgs.count("-?") || mapArgs.count("--help"))

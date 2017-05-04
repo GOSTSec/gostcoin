@@ -995,7 +995,7 @@ bool writeConfig(boost::filesystem::path configFile, boost::property_tree::ptree
     return true;
 }
 
-// Used by GUI wizard
+// call upon first run
 bool writeFirstConfig()
 {
     using boost::property_tree::ptree;
