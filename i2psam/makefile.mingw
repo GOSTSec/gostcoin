@@ -1,6 +1,6 @@
 #############################################################################
 # Makefile for building: libi2psam.a
-# make -f makefile.unix
+# make -f makefile.mingw
 #############################################################################
 
 ####### Compiler, tools and options
