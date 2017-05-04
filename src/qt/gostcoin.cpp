@@ -23,7 +23,6 @@
 #include "ui_interface.h"
 #include "paymentserver.h"
 #include "splashscreen.h"
-#include "setupdarknet.h"
 
 #include <QMessageBox>
 #if QT_VERSION < 0x050000
@@ -192,11 +191,10 @@ int main(int argc, char *argv[])
                               QString("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(mapArgs["-datadir"])));
         return 1;
     }
-    // Anoncoin
+    // Gostcoin
     if (!boost::filesystem::exists(GetConfigFile().string()))
     {
-        // Run wizard
-        runFirstRunWizard();
+       	writeFirstConfig(); // create default config
     }
     // Read config after it's potentional written by the wizard.
     ReadConfigFile(mapArgs, mapMultiArgs);

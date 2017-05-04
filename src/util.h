@@ -133,7 +133,7 @@ inline void MilliSleep(int64 n)
 
 // Gostcoin
 bool WriteConfig(boost::filesystem::path configFile, boost::property_tree::ptree data);
-bool writeFirstConfig(bool i2pOnlyEnabled, bool torOnlyEnabled, bool i2pEnabled, bool torEnabled);
+bool writeFirstConfig(); // always I2P
 
 
 

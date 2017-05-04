@@ -996,22 +996,13 @@ bool writeConfig(boost::filesystem::path configFile, boost::property_tree::ptree
 }
 
 // Used by GUI wizard
-bool writeFirstConfig(bool i2pOnlyEnabled, bool torOnlyEnabled, bool i2pEnabled, bool torEnabled)
+bool writeFirstConfig()
 {
     using boost::property_tree::ptree;
     ptree pt;
 
-    if (i2pOnlyEnabled)
-        pt.put("onlynet", "i2p");
-    if (torOnlyEnabled)
-    {
-        pt.put("tor", "127.0.0.1:9050");
-        pt.put("onlynet", "tor");
-    }
-    if (i2pEnabled)
-        pt.put("i2p", 1);
-    if (torEnabled)
-        pt.put("proxy", "127.0.0.1:9050");
+    pt.put("onlynet", "i2p");
+    pt.put("i2p", 1);
     unsigned char rand_pwd[32];
     RAND_bytes(rand_pwd, 32);
     pt.put("rpcuser", "gostcoinrpc");
