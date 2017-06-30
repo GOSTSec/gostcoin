@@ -996,13 +996,15 @@ bool writeConfig(boost::filesystem::path configFile, boost::property_tree::ptree
 }
 
 // call upon first run
-bool writeFirstConfig()
+bool writeFirstConfig(bool i2pOnlyEnabled, bool i2pEnabled)
 {
     using boost::property_tree::ptree;
     ptree pt;
 
-    pt.put("onlynet", "i2p");
-    pt.put("i2p", 1);
+	if (i2pOnlyEnabled)
+    	pt.put("onlynet", "i2p");
+	if (i2pEnabled)
+    	pt.put("i2p", 1);
     unsigned char rand_pwd[32];
     RAND_bytes(rand_pwd, 32);
     pt.put("rpcuser", "gostcoinrpc");

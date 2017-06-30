@@ -23,6 +23,7 @@
 #include "ui_interface.h"
 #include "paymentserver.h"
 #include "splashscreen.h"
+#include "setupdarknet.h"
 
 #include <QMessageBox>
 #if QT_VERSION < 0x050000
@@ -194,7 +195,8 @@ int main(int argc, char *argv[])
     // Gostcoin
     if (!boost::filesystem::exists(GetConfigFile().string()))
     {
-       	writeFirstConfig(); // create default config
+       	// Run wizard
+        runFirstRunWizard();
     }
     // Read config after it's potentional written by the wizard.
     ReadConfigFile(mapArgs, mapMultiArgs);

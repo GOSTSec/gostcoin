@@ -211,7 +211,8 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/macnotificationhandler.h \
     src/qt/splashscreen.h \
     src/qt/showi2paddresses.h \
-    src/qt/i2poptionswidget.h 
+    src/qt/i2poptionswidget.h \
+	src/qt/setupdarknet.h
 
 SOURCES += src/qt/gostcoin.cpp \
     src/qt/bitcoingui.cpp \
@@ -286,6 +287,7 @@ SOURCES += src/qt/gostcoin.cpp \
     src/qt/splashscreen.cpp \
     src/qt/showi2paddresses.cpp \
     src/qt/i2poptionswidget.cpp \
+	src/qt/setupdarknet.cpp \
     i2psam/i2psam.cpp
 
 RESOURCES += src/qt/bitcoin.qrc
