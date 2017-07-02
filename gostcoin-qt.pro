@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = gostcoin-qt
 macx:TARGET = "GOSTcoin-Qt"
-VERSION = 0.8.5.8
+VERSION = 0.8.5.9
 INCLUDEPATH += src src/json src/qt i2psam 
 QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -107,7 +107,7 @@ genleveldb.depends = FORCE
 PRE_TARGETDEPS += $$PWD/src/leveldb/libleveldb.a
 QMAKE_EXTRA_TARGETS += genleveldb
 # Gross ugly hack that depends on qmake internals, unfortunately there is no other way to do it.
-QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a; cd $$PWD/src/leveldb ; $(MAKE) clean
+QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a; cd $$PWD/src/leveldb; $(MAKE) clean
 
 # regenerate src/build.h
 !win32|contains(USE_BUILD_INFO, 1) {
@@ -212,7 +212,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/splashscreen.h \
     src/qt/showi2paddresses.h \
     src/qt/i2poptionswidget.h \
-	src/qt/setupdarknet.h
+    src/qt/setupdarknet.h
 
 SOURCES += src/qt/gostcoin.cpp \
     src/qt/bitcoingui.cpp \
@@ -287,7 +287,7 @@ SOURCES += src/qt/gostcoin.cpp \
     src/qt/splashscreen.cpp \
     src/qt/showi2paddresses.cpp \
     src/qt/i2poptionswidget.cpp \
-	src/qt/setupdarknet.cpp \
+    src/qt/setupdarknet.cpp \
     i2psam/i2psam.cpp
 
 RESOURCES += src/qt/bitcoin.qrc
