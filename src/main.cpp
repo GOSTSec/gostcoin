@@ -2899,7 +2899,7 @@ bool InitBlockIndex() {
     if (!fReindex) {
 
         // Genesis block
-        const char* pszTimestamp = "02/Apr/2017:  GOST R 34.11-2012 - orignal";
+        const char* pszTimestamp = fTestNet ? "PlazBeHere228FaggotFuck!!!666=9AllShitCrumaxHelloMotherHiBatyaHiVsemPrivet" : "02/Apr/2017:  GOST R 34.11-2012 - orignal";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2921,18 +2921,20 @@ bool InitBlockIndex() {
 
         if (fTestNet)
         {
-            block.nTime    = 1373625296;
-            block.nNonce   = 346280655;
-        }
+            block.nTime    = 1373625296;//time(NULL);?blyatgdzieetovzyat
+            block.nNonce   = 346280655; // ja 4o miner?
+
 
 		// temporary code for finding nonce for genesis, should be removed later one
-		/*uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();	
-		printf("hash target %s\n", hashTarget.ToString().c_str());		
-		while(true)
+	uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();	
+	printf("hash target %s\n", hashTarget.ToString().c_str());		
+	while(true)
         {
             auto thash = block.GetHash();
-            if (thash <= hashTarget)
+            if (thash <= hashTarget){
+                hashGenesisBlock = thash; // blyat tak ili 4o?
                 break;
+            }
             if ((block.nNonce & 0xFFF) == 0)
             {
                 printf("nonce %08X: hash = %s (target = %s)\n", block.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
@@ -2945,10 +2947,10 @@ bool InitBlockIndex() {
             }
         }
         printf("block.nTime = %u \n", block.nTime);
-        printf("block.nNonce = %u \n", block.nNonce);	*/
-
+        printf("block.nNonce = %u \n", block.nNonce);	
+	
 		/////////////////////////////////////////////////////////////
-
+        }
         //// debug print
         uint256 hash = block.GetHash();
         printf("hash %s\n", hash.ToString().c_str());
@@ -2956,6 +2958,7 @@ bool InitBlockIndex() {
         printf("block.hashMerkleRoot %s\n", block.hashMerkleRoot.ToString().c_str());
         assert(block.hashMerkleRoot == uint256("0x1cf1e5211650ba5218b5b869c48c4bc480c4fd1bc849fdc1a81d68547b9f4d58"));
         block.print();
+
         assert(hash == hashGenesisBlock);
 
         // Start new block file
