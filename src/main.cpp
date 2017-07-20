@@ -2899,7 +2899,7 @@ bool InitBlockIndex() {
     if (!fReindex) {
 
         // Genesis block
-        const char* pszTimestamp = fTestNet ? "PlazBeHere228FaggotFuck!!!666=9AllShitCrumaxHelloMotherHiBatyaHiVsemPrivet" : "02/Apr/2017:  GOST R 34.11-2012 - orignal";
+        const char* pszTimestamp = fTestNet ? "PlazBeHere228FaggotFuck!!!" : "02/Apr/2017:  GOST R 34.11-2012 - orignal";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
