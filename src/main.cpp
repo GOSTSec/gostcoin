@@ -1429,16 +1429,6 @@ void CBlockHeader::UpdateTime(const CBlockIndex* pindexPrev)
         nBits = GetNextWorkRequired(pindexPrev, this);
 }
 
-
-
-
-
-
-
-
-
-
-
 const CTxOut &CTransaction::GetOutputFor(const CTxIn& input, CCoinsViewCache& view)
 {
     const CCoins &coins = view.GetCoins(input.prevout.hash);
@@ -2479,12 +2469,6 @@ bool ProcessBlock(CValidationState &state, CNode* pfrom, CBlock* pblock, CDiskBl
 }
 
 
-
-
-
-
-
-
 CMerkleBlock::CMerkleBlock(const CBlock& block, CBloomFilter& filter)
 {
     header = block.GetBlockHeader();
@@ -2510,13 +2494,6 @@ CMerkleBlock::CMerkleBlock(const CBlock& block, CBloomFilter& filter)
 
     txn = CPartialMerkleTree(vHashes, vMatch);
 }
-
-
-
-
-
-
-
 
 uint256 CPartialMerkleTree::CalcHash(int height, unsigned int pos, const std::vector<uint256> &vTxid) {
     if (height == 0) {
@@ -2872,7 +2849,7 @@ bool LoadBlockIndex()
         pchMessageStart[1] = 0xc4;
         pchMessageStart[2] = 0xa7;
         pchMessageStart[3] = 0x4b;
-        hashGenesisBlock = uint256("0x66d320494074f837363642a0c848ead1dbbbc9f7b854f8cda1f3eabbf08eb48c");
+        hashGenesisBlock = uint256("0x0000051862557b7ed888cde9cfb580eddd592f6e34b4bbe3612f3734ecf8bdb3");
     }
 
     //
@@ -2899,7 +2876,7 @@ bool InitBlockIndex() {
     if (!fReindex) {
 
         // Genesis block
-        const char* pszTimestamp = "02/Apr/2017:  GOST R 34.11-2012 - orignal";
+        const char* pszTimestamp = fTestNet ? "20/Jul/2017: PlazRulezVseProstoIJasno" : "02/Apr/2017:  GOST R 34.11-2012 - orignal";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2921,11 +2898,11 @@ bool InitBlockIndex() {
 
         if (fTestNet)
         {
-            block.nTime    = 1373625296;
-            block.nNonce   = 346280655;
+            block.nTime    = 1500560315;
+            block.nNonce   = 346465509;
         }
 
-		// temporary code for finding nonce for genesis, should be removed later one
+		// temporary code for finding nonce for genesis, should be removed later on
 		/*uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();	
 		printf("hash target %s\n", hashTarget.ToString().c_str());		
 		while(true)
@@ -2954,7 +2931,10 @@ bool InitBlockIndex() {
         printf("hash %s\n", hash.ToString().c_str());
         printf("hashGenesisBlock %s\n", hashGenesisBlock.ToString().c_str());
         printf("block.hashMerkleRoot %s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x1cf1e5211650ba5218b5b869c48c4bc480c4fd1bc849fdc1a81d68547b9f4d58"));
+		if (fTestNet)
+			assert(block.hashMerkleRoot == uint256("0xadaff9b4f83df227cb3ce3a620d2c91c9a16c78e109f5d78cce6ff4492e4e714"));
+		else	
+        	assert(block.hashMerkleRoot == uint256("0x1cf1e5211650ba5218b5b869c48c4bc480c4fd1bc849fdc1a81d68547b9f4d58"));
         block.print();
         assert(hash == hashGenesisBlock);
 
