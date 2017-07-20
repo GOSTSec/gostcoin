@@ -196,7 +196,7 @@ bool AppInit(int argc, char* argv[])
         }
 		if (!boost::filesystem::exists(GetConfigFile().string()))
 		{
-		   	writeFirstConfig(); // create default config
+		   	writeFirstConfig(true, true); // create default config
 		}
         ReadConfigFile(mapArgs, mapMultiArgs);
 

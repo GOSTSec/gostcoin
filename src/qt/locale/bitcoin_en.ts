@@ -931,6 +931,16 @@ Address: %4
         <translation>M&amp;inimize on close</translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>Suppress notifications and tray animations</source>
+        <translation>Suppress notifications and tray animations</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Silent mode</source>
+        <translation>Silent mode</translation>
+    </message>
+    <message>
         <location line="+21"/>
         <source>&amp;Display</source>
         <translation>&amp;Display</translation>

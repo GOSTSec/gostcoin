@@ -917,6 +917,16 @@ Address: %4
         <translation>С&amp;ворачивать при закрытии</translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>Suppress notifications and tray animations</source>
+        <translation>Отключить уведомления и анимацию в системном лотке</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Silent mode</source>
+        <translation>Тихий режим</translation>
+    </message>
+    <message>
         <location line="+21"/>
         <source>&amp;Display</source>
         <translation>О&amp;тображение</translation>

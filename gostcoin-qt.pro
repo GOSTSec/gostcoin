@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = gostcoin-qt
 macx:TARGET = "GOSTcoin-Qt"
-VERSION = 0.8.5.8
+VERSION = 0.8.5.9
 INCLUDEPATH += src src/json src/qt i2psam 
 QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -107,7 +107,7 @@ genleveldb.depends = FORCE
 PRE_TARGETDEPS += $$PWD/src/leveldb/libleveldb.a
 QMAKE_EXTRA_TARGETS += genleveldb
 # Gross ugly hack that depends on qmake internals, unfortunately there is no other way to do it.
-QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a; cd $$PWD/src/leveldb ; $(MAKE) clean
+QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
 
 # regenerate src/build.h
 !win32|contains(USE_BUILD_INFO, 1) {
@@ -211,7 +211,8 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/macnotificationhandler.h \
     src/qt/splashscreen.h \
     src/qt/showi2paddresses.h \
-    src/qt/i2poptionswidget.h 
+    src/qt/i2poptionswidget.h \
+    src/qt/setupdarknet.h
 
 SOURCES += src/qt/gostcoin.cpp \
     src/qt/bitcoingui.cpp \
@@ -286,6 +287,7 @@ SOURCES += src/qt/gostcoin.cpp \
     src/qt/splashscreen.cpp \
     src/qt/showi2paddresses.cpp \
     src/qt/i2poptionswidget.cpp \
+    src/qt/setupdarknet.cpp \
     i2psam/i2psam.cpp
 
 RESOURCES += src/qt/bitcoin.qrc
@@ -431,7 +433,6 @@ macx:QMAKE_INFO_PLIST = share/qt/Info.plist
 INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH
 LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
 LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX -lz
-!win32:LIBS += -ldl
 # -lgdi32 has to happen after -lcrypto (see  #681)
 win32:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
 LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX 
@@ -444,5 +445,8 @@ contains(RELEASE, 1) {
         LIBS += -Wl,-Bdynamic
     }
 }
+# Add LibDL firstly here
+!win32:LIBS += -ldl
+
 
 system($$QMAKE_LRELEASE -silent $$TRANSLATIONS)
