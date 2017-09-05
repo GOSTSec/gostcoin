@@ -1233,6 +1233,7 @@ static const char *strI2PDNSSeed[][2] = {
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetDNSSeed[][2] = {
     {"gostco.in", "dnsseed.gostco.in"},
+    {"failover", "dnsseed1.gostco.in"},
     // {"anoncoin.net", "dnsseed01.anoncoin.net"},
     {NULL, NULL}
 };
