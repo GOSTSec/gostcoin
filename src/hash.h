@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2017 The Gostcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_HASH_H
@@ -70,7 +71,6 @@ public:
     }
 };
 
-
 template<typename T1, typename T2>
 inline uint256 Hash(const T1 p1begin, const T1 p1end,
                     const T2 p2begin, const T2 p2end)
@@ -90,6 +90,7 @@ inline uint256 Hash(const T1 p1begin, const T1 p1end,
     return hash2;
 }
 
+uint256 Hash (const uint256& left, const uint256& right); // for Merkle tree
 
 template<typename T>
 uint256 SerializeHash(const T& obj, int nType=SER_GETHASH, int nVersion=PROTOCOL_VERSION)

@@ -1,5 +1,13 @@
 #include "hash.h"
 
+uint256 Hash (const uint256& left, const uint256& right)
+{
+    uint8_t data[64];
+    memcpy (data, left.pn, 32);
+    memcpy (data + 32, right.pn, 32);
+    return Hash (data, data + 64); 
+}
+
 inline uint32_t ROTL32 ( uint32_t x, int8_t r )
 {
     return (x << r) | (x >> (32 - r));
