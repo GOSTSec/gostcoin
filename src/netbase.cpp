@@ -10,7 +10,11 @@
 #include "i2p.h"
 
 #ifndef WIN32
-#include <sys/fcntl.h>
+#ifndef ANDROID
+# include <sys/fcntl.h>
+#else
+# include <fcntl.h>
+#endif
 #endif
 
 #include <boost/algorithm/string/case_conv.hpp> // for to_lower()
