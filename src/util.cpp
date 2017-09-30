@@ -1095,9 +1095,13 @@ boost::filesystem::path GetDefaultDataDir()
     {
         fs::path canonical = fs::canonical(fs::path(std::string (ext)));
         pathRet = fs::path(std::string(canonical.c_str()) + "/gostcoin");
-        qDebug()<<"creating dir" << pathRet.c_str();
         boost::filesystem::path dir=pathRet;
-        boost::filesystem::create_directory(dir);
+        if (!boost::filesystem::exists(dir)) {
+            qDebug()<<"creating dir '" << pathRet.c_str() << "'";
+            boost::filesystem::create_directory(dir);
+        }else{
+            qDebug()<<"dir exists: '" << pathRet.c_str() << "'";
+        }
         return pathRet;
     }
     // otherwise use /data/.../files
