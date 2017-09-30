@@ -13,3 +13,6 @@ gostcoind
 gostcoin-qt_plugin_import.cpp
 object_script.gostcoin-qt.Debug
 object_script.gostcoin-qt.Release
+.project
+.cproject
+build*

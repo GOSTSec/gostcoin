@@ -13,6 +13,12 @@
 #include <sys/resource.h>
 #endif
 
+#if defined(ANDROID)
+#include <QDebug>
+#include <QtAndroidExtras/QtAndroidExtras>
+#include <QString>
+#endif
+
 #include "base58.h"
 #include "util.h"
 #include "sync.h"
@@ -1073,6 +1079,30 @@ boost::filesystem::path GetDefaultDataDir()
     return GetSpecialFolderPath(CSIDL_APPDATA) / "Gostcoin";
 #else
     fs::path pathRet;
+
+#  if defined(ANDROID)
+    QAndroidJniObject mediaDir = QAndroidJniObject::callStaticObjectMethod("android/os/Environment", "getExternalStorageDirectory", "()Ljava/io/File;");
+    QAndroidJniObject mediaPath = mediaDir.callObjectMethod( "getAbsolutePath", "()Ljava/lang/String;" );
+    QString dataAbsPath = mediaPath.toString();
+    QAndroidJniEnvironment env;
+    if (env->ExceptionCheck()) {
+            // Handle exception here.
+            env->ExceptionClear();
+    }
+    std::string ext = dataAbsPath.toStdString();
+    //if (!ext) ext = "/sdcard";
+    if (boost::filesystem::exists(ext))
+    {
+        fs::path canonical = fs::canonical(fs::path(std::string (ext)));
+        pathRet = fs::path(std::string(canonical.c_str()) + "/gostcoin");
+        qDebug()<<"creating dir" << pathRet.c_str();
+        boost::filesystem::path dir=pathRet;
+        boost::filesystem::create_directory(dir);
+        return pathRet;
+    }
+    // otherwise use /data/.../files
+#  endif
+
     char* pszHome = getenv("HOME");
     if (pszHome == NULL || strlen(pszHome) == 0)
         pathRet = fs::path("/");
@@ -1272,7 +1302,8 @@ void AllocateFileRange(FILE *file, unsigned int offset, unsigned int length) {
         fcntl(fileno(file), F_PREALLOCATE, &fst);
     }
     ftruncate(fileno(file), fst.fst_length);
-#elif defined(__linux__)
+#elif defined(__linux__) && !defined(ANDROID)
+    //android doesn't have posix_fallocate
     // Version using posix_fallocate
     off_t nEndPos = (off_t)offset + length;
     posix_fallocate(fileno(file), 0, nEndPos);

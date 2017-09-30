@@ -11,6 +11,7 @@
 #include <QFile>
 #include <QDir>
 #include <QTextStream>
+#include <QDebug>
 
 #include "bitcoingui.h"
 #include "clientmodel.h"
@@ -24,6 +25,13 @@
 #include "paymentserver.h"
 #include "splashscreen.h"
 #include "setupdarknet.h"
+
+#ifdef ANDROID
+  //for setenv("QT_USE_ANDROID_NATIVE_DIALOGS", GOSTCOIN_NO_NATIVE_ANDROID_DIALOGS, GOSTCOIN_SETENV_OVERWRITE);
+# include <stdlib.h>
+# define GOSTCOIN_NO_NATIVE_ANDROID_DIALOGS "0"
+# define GOSTCOIN_SETENV_OVERWRITE 1
+#endif
 
 #include <QMessageBox>
 #if QT_VERSION < 0x050000
@@ -170,6 +178,11 @@ int main(int argc, char *argv[])
 
     Q_INIT_RESOURCE(bitcoin);
     QApplication app(argc, argv);
+
+#ifdef ANDROID
+    //workaround for https://bugreports.qt.io/browse/QTBUG-35545
+    setenv("QT_USE_ANDROID_NATIVE_DIALOGS", GOSTCOIN_NO_NATIVE_ANDROID_DIALOGS, GOSTCOIN_SETENV_OVERWRITE);
+#endif
 
     // Register meta types used for QMetaObject::invokeMethod
     qRegisterMetaType< bool* >();
@@ -377,6 +390,7 @@ int main(int argc, char *argv[])
             return 1;
         }
     } catch (std::exception& e) {
+        qDebug() << "error:" << e.what();
         handleRunawayException(&e);
     } catch (...) {
         handleRunawayException(NULL);
