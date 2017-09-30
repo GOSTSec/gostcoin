@@ -1,0 +1,127 @@
+ARMV7
+
+export NDK_PATH=/home/user/SDKS/ANDROID/NDK/android-ndk-r13b
+export ANDROID_DEV=$NDK_PATH/platforms/android-9/arch-arm/usr
+export AR=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar
+export AS=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-as
+export CC=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc
+export CFLAGS=--sysroot=$NDK_PATH/platforms/android-9/arch-arm/
+export CPP=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-cpp
+export CPPFLAGS=--sysroot=$NDK_PATH/platforms/android-9/arch-arm/
+export CXX=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-g++
+export CXXFLAGS="--sysroot=$NDK_PATH/platforms/android-9/arch-arm/ -I$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/include -I$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include"
+export LD=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ld
+export NDK_PROJECT_PATH=$NDK_PATH
+export RANLIB=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib
+export PATH=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/:$PATH
+
+
+2. Построение зависимостей.
+В инструкции все зависимости сохраняются в папку /path/to/libraries/take3/
+
+2.1 OpenSSL 
+cd /path/to/libraries/take3
+wget -t0 https://www.openssl.org/source/openssl-1.0.2l.tar.gz
+tar xzvf openssl-1.0.2l.tar.gz -C .
+cd openssl-1.0.2l
+./Configure no-shared no-dso android-armv7
+make
+
+2.2 Berkeley DB
+cd /path/to/libraries/take3
+wget -t0 http://download.oracle.com/berkeley-db/db-6.0.20.tar.gz
+tar xzvf db-6.0.20.tar.gz -C .
+cd db-6.0.20/build_unix
+../dist/configure --host=arm-linux-androideabi --enable-cxx --enable-shared --disable-replication
+make
+
+2.3 Boost
+-Скачайте http://sourceforge.net/projects/boost/files/boost/1.57.0/boost_1_57_0.7z/download
+7z x ~/Downloads/boost_1_57_0.7z -o/path/to/libraries/take3/
+cd /path/to/libraries/take3/boost_1_57_0
+./bootstrap.sh
+
+edit boost_1_57_0\project-config.jam в текстовом редакторе, удалите его содержимое, вставьте следующий текст
+
+import option ;
+  
+using gcc : arm : arm-linux-androideabi-g++ ;
+ 
+option.set keep-going : false ; 
+
+и сохраните файл
+
+Вернитесь в командную строку и введите:
+
+./b2 --layout=versioned --build-type=complete --with-chrono --with-filesystem --with-program_options --with-system --with-thread toolset=gcc-arm variant=release link=static threading=multi threadapi=pthread target-os=android define=BOOST_MATH_DISABLE_FLOAT128 include=$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/include include=$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi/include include=$NDK_PATH/platforms/android-9/arch-arm/usr/include
+
+После выполнения этой команды в папке /path/to/libraries/take3/boost_1_57_0/stage/lib должны появиться следующие файлы:
+libboost_atomic-gcc-mt-s-1_57.a
+libboost_chrono-gcc-mt-s-1_57.a
+libboost_filesystem-gcc-mt-s-1_57.a
+libboost_program_options-gcc-mt-s-1_57.a
+libboost_system-gcc-mt-s-1_57.a
+libboost_thread_pthread-gcc-mt-s-1_57.a
+
+2.4 LevelDB
+cd git/gostcoin
+cd src/leveldb
+TARGET_OS=OS_ANDROID_CROSSCOMPILE make libleveldb.a libmemenv.a
+
+3. Компиляция
+3.1 Собираем Qt.pro
+
+Откройте файл android/gostcoin-qt-android.pro
+
+Поправьте всё, соберите.
+
+
+
+
+
+Изменения для Android X86
+1. Добавить путь C:\Android\android-ndk-r10d\toolchains\x86-4.9\prebuilt\linux-x86_64\bin в переменную PATH
+2. Изменить системные переменные так:
+
+ANDROID_DEV /c/Android/android-ndk-r10d/platforms/android-9/arch-x86/usr
+AR /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-ar
+AS /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-as
+CC /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-gcc
+CFLAGS --sysroot=/c/Android/android-ndk-r10d/platforms/android-9/arch-x86/
+CPP /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-cpp
+CPPFLAGS --sysroot=/c/Android/android-ndk-r10d/platforms/android-9/arch-x86/
+CXX /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-g++
+CXXFLAGS --sysroot=/c/Android/android-ndk-r10d/platforms/android-9/arch-x86/ -I/c/Android/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include -I/c/Android/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86/include
+LD /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-ld
+NDK_PROJECT_PATH C:\Android\android-ndk-r10d
+RANLIB /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-ranlib
+
+3. При построении OpenSSL выполнить
+Configure no-shared no-dso android-x86
+вместо
+Configure no-shared no-dso android-armv7
+
+4. При построении BerkeleyDB выполнить
+../dist/configure --host=x86-none-linux --enable-cxx --disable-shared --disable-replication
+вместо
+../dist/configure --host=arm-none-linux --enable-cxx --disable-shared --disable-replication
+
+5. При построении Boost вставить
+using gcc : x86 : i686-linux-android-g++.exe ;
+вместо 
+using gcc : arm : arm-linux-androideabi-g++.exe ;
+
+и выполнить
+b2 --build-type=complete --with-chrono --with-filesystem --with-program_options --with-system --with-thread toolset=gcc variant=release link=static threading=multi threadapi=pthread target-os=android define=BOOST_MATH_DISABLE_FLOAT128 include=C:\Android\android-ndk-r10d\sources\cxx-stl\gnu-libstdc++\4.9\include include=C:\Android\android-ndk-r10d\sources\cxx-stl\gnu-libstdc++\4.9\libs\x86\include include=C:\Android\android-ndk-r10d\platforms\android-9\arch-x86\usr\include
+
+вместо
+
+b2 --build-type=complete --with-chrono --with-filesystem --with-program_options --with-system --with-thread toolset=gcc-arm variant=release link=static threading=multi threadapi=pthread target-os=android define=BOOST_MATH_DISABLE_FLOAT128 include=C:\Android\android-ndk-r10d\sources\cxx-stl\gnu-libstdc++\4.9\include include=C:\Android\android-ndk-r10d\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi\include include=C:\Android\android-ndk-r10d\platforms\android-9\arch-arm\usr\include
+
+6. В QtCreator выбирать Android для X86 вместо Android для armeabi-v7a
+
+
+
+
+
+see also: https://github.com/novacoin-project/novacoin/blob/master/doc/building%20novacoin-qt%20for%20android%20under%20Windows.txt

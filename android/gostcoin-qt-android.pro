@@ -23,6 +23,10 @@ OBJECTS_DIR = build
 MOC_DIR = build
 UI_DIR = build
 
+USE_IPV6=0
+USE_LEVELDB=1
+USE_ASM=1
+
 android {
         message("Using Android settings")
 
@@ -31,15 +35,15 @@ android {
         # change to your own Android NDK path
         NDK_PATH = /home/user/SDKS/ANDROID/NDK/android-ndk-r13b
 
-        # git clone https://github.com/PurpleI2P/OpenSSL-for-Android-Prebuilt.git
         # git clone https://github.com/PurpleI2P/MiniUPnP-for-Android-Prebuilt.git
         # git clone git@github.com:hypnosis-i2p/android-ifaddrs-from-android-source.git
         #boost 53, 62 are not ok
-        BOOST_PATH = /home/user/S2_ATHOME/I2PDF/git/boost_1_57_0_take2/boost_1_57_0
-        OPENSSL_PATH = $$MAIN_PATH/OpenSSL-for-Android-Prebuilt/openssl-1.0.2
+        BOOST_PATH = $$MAIN_PATH/take3/boost_1_57_0
+#/stage/lib
+        OPENSSL_PATH = $$MAIN_PATH/take3/openssl-1.0.2l
         #MINIUPNP_PATH = $$MAIN_PATH/MiniUPnP-for-Android-Prebuilt
         IFADDRS_PATH = $$MAIN_PATH/android-ifaddrs-from-android-source
-        BDB_PATH = $$MAIN_PATH/bdb/db-6.0.20/build_unix
+        BDB_PATH = $$MAIN_PATH/take3/db-6.0.20/build_unix
 
         DEFINES += ANDROID=1
         DEFINES += __ANDROID__
@@ -50,11 +54,14 @@ android {
 
         INCLUDEPATH += \
                 $$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/include \
+                $$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include \
                 $$BOOST_PATH \
                 $$OPENSSL_PATH/include \
                 $$IFADDRS_PATH \
                 $$BDB_PATH \
                 build
+#                $$NDK_PATH/platforms/android-9/arch-arm/usr/include/ \
+#                $$NDK_PATH/sources/cxx-stl/stlport/stlport/ -I $NDK_PATH/sources/cxx-stl/system/include/
 
 #\
 #		$$MINIUPNP_PATH/miniupnp-2.0/include \
@@ -82,16 +89,16 @@ android {
                         -lboost_program_options$$BOOST_POSTFIX \
                         -lboost_system$$BOOST_POSTFIX \
                         -lboost_thread$$BOOST_POSTFIX \
-                        -L$$OPENSSL_PATH/armeabi-v7a/lib/ -lcrypto -lssl
+                        -L$$OPENSSL_PATH -lcrypto -lssl
 #\
 #			-L$$MINIUPNP_PATH/miniupnp-2.0/armeabi-v7a/lib/ -lminiupnpc
 
-                PRE_TARGETDEPS += $$OPENSSL_PATH/armeabi-v7a/lib/libcrypto.a \
-                        $$OPENSSL_PATH/armeabi-v7a/lib/libssl.a
+                PRE_TARGETDEPS += $$OPENSSL_PATH/libcrypto.a \
+                        $$OPENSSL_PATH/libssl.a
                 DEPENDPATH += $$OPENSSL_PATH/include
 
-                ANDROID_EXTRA_LIBS += $$OPENSSL_PATH/armeabi-v7a/lib/libcrypto_1_0_0.so \
-                        $$OPENSSL_PATH/armeabi-v7a/lib/libssl_1_0_0.so
+#                ANDROID_EXTRA_LIBS += $$OPENSSL_PATH/armeabi-v7a/lib/libcrypto_1_0_0.so \
+#                        $$OPENSSL_PATH/armeabi-v7a/lib/libssl_1_0_0.so
 #\
 #			$$MINIUPNP_PATH/miniupnp-2.0/armeabi-v7a/lib/libminiupnpc.so
         }
@@ -462,7 +469,7 @@ LIBS += -lz
 
 android {
     CXXFLAGS += -O0 -g
-    LIBS += $$NDK_PATH/sources/cxx-stl/stlport/libs/armeabi-v7a/libstlport_static.a
+#    LIBS += $$NDK_PATH/sources/cxx-stl/stlport/libs/armeabi-v7a/libstlport_static.a
     LIBS +=$$BDB_PATH/libdb_cxx.a $$BDB_PATH/libdb.a
 }
 
@@ -471,14 +478,14 @@ system($$QMAKE_LRELEASE -silent $$TRANSLATIONS)
 android {
     DISTFILES += \
         AndroidManifest.xml \
-        res/values/libs.xml \
-        ../docs/gostwallet_android_build_instructions.txt
+        res/values/libs.xml
 }
 
 DISTFILES += \
     ../../../S2_ATHOME/git_gostcoin/gostcoin/android/AndroidManifest.xml \
     ../../../S2_ATHOME/git_gostcoin/gostcoin/android/res/values/libs.xml \
-    ../../../S2_ATHOME/git_gostcoin/gostcoin/android/build.gradle
+    ../../../S2_ATHOME/git_gostcoin/gostcoin/android/build.gradle \
+    ../docs/gost_android_take3.txt
 
 
 
