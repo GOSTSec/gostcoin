@@ -1234,6 +1234,7 @@ static const char *strI2PDNSSeed[][2] = {
 static const char *strMainNetDNSSeed[][2] = {
     {"gostco.in", "dnsseed.gostco.in"},
     {"failover", "dnsseed1.gostco.in"},
+    {"pisekot", "neko.pisekot.ru"},
     // {"anoncoin.net", "dnsseed01.anoncoin.net"},
     {NULL, NULL}
 };
