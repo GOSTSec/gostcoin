@@ -1223,8 +1223,9 @@ void ThreadSocketHandler()
 
 
 static const char *strI2PDNSSeed[][2] = {
-    /*{"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p","cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p"} // xcps*/
-    {"6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p","6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p"} // R4SAS
+   {"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p","cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p"}, // xcps
+    {"6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p","6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p"}, // R4SAS
+{"xq7jlz5t5n3phb62ro2zicg4zzhibzlflgci4xnhsdi3wr6ihixq.b32.i2p","xq7jlz5t5n3phb62ro2zicg4zzhibzlflgci4xnhsdi3wr6ihixq.b32.i2p"} // pisekot
 };
 
 // DNS seeds
