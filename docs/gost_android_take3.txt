@@ -68,10 +68,15 @@ cd git/gostcoin
 cd src/leveldb
 TARGET_OS=OS_ANDROID_CROSSCOMPILE make libleveldb.a libmemenv.a
 
+2.5 android-ifaddr
+Брать отсюда  
+https://github.com/GOSTSec/android-ifaddrs-from-android-source  
+Компилировать не надо. 
+
 3. Компиляция
 3.1 Собираем Qt.pro
 
-Откройте файл android/gostcoin-qt-android.pro
+Откройте файл android/gostcoin-qt-android.pro в Qt-Creator  
 
 Поправьте всё, соберите.
 
