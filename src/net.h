@@ -226,8 +226,8 @@ public:
     std::multimap<int64, CInv> mapAskFor;
 
     CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn = "", bool fInboundIn=false) : ssSend(SER_NETWORK, INIT_PROTO_VERSION)
-      , nSendStreamType(SER_NETWORK | (((addrIn.nServices & NODE_I2P) || addrIn.IsNativeI2P()) ? 0 : SER_IPADDRONLY))
-      , nRecvStreamType(SER_NETWORK | (((addrIn.nServices & NODE_I2P) || addrIn.IsNativeI2P()) ? 0 : SER_IPADDRONLY))
+      , nSendStreamType(SER_NETWORK | (addrIn.IsNativeI2P() ? 0 : SER_IPADDRONLY))
+      , nRecvStreamType(SER_NETWORK | (addrIn.IsNativeI2P() ? 0 : SER_IPADDRONLY))
     {
         ssSend.SetType(nSendStreamType);
         nServices = 0;
