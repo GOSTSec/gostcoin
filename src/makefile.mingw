@@ -21,6 +21,7 @@ USE_IPV6:=1
 USE_DEBUG:=0
 
 DEPSDIR?=/usr/local
+WINDRES = windres
 BOOST_SUFFIX?=-mt
 
 INCLUDEPATHS= \
@@ -101,7 +102,8 @@ OBJS= \
     obj/noui.o \
     obj/leveldb.o \
     obj/txdb.o \
-    obj/Gost.o
+    obj/Gost.o \
+    obj/resources.o
 
 ifdef USE_SSE2
 DEFS += -DUSE_SSE2
@@ -140,6 +142,9 @@ obj/%-sse2.o: %-sse2.cpp
 
 obj/%.o: %.cpp $(HEADERS)
 	$(CXX) -c $(CFLAGS) -o $@ $<
+
+obj/%.o : %.rc
+	$(WINDRES) -i $< -o $@
 
 gostcoind.exe: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)

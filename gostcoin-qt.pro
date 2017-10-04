@@ -358,7 +358,7 @@ OTHER_FILES += README.md \
     doc/*.rst \
     doc/*.txt \
     doc/*.md \
-    src/qt/res/bitcoin-qt.rc \
+    src/qt/res/gostcoin-qt.rc \
     src/test/*.cpp \
     src/test/*.h \
     src/qt/test/*.cpp \
@@ -399,7 +399,7 @@ isEmpty(BOOST_INCLUDE_PATH) {
 }
 
 win32:DEFINES += WIN32
-win32:RC_FILE = src/qt/res/bitcoin-qt.rc
+win32:RC_FILE = src/qt/res/gostcoin-qt.rc
 
 win32:!contains(MINGW_THREAD_BUGFIX, 0) {
     # At least qmake's win32-g++-cross profile is missing the -lmingwthrd
