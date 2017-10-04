@@ -8,6 +8,7 @@ Makefile*
 qrc_bitcoin.cpp
 gostcoin-qt
 gostcoind
+gostcoind.exe
 *.pro.user
 .qmake.stash
 gostcoin-qt_plugin_import.cpp

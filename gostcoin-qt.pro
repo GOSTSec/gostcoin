@@ -290,7 +290,7 @@ SOURCES += src/qt/gostcoin.cpp \
     src/qt/setupdarknet.cpp \
     i2psam/i2psam.cpp
 
-RESOURCES += src/qt/bitcoin.qrc
+RESOURCES += src/qt/gostcoin.qrc
 
 FORMS += src/qt/forms/sendcoinsdialog.ui \
     src/qt/forms/coincontroldialog.ui \
@@ -337,7 +337,7 @@ QMAKE_EXTRA_COMPILERS += gccsse2
 CODECFORTR = UTF-8
 
 # for lrelease/lupdate
-# also add new translations to src/qt/bitcoin.qrc under translations/
+# also add new translations to src/qt/gostcoin.qrc under translations/
 TRANSLATIONS = $$files(src/qt/locale/bitcoin_*.ts)
 
 isEmpty(QMAKE_LRELEASE) {
