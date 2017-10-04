@@ -50,6 +50,9 @@
         <file alias="update_spinner">res/movies/update_spinner.mng</file>
     </qresource>
     <qresource prefix="/translations">
+        <file alias="en">locale/bitcoin_en.qm</file>
+        <file alias="ru">locale/bitcoin_ru.qm</file>
+        <!-- // outdated translations
         <file alias="af_ZA">locale/bitcoin_af_ZA.qm</file>
         <file alias="ar">locale/bitcoin_ar.qm</file>
         <file alias="bg">locale/bitcoin_bg.qm</file>
@@ -61,7 +64,6 @@
         <file alias="da">locale/bitcoin_da.qm</file>
         <file alias="de">locale/bitcoin_de.qm</file>
         <file alias="el_GR">locale/bitcoin_el_GR.qm</file>
-        <file alias="en">locale/bitcoin_en.qm</file>
         <file alias="eo">locale/bitcoin_eo.ts</file>
         <file alias="es">locale/bitcoin_es.qm</file>
         <file alias="es_CL">locale/bitcoin_es_CL.qm</file>
@@ -88,7 +90,6 @@
         <file alias="pt_BR">locale/bitcoin_pt_BR.qm</file>
         <file alias="pt_PT">locale/bitcoin_pt_PT.qm</file>
         <file alias="ro_RO">locale/bitcoin_ro_RO.qm</file>
-        <file alias="ru">locale/bitcoin_ru.qm</file>
         <file alias="sk">locale/bitcoin_sk.qm</file>
         <file alias="sr">locale/bitcoin_sr.qm</file>
         <file alias="sv">locale/bitcoin_sv.qm</file>
@@ -96,6 +97,6 @@
         <file alias="tr">locale/bitcoin_tr.qm</file>
         <file alias="uk">locale/bitcoin_uk.qm</file>
         <file alias="zh_CN">locale/bitcoin_zh_CN.qm</file>
-        <file alias="zh_TW">locale/bitcoin_zh_TW.qm</file>
+        <file alias="zh_TW">locale/bitcoin_zh_TW.qm</file>-->
     </qresource>
 </RCC>
