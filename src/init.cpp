@@ -136,7 +136,9 @@ void Shutdown()
     boost::filesystem::remove(GetPidFile());
     UnregisterWallet(pwalletMain);
     if (pwalletMain)
+    {
         delete pwalletMain;
+    }
 
 	I2PSession::Instance ().Stop ();
 
@@ -826,7 +828,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 #endif
 
     CService addrProxy;
-    bool fProxy = false;
+    //bool fProxy = false; // is usable?
     if (mapArgs.count("-proxy")) {
         addrProxy = CService(mapArgs["-proxy"], 9050);
         if (!addrProxy.IsValid())
@@ -841,7 +843,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 #endif
             SetNameProxy(addrProxy, nSocksVersion);
         }
-        fProxy = true;
+        //fProxy = true; // is usable?
     }
 
     // see Step 2: parameter interactions for more information about these
