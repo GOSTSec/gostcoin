@@ -17,7 +17,7 @@
 
 CXX ?= g++
 
-USE_IPV6:=1
+USE_IPV6:=0
 USE_DEBUG:=0
 
 DEPSDIR?=/usr/local
