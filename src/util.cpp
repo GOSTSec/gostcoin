@@ -1070,10 +1070,10 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\Bitcoin
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Bitcoin
-    // Mac: ~/Library/Application Support/Bitcoin
-    // Unix: ~/.bitcoin
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\Gostcoin
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Gostcoin
+    // Mac: ~/Library/Application Support/Gostcoin
+    // Unix: ~/.gostcoin
 #ifdef WIN32
     // Windows
     return GetSpecialFolderPath(CSIDL_APPDATA) / "Gostcoin";
@@ -1150,10 +1150,10 @@ const boost::filesystem::path &GetDataDir(bool fNetSpecific)
         path = GetDefaultDataDir();
     }
     if (fNetSpecific && GetBoolArg("-testnet", false))
-	{
-		fs::create_directory(path);
+    {
+        fs::create_directory(path);
         path /= "testnet3";
-	}	
+    }
 
     fs::create_directory(path);
 

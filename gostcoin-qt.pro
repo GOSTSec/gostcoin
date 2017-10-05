@@ -211,7 +211,6 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/macnotificationhandler.h \
     src/qt/splashscreen.h \
     src/qt/showi2paddresses.h \
-    src/qt/i2poptionswidget.h \
     src/qt/setupdarknet.h
 
 SOURCES += src/qt/gostcoin.cpp \
@@ -286,7 +285,6 @@ SOURCES += src/qt/gostcoin.cpp \
     src/txdb.cpp \
     src/qt/splashscreen.cpp \
     src/qt/showi2paddresses.cpp \
-    src/qt/i2poptionswidget.cpp \
     src/qt/setupdarknet.cpp \
     i2psam/i2psam.cpp
 
@@ -304,8 +302,7 @@ FORMS += src/qt/forms/sendcoinsdialog.ui \
     src/qt/forms/askpassphrasedialog.ui \
     src/qt/forms/rpcconsole.ui \
     src/qt/forms/optionsdialog.ui \
-    src/qt/forms/showi2paddresses.ui \
-    src/qt/forms/i2poptionswidget.ui
+    src/qt/forms/showi2paddresses.ui
 
 contains(USE_QRCODE, 1) {
 HEADERS += src/qt/qrcodedialog.h

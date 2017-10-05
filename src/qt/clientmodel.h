@@ -60,13 +60,8 @@ public:
 
     QString formatI2PNativeFullVersion() const;
     int getNumI2PConnections() const;
-
-    QString getPublicI2PKey() const;
-    QString getPrivateI2PKey() const;
-    bool isI2PAddressGenerated() const;
     bool isI2POnly() const;
-    QString getB32Address(const QString& destination) const;
-    void generateI2PDestination(QString& pub, QString& priv) const;
+    bool isI2PAddressGenerated() const;
 //    I2PSession& getI2PSession() const;      // ??
 //    bool isPermanent
 

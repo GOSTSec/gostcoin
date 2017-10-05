@@ -129,36 +129,14 @@ int ClientModel::getNumI2PConnections() const
     return nI2PNodeCount;
 }
 
-QString ClientModel::getPublicI2PKey() const
-{
-    return QString::fromStdString(I2PSession::Instance().getMyDestination().pub);
-}
-
-QString ClientModel::getPrivateI2PKey() const
-{
-    return QString::fromStdString(I2PSession::Instance().getMyDestination().priv);
-}
-
-bool ClientModel::isI2PAddressGenerated() const
-{
-    return I2PSession::Instance().getMyDestination().isGenerated;
-}
-
 bool ClientModel::isI2POnly() const
 {
     return IsI2POnly();
 }
 
-QString ClientModel::getB32Address(const QString& destination) const
+bool ClientModel::isI2PAddressGenerated() const
 {
-    return QString::fromStdString(I2PSession::GenerateB32AddressFromDestination(destination.toStdString()));
-}
-
-void ClientModel::generateI2PDestination(QString& pub, QString& priv) const
-{
-    const SAM::FullDestination generatedDest = I2PSession::Instance().destGenerate();
-    pub = QString::fromStdString(generatedDest.pub);
-    priv = QString::fromStdString(generatedDest.priv);
+    return I2PSession::Instance().getMyDestination().isGenerated;
 }
 
 bool ClientModel::isTestNet() const

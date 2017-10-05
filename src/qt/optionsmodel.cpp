@@ -588,3 +588,24 @@ bool OptionsModel::getCoinControlFeatures()
     return fCoinControlFeatures;
 }
 
+QString OptionsModel::getPublicI2PKey() const
+{
+    return QString::fromStdString(I2PSession::Instance().getMyDestination().pub);
+}
+
+QString OptionsModel::getPrivateI2PKey() const
+{
+    return QString::fromStdString(I2PSession::Instance().getMyDestination().priv);
+}
+
+QString OptionsModel::getB32Address(const QString& destination) const
+{
+    return QString::fromStdString(I2PSession::GenerateB32AddressFromDestination(destination.toStdString()));
+}
+
+void OptionsModel::generateI2PDestination(QString& pub, QString& priv) const
+{
+    const SAM::FullDestination generatedDest = I2PSession::Instance().destGenerate();
+    pub = QString::fromStdString(generatedDest.pub);
+    priv = QString::fromStdString(generatedDest.priv);
+}

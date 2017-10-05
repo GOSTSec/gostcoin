@@ -495,7 +495,6 @@ void BitcoinGUI::optionsClicked()
         return;
     OptionsDialog dlg;
     dlg.setModel(clientModel->getOptionsModel());
-    dlg.setClientModel(clientModel);
     dlg.exec();
 }
 

@@ -3,8 +3,6 @@
 
 #include <QDialog>
 
-#include "i2poptionswidget.h"
-
 namespace Ui {
 class OptionsDialog;
 }
@@ -51,8 +49,12 @@ private slots:
     void updateDisplayUnit();
     void handleProxyIpValid(QValidatedLineEdit *object, bool fState);
 
+    void ShowCurrentI2PAddress();
+    void GenerateNewI2PAddress();
+
 signals:
     void proxyIpValid(QValidatedLineEdit *object, bool fValid);
+    void settingsChanged();
 
 private:
     Ui::OptionsDialog *ui;
@@ -62,7 +64,6 @@ private:
     bool fRestartWarningDisplayed_Lang;
     bool fProxyIpValid;
     bool fRestartWarningDisplayed_I2P;
-    I2POptionsWidget* tabI2P;
 };
 
 #endif // OPTIONSDIALOG_H

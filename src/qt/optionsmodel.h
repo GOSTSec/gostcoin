@@ -72,6 +72,11 @@ public:
     QString getLanguage() { return language; }
     bool getCoinControlFeatures();
 
+    QString getPublicI2PKey() const;
+    QString getPrivateI2PKey() const;
+    QString getB32Address(const QString& destination) const;
+    void generateI2PDestination(QString& pub, QString& priv) const;
+
 private:
     int nDisplayUnit;
     bool bDisplayAddresses;

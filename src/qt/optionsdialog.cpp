@@ -6,6 +6,9 @@
 #include "netbase.h"
 #include "optionsmodel.h"
 
+#include "showi2paddresses.h"
+#include "util.h"
+
 #include "clientmodel.h"
 
 #include <QDir>
@@ -21,8 +24,7 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     fRestartWarningDisplayed_Proxy(false),
     fRestartWarningDisplayed_Lang(false),
     fProxyIpValid(true),
-    fRestartWarningDisplayed_I2P(false),
-    tabI2P(new I2POptionsWidget())
+    fRestartWarningDisplayed_I2P(false)
 {
     ui->setupUi(this);
 
@@ -37,10 +39,13 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     ui->socksVersion->addItem("4", 4);
     ui->socksVersion->setCurrentIndex(0);
 
-    connect(ui->connectSocks, SIGNAL(toggled(bool)), ui->proxyIp, SLOT(setEnabled(bool)));
-    connect(ui->connectSocks, SIGNAL(toggled(bool)), ui->proxyPort, SLOT(setEnabled(bool)));
-    connect(ui->connectSocks, SIGNAL(toggled(bool)), ui->socksVersion, SLOT(setEnabled(bool)));
-    connect(ui->connectSocks, SIGNAL(clicked(bool)), this, SLOT(showRestartWarning_Proxy()));
+    connect(ui->connectSocks                 , SIGNAL(toggled(bool))       , ui->proxyIp, SLOT(setEnabled(bool)));
+    connect(ui->connectSocks                 , SIGNAL(toggled(bool))       , ui->proxyPort, SLOT(setEnabled(bool)));
+    connect(ui->connectSocks                 , SIGNAL(toggled(bool))       , ui->socksVersion, SLOT(setEnabled(bool)));
+    connect(ui->connectSocks                 , SIGNAL(clicked(bool))       , this, SLOT(showRestartWarning_Proxy()));
+
+    connect(ui->pushButtonCurrentI2PAddress  , SIGNAL(clicked())           , this, SLOT(ShowCurrentI2PAddress()));
+    connect(ui->pushButtonGenerateI2PAddress , SIGNAL(clicked())           , this, SLOT(GenerateNewI2PAddress()));
 
     ui->proxyIp->installEventFilter(this);
 
@@ -93,8 +98,6 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
     connect(mapper, SIGNAL(currentIndexChanged(int)), this, SLOT(disableApplyButton()));
     /* setup/change UI elements when proxy IP is invalid/valid */
     connect(this, SIGNAL(proxyIpValid(QValidatedLineEdit *, bool)), this, SLOT(handleProxyIpValid(QValidatedLineEdit *, bool)));
-
-    ui->tabWidget->addTab(tabI2P, QString("I2P"));
 }
 
 OptionsDialog::~OptionsDialog()
@@ -118,20 +121,28 @@ void OptionsDialog::setModel(OptionsModel *model)
     /* update the display unit, to not use the default ("BTC") */
     updateDisplayUnit();
 
-    /* warn only when language selection changes by user action (placed here so init via mapper doesn't trigger this) */
+    /* warn only when changed by user action (placed here so init via mapper doesn't trigger this) */
     connect(ui->lang, SIGNAL(valueChanged()), this, SLOT(showRestartWarning_Lang()));
-    QObject::connect(tabI2P, SIGNAL(settingsChanged()), this, SLOT(showRestartWarning_I2P()));
+    connect(ui->checkBoxAllowZeroHop         , SIGNAL(stateChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->checkBoxInboundAllowZeroHop  , SIGNAL(stateChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->checkBoxUseI2POnly           , SIGNAL(stateChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->lineEditSAMHost              , SIGNAL(textChanged(QString)), this, SLOT(showRestartWarning_I2P()));
+    connect(ui->lineEditTunnelName           , SIGNAL(textChanged(QString)), this, SLOT(showRestartWarning_I2P()));
+    connect(ui->spinBoxInboundBackupQuality  , SIGNAL(valueChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->spinBoxInboundIPRestriction  , SIGNAL(valueChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->spinBoxInboundLength         , SIGNAL(valueChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->spinBoxInboundLengthVariance , SIGNAL(valueChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->spinBoxInboundQuantity       , SIGNAL(valueChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->spinBoxOutboundBackupQuantity, SIGNAL(valueChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->spinBoxOutboundIPRestriction , SIGNAL(valueChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->spinBoxOutboundLength        , SIGNAL(valueChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->spinBoxOutboundLengthVariance, SIGNAL(valueChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->spinBoxOutboundPriority      , SIGNAL(valueChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->spinBoxOutboundQuantity      , SIGNAL(valueChanged(int))   , this, SLOT(showRestartWarning_I2P()));
+    connect(ui->spinBoxSAMPort               , SIGNAL(valueChanged(int))   , this, SLOT(showRestartWarning_I2P()));
 
     /* disable apply button after settings are loaded as there is nothing to save */
     disableApplyButton();
-}
-
-void OptionsDialog::setClientModel(ClientModel* clientModel)
-{
-    if (clientModel)
-    {
-        tabI2P->setModel(clientModel);
-    }
 }
 
 void OptionsDialog::setMapper()
@@ -159,7 +170,24 @@ void OptionsDialog::setMapper()
     mapper->addMapping(ui->displayAddresses, OptionsModel::DisplayAddresses);
     mapper->addMapping(ui->coinControlFeatures, OptionsModel::CoinControlFeatures);
 
-    tabI2P->setMapper(*mapper);
+    /* I2P */
+    mapper->addMapping(ui->checkBoxUseI2POnly           , OptionsModel::I2PUseI2POnly);
+    mapper->addMapping(ui->lineEditSAMHost              , OptionsModel::I2PSAMHost);
+    mapper->addMapping(ui->spinBoxSAMPort               , OptionsModel::I2PSAMPort);
+    mapper->addMapping(ui->lineEditTunnelName           , OptionsModel::I2PSessionName);
+    mapper->addMapping(ui->spinBoxInboundQuantity       , OptionsModel::I2PInboundQuantity);
+    mapper->addMapping(ui->spinBoxInboundLength         , OptionsModel::I2PInboundLength);
+    mapper->addMapping(ui->spinBoxInboundLengthVariance , OptionsModel::I2PInboundLengthVariance);
+    mapper->addMapping(ui->spinBoxInboundBackupQuality  , OptionsModel::I2PInboundBackupQuantity);
+    mapper->addMapping(ui->checkBoxInboundAllowZeroHop  , OptionsModel::I2PInboundAllowZeroHop);
+    mapper->addMapping(ui->spinBoxInboundIPRestriction  , OptionsModel::I2PInboundIPRestriction);
+    mapper->addMapping(ui->spinBoxOutboundQuantity      , OptionsModel::I2POutboundQuantity);
+    mapper->addMapping(ui->spinBoxOutboundLength        , OptionsModel::I2POutboundLength);
+    mapper->addMapping(ui->spinBoxOutboundLengthVariance, OptionsModel::I2POutboundLengthVariance);
+    mapper->addMapping(ui->spinBoxOutboundBackupQuantity, OptionsModel::I2POutboundBackupQuantity);
+    mapper->addMapping(ui->checkBoxAllowZeroHop         , OptionsModel::I2POutboundAllowZeroHop);
+    mapper->addMapping(ui->spinBoxOutboundIPRestriction , OptionsModel::I2POutboundIPRestriction);
+    mapper->addMapping(ui->spinBoxOutboundPriority      , OptionsModel::I2POutboundIPRestriction);
 }
 
 void OptionsDialog::enableApplyButton()
@@ -260,6 +288,34 @@ void OptionsDialog::showRestartWarning_Lang()
     {
         QMessageBox::warning(this, tr("Warning"), tr("This setting will take effect after restarting Gostcoin."), QMessageBox::Ok);
         fRestartWarningDisplayed_Lang = true;
+    }
+}
+
+void OptionsDialog::ShowCurrentI2PAddress()
+{
+    if (this->model)
+    {
+        const QString pub = this->model->getPublicI2PKey();
+        const QString priv = this->model->getPrivateI2PKey();
+        const QString b32 = this->model->getB32Address(pub);
+        const QString configFile = QString::fromStdString(GetConfigFile().string());
+
+        ShowI2PAddresses i2pCurrDialog("Your current I2P-address", pub, priv, b32, configFile, this);
+        i2pCurrDialog.exec();
+    }
+}
+
+void OptionsDialog::GenerateNewI2PAddress()
+{
+    if (this->model)
+    {
+        QString pub, priv;
+        this->model->generateI2PDestination(pub, priv);
+        const QString b32 = this->model->getB32Address(pub);
+        const QString configFile = QString::fromStdString(GetConfigFile().string());
+
+        ShowI2PAddresses i2pCurrDialog("Generated I2P address", pub, priv, b32, configFile, this);
+        i2pCurrDialog.exec();
     }
 }
 

@@ -10,22 +10,16 @@ ShowI2PAddresses::ShowI2PAddresses(const QString& caption, const QString& pub, c
     ui->pubText->setPlainText(pub);
     ui->privText->setText("<b>mydestination=</b>" + priv);
     ui->b32Line->setText(b32);
-    ui->label->setText(ui->label->text() + "\n" + configFileName);
+    ui->label->setText(ui->label->text() + configFileName);
 
-    QObject::connect(ui->privButton, SIGNAL(clicked()),
-                     ui->privText, SLOT(selectAll()));
-    QObject::connect(ui->privButton, SIGNAL(clicked()),
-                     ui->privText, SLOT(copy()));
+    QObject::connect(ui->privButton, SIGNAL(clicked()), ui->privText, SLOT(selectAll()));
+    QObject::connect(ui->privButton, SIGNAL(clicked()), ui->privText, SLOT(copy()));
 
-    QObject::connect(ui->pubButton, SIGNAL(clicked()),
-                     ui->pubText, SLOT(selectAll()));
-    QObject::connect(ui->pubButton, SIGNAL(clicked()),
-                     ui->pubText, SLOT(copy()));
+    QObject::connect(ui->pubButton, SIGNAL(clicked()), ui->pubText, SLOT(selectAll()));
+    QObject::connect(ui->pubButton, SIGNAL(clicked()), ui->pubText, SLOT(copy()));
 
-    QObject::connect(ui->b32Button, SIGNAL(clicked()),
-                     ui->b32Line, SLOT(selectAll()));
-    QObject::connect(ui->b32Button, SIGNAL(clicked()),
-                     ui->b32Line, SLOT(copy()));
+    QObject::connect(ui->b32Button, SIGNAL(clicked()), ui->b32Line, SLOT(selectAll()));
+    QObject::connect(ui->b32Button, SIGNAL(clicked()), ui->b32Line, SLOT(copy()));
 }
 
 ShowI2PAddresses::~ShowI2PAddresses()
