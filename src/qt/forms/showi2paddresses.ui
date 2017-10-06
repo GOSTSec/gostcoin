@@ -23,8 +23,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>If you want to use a permanent I2P-address you have to set a 'mydestination' option in the configuration file:
-</string>
+      <string>If you want to use a permanent I2P-address you have to set a 'mydestination' option in the configuration file:</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
