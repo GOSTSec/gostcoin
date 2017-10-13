@@ -1,8 +1,10 @@
 // Copyright (c) 2012-2013 giv
+// Copyright (c) 2017 orignal
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //--------------------------------------------------------------------------------------------------
 #include <boost/thread/shared_mutex.hpp>
+#include <iostream>
 #include "i2p.h"
 #include "util.h"
 #include "hash.h"
