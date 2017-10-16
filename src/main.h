@@ -26,6 +26,8 @@ class CNode;
 
 struct CBlockIndexWorkComparator;
 
+static const int HARDFORK_BLOCK1 = 100000000; // TODO: set actual block # when ready
+
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
 static const unsigned int MAX_BLOCK_SIZE = 1000000;                      // 1000KB block hard limit
 /** The maximum size for mined blocks */
@@ -423,7 +425,7 @@ public:
 
     uint256 GetHash() const
     {
-        return SerializeHash(*this);
+        return (nBestHeight >= HARDFORK_BLOCK1) ? SerializeHashHF1(*this) : SerializeHash(*this);
     }
 
     friend bool operator==(const CTxOut& a, const CTxOut& b)
@@ -504,7 +506,7 @@ public:
 
     uint256 GetHash() const
     {
-        return SerializeHash(*this);
+        return (nBestHeight >= HARDFORK_BLOCK1) ? SerializeHashHF1(*this) : SerializeHash(*this);
     }
 
     bool IsFinal(int nBlockHeight=0, int64 nBlockTime=0) const
@@ -794,7 +796,7 @@ public:
         CHashWriter hasher(SER_GETHASH, PROTOCOL_VERSION);
         hasher << hashBlock;
         hasher << *this;
-        fileout << hasher.GetHash();
+        fileout << (nBestHeight >= HARDFORK_BLOCK1) ? hasher.GetHashHF1 () : hasher.GetHash();
 
         // Flush stdio buffers and commit to disk before returning
         fflush(fileout);
@@ -825,7 +827,7 @@ public:
         CHashWriter hasher(SER_GETHASH, PROTOCOL_VERSION);
         hasher << hashBlock;
         hasher << *this;
-        if (hashChecksum != hasher.GetHash())
+        if (hashChecksum != ((nBestHeight >= HARDFORK_BLOCK1) ? hasher.GetHashHF1 () : hasher.GetHash()))
             return error("CBlockUndo::ReadFromDisk() : checksum mismatch");
 
         return true;
@@ -1377,8 +1379,11 @@ public:
             for (int i = 0; i < nSize; i += 2)
             {
                 int i2 = std::min(i+1, nSize-1);
-                vMerkleTree.push_back(Hash(BEGIN(vMerkleTree[j+i]),  END(vMerkleTree[j+i]),
-                                           BEGIN(vMerkleTree[j+i2]), END(vMerkleTree[j+i2])));
+				if (nBestHeight >= HARDFORK_BLOCK1) 
+					vMerkleTree.push_back(Hash (vMerkleTree[j+i], vMerkleTree[j+i2]));
+				else
+                	vMerkleTree.push_back(Hash(BEGIN(vMerkleTree[j+i]),  END(vMerkleTree[j+i]),
+                                         	   BEGIN(vMerkleTree[j+i2]), END(vMerkleTree[j+i2])));
             }
             j += nSize;
         }
@@ -1413,10 +1418,20 @@ public:
             return 0;
         BOOST_FOREACH(const uint256& otherside, vMerkleBranch)
         {
-            if (nIndex & 1)
-                hash = Hash(BEGIN(otherside), END(otherside), BEGIN(hash), END(hash));
-            else
-                hash = Hash(BEGIN(hash), END(hash), BEGIN(otherside), END(otherside));
+			if (nBestHeight >= HARDFORK_BLOCK1) 
+			{
+				if (nIndex & 1)
+		            hash = Hash(otherside, hash);
+		        else
+		            hash = Hash(hash, otherside);
+			}
+			else
+			{	
+		        if (nIndex & 1)
+		            hash = Hash(BEGIN(otherside), END(otherside), BEGIN(hash), END(hash));
+		        else
+		            hash = Hash(BEGIN(hash), END(hash), BEGIN(otherside), END(otherside));
+			}
             nIndex >>= 1;
         }
         return hash;

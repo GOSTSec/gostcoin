@@ -55,13 +55,19 @@ public:
     }
 
     // invalidates the object
-    uint256 GetHash() {
+    uint256 GetHash() {   // shouldn't be called after hard fork 1
 		uint8_t hash1[64];
     	i2p::crypto::GOSTR3411_2012_512 ((uint8_t *)ctx.str ().c_str (), ctx.str ().length (), hash1);
         uint256 hash2;
         i2p::crypto::GOSTR3411_2012_256 (hash1, 64, (unsigned char*)&hash2);
         return hash2;
     }
+
+	uint256 GetHashHF1()
+	{
+		const uint8_t * buf = (const uint8_t *)ctx.str ().c_str ();
+		return Hash (buf, buf + ctx.str ().length ());
+	}	
 
     template<typename T>
     CHashWriter& operator<<(const T& obj) {
@@ -73,7 +79,7 @@ public:
 
 template<typename T1, typename T2>
 inline uint256 Hash(const T1 p1begin, const T1 p1end,
-                    const T2 p2begin, const T2 p2end)
+                    const T2 p2begin, const T2 p2end) // shouldn't be called after hard fork 1
 {
 	static unsigned char pblank[1];
 	size_t s1 = (p1end - p1begin) * sizeof(p1begin[0]),
@@ -94,10 +100,19 @@ uint256 Hash (const uint256& left, const uint256& right); // for Merkle tree
 
 template<typename T>
 uint256 SerializeHash(const T& obj, int nType=SER_GETHASH, int nVersion=PROTOCOL_VERSION)
+// shouldn't be called after hard fork 1
 {
     CHashWriter ss(nType, nVersion);
     ss << obj;
     return ss.GetHash();
+}
+
+template<typename T>
+uint256 SerializeHashHF1(const T& obj, int nType=SER_GETHASH, int nVersion=PROTOCOL_VERSION)
+{
+    CHashWriter ss(nType, nVersion);
+    ss << obj;
+    return ss.GetHashHF1();
 }
 
 template<typename T1>
