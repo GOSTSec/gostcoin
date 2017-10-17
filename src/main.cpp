@@ -2845,10 +2845,16 @@ bool LoadBlockIndex()
 {
     if (fTestNet)
     {
-        pchMessageStart[0] = 0xfa;
-        pchMessageStart[1] = 0xc4;
-        pchMessageStart[2] = 0xa7;
-        pchMessageStart[3] = 0x4b;
+	    pchMessageStart[0] = 0xfa;
+	    pchMessageStart[1] = 0xc4;
+	    pchMessageStart[2] = 0xa7;
+	    pchMessageStart[3] = 0x4b;
+
+		pchMessageStartHF1[0] = 0x90;
+	    pchMessageStartHF1[1] = 0x57;
+	    pchMessageStartHF1[2] = 0x73;
+	    pchMessageStartHF1[3] = 0x57;
+
         hashGenesisBlock = uint256("0x0000051862557b7ed888cde9cfb580eddd592f6e34b4bbe3612f3734ecf8bdb3");
     }
 
@@ -3208,7 +3214,7 @@ bool static AlreadyHave(const CInv& inv)
 // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
 unsigned char pchMessageStart[4] = { 0xfa, 0xca, 0xba, 0xda };
-
+unsigned char pchMessageStartHF1[4] = { 0x90, 0x57, 0x53, 0xc7 };
 
 void static ProcessGetData(CNode* pfrom)
 {
@@ -3992,7 +3998,7 @@ bool ProcessMessages(CNode* pfrom)
         it++;
 
         // Scan for message start
-        if (memcmp(msg.hdr.pchMessageStart, pchMessageStart, sizeof(pchMessageStart)) != 0) {
+        if (memcmp(msg.hdr.pchMessageStart, pchMessageStart, 4) != 0) {
             printf("\n\nPROCESSMESSAGE: INVALID MESSAGESTART\n\n");
             fOk = false;
             break;

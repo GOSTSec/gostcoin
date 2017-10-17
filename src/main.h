@@ -88,7 +88,7 @@ extern int64 nHPSTimerStart;
 extern int64 nTimeBestReceived;
 extern CCriticalSection cs_setpwalletRegistered;
 extern std::set<CWallet*> setpwalletRegistered;
-extern unsigned char pchMessageStart[4];
+extern unsigned char pchMessageStart[4], pchMessageStartHF1[4];
 extern bool fImporting;
 extern bool fReindex;
 extern bool fBenchmark;
