@@ -1022,7 +1022,7 @@ uint256 SignatureHash(CScript scriptCode, const CTransaction& txTo, unsigned int
     // Serialize and hash
     CHashWriter ss(SER_GETHASH, 0);
     ss << txTmp << nHashType;
-    return ss.GetHash();
+    return nBestHeight >= HARDFORK_BLOCK1 ? ss.GetHashHF1 () : ss.GetHash();
 }
 
 
