@@ -796,7 +796,7 @@ public:
         CHashWriter hasher(SER_GETHASH, PROTOCOL_VERSION);
         hasher << hashBlock;
         hasher << *this;
-        fileout << (nBestHeight >= HARDFORK_BLOCK1) ? hasher.GetHashHF1 () : hasher.GetHash();
+        fileout << ((nBestHeight >= HARDFORK_BLOCK1) ? hasher.GetHashHF1 () : hasher.GetHash());
 
         // Flush stdio buffers and commit to disk before returning
         fflush(fileout);
