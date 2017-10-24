@@ -5,13 +5,13 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About Anoncoin</source>
-        <translation>About Anoncoin</translation>
+        <source>About Gostcoin</source>
+        <translation>About Gostcoin</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;Anoncoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Anoncoin&lt;/b&gt; version</translation>
+        <source>&lt;b&gt;Gostcoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Gostcoin&lt;/b&gt; version</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -35,8 +35,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+0"/>
-        <source>The Anoncoin developers</source>
-        <translation>The Anoncoin developers</translation>
+        <source>The Gostcoin developers</source>
+        <translation>The Gostcoin developers</translation>
     </message>
 </context>
 <context>
@@ -68,8 +68,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="+63"/>
-        <source>These are your Anoncoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>These are your Anoncoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</translation>
+        <source>These are your Gostcoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>These are your Gostcoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
@@ -83,8 +83,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a Anoncoin address</source>
-        <translation>Sign a message to prove you own a Anoncoin address</translation>
+        <source>Sign a message to prove you own a Gostcoin address</source>
+        <translation>Sign a message to prove you own a Gostcoin address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -108,8 +108,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-44"/>
-        <source>Verify a message to ensure it was signed with a specified Anoncoin address</source>
-        <translation>Verify a message to ensure it was signed with a specified Anoncoin address</translation>
+        <source>Verify a message to ensure it was signed with a specified Gostcoin address</source>
+        <translation>Verify a message to ensure it was signed with a specified Gostcoin address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -123,8 +123,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="-5"/>
-        <source>These are your Anoncoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>These are your Anoncoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</translation>
+        <source>These are your Gostcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>These are your Gostcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -276,8 +276,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-56"/>
-        <source>Anoncoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your anoncoins from being stolen by malware infecting your computer.</source>
-        <translation>Anoncoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your anoncoins from being stolen by malware infecting your computer.</translation>
+        <source>Gostcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your anoncoins from being stolen by malware infecting your computer.</source>
+        <translation>Gostcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your anoncoins from being stolen by malware infecting your computer.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -375,8 +375,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about Anoncoin</source>
-        <translation>Show information about Anoncoin</translation>
+        <source>Show information about Gostcoin</source>
+        <translation>Show information about Gostcoin</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -420,13 +420,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-347"/>
-        <source>Send coins to a Anoncoin address</source>
-        <translation>Send coins to a Anoncoin address</translation>
+        <source>Send coins to a Gostcoin address</source>
+        <translation>Send coins to a Gostcoin address</translation>
     </message>
     <message>
         <location line="+49"/>
-        <source>Modify configuration options for Anoncoin</source>
-        <translation>Modify configuration options for Anoncoin</translation>
+        <source>Modify configuration options for Gostcoin</source>
+        <translation>Modify configuration options for Gostcoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -456,8 +456,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-165"/>
         <location line="+530"/>
-        <source>Anoncoin</source>
-        <translation>Anoncoin</translation>
+        <source>Gostcoin</source>
+        <translation>Gostcoin</translation>
     </message>
     <message>
         <location line="-530"/>
@@ -481,8 +481,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+22"/>
-        <source>&amp;About Anoncoin</source>
-        <translation>&amp;About Anoncoin</translation>
+        <source>&amp;About Gostcoin</source>
+        <translation>&amp;About Gostcoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -501,13 +501,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+7"/>
-        <source>Sign messages with your Anoncoin addresses to prove you own them</source>
-        <translation>Sign messages with your Anoncoin addresses to prove you own them</translation>
+        <source>Sign messages with your Gostcoin addresses to prove you own them</source>
+        <translation>Sign messages with your Gostcoin addresses to prove you own them</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Verify messages to ensure they were signed with specified Anoncoin addresses</source>
-        <translation>Verify messages to ensure they were signed with specified Anoncoin addresses</translation>
+        <source>Verify messages to ensure they were signed with specified Gostcoin addresses</source>
+        <translation>Verify messages to ensure they were signed with specified Gostcoin addresses</translation>
     </message>
     <message>
         <location line="+28"/>
@@ -537,15 +537,15 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+47"/>
-        <source>Anoncoin client</source>
-        <translation>Anoncoin client</translation>
+        <source>Gostcoin client</source>
+        <translation>Gostcoin client</translation>
     </message>
     <message numerus="yes">
         <location line="+141"/>
-        <source>%n active connection(s) to Anoncoin network</source>
+        <source>%n active connection(s) to Gostcoin network</source>
         <translation>
-            <numerusform>%n active connection to Anoncoin network</numerusform>
-            <numerusform>%n active connections to Anoncoin network</numerusform>
+            <numerusform>%n active connection to Gostcoin network</numerusform>
+            <numerusform>%n active connections to Gostcoin network</numerusform>
         </translation>
     </message>
     <message>
@@ -669,8 +669,8 @@ Address: %4
     <message>
         <location line="-23"/>
         <location line="+23"/>
-        <source>URI can not be parsed! This can be caused by an invalid Anoncoin address or malformed URI parameters.</source>
-        <translation>URI can not be parsed! This can be caused by an invalid Anoncoin address or malformed URI parameters.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid Gostcoin address or malformed URI parameters.</source>
+        <translation>URI can not be parsed! This can be caused by an invalid Gostcoin address or malformed URI parameters.</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -684,8 +684,8 @@ Address: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+111"/>
-        <source>A fatal error occurred. Anoncoin can no longer continue safely and will quit.</source>
-        <translation>A fatal error occurred. Anoncoin can no longer continue safely and will quit.</translation>
+        <source>A fatal error occurred. Gostcoin can no longer continue safely and will quit.</source>
+        <translation>A fatal error occurred. Gostcoin can no longer continue safely and will quit.</translation>
     </message>
 </context>
 <context>
@@ -750,8 +750,8 @@ Address: %4
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid Anoncoin address.</source>
-        <translation>The entered address &quot;%1&quot; is not a valid Anoncoin address.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Gostcoin address.</source>
+        <translation>The entered address &quot;%1&quot; is not a valid Gostcoin address.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -769,8 +769,8 @@ Address: %4
     <message>
         <location filename="../guiutil.cpp" line="+424"/>
         <location line="+12"/>
-        <source>Anoncoin-Qt</source>
-        <translation>Anoncoin-Qt</translation>
+        <source>Gostcoin-Qt</source>
+        <translation>Gostcoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -832,13 +832,13 @@ Address: %4
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start Anoncoin after logging in to the system.</source>
-        <translation>Automatically start Anoncoin after logging in to the system.</translation>
+        <source>Automatically start Gostcoin after logging in to the system.</source>
+        <translation>Automatically start Gostcoin after logging in to the system.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start Anoncoin on system login</source>
-        <translation>&amp;Start Anoncoin on system login</translation>
+        <source>&amp;Start Gostcoin on system login</source>
+        <translation>&amp;Start Gostcoin on system login</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -857,8 +857,8 @@ Address: %4
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the Anoncoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatically open the Anoncoin client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
+        <source>Automatically open the Gostcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatically open the Gostcoin client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -867,8 +867,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the Anoncoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Connect to the Anoncoin network through a SOCKS proxy (e.g. when connecting through Tor).</translation>
+        <source>Connect to the Gostcoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Connect to the Gostcoin network through a SOCKS proxy (e.g. when connecting through Tor).</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -952,8 +952,8 @@ Address: %4
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting Anoncoin.</source>
-        <translation>The user interface language can be set here. This setting will take effect after restarting Anoncoin.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Gostcoin.</source>
+        <translation>The user interface language can be set here. This setting will take effect after restarting Gostcoin.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -967,8 +967,8 @@ Address: %4
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show Anoncoin addresses in the transaction list or not.</source>
-        <translation>Whether to show Anoncoin addresses in the transaction list or not.</translation>
+        <source>Whether to show Gostcoin addresses in the transaction list or not.</source>
+        <translation>Whether to show Gostcoin addresses in the transaction list or not.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1019,8 +1019,8 @@ Address: %4
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting Anoncoin.</source>
-        <translation>This setting will take effect after restarting Anoncoin.</translation>
+        <source>This setting will take effect after restarting Gostcoin.</source>
+        <translation>This setting will take effect after restarting Gostcoin.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1038,8 +1038,8 @@ Address: %4
     <message>
         <location line="+50"/>
         <location line="+166"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Anoncoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>The displayed information may be out of date. Your wallet automatically synchronizes with the Anoncoin network after a connection is established, but this process has not completed yet.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Gostcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>The displayed information may be out of date. Your wallet automatically synchronizes with the Gostcoin network after a connection is established, but this process has not completed yet.</translation>
     </message>
     <message>
         <location line="-124"/>
@@ -1242,8 +1242,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the Anoncoin-Qt help message to get a list with possible Anoncoin command-line options.</source>
-        <translation>Show the Anoncoin-Qt help message to get a list with possible Anoncoin command-line options.</translation>
+        <source>Show the Gostcoin-Qt help message to get a list with possible Gostcoin command-line options.</source>
+        <translation>Show the Gostcoin-Qt help message to get a list with possible Gostcoin command-line options.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1262,13 +1262,13 @@ Address: %4
     </message>
     <message>
         <location line="-104"/>
-        <source>Anoncoin - Debug window</source>
-        <translation>Anoncoin - Debug window</translation>
+        <source>Gostcoin - Debug window</source>
+        <translation>Gostcoin - Debug window</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>Anoncoin Core</source>
-        <translation>Anoncoin Core</translation>
+        <source>Gostcoin Core</source>
+        <translation>Gostcoin Core</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1277,8 +1277,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the Anoncoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Open the Anoncoin debug log file from the current data directory. This can take a few seconds for large log files.</translation>
+        <source>Open the Gostcoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Open the Gostcoin debug log file from the current data directory. This can take a few seconds for large log files.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1287,8 +1287,8 @@ Address: %4
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-30"/>
-        <source>Welcome to the Anoncoin RPC console.</source>
-        <translation>Welcome to the Anoncoin RPC console.</translation>
+        <source>Welcome to the Gostcoin RPC console.</source>
+        <translation>Welcome to the Gostcoin RPC console.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1471,8 +1471,8 @@ Address: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Anoncoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Enter a Anoncoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a Gostcoin address (e.g. Ger4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
+        <translation>Enter a Gostcoin address (e.g. Ger4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
     </message>
 </context>
 <context>
@@ -1536,8 +1536,8 @@ Address: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this Anoncoin address</source>
-        <translation>Sign the message to prove you own this Anoncoin address</translation>
+        <source>Sign the message to prove you own this Gostcoin address</source>
+        <translation>Sign the message to prove you own this Gostcoin address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1567,13 +1567,13 @@ Address: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>The address the message was signed with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address the message was signed with (e.g. Ger4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
+        <translation>The address the message was signed with (e.g. Ger4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified Anoncoin address</source>
-        <translation>Verify the message to ensure it was signed with the specified Anoncoin address</translation>
+        <source>Verify the message to ensure it was signed with the specified Gostcoin address</source>
+        <translation>Verify the message to ensure it was signed with the specified Gostcoin address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1588,8 +1588,8 @@ Address: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Anoncoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Enter a Anoncoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a Gostcoin address (e.g. Ger4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
+        <translation>Enter a Gostcoin address (e.g. Ger4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1598,8 +1598,8 @@ Address: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter Anoncoin signature</source>
-        <translation>Enter Anoncoin signature</translation>
+        <source>Enter Gostcoin signature</source>
+        <translation>Enter Gostcoin signature</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -1672,8 +1672,8 @@ Address: %4
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+22"/>
-        <source>The Anoncoin developers</source>
-        <translation>The Anoncoin developers</translation>
+        <source>The Gostcoin developers</source>
+        <translation>The Gostcoin developers</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2225,8 +2225,8 @@ Address: %4
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+94"/>
-        <source>Anoncoin version</source>
-        <translation>Anoncoin version</translation>
+        <source>Gostcoin version</source>
+        <translation>Gostcoin version</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -2344,7 +2344,7 @@ rpcpassword=%s
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Anoncoin Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Gostcoin Alert&quot; admin@foo.com
 </source>
         <translation>%s, you must set a rpcpassword in the configuration file:
 %s
@@ -2355,7 +2355,7 @@ rpcpassword=%s
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Anoncoin Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Gostcoin Alert&quot; admin@foo.com
 </translation>
     </message>
     <message>
@@ -2370,8 +2370,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Anoncoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+3"/>
-        <source>Cannot obtain a lock on data directory %s. Anoncoin is probably already running.</source>
-        <translation>Cannot obtain a lock on data directory %s. Anoncoin is probably already running.</translation>
+        <source>Cannot obtain a lock on data directory %s. Gostcoin is probably already running.</source>
+        <translation>Cannot obtain a lock on data directory %s. Gostcoin is probably already running.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2415,8 +2415,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Anoncoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Anoncoin will not work properly.</source>
-        <translation>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Anoncoin will not work properly.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Gostcoin will not work properly.</source>
+        <translation>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Gostcoin will not work properly.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2665,8 +2665,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Anoncoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+5"/>
-        <source>SSL options: (see the Anoncoin Wiki for SSL setup instructions)</source>
-        <translation>SSL options: (see the Anoncoin Wiki for SSL setup instructions)</translation>
+        <source>SSL options: (see the Gostcoin Wiki for SSL setup instructions)</source>
+        <translation>SSL options: (see the Gostcoin Wiki for SSL setup instructions)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2855,13 +2855,13 @@ for example: alertnotify=echo %%s | mail -s &quot;Anoncoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Anoncoin</source>
-        <translation>Error loading wallet.dat: Wallet requires newer version of Anoncoin</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Gostcoin</source>
+        <translation>Error loading wallet.dat: Wallet requires newer version of Gostcoin</translation>
     </message>
     <message>
         <location line="+93"/>
-        <source>Wallet needed to be rewritten: restart Anoncoin to complete</source>
-        <translation>Wallet needed to be rewritten: restart Anoncoin to complete</translation>
+        <source>Wallet needed to be rewritten: restart Gostcoin to complete</source>
+        <translation>Wallet needed to be rewritten: restart Gostcoin to complete</translation>
     </message>
     <message>
         <location line="-95"/>
@@ -2920,8 +2920,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Anoncoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="-25"/>
-        <source>Unable to bind to %s on this computer. Anoncoin is probably already running.</source>
-        <translation>Unable to bind to %s on this computer. Anoncoin is probably already running.</translation>
+        <source>Unable to bind to %s on this computer. Gostcoin is probably already running.</source>
+        <translation>Unable to bind to %s on this computer. Gostcoin is probably already running.</translation>
     </message>
     <message>
         <location line="+64"/>

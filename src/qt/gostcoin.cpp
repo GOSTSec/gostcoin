@@ -2,6 +2,7 @@
  * W.J. van der Laan 2011-2012
  */
 // Copyright 2013 The Anoncoin Developers
+// Copyright 2017 The Gostcoin Developers
 //
 // I2P-patch
 // Copyright (c) 2012-2013 giv
@@ -160,7 +161,7 @@ static std::string Translate(const char* psz)
 static void handleRunawayException(std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
-    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occurred. Anoncoin can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
+    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occurred. Gostcoin can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
     exit(1);
 }
 

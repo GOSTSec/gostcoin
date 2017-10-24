@@ -14,12 +14,12 @@ INCLUDEPATHS= \
  -I"$(CURDIR)"/obj \
  -I"$(DEPSDIR)/include" \
  -I"$(DEPSDIR)/include/db48" \
- -I"../i2psam"
+ -I"i2psam"
 
 LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
  -L"$(DEPSDIR)/lib/db48" \
- -L"../i2psam"
+ -L"i2psam"
 
 USE_UPNP:=1
 USE_IPV6:=1
@@ -55,7 +55,7 @@ LIBS += \
  -lssl \
  -lcrypto \
  -lz \
- -l i2psam
+ -li2psam
 TESTDEFS += -DBOOST_TEST_DYN_LINK
 endif
 
@@ -70,16 +70,12 @@ else
 DEBUGFLAGS = -g
 endif
 
-
-# I2P Support
-DEFS +=  -DUSE_NATIVE_I2P -I"../i2psam"
-LIBS += -L"../i2psam"
-
 # ppc doesn't work because we don't support big-endian
 CFLAGS += -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter \
     $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
 
 OBJS= \
+    i2psam/libi2psam.a \
     leveldb/libleveldb.a \
     obj/alert.o \
     obj/version.o \
@@ -115,12 +111,6 @@ OBJS= \
     obj/leveldb.o \
     obj/txdb.o
 
-ifdef USE_SSE2
-DEFS += -DUSE_SSE2
-OBJS_SSE2= obj/scrypt-sse2.o
-OBJS += $(OBJS_SSE2)
-endif
-
 ifndef USE_UPNP
 	override USE_UPNP = -
 endif
@@ -137,10 +127,10 @@ ifneq (${USE_IPV6}, -)
 	DEFS += -DUSE_IPV6=$(USE_IPV6)
 endif
 
-all: anoncoind
+all: gostcoind
 
-test check: test_anoncoin FORCE
-	./test_anoncoin
+test check: test_gostcoin FORCE
+	./test_gostcoin
 
 #
 # LevelDB support
@@ -150,6 +140,13 @@ DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
 leveldb/libleveldb.a:
 	@echo "Building LevelDB ..." && cd leveldb && $(MAKE) CC=$(CC) CXX=$(CXX) OPT="$(CFLAGS)" libleveldb.a libmemenv.a && cd ..
+
+# I2P Support
+LIBS += -L"i2psam"
+DEFS +=  -DUSE_NATIVE_I2P -I"i2psam"
+
+i2psam/libi2psam.a:
+	@echo "Building libi2psam ..." && cd i2psam && $(MAKE) -f makefile.unix && cd ..
 
 # auto-generated dependencies:
 -include obj/*.P
@@ -174,7 +171,7 @@ obj/%.o: %.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-anoncoind: $(OBJS:obj/%=obj/%)
+gostcoind: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -186,16 +183,17 @@ obj-test/%.o: test/%.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-test_anoncoin: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
+test_gostcoin: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	$(CXX) $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS) $(TESTLIBS)
 
 clean:
-	-rm -f anoncoind test_anoncoin
+	-rm -f gostcoind test_gostcoin
 	-rm -f obj/*.o
 	-rm -f obj-test/*.o
 	-rm -f obj/*.P
 	-rm -f obj-test/*.P
 	-rm -f obj/build.h
+	-cd i2psam && $(MAKE) -f makefile.unix clean || true
 	-cd leveldb && $(MAKE) clean || true
 
 FORCE:

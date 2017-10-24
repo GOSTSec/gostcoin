@@ -443,7 +443,7 @@ QVariant TransactionTableModel::txStatusDecoration(const TransactionRecord *wtx)
         {
         case TransactionStatus::Immature: {
             int total = wtx->status.depth + wtx->status.matures_in;
-            int part = (wtx->status.depth * 4 / total) + 1;
+            int part = (wtx->status.depth * 5 / total) + 1;
             return QIcon(QString(":/icons/transaction_%1").arg(part));
             }
         case TransactionStatus::Mature:

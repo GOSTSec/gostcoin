@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = gostcoin-qt
 VERSION = 0.8.5.10
-INCLUDEPATH += ../src ../src/json ../src/qt ../i2psam
+INCLUDEPATH += ../src ../src/json ../src/qt ../src/i2psam
 QT += core gui network androidextras
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_NO_CXX11_SCOPED_ENUMS
@@ -242,7 +242,7 @@ HEADERS += ../src/qt/bitcoingui.h \
     ../src/json/json_spirit_reader.h \
     ../src/json/json_spirit_error_position.h \
     ../src/json/json_spirit.h \
-    ../i2psam/i2psam.h \
+    ../src/i2psam/i2psam.h \
     ../src/qt/clientmodel.h \
     ../src/qt/guiutil.h \
     ../src/qt/transactionrecord.h \
@@ -361,7 +361,7 @@ SOURCES += ../src/qt/gostcoin.cpp \
     ../src/txdb.cpp \
     ../src/qt/splashscreen.cpp \
     ../src/qt/showi2paddresses.cpp \
-    ../i2psam/i2psam.cpp \
+    ../src/i2psam/i2psam.cpp \
     ../src/qt/setupdarknet.cpp
 
 RESOURCES += ../src/qt/gostcoin.qrc

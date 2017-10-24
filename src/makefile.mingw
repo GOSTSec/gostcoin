@@ -17,7 +17,7 @@
 
 CXX ?= g++
 
-USE_IPV6:=0
+USE_IPV6:=1
 USE_DEBUG:=0
 
 DEPSDIR?=/usr/local
@@ -27,25 +27,25 @@ BOOST_SUFFIX?=-mt
 INCLUDEPATHS= \
  -I"$(CURDIR)" \
  -I"$(DEPSDIR)/include" \
- -I"../i2psam"
+ -I"i2psam"
 
 LIBPATHS= \
  -L"$(CURDIR)/leveldb" \
  -L"$(DEPSDIR)/lib" \
- -L"../i2psam"
+ -L"i2psam"
 
 LIBS= \
- -l leveldb \
- -l memenv \
- -l boost_system$(BOOST_SUFFIX) \
- -l boost_filesystem$(BOOST_SUFFIX) \
- -l boost_program_options$(BOOST_SUFFIX) \
- -l boost_thread$(BOOST_SUFFIX) \
- -l boost_chrono$(BOOST_SUFFIX) \
- -l db_cxx \
- -l ssl \
- -l crypto \
- -l i2psam
+ -lleveldb \
+ -lmemenv \
+ -lboost_system$(BOOST_SUFFIX) \
+ -lboost_filesystem$(BOOST_SUFFIX) \
+ -lboost_program_options$(BOOST_SUFFIX) \
+ -lboost_thread$(BOOST_SUFFIX) \
+ -lboost_chrono$(BOOST_SUFFIX) \
+ -ldb_cxx \
+ -lssl \
+ -lcrypto \
+ -li2psam
 
 DEFS=-D_MT -DWIN32 -D_WINDOWS -DWIN32_LEAN_AND_MEAN -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE
 
@@ -63,13 +63,13 @@ ifneq (${USE_IPV6}, -)
     DEFS += -DUSE_IPV6=$(USE_IPV6)
 endif
 
-LIBS += -l stdc++ -l mingwthrd -l kernel32 -l user32 -l gdi32 -l comdlg32 -l winspool -l winmm -l shell32 -l comctl32 -l ole32 -l oleaut32 -l uuid -l rpcrt4 -l advapi32 -l ws2_32 -l mswsock -l shlwapi -l pthread
+LIBS += -lstdc++ -lmingwthrd -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lws2_32 -lmswsock -lshlwapi -lpthread
 
 # TODO: make the mingw builds smarter about dependencies, like the linux/osx builds are
 HEADERS = $(wildcard *.h)
 
 OBJS= \
-    ../i2psam/libi2psam.a \
+    i2psam/libi2psam.a \
     leveldb/libleveldb.a \
     obj/alert.o \
     obj/version.o \
@@ -128,8 +128,8 @@ leveldb/libleveldb.a:
 # I2P Support
 DEFS += -DUSE_NATIVE_I2P
 
-../i2psam/libi2psam.a:
-	cd ../i2psam && $(MAKE) -f makefile.mingw && cd ../src
+i2psam/libi2psam.a:
+	cd i2psam && $(MAKE) -f makefile.mingw && cd ..
 
 obj/build.h: FORCE
 	/bin/sh ../share/genbuild.sh obj/build.h
@@ -162,6 +162,6 @@ clean:
 	rm -f obj/*
 	rm -f obj-test/*
 	cd leveldb && $(MAKE) TARGET_OS=NATIVE_WINDOWS clean && cd ..
-	cd ../i2psam && $(MAKE) -f makefile.mingw clean && cd ../src
+	cd i2psam && $(MAKE) -f makefile.mingw clean && cd ../src
 
 FORCE:

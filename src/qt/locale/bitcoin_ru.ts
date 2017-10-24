@@ -33,8 +33,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+0"/>
-        <source>The Anoncoin developers</source>
-        <translation>Разработчики Anoncoin</translation>
+        <source>The Gostcoin developers</source>
+        <translation>Разработчики Gostcoin</translation>
     </message>
 </context>
 <context>
