@@ -1368,7 +1368,7 @@ Address: %4
         <location line="-124"/>
         <location line="+155"/>
         <source>IPRestriction</source>
-        <translation>IPRestriction</translation>
+        <translation>ограничения по IP</translation>
     </message>
     <message>
         <location line="+21"/>
