@@ -31,8 +31,7 @@ INCLUDEPATHS= \
 
 LIBPATHS= \
  -L"$(CURDIR)/leveldb" \
- -L"$(DEPSDIR)/lib" \
- -L"i2psam"
+ -L"$(DEPSDIR)/lib"
 
 LIBS= \
  -lleveldb \
@@ -44,16 +43,15 @@ LIBS= \
  -lboost_chrono$(BOOST_SUFFIX) \
  -ldb_cxx \
  -lssl \
- -lcrypto \
- -li2psam
+ -lcrypto
 
-DEFS=-D_MT -DWIN32 -D_WINDOWS -DWIN32_LEAN_AND_MEAN -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE
+DEFS=-D_MT -DWIN32 -D_WINDOWS -DWIN32_LEAN_AND_MEAN -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE -DUSE_NATIVE_I2P
 
 ifneq (${USE_DEBUG}, 0)
 	DEBUGFLAGS=-g
 endif
 
-CFLAGS=-mthreads -O2 -w -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
+CFLAGS=-mthreads -O2 -fPIC -w -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
 # enable: ASLR, DEP and large address aware
 LDFLAGS=-Wl,--dynamicbase -Wl,--nxcompat -Wl,--large-address-aware -Wl,-Bstatic -Wl,-rpath,/usr/local/lib -L/usr/local/lib -static-libgcc -static-libstdc++
 
@@ -65,11 +63,9 @@ endif
 
 LIBS += -lstdc++ -lmingwthrd -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lws2_32 -lmswsock -lshlwapi -lpthread
 
-# TODO: make the mingw builds smarter about dependencies, like the linux/osx builds are
-HEADERS = $(wildcard *.h)
+HEADERS = $(wildcard *.h) $(wildcard i2psam/*.h)
 
 OBJS= \
-    i2psam/libi2psam.a \
     leveldb/libleveldb.a \
     obj/alert.o \
     obj/version.o \
@@ -82,6 +78,7 @@ OBJS= \
     obj/init.o \
     obj/keystore.o \
     obj/i2p.o \
+    obj/i2psam.o \
     obj/main.o \
     obj/net.o \
     obj/protocol.o \
@@ -105,12 +102,6 @@ OBJS= \
     obj/Gost.o \
     obj/resources.o
 
-ifdef USE_SSE2
-DEFS += -DUSE_SSE2
-OBJS_SSE2= obj/scrypt-sse2.o
-OBJS += $(OBJS_SSE2)
-endif
-
 all: gostcoind.exe
 
 test check: test_gostcoin.exe FORCE
@@ -125,22 +116,16 @@ DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
 leveldb/libleveldb.a:
 	cd leveldb && $(MAKE) CC=$(CC) CXX=$(CXX) OPT="$(CFLAGS)" TARGET_OS=NATIVE_WINDOWS libleveldb.a libmemenv.a && cd ..
 
-# I2P Support
-DEFS += -DUSE_NATIVE_I2P
-
-i2psam/libi2psam.a:
-	cd i2psam && $(MAKE) -f makefile.mingw && cd ..
-
 obj/build.h: FORCE
 	/bin/sh ../share/genbuild.sh obj/build.h
 version.cpp: obj/build.h
 DEFS += -DHAVE_BUILD_INFO
 INCLUDEPATHS += -I"obj"
 
-obj/%-sse2.o: %-sse2.cpp
-	$(CXX) -c $(CFLAGS) -msse2 -mstackrealign -o $@ $<
+obj/%.o: %.cpp
+	$(CXX) -c $(CFLAGS) -o $@ $<
 
-obj/%.o: %.cpp $(HEADERS)
+obj/%.o: i2psam/%.cpp
 	$(CXX) -c $(CFLAGS) -o $@ $<
 
 obj/%.o : %.rc
@@ -151,17 +136,16 @@ gostcoind.exe: $(OBJS:obj/%=obj/%)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
 
-obj-test/%.o: test/%.cpp $(HEADERS)
+obj-test/%.o: test/%.cpp
 	$(CXX) -c $(TESTDEFS) $(CFLAGS) -o $@ $<
 
 test_gostcoin.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework$(BOOST_SUFFIX) $(LIBS)
 
 clean:
-	rm -f gostcoind.exe test_gostcoin.exe
-	rm -f obj/*
-	rm -f obj-test/*
+	$(RM) -f gostcoind.exe test_gostcoin.exe
+	$(RM) -f obj/*
+	$(RM) -f obj-test/*
 	cd leveldb && $(MAKE) TARGET_OS=NATIVE_WINDOWS clean && cd ..
-	cd i2psam && $(MAKE) -f makefile.mingw clean && cd ..
 
 FORCE:

@@ -9,9 +9,9 @@ USE_DEBUG:=0
 
 LINK:=$(CXX)
 
-DEFS=-DBOOST_SPIRIT_THREADSAFE -DBOOST_NO_CXX11_SCOPED_ENUMS -D_FILE_OFFSET_BITS=64
+DEFS=-DBOOST_SPIRIT_THREADSAFE -DBOOST_NO_CXX11_SCOPED_ENUMS -D_FILE_OFFSET_BITS=64 -DUSE_NATIVE_I2P
 
-DEFS += $(addprefix -I,$(CURDIR) $(CURDIR)/obj $(BOOST_INCLUDE_PATH) $(BDB_INCLUDE_PATH) $(OPENSSL_INCLUDE_PATH))
+DEFS += $(addprefix -I,$(CURDIR) $(CURDIR)/obj $(CURDIR)/i2psam $(BOOST_INCLUDE_PATH) $(BDB_INCLUDE_PATH) $(OPENSSL_INCLUDE_PATH))
 LIBS = $(addprefix -L,$(BOOST_LIB_PATH) $(BDB_LIB_PATH) $(OPENSSL_LIB_PATH))
 
 TESTDEFS = -DTEST_DATA_DIR=$(abspath test/data)
@@ -50,8 +50,7 @@ LIBS += \
 	-Wl,-B$(LMODE2) \
 	-lz \
 	-ldl \
-	-lpthread \
-	-li2psam
+	-lpthread
 
 # Hardening
 # Make some classes of vulnerabilities unexploitable in case one is discovered.
@@ -100,7 +99,6 @@ xCXXFLAGS = -std=c++11 -O2 -pthread -Wall -Wextra -Wformat -Wformat-security -Wn
 xLDFLAGS=$(LDHARDENING) $(LDFLAGS)
 
 OBJS = \
-	i2psam/libi2psam.a \
 	leveldb/libleveldb.a \
 	obj/alert.o \
 	obj/version.o \
@@ -113,6 +111,7 @@ OBJS = \
 	obj/init.o \
 	obj/keystore.o \
 	obj/i2p.o \
+	obj/i2psam.o \
 	obj/Gost.o \
 	obj/main.o \
 	obj/net.o \
@@ -151,13 +150,6 @@ DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
 leveldb/libleveldb.a:
 	@echo "Building LevelDB ..." && cd leveldb && $(MAKE) CC=$(CC) CXX=$(CXX) OPT="$(xCXXFLAGS)" libleveldb.a libmemenv.a && cd ..
 
-# I2P Support
-LIBS += -L"i2psam"
-DEFS +=  -DUSE_NATIVE_I2P -I"i2psam"
-
-i2psam/libi2psam.a:
-	@echo "Building libi2psam ..." && cd i2psam && $(MAKE) -f makefile.unix && cd ..
-
 # auto-generated dependencies:
 -include obj/*.P
 -include obj-test/*.P
@@ -169,14 +161,14 @@ version.cpp: obj/build.h
 
 DEFS += -DHAVE_BUILD_INFO
 
-obj/%-sse2.o: %-sse2.cpp
-	$(CXX) -c $(xCXXFLAGS) -msse2 -MMD -MF $(@:%.o=%.d) -o $@ $<
+obj/%.o: %.cpp
+	$(CXX) -c $(xCXXFLAGS) -MMD -MF $(@:%.o=%.d) -o $@ $<
 	@cp $(@:%.o=%.d) $(@:%.o=%.P); \
 		sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
 		-e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 		rm -f $(@:%.o=%.d)
 
-obj/%.o: %.cpp
+obj/%.o: i2psam/%.cpp
 	$(CXX) -c $(xCXXFLAGS) -MMD -MF $(@:%.o=%.d) -o $@ $<
 	@cp $(@:%.o=%.d) $(@:%.o=%.P); \
 		sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
@@ -199,13 +191,12 @@ test_gostcoin: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	$(LINK) $(xCXXFLAGS) -o $@ $(LIBPATHS) $^ $(TESTLIBS) $(xLDFLAGS) $(LIBS)
 
 clean:
-	-rm -f gostcoind test_gostcoin
-	-rm -f obj/*.o
-	-rm -f obj-test/*.o
-	-rm -f obj/*.P
-	-rm -f obj-test/*.P
-	-rm -f obj/build.h
-	-cd i2psam && $(MAKE) -f makefile.unix clean || true
+	$(RM) -f gostcoind test_gostcoin
+	$(RM) -f obj/*.o
+	$(RM) -f obj-test/*.o
+	$(RM) -f obj/*.P
+	$(RM) -f obj-test/*.P
+	$(RM) -f obj/build.h
 	-cd leveldb && $(MAKE) clean || true
 
 FORCE:

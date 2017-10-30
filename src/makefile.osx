@@ -19,7 +19,6 @@ INCLUDEPATHS= \
 LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
  -L"$(DEPSDIR)/lib/db48" \
- -L"i2psam"
 
 USE_UPNP:=1
 USE_IPV6:=1
@@ -54,12 +53,11 @@ LIBS += \
  -lboost_chrono-mt \
  -lssl \
  -lcrypto \
- -lz \
- -li2psam
+ -lz
 TESTDEFS += -DBOOST_TEST_DYN_LINK
 endif
 
-DEFS=-DMAC_OSX -DMSG_NOSIGNAL=0 -DBOOST_SPIRIT_THREADSAFE
+DEFS=-DMAC_OSX -DMSG_NOSIGNAL=0 -DBOOST_SPIRIT_THREADSAFE -DUSE_NATIVE_I2P
 
 ifdef RELEASE
 # Compile for maximum compatibility and smallest size.
@@ -75,7 +73,6 @@ CFLAGS += -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter \
     $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
 
 OBJS= \
-    i2psam/libi2psam.a \
     leveldb/libleveldb.a \
     obj/alert.o \
     obj/version.o \
@@ -89,6 +86,7 @@ OBJS= \
     obj/keystore.o \
     obj/irc.o \
     obj/i2p.o \
+    obj/i2psam.o \
     obj/main.o \
     obj/net.o \
     obj/protocol.o \
@@ -141,13 +139,6 @@ DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
 leveldb/libleveldb.a:
 	@echo "Building LevelDB ..." && cd leveldb && $(MAKE) CC=$(CC) CXX=$(CXX) OPT="$(CFLAGS)" libleveldb.a libmemenv.a && cd ..
 
-# I2P Support
-LIBS += -L"i2psam"
-DEFS +=  -DUSE_NATIVE_I2P -I"i2psam"
-
-i2psam/libi2psam.a:
-	@echo "Building libi2psam ..." && cd i2psam && $(MAKE) -f makefile.unix && cd ..
-
 # auto-generated dependencies:
 -include obj/*.P
 -include obj-test/*.P
@@ -157,14 +148,14 @@ obj/build.h: FORCE
 version.cpp: obj/build.h
 DEFS += -DHAVE_BUILD_INFO
 
-obj/%-sse2.o: %-sse2.cpp
-	$(CXX) -c $(CFLAGS) -msse2 -MMD -MF $(@:%.o=%.d) -o $@ $<
+obj/%.o: %.cpp
+	$(CXX) -c $(CFLAGS) -MMD -MF $(@:%.o=%.d) -o $@ $<
 	@cp $(@:%.o=%.d) $(@:%.o=%.P); \
 	  sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-obj/%.o: %.cpp
+obj/%.o: i2psam/%.cpp
 	$(CXX) -c $(CFLAGS) -MMD -MF $(@:%.o=%.d) -o $@ $<
 	@cp $(@:%.o=%.d) $(@:%.o=%.P); \
 	  sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
@@ -187,13 +178,12 @@ test_gostcoin: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	$(CXX) $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS) $(TESTLIBS)
 
 clean:
-	-rm -f gostcoind test_gostcoin
-	-rm -f obj/*.o
-	-rm -f obj-test/*.o
-	-rm -f obj/*.P
-	-rm -f obj-test/*.P
-	-rm -f obj/build.h
-	-cd i2psam && $(MAKE) -f makefile.unix clean || true
+	$(RM) -f gostcoind test_gostcoin
+	$(RM) -f obj/*.o
+	$(RM) -f obj-test/*.o
+	$(RM) -f obj/*.P
+	$(RM) -f obj-test/*.P
+	$(RM) -f obj/build.h
 	-cd leveldb && $(MAKE) clean || true
 
 FORCE:
