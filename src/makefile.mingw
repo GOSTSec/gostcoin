@@ -162,6 +162,6 @@ clean:
 	rm -f obj/*
 	rm -f obj-test/*
 	cd leveldb && $(MAKE) TARGET_OS=NATIVE_WINDOWS clean && cd ..
-	cd i2psam && $(MAKE) -f makefile.mingw clean && cd ../src
+	cd i2psam && $(MAKE) -f makefile.mingw clean && cd ..
 
 FORCE:
