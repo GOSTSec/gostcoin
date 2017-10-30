@@ -344,7 +344,7 @@ std::string HelpMessage()
         "  -connect=<ip>          " + _("Connect only to the specified node(s)") + "\n" +
         "  -seednode=<ip>         " + _("Connect to a node to retrieve peer addresses, and disconnect") + "\n" +
         "  -externalip=<ip>       " + _("Specify your own public address") + "\n" +
-        "  -onlynet=<net>         " + _("Only connect to nodes in network <net> (IPv4, IPv6 or I2P") + "\n" +
+        "  -onlynet=<net>         " + _("Only connect to nodes in network <net> (IPv4, IPv6 or I2P)") + "\n" +
         "  -discover              " + _("Discover own IP address (default: 1 when listening and no -externalip)") + "\n" +
         "  -checkpoints           " + _("Only accept block chain matching built-in checkpoints (default: 1)") + "\n" +
         "  -listen                " + _("Accept connections from outside (default: 1 if no -proxy or -connect)") + "\n" +
@@ -406,13 +406,13 @@ std::string HelpMessage()
         "  -rpcsslciphers=<ciphers>                 " + _("Acceptable ciphers (default: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)") + "\n"+
 
         "\n"+ _("I2P Options:") + "\n" +
-        "  -generatei2pdestination                " + _("Generate an I2P destination, print it and exit.")+ "\n" +
-        "  -i2p=1                        " + _("Enable I2P.") + "\n" +
-        "  -onlynet=i2p                       " + _("Enable I2P only mode.") + "\n" +
-        "  -i2psessionname=<session name>         " + _("Name of an I2P session. If it is not specified, value will be \"Gostcoin-client\"") + "\n" +
-        "  -samhost=<ip or host name>           " + _("Address of the SAM bridge host. If it is not specified, value will be \"127.0.0.1\".") + "\n" +
-        "  -samport=<port>                    " + _("Port number of the SAM bridge host. If it is not specified, value will be \"7656\".") + "\n" +
-        "  -mydestination=<pub+priv i2p-keys>    " + _("Your full destination (public+private keys). If it is not specified, the client will geneterate a random destination for you. See below (Starting wallet with a permanent i2p-address) more details about this option.") +
+        "  -generatei2pdestination " + _("Generate an I2P destination, print it and exit")+ "\n" +
+        "  -i2p                    " + _("Enable I2P (default: 1)") + "\n" +
+        "  -onlynet=i2p            " + _("Enable I2P-only mode") + "\n" +
+        "  -i2psessionname=<name>  " + _("Set I2P session name to <name> (default: Gostcoin-client)") + "\n" +
+        "  -samhost=<ip>           " + _("Set host where SAM bridge is listening (default: 127.0.0.1)") + "\n" +
+        "  -samport=<port>         " + _("Set port number where SAM bridge is listening (default: 7656)") + "\n" +
+        "  -mydestination=<keys>   " + _("Your full destination (public+private keys) (if it is not specified, the client will geneterate a random destination for you)") +
         "\n";
 
     return strUsage;

@@ -16,17 +16,13 @@
     <message>
         <location line="+57"/>
         <source>
-This is experimental software.
-
-Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
-This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/) and cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.</source>
+&lt;p&gt;This is experimental software.&lt;/p&gt;
+&lt;p&gt;Distributed under the MIT/X11 software license, see the accompanying file COPYING or &lt;a href="http://www.opensource.org/licenses/mit-license.php"&gt;http://www.opensource.org/licenses/mit-license.php&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (&lt;a href="http://www.openssl.org/"&gt;http://www.openssl.org/&lt;/a&gt;) and cryptographic software written by Eric Young (eay@cryptsoft.com).&lt;/p&gt;</source>
         <translation>
-Это экспериментальная программа.
-
-Распространяется на правах лицензии MIT/X11, см. файл COPYING или http://www.opensource.org/licenses/mit-license.php.
-
-Этот продукт включает ПО, разработанное OpenSSL Project для использования в OpenSSL Toolkit (http://www.openssl.org/) и криптографическое ПО, написанное Eric Young (eay@cryptsoft.com) и ПО для работы с UPnP, написанное Thomas Bernard.</translation>
+&lt;p&gt;Это экспериментальная программа.&lt;/p&gt;
+&lt;p&gt;Распространяется на правах лицензии MIT/X11, см. файл COPYING или &lt;a href="http://www.opensource.org/licenses/mit-license.php"&gt;http://www.opensource.org/licenses/mit-license.php&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Этот продукт включает ПО, разработанное OpenSSL Project для использования в OpenSSL Toolkit (&lt;a href="http://www.openssl.org/"&gt;http://www.openssl.org/&lt;/a&gt;) и криптографическое ПО, написанное Eric Young (eay@cryptsoft.com).&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="+14"/>
@@ -1445,6 +1441,57 @@ Address: %4
     </message>
 </context>
 
+<!-- Show I2P address window -->
+<context>
+    <name>ShowI2PAddresses</name>
+    <message>
+        <location filename="../forms/showi2paddresses.ui" line="+40"/>
+        <source>Dialog</source>
+        <translation>Диалог</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>If you want to use a permanent I2P-address you have to set a &apos;mydestination&apos; option in the configuration file:</source>
+        <translation>Если вы хотите использовать постоянный I2P адрес, добавьте параметр &apos;mydestination&apos; в конфигурационный файл:</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Ready to save parameter (If you want to use this address save this text in the configuration file and keep it secret):</source>
+        <translation>Сохраните этот параметр (если вы хотите использовать данный адрес, сохраните этот текст в конфигурационный файл и держите его в сектрете):</translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Address (you can publish it):</source>
+        <translation>Адрес (вы можете публиковать его):</translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Short base32-address:</source>
+        <translation>Короткий base32 адрес:</translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Copy &quot;mydestination&quot; parameter
+to the clipboard</source>
+        <translation>Скопировать параметр &quot;mydestination&quot;
+в буфер обмена</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Copy public address
+to the clipboard</source>
+        <translation>Скопировать публичный адрес
+в буфер обмена</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Copy b32-address
+to the clipboard</source>
+        <translation>Скопировать b32 адрес
+в буфер обмена</translation>
+    </message>
+</context>
+
 <!-- Overview page -->
 <context>
     <name>OverviewPage</name>
@@ -2856,8 +2903,8 @@ rpcpassword=%s
     </message>
     <message>
         <location line="+3"/>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 9332 or testnet: 19332)</source>
-        <translation>Прослушивать подключения JSON-RPC на &lt;порту&gt; (по умолчанию: 9332 или для testnet: 19332)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 9376 or testnet: 19376)</source>
+        <translation>Прослушивать подключения JSON-RPC на &lt;порту&gt; (по умолчанию: 9376 или для testnet: 19376)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2945,6 +2992,11 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location line="+1"/>
+        <source>Allow peers to set bloom filters (default: 1)</source>
+        <translation>Разрешить пирам устанавливать bloom-фильтры (по умолчанию: 1)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Attempt to recover private keys from a corrupt wallet.dat</source>
         <translation>Попытаться восстановить приватные ключи из повреждённого wallet.dat</translation>
     </message>
@@ -3012,6 +3064,16 @@ If the file does not exist, create it with owner-readable-only file permissions.
         <location line="+1"/>
         <source>Done loading</source>
         <translation>Загрузка завершена</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Enable I2P (default: 1)</source>
+        <translation>Включить работу в I2P (по умолчанию: 1)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Enable I2P-only mode</source>
+        <translation>Включить режим работы "только в I2P"</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3135,6 +3197,11 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location line="+1"/>
+        <source>Generate an I2P destination, print it and exit</source>
+        <translation>Сгенерировать I2P адрес, напечатать его и выйти</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Generate coins (default: 0)</source>
         <translation>Включить добычу монет (по умолчанию: 0)</translation>
     </message>
@@ -3157,6 +3224,11 @@ If the file does not exist, create it with owner-readable-only file permissions.
         <location line="+1"/>
         <source>How thorough the block verification is (0-4, default: 3)</source>
         <translation>Насколько тщательно проверять блок (0-4, по умолчанию: 3)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>I2P Options:</source>
+        <translation>Настройки I2P:</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3205,8 +3277,8 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location line="+1"/>
-        <source>Listen for connections on &lt;port&gt; (default: 9333 or testnet: 19333)</source>
-        <translation>Принимать входящие подключения на &lt;port&gt; (по умолчанию: 9333 или 19333 в тестовой сети)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 9377 or testnet: 19377)</source>
+        <translation>Принимать входящие подключения на &lt;port&gt; (по умолчанию: 9377 или 19377 в тестовой сети)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3230,8 +3302,8 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location line="+1"/>
-        <source>Maintain at most &lt;n&gt; connections to peers (default: 125)</source>
-        <translation>Поддерживать не более &lt;n&gt; подключений к узлам (по умолчанию: 125)</translation>
+        <source>Maintain at most &lt;n&gt; connections to peers (default: 200)</source>
+        <translation>Поддерживать не более &lt;n&gt; подключений к узлам (по умолчанию: 200)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3245,6 +3317,11 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location line="+1"/>
+        <source>Name of an I2P session (default: Gostcoin-client)</source>
+        <translation>Имя I2P сессии (по умолчанию: Gostcoin-client)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Not enough file descriptors available.</source>
         <translation>Недостаточно файловых дескрипторов.</translation>
     </message>
@@ -3255,8 +3332,8 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location line="+1"/>
-        <source>Only connect to nodes in network &lt;net&gt; (IPv4, IPv6 or Tor)</source>
-        <translation>Подключаться только к узлам из сети &lt;net&gt; (IPv4, IPv6 или Tor)</translation>
+        <source>Only connect to nodes in network &lt;net&gt; (IPv4, IPv6 or I2P)</source>
+        <translation>Подключаться только к узлам из сети &lt;net&gt; (IPv4, IPv6 или I2P)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3280,8 +3357,8 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location line="+1"/>
-        <source>Prepend debug output with timestamp</source>
-        <translation>Дописывать отметки времени к отладочному выводу</translation>
+        <source>Prepend debug output with timestamp (default: 1)</source>
+        <translation>Дописывать отметки времени к отладочному выводу (по умолчанию: 1)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3360,6 +3437,16 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location line="+1"/>
+        <source>Set host where SAM bridge is listening (default: 127.0.0.1)</source>
+        <translation>Указать адрес, на котором слушает SAM мост (по умолчанию: 127.0.0.1)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Set I2P session name to &lt;name&gt; (default: Gostcoin-client)</source>
+        <translation>Установить имя I2P сессии на &lt;name&gt; (по умолчанию: Gostcoin-client)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Set key pool size to &lt;n&gt; (default: 100)</source>
         <translation>Установить размер запаса ключей в &lt;n&gt; (по умолчанию: 100)</translation>
     </message>
@@ -3372,6 +3459,11 @@ If the file does not exist, create it with owner-readable-only file permissions.
         <location line="+1"/>
         <source>Set minimum block size in bytes (default: 0)</source>
         <translation>Минимальный размер блока в байтах (по умолчанию: 0)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Set port number where SAM bridge is listening (default: 7656)</source>
+        <translation>Указать порт, на котором слушает SAM мост (по умолчанию: 7656)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3535,8 +3627,18 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location line="+1"/>
+        <source>When creating transactions, ignore inputs with value less than this (default: 0.0001)</source>
+        <translation>Когда создается транзакция, игнорировать ввод с значением ниже указанного (по умолчанию: 0.0001)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>You need to rebuild the databases using -reindex to change -txindex</source>
         <translation>Вам необходимо пересобрать базы данных с помощью -reindex, чтобы изменить -txindex</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Your full destination (public+private keys) (if it is not specified, the client will geneterate a random destination for you)</source>
+        <translation>Ваш полный ключ I2P назначения (публичный+приватный ключи) (если данный параметр не указан, то будут сгенерированы случайные ключи)</translation>
     </message>
 </context>
 </TS>
