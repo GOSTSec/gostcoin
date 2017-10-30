@@ -300,7 +300,7 @@ void OptionsDialog::ShowCurrentI2PAddress()
         const QString b32 = this->model->getB32Address(pub);
         const QString configFile = QString::fromStdString(GetConfigFile().string());
 
-        ShowI2PAddresses i2pCurrDialog("Your current I2P-address", pub, priv, b32, configFile, this);
+        ShowI2PAddresses i2pCurrDialog(tr("Your current I2P-address"), pub, priv, b32, configFile, this);
         i2pCurrDialog.exec();
     }
 }
@@ -314,7 +314,7 @@ void OptionsDialog::GenerateNewI2PAddress()
         const QString b32 = this->model->getB32Address(pub);
         const QString configFile = QString::fromStdString(GetConfigFile().string());
 
-        ShowI2PAddresses i2pCurrDialog("Generated I2P address", pub, priv, b32, configFile, this);
+        ShowI2PAddresses i2pCurrDialog(tr("Generated I2P address"), pub, priv, b32, configFile, this);
         i2pCurrDialog.exec();
     }
 }

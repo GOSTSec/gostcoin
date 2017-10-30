@@ -395,13 +395,14 @@ QString CoinControlDialog::getPriorityLabel(double dPriority)
         if      (CTransaction::AllowFree(dPriority / 10000))  return tr("highest");
         else if (CTransaction::AllowFree(dPriority / 1000))   return tr("high");
         else if (CTransaction::AllowFree(dPriority / 100))    return tr("medium-high");
-        else                                    return tr("medium");
+        else                                                  return tr("medium");
     }
     else
     {
         if      (CTransaction::AllowFree(dPriority * 100))    return tr("low-medium");
-        else if (CTransaction::AllowFree(dPriority * 10000))  return tr("low");
-        else                                    return tr("lowest");
+        else if (CTransaction::AllowFree(dPriority * 1000))   return tr("low");
+        else if (CTransaction::AllowFree(dPriority * 10000))  return tr("lower");
+        else                                                  return tr("lowest");
     }
 }
 
@@ -413,7 +414,7 @@ void CoinControlDialog::updateLabelLocked()
     if (vOutpts.size() > 0)
     {
        ui->labelLocked->setText(tr("(%1 locked)").arg(vOutpts.size()));
-       ui->labelLocked->setVisible(true); 
+       ui->labelLocked->setVisible(true);
     }
     else ui->labelLocked->setVisible(false);
 }
@@ -600,10 +601,10 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     l8->setStyleSheet((nChange > 0 && nChange < CENT) ? "color:red;" : ""); // Change < 0.01BTC
         
     // tool tips
-    l5->setToolTip(tr("This label turns red, if the transaction size is bigger than 10000 bytes.\n\n This means a fee of at least %1 per kb is required.\n\n Can vary +/- 1 Byte per input.").arg(BitcoinUnits::formatWithUnit(nDisplayUnit, CTransaction::nMinTxFee)));
-    l6->setToolTip(tr("Transactions with higher priority get more likely into a block.\n\nThis label turns red, if the priority is smaller than \"medium\".\n\n This means a fee of at least %1 per kb is required.").arg(BitcoinUnits::formatWithUnit(nDisplayUnit, CTransaction::nMinTxFee)));
-    l7->setToolTip(tr("This label turns red, if any recipient receives an amount smaller than %1.\n\n This means a fee of at least %2 is required. \n\n Amounts below 0.546 times the minimum relay fee are shown as DUST.").arg(BitcoinUnits::formatWithUnit(nDisplayUnit, CENT)).arg(BitcoinUnits::formatWithUnit(nDisplayUnit, CTransaction::nMinTxFee)));
-    l8->setToolTip(tr("This label turns red, if the change is smaller than %1.\n\n This means a fee of at least %2 is required.").arg(BitcoinUnits::formatWithUnit(nDisplayUnit, CENT)).arg(BitcoinUnits::formatWithUnit(nDisplayUnit, CTransaction::nMinTxFee)));
+    l5->setToolTip(tr("This label turns red, if the transaction size is bigger than 10000 bytes.\n\nThis means a fee of at least %1 per kb is required.\n\nCan vary +/- 1 Byte per input.").arg(BitcoinUnits::formatWithUnit(nDisplayUnit, CTransaction::nMinTxFee)));
+    l6->setToolTip(tr("Transactions with higher priority get more likely into a block.\n\nThis label turns red, if the priority is smaller than \"medium\".\n\nThis means a fee of at least %1 per kb is required.").arg(BitcoinUnits::formatWithUnit(nDisplayUnit, CTransaction::nMinTxFee)));
+    l7->setToolTip(tr("This label turns red, if any recipient receives an amount smaller than %1.\n\nThis means a fee of at least %2 is required. \n\nAmounts below 0.546 times the minimum relay fee are shown as DUST.").arg(BitcoinUnits::formatWithUnit(nDisplayUnit, CENT)).arg(BitcoinUnits::formatWithUnit(nDisplayUnit, CTransaction::nMinTxFee)));
+    l8->setToolTip(tr("This label turns red, if the change is smaller than %1.\n\nThis means a fee of at least %2 is required.").arg(BitcoinUnits::formatWithUnit(nDisplayUnit, CENT)).arg(BitcoinUnits::formatWithUnit(nDisplayUnit, CTransaction::nMinTxFee)));
     dialog->findChild<QLabel *>("labelCoinControlBytesText")    ->setToolTip(l5->toolTip());
     dialog->findChild<QLabel *>("labelCoinControlPriorityText") ->setToolTip(l6->toolTip());
     dialog->findChild<QLabel *>("labelCoinControlLowOutputText")->setToolTip(l7->toolTip());

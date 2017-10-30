@@ -285,13 +285,13 @@ QString TransactionTableModel::formatTxStatus(const TransactionRecord *wtx) cons
         status = tr("Open until %1").arg(GUIUtil::dateTimeStr(wtx->status.open_for));
         break;
     case TransactionStatus::Offline:
-        status = tr("Offline (%1 confirmations)").arg(wtx->status.depth);
+        status = tr("Offline (%n confirmations)","",wtx->status.depth);
         break;
     case TransactionStatus::Unconfirmed:
         status = tr("Unconfirmed (%1 of %2 confirmations)").arg(wtx->status.depth).arg(TransactionRecord::NumConfirmations);
         break;
     case TransactionStatus::HaveConfirmations:
-        status = tr("Confirmed (%1 confirmations)").arg(wtx->status.depth);
+        status = tr("Confirmed (%n confirmations)","",wtx->status.depth);
         break;
     }
     if(wtx->type == TransactionRecord::Generated)

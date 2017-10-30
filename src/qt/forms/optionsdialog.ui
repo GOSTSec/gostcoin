@@ -281,7 +281,7 @@
        <item>
         <widget class="QCheckBox" name="silentMode">
          <property name="toolTip">
-          <string>Suppress notifications and tray animations</string>
+          <string>Suppress notifications and tray animations.</string>
          </property>
          <property name="text">
           <string>Silent mode</string>
@@ -442,7 +442,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>127.0.0.1</string>
+            <string notr="true">127.0.0.1</string>
            </property>
           </widget>
          </item>
@@ -488,7 +488,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Gostcoin-client</string>
+            <string notr="true">Gostcoin-client</string>
            </property>
           </widget>
          </item>
@@ -509,7 +509,7 @@
                 <item>
                  <widget class="QLabel" name="labelInboundQuantity">
                   <property name="text">
-                   <string>quantity </string>
+                   <string>quantity</string>
                   </property>
                  </widget>
                 </item>
@@ -533,7 +533,7 @@
                 <item>
                  <widget class="QLabel" name="labelInboundLength">
                   <property name="text">
-                   <string>length </string>
+                   <string>length</string>
                   </property>
                  </widget>
                 </item>

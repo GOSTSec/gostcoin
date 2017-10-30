@@ -73,7 +73,7 @@
      <item>
       <widget class="QValidatedLineEdit" name="payTo">
        <property name="toolTip">
-        <string>The address to send the payment to (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</string>
+        <string>The address to send the payment to (e.g. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</string>
        </property>
        <property name="maxLength">
         <number>34</number>
@@ -93,7 +93,7 @@
          <normaloff>:/icons/address-book</normaloff>:/icons/address-book</iconset>
        </property>
        <property name="shortcut">
-        <string>Alt+A</string>
+        <string notr="true">Alt+A</string>
        </property>
       </widget>
      </item>
@@ -110,7 +110,7 @@
          <normaloff>:/icons/editpaste</normaloff>:/icons/editpaste</iconset>
        </property>
        <property name="shortcut">
-        <string>Alt+P</string>
+        <string notr="true">Alt+P</string>
        </property>
       </widget>
      </item>

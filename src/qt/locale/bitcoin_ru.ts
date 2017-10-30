@@ -1,4 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.0">
+
+<!-- About Dialog -->
 <context>
     <name>AboutDialog</name>
     <message>
@@ -22,7 +24,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>
 Это экспериментальная программа.
 
-Распространяется на правах лицензии MIT/X11, см. файл license.txt или http://www.opensource.org/licenses/mit-license.php.
+Распространяется на правах лицензии MIT/X11, см. файл COPYING или http://www.opensource.org/licenses/mit-license.php.
 
 Этот продукт включает ПО, разработанное OpenSSL Project для использования в OpenSSL Toolkit (http://www.openssl.org/) и криптографическое ПО, написанное Eric Young (eay@cryptsoft.com) и ПО для работы с UPnP, написанное Thomas Bernard.</translation>
     </message>
@@ -33,16 +35,38 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+0"/>
+        <source>The Bitcoin developers</source>
+        <translation>Разработчики Bitcoin</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>The Litecoin developers</source>
+        <translation>Разработчики Litecoin</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>The Anoncoin developers</source>
+        <translation>Разработчики Anoncoin</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>The i2pd developers</source>
+        <translation>Разработчики I2Pd</translation>
+    </message>
+    <message>
+        <location line="+0"/>
         <source>The Gostcoin developers</source>
         <translation>Разработчики Gostcoin</translation>
     </message>
 </context>
+
+<!-- Address Book -->
 <context>
     <name>AddressBookPage</name>
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
         <source>Address Book</source>
-        <translation>&amp;Адресная книга</translation>
+        <translation>Адресная книга</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -55,22 +79,17 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Создать новый адрес</translation>
     </message>
     <message>
-        <location line="+14"/>
-        <source>Copy the currently selected address to the system clipboard</source>
-        <translation>Копировать текущий выделенный адрес в буфер обмена</translation>
-    </message>
-    <message>
-        <location line="-11"/>
+        <location line="+3"/>
         <source>&amp;New Address</source>
         <translation>&amp;Новый адрес</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="+63"/>
-        <source>These are your Gostcoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Это Ваши адреса для получения платежей. Вы можете дать разные адреса отправителям, чтобы отслеживать, кто именно вам платит.</translation>
+        <location line="+11"/>
+        <source>Copy the currently selected address to the system clipboard</source>
+        <translation>Копировать текущий выделенный адрес в буфер обмена</translation>
     </message>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="+14"/>
+        <location line="+3"/>
         <source>&amp;Copy Address</source>
         <translation>&amp;Копировать адрес</translation>
     </message>
@@ -90,22 +109,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>&amp;Подписать сообщение</translation>
     </message>
     <message>
-        <location line="+25"/>
-        <source>Delete the currently selected address from the list</source>
-        <translation>Удалить выбранный адрес из списка</translation>
-    </message>
-    <message>
-        <location line="+27"/>
-        <source>Export the data in the current tab to a file</source>
-        <translation>Экспортировать данные из вкладки в файл</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>&amp;Export</source>
-        <translation>&amp;Экспорт</translation>
-    </message>
-    <message>
-        <location line="-44"/>
+        <location line="+11"/>
         <source>Verify a message to ensure it was signed with a specified Gostcoin address</source>
         <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом ГОСТкойн</translation>
     </message>
@@ -115,17 +119,37 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>&amp;Проверить сообщение</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+11"/>
+        <source>Delete the currently selected address from the list</source>
+        <translation>Удалить выбранный адрес из списка</translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>&amp;Delete</source>
         <translation>&amp;Удалить</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="-5"/>
+        <location line="+24"/>
+        <source>Export the data in the current tab to a file</source>
+        <translation>Экспортировать данные из вкладки в файл</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;Export</source>
+        <translation>&amp;Экспорт</translation>
+    </message>
+    <message>
+        <location filename="../addressbookpage.cpp" line="+58"/>
         <source>These are your Gostcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Ваши адреса для получения средств. Совет: проверьте сумму и адрес назначения перед переводом.</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+5"/>
+        <source>These are your Gostcoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Это Ваши адреса для получения платежей. Вы можете дать разные адреса отправителям, чтобы отслеживать, кто именно вам платит.</translation>
+    </message>
+    <message>
+        <location line="+8"/>
         <source>Copy &amp;Label</source>
         <translation>Копировать &amp;метку</translation>
     </message>
@@ -140,7 +164,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>&amp;Отправить монеты</translation>
     </message>
     <message>
-        <location line="+260"/>
+        <location line="+265"/>
         <source>Export Address Book Data</source>
         <translation>Экспортировать адресную книгу</translation>
     </message>
@@ -178,6 +202,8 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>[нет метки]</translation>
     </message>
 </context>
+
+<!-- Passphrase dialog -->
 <context>
     <name>AskPassphraseDialog</name>
     <message>
@@ -203,7 +229,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../askpassphrasedialog.cpp" line="+33"/>
         <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;10 or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation>Введите новый пароль для бумажника. &lt;br/&gt; Пожалуйста, используйте фразы из &lt;b&gt;10 или более случайных символов,&lt;/b&gt; или &lt;b&gt;восьми и более слов.&lt;/b&gt;</translation>
+        <translation>Введите новый пароль для бумажника. &lt;br/&gt; Пожалуйста, используйте фразы из &lt;b&gt;10 или более случайных символов,&lt;/b&gt; или &lt;b&gt;восьми и более слов&lt;/b&gt;.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -248,7 +274,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+1"/>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR LITECOINS&lt;/b&gt;!</source>
-        <translation>Внимание: если вы зашифруете бумажник и потеряете пароль, вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ ВАШИ LITECOIN&lt;/b&gt;!</translation>
+        <translation>Внимание: если вы зашифруете бумажник и потеряете пароль, вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ ВАШИ ГОСТКОИНЫ&lt;/b&gt;!</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -256,29 +282,22 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Вы уверены, что хотите зашифровать ваш бумажник?</translation>
     </message>
     <message>
-        <location line="+15"/>
-        <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
-        <translation>ВАЖНО: все предыдущие резервные копии вашего кошелька должны быть заменены новым зашифрованным файлом. В целях безопасности предыдущие резервные копии нешифрованного кошелька станут бесполезны, как только вы начнёте использовать новый шифрованный кошелёк.</translation>
-    </message>
-    <message>
-        <location line="+100"/>
-        <location line="+24"/>
-        <source>Warning: The Caps Lock key is on!</source>
-        <translation>Внимание: Caps Lock включен!</translation>
-    </message>
-    <message>
-        <location line="-130"/>
-        <location line="+58"/>
+        <location line="+9"/>
         <source>Wallet encrypted</source>
         <translation>Бумажник зашифрован</translation>
     </message>
     <message>
-        <location line="-56"/>
+        <location line="+2"/>
         <source>Gostcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your gostcoins from being stolen by malware infecting your computer.</source>
         <translation>Сейчас программа закроется для завершения процесса шифрования. Помните, что шифрование вашего бумажника не может полностью защитить ваши ГОСТкойны от кражи инфицированием вашего компьютера вредоносным ПО.</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+4"/>
+        <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
+        <translation>ВАЖНО: все предыдущие резервные копии вашего кошелька должны быть заменены новым зашифрованным файлом. В целях безопасности предыдущие резервные копии нешифрованного кошелька станут бесполезны, как только вы начнёте использовать новый шифрованный кошелёк.</translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <location line="+7"/>
         <location line="+42"/>
         <location line="+6"/>
@@ -318,21 +337,30 @@ This product includes software developed by the OpenSSL Project for use in the O
         <source>Wallet passphrase was successfully changed.</source>
         <translation>Пароль бумажника успешно изменён.</translation>
     </message>
+    <message>
+        <location line="+47"/>
+        <location line="+24"/>
+        <source>Warning: The Caps Lock key is on!</source>
+        <translation>Внимание: Caps Lock включен!</translation>
+    </message>
 </context>
+
+<!-- GUI -->
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="+233"/>
-        <source>Sign &amp;message...</source>
-        <translation>&amp;Подписать сообщение...</translation>
+        <location filename="../bitcoingui.cpp" line="+77"/>
+        <location line="+592"/>
+        <source>Gostcoin</source>
+        <translation>ГОСТкойн</translation>
     </message>
     <message>
-        <location line="+280"/>
-        <source>Synchronizing with network...</source>
-        <translation>Синхронизация с сетью...</translation>
+        <location line="-592"/>
+        <source>Wallet</source>
+        <translation>Бумажник</translation>
     </message>
     <message>
-        <location line="-349"/>
+        <location line="+97"/>
         <source>&amp;Overview</source>
         <translation>О&amp;бзор</translation>
     </message>
@@ -342,7 +370,27 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Показать общий обзор действий с бумажником</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+6"/>
+        <source>&amp;Send</source>
+        <translation>&amp;Отправить</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Send coins to a Gostcoin address</source>
+        <translation>Отправить монеты на указанный адрес ГОСТкойн</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>&amp;Receive</source>
+        <translation>&amp;Получить</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Show the list of addresses for receiving payments</source>
+        <translation>Показать список адресов для получения платежей</translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>&amp;Transactions</source>
         <translation>&amp;Транзакции</translation>
     </message>
@@ -352,17 +400,17 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Показать историю транзакций</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+6"/>
+        <source>&amp;Addresses</source>
+        <translation>&amp;Адреса</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Edit the list of stored addresses and labels</source>
         <translation>Изменить список сохранённых адресов и меток к ним</translation>
     </message>
     <message>
-        <location line="-14"/>
-        <source>Show the list of addresses for receiving payments</source>
-        <translation>Показать список адресов для получения платежей</translation>
-    </message>
-    <message>
-        <location line="+31"/>
+        <location line="+17"/>
         <source>E&amp;xit</source>
         <translation>В&amp;ыход</translation>
     </message>
@@ -372,12 +420,17 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Закрыть приложение</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+3"/>
+        <source>&amp;About Gostcoin</source>
+        <translation>&amp;О ГОСТкойн</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Show information about Gostcoin</source>
         <translation>Показать информацию о ГОСТкойн&apos;е</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>About &amp;Qt</source>
         <translation>О &amp;Qt</translation>
     </message>
@@ -392,98 +445,12 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Оп&amp;ции...</translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>&amp;Encrypt Wallet...</source>
-        <translation>&amp;Зашифровать бумажник...</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>&amp;Backup Wallet...</source>
-        <translation>&amp;Сделать резервную копию бумажника...</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>&amp;Change Passphrase...</source>
-        <translation>&amp;Изменить пароль...</translation>
-    </message>
-    <message>
-        <location line="+285"/>
-        <source>Importing blocks from disk...</source>
-        <translation>Импортируются блоки с диска...</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Reindexing blocks on disk...</source>
-        <translation>Идёт переиндексация блоков на диске...</translation>
-    </message>
-    <message>
-        <location line="-347"/>
-        <source>Send coins to a Gostcoin address</source>
-        <translation>Отправить монеты на указанный адрес ГОСТкойн</translation>
-    </message>
-    <message>
-        <location line="+49"/>
+        <location line="+1"/>
         <source>Modify configuration options for Gostcoin</source>
         <translation>Изменить параметры конфигурации ГОСТкойн</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>Backup wallet to another location</source>
-        <translation>Сделать резервную копию бумажника в другом месте</translation>
-    </message>
-    <message>
         <location line="+2"/>
-        <source>Change the passphrase used for wallet encryption</source>
-        <translation>Изменить пароль шифрования бумажника</translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>&amp;Debug window</source>
-        <translation>&amp;Окно отладки</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Open debugging and diagnostic console</source>
-        <translation>Открыть консоль отладки и диагностики</translation>
-    </message>
-    <message>
-        <location line="-4"/>
-        <source>&amp;Verify message...</source>
-        <translation>&amp;Проверить сообщение...</translation>
-    </message>
-    <message>
-        <location line="-165"/>
-        <location line="+530"/>
-        <source>Gostcoin</source>
-        <translation>ГОСТкойн</translation>
-    </message>
-    <message>
-        <location line="-530"/>
-        <source>Wallet</source>
-        <translation>Бумажник</translation>
-    </message>
-    <message>
-        <location line="+101"/>
-        <source>&amp;Send</source>
-        <translation>&amp;Отправить</translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <source>&amp;Receive</source>
-        <translation>&amp;Получить</translation>
-    </message>
-    <message>
-        <location line="+14"/>
-        <source>&amp;Addresses</source>
-        <translation>&amp;Адреса</translation>
-    </message>
-    <message>
-        <location line="+22"/>
-        <source>&amp;About Gostcoin</source>
-        <translation>&amp;О ГОСТкойн</translation>
-    </message>
-    <message>
-        <location line="+9"/>
         <source>&amp;Show / Hide</source>
         <translation>&amp;Показать / Скрыть</translation>
     </message>
@@ -493,22 +460,67 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Показать или скрыть главное окно</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+2"/>
+        <source>&amp;Encrypt Wallet...</source>
+        <translation>&amp;Зашифровать бумажник...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Encrypt the private keys that belong to your wallet</source>
         <translation>Зашифровать приватные ключи, принадлежащие вашему бумажнику</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+2"/>
+        <source>&amp;Backup Wallet...</source>
+        <translation>&amp;Сделать резервную копию бумажника...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Backup wallet to another location</source>
+        <translation>Сделать резервную копию бумажника в другом месте</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>&amp;Change Passphrase...</source>
+        <translation>&amp;Изменить пароль...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Change the passphrase used for wallet encryption</source>
+        <translation>Изменить пароль шифрования бумажника</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Sign &amp;message...</source>
+        <translation>&amp;Подписать сообщение...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Sign messages with your Gostcoin addresses to prove you own them</source>
         <translation>Подписать сообщения вашим адресом ГОСТкойн, чтобы доказать, что вы им владеете</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>&amp;Verify message...</source>
+        <translation>&amp;Проверить сообщение...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Verify messages to ensure they were signed with specified Gostcoin addresses</source>
         <translation>Проверить сообщения, чтобы удостовериться, что они были подписаны определённым адресом ГОСТкойн</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+2"/>
+        <source>&amp;Debug window</source>
+        <translation>&amp;Окно отладки</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Open debugging and diagnostic console</source>
+        <translation>Открыть консоль отладки и диагностики</translation>
+    </message>
+    <message>
+        <location line="+25"/>
         <source>&amp;File</source>
         <translation>&amp;Файл</translation>
     </message>
@@ -528,23 +540,63 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Панель вкладок</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+20"/>
         <location line="+10"/>
         <source>[testnet]</source>
         <translation>[тестовая сеть]</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+22"/>
+        <source>Wallet is using I2P-network only</source>
+        <translation>Кошелек работает только в I2P</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Wallet is using mixed or non-I2P (clear) network</source>
+        <translation>Кошелек работает смешанном режиме, или без I2P</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Wallet is running with a random generated I2P-address</source>
+        <translation>Кошелек работает со случайно сгенерированным I2P адресом</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Wallet is running with a static I2P-address</source>
+        <translation>Кошелек работает с постоянным I2P адресом</translation>
+    </message>
+    <message>
+        <location line="+50"/>
         <source>Gostcoin client</source>
         <translation>ГОСТкойн клиент</translation>
     </message>
     <message numerus="yes">
         <location line="+141"/>
         <source>%n active connection(s) to Gostcoin network</source>
-        <translation><numerusform>%n активное соединение с сетью</numerusform><numerusform>%n активных соединений с сетью</numerusform><numerusform>%n активных соединений с сетью</numerusform></translation>
+        <translation><numerusform>%n активное соединение с сетью</numerusform><numerusform>%n активных соединения с сетью</numerusform><numerusform>%n активных соединений с сетью</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+15"/>
+        <source>%n active connection(s) to I2P-Gostcoin network</source>
+        <translation><numerusform>%n активное соединение с I2P сетью</numerusform><numerusform>%n активных соединения с I2P сетью</numerusform><numerusform>%n активных соединений с I2P сетью</numerusform></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+12"/>
+        <source>Synchronizing with network...</source>
+        <translation>Синхронизация с сетью...</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Importing blocks from disk...</source>
+        <translation>Импортируются блоки с диска...</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Reindexing blocks on disk...</source>
+        <translation>Идёт переиндексация блоков на диске...</translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>No block source available...</source>
         <translation>Источник блоков недоступен...</translation>
     </message>
@@ -558,8 +610,13 @@ This product includes software developed by the OpenSSL Project for use in the O
         <source>Processed %1 blocks of transaction history.</source>
         <translation>Обработано %1 блоков истории транзакций.</translation>
     </message>
+    <message>
+        <location line="+6"/>
+        <source>Up to date</source>
+        <translation>Синхронизировано</translation>
+    </message>
     <message numerus="yes">
-        <location line="+20"/>
+        <location line="+14"/>
         <source>%n hour(s)</source>
         <translation><numerusform>%n час</numerusform><numerusform>%n часа</numerusform><numerusform>%n часов</numerusform></translation>
     </message>
@@ -576,10 +633,15 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+4"/>
         <source>%1 behind</source>
-        <translation>%1 позади</translation>
+        <translation>%1 назад</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+5"/>
+        <source>Catching up...</source>
+        <translation>Синхронизируется...</translation>
+    </message>
+    <message>
+        <location line="+9"/>
         <source>Last received block was generated %1 ago.</source>
         <translation>Последний полученный блок был сгенерирован %1 назад.</translation>
     </message>
@@ -609,17 +671,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <translation>Транзакция превышает максимальный размер. Вы можете провести её, заплатив комиссию %1, которая достанется узлам, обрабатывающим эту транзакцию, и поможет работе сети. Вы действительно хотите заплатить комиссию?</translation>
     </message>
     <message>
-        <location line="-140"/>
-        <source>Up to date</source>
-        <translation>Синхронизировано</translation>
-    </message>
-    <message>
-        <location line="+31"/>
-        <source>Catching up...</source>
-        <translation>Синхронизируется...</translation>
-    </message>
-    <message>
-        <location line="+113"/>
+        <location line="+4"/>
         <source>Confirm transaction fee</source>
         <translation>Подтвердите комиссию</translation>
     </message>
@@ -659,7 +711,7 @@ Address: %4
         <translation>Не удалось обработать URI! Это может быть связано с неверным адресом ГОСТкойн или неправильными параметрами URI.</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+23"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>Бумажник &lt;b&gt;зашифрован&lt;/b&gt; и в настоящее время &lt;b&gt;разблокирован&lt;/b&gt;</translation>
     </message>
@@ -669,19 +721,300 @@ Address: %4
         <translation>Бумажник &lt;b&gt;зашифрован&lt;/b&gt; и в настоящее время &lt;b&gt;заблокирован&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+111"/>
+        <location filename="../bitcoin.cpp" line="+164"/>
         <source>A fatal error occurred. Gostcoin can no longer continue safely and will quit.</source>
         <translation>Произошла неисправимая ошибка. ГОСТкойн не может безопасно продолжать работу и будет закрыт.</translation>
     </message>
+    <message>
+        <location line="+143"/>
+        <source>Failed to load style!</source>
+        <translation>Не удалось загрузить стиль!</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to load the stylesheet provided.</source>
+        <translation>Не удалось загрузить указанный файл стиля.</translation>
+    </message>
 </context>
+
+<!-- Client Model -->
 <context>
     <name>ClientModel</name>
     <message>
         <location filename="../clientmodel.cpp" line="+104"/>
         <source>Network Alert</source>
-        <translation>Сетевая Тревога</translation>
+        <translation>Сетевое оповещение</translation>
     </message>
 </context>
+
+<!-- Coin control dialog -->
+<context>
+    <name>CoinControlDialog</name>
+    <message>
+        <location filename="../forms/coincontroldialog.ui" line="+14"/>
+        <source>Coin Control Address Selection</source>
+        <translation>Выбор адреса контроля монет</translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>Quantity:</source>
+        <translation>Количество:</translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Bytes:</source>
+        <translation>Байт:</translation>
+    </message>
+    <message>
+        <location line="+48"/>
+        <source>Amount:</source>
+        <translation>Сумма:</translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Priority:</source>
+        <translation>Приоритет:</translation>
+    </message>
+    <message>
+        <location line="+48"/>
+        <source>Fee:</source>
+        <translation>Комиссия:</translation>
+    </message>
+    <message>
+        <location line="+35"/>
+        <source>Low Output:</source>
+        <translation>Малый выход:</translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>After Fee:</source>
+        <translation>После комиссии:</translation>
+    </message>
+    <message>
+        <location line="+35"/>
+        <source>Change:</source>
+        <translation>Сдача:</translation>
+    </message>
+    <message>
+        <location line="+69"/>
+        <source>(un)select all</source>
+        <translation>Отменить выбор всего</translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Tree mode</source>
+        <translation>Режим дерева</translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>List mode</source>
+        <translation>Режим списка</translation>
+    </message>
+    <message>
+        <location line="+52"/>
+        <source>Amount</source>
+        <translation>Сумма</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Label</source>
+        <translation>Метка</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Address</source>
+        <translation>Адрес</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Date</source>
+        <translation>Дата</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Confirmations</source>
+        <translation>Подтверждений</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Confirmed</source>
+        <translation>Подтверждено</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Priority</source>
+        <translation>Приоритет</translation>
+    </message>
+    <message>
+        <location filename="../coincontroldialog.cpp" line="+38"/>
+        <source>Copy address</source>
+        <translation>Копировать адрес</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy label</source>
+        <translation>Копировать метку</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <location line="+26"/>
+        <source>Copy amount</source>
+        <translation>Скопировать сумму</translation>
+    </message>
+    <message>
+        <location line="-25"/>
+        <source>Copy transaction ID</source>
+        <translation>Скопировать ID транзакции</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Lock unspent</source>
+        <translation>Заблокировать непотраченное</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Unlock unspent</source>
+        <translation>Разблокировать непотраченное</translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Copy quantity</source>
+        <translation>Копировать количество</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Copy fee</source>
+        <translation>Копировать комиссию</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy after fee</source>
+        <translation>Копировать после комиссии</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy bytes</source>
+        <translation>Копировать байты</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy priority</source>
+        <translation>Копировать приоритет</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy low output</source>
+        <translation>Копировать малый выход</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy change</source>
+        <translation>Копировать сдачу</translation>
+    </message>
+    <message>
+        <location line="+323"/>
+        <source>highest</source>
+        <translation>самый высокий</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>higher</source>
+        <translation>выше</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>high</source>
+        <translation>высокий</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>medium-high</source>
+        <translation>выше среднего</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>medium</source>
+        <translation>средний</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>low-medium</source>
+        <translation>ниже среднего</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>low</source>
+        <translation>низкий</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>lower</source>
+        <translation>ниже</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>lowest</source>
+        <translation>самый низкий</translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>(%1 locked)</source>
+        <translation>(%1 заблокировано)</translation>
+    </message>
+    <message>
+        <location line="+178"/>
+        <source>Dust</source>
+        <translation>Пыль</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>yes</source>
+        <translation>да</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>no</source>
+        <translation>нет</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>This label turns red, if the transaction size is bigger than 10000 bytes.\n\nThis means a fee of at least %1 per kb is required.\n\nCan vary +/- 1 Byte per input.</source>
+        <translation>Эта пометка становится красной, если размер транзакции больше 1000 байт.\n\nЭто значит, что требуется комиссия как минимум %1 на КБ.Может отличаться на +/- 1 байт на вход.</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Transactions with higher priority get more likely into a block.\n\nThis label turns red, if the priority is smaller than \"medium\".\n\nThis means a fee of at least %1 per kb is required.</source>
+        <translation>Транзакции с более высоким приоритетом будут вероятнее других включены в блок.\n\nЭта пометка становится красной, если приоритет ниже, чем &quot;средний&quot;.\n\nЭто значит, что требуется комиссия как минимум %1 на КБ.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>This label turns red, if any recipient receives an amount smaller than %1.\n\nThis means a fee of at least %2 is required. \n\nAmounts below 0.546 times the minimum relay fee are shown as DUST.</source>
+        <translation>Эта пометка становится красной, если какой-либо из адресатов получает сумму менее %1.\n\nЭто значит, что требуется комиссия как минимум %2.\n\nСуммы ниже, чем 0.546 минимальных комиссий ретрансляции, показаны как пыль.</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>This label turns red, if the change is smaller than %1.\n\nThis means a fee of at least %2 is required.</source>
+        <translation>Эта пометка становится красной, если сдача меньше %1.\n\nЭто значит, что требуется комиссия как минимум %2.</translation>
+    </message>
+    <message>
+        <location line="+37"/>
+        <location line="+66"/>
+        <source>(no label)</source>
+        <translation>[нет метки]</translation>
+    </message>
+    <message>
+        <location line="-9"/>
+        <source>change from %1 (%2)</source>
+        <translation>сдача с %1 (%2)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>(change)</source>
+        <translation>(размен)</translation>
+    </message>
+</context>
+
+<!-- Address editing dialog -->
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -707,7 +1040,7 @@ Address: %4
     <message>
         <location line="+10"/>
         <source>The address associated with this address book entry. This can only be modified for sending addresses.</source>
-        <translation>Адрес, связанный с данной записью.</translation>
+        <translation>Адрес, связанный с данной записью. Он может быть изменен только для адресов отправки.</translation>
     </message>
     <message>
         <location filename="../editaddressdialog.cpp" line="+21"/>
@@ -730,17 +1063,17 @@ Address: %4
         <translation>Изменение адреса для отправки</translation>
     </message>
     <message>
-        <location line="+76"/>
-        <source>The entered address &quot;%1&quot; is already in the address book.</source>
-        <translation>Введённый адрес «%1» уже находится в адресной книге.</translation>
-    </message>
-    <message>
-        <location line="-5"/>
+        <location line="+71"/>
         <source>The entered address &quot;%1&quot; is not a valid Gostcoin address.</source>
         <translation>Введённый адрес &quot;%1&quot; не является правильным ГОСТкойн-адресом.</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+5"/>
+        <source>The entered address &quot;%1&quot; is already in the address book.</source>
+        <translation>Введённый адрес &quot;%1&quot; уже находится в адресной книге.</translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Could not unlock wallet.</source>
         <translation>Не удается разблокировать бумажник.</translation>
     </message>
@@ -750,10 +1083,12 @@ Address: %4
         <translation>Генерация нового ключа не удалась.</translation>
     </message>
 </context>
+
+<!-- Help Message box -->
 <context>
     <name>GUIUtil::HelpMessageBox</name>
     <message>
-        <location filename="../guiutil.cpp" line="+424"/>
+        <location filename="../guiutil.cpp" line="+498"/>
         <location line="+12"/>
         <source>Gostcoin-Qt</source>
         <translation>ГОСТкойн-Qt</translation>
@@ -781,7 +1116,7 @@ Address: %4
     <message>
         <location line="+1"/>
         <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
-        <translation>Выберите язык, например &quot;de_DE&quot; (по умолчанию: как в системе)</translation>
+        <translation>Выберите язык, например &quot;ru_RU&quot; (по умолчанию: как в системе)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -794,12 +1129,14 @@ Address: %4
         <translation>Показывать сплэш при запуске (по умолчанию: 1)</translation>
     </message>
 </context>
+
+<!-- Options dialog -->
 <context>
     <name>OptionsDialog</name>
     <message>
         <location filename="../forms/optionsdialog.ui" line="+14"/>
         <source>Options</source>
-        <translation>Опции</translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -819,7 +1156,7 @@ Address: %4
     <message>
         <location line="+31"/>
         <source>Automatically start Gostcoin after logging in to the system.</source>
-        <translation>Автоматически запускать ГОСТкойн после входа в систему</translation>
+        <translation>Автоматически запускать ГОСТкойн после входа в систему.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -834,7 +1171,7 @@ Address: %4
     <message>
         <location line="+3"/>
         <source>&amp;Reset Options</source>
-        <translation>&amp;Сбросить опции</translation>
+        <translation>&amp;Сбросить настройки</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -843,16 +1180,6 @@ Address: %4
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the Gostcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Автоматически открыть порт для ГОСТкойн-клиента на роутере. Работает только если Ваш роутер поддерживает UPnP, и данная функция включена.</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Map port using &amp;UPnP</source>
-        <translation>Пробросить порт через &amp;UPnP</translation>
-    </message>
-    <message>
-        <location line="+7"/>
         <source>Connect to the Gostcoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
         <translation>Подключаться к сети ГОСТкойн через прокси SOCKS (например, при подключении через Tor).</translation>
     </message>
@@ -918,8 +1245,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Suppress notifications and tray animations</source>
-        <translation>Отключить уведомления и анимацию в системном лотке</translation>
+        <source>Suppress notifications and tray animations.</source>
+        <translation>Отключить уведомления и анимацию в системном лотке.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -962,7 +1289,98 @@ Address: %4
         <translation>&amp;Показывать адреса в списке транзакций</translation>
     </message>
     <message>
-        <location line="+71"/>
+        <location line="+7"/>
+        <source>Whether to show coin control features or not.</source>
+        <translation>Показывать ли функции контроля монет или нет.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Display coin &amp;control features (experts only!)</source>
+        <translation>Показать функции &amp;контроля монет (только для экспертов)</translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Use I2P only (-onlynet=i2p)</source>
+        <translation>Использовать только I2P (-onlynet=i2p)</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Current I2P-address...</source>
+        <translation>Текущий I2P адрес...</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Generate I2P-address...</source>
+        <translation>Сгенерировать I2P адрес...</translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>SAM host</source>
+        <translation>SAM адрес</translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>SAM port</source>
+        <translation>SAM порт</translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Tunnel name</source>
+        <translation>Имя туннеля</translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>I2CP options of inbound tunnels</source>
+        <translation>I2CP настройки входящих туннелей</translation>
+    </message>
+    <message>
+        <location line="+161"/>
+        <source>I2CP options of outbound tunnels</source>
+        <translation>I2CP настройки исходящих туннелей</translation>
+    </message>
+    <message>
+        <location line="-153"/>
+        <location line="+161"/>
+        <source>quantity</source>
+        <translation>количество</translation>
+    </message>
+    <message>
+        <location line="-137"/>
+        <location line="+158"/>
+        <source>length</source>
+        <translation>длинна</translation>
+    </message>
+    <message>
+        <location line="-134"/>
+        <location line="+155"/>
+        <source>lengthVariance</source>
+        <translation>изменения длинны</translation>
+    </message>
+    <message>
+        <location line="-134"/>
+        <location line="+155"/>
+        <source>backupQuantity</source>
+        <translation>резервных туннелей</translation>
+    </message>
+    <message>
+        <location line="-141"/>
+        <location line="+155"/>
+        <source>allowZeroHop</source>
+        <translation>разрешить нулевую длинну</translation>
+    </message>
+    <message>
+        <location line="-124"/>
+        <location line="+155"/>
+        <source>IPRestriction</source>
+        <translation>IPRestriction</translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>priority</source>
+        <translation>приоритет</translation>
+    </message>
+    <message>
+        <location line="+90"/>
         <source>&amp;OK</source>
         <translation>О&amp;К</translation>
     </message>
@@ -977,14 +1395,14 @@ Address: %4
         <translation>&amp;Применить</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="+53"/>
+        <location filename="../optionsdialog.cpp" line="+60"/>
         <source>default</source>
         <translation>по умолчанию</translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+166"/>
         <source>Confirm options reset</source>
-        <translation>Подтвердите сброс опций</translation>
+        <translation>Подтвердите сброс настроек</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -997,16 +1415,28 @@ Address: %4
         <translation>Желаете продолжить?</translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+44"/>
+        <location line="+9"/>
         <location line="+9"/>
         <source>Warning</source>
         <translation>Внимание</translation>
     </message>
     <message>
-        <location line="-9"/>
+        <location line="-18"/>
+        <location line="+9"/>
         <location line="+9"/>
         <source>This setting will take effect after restarting Gostcoin.</source>
-        <translation>Эта настройка вступит в силу после перезапуска ГОСТкойн</translation>
+        <translation>Эта настройка вступит в силу после перезапуска ГОСТкойн.</translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Your current I2P-address</source>
+        <translation>Ваш текущий I2P адрес</translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Generated I2P address</source>
+        <translation>Сгенерированный I2P адрес</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1014,6 +1444,8 @@ Address: %4
         <translation>Адрес прокси неверен.</translation>
     </message>
 </context>
+
+<!-- Overview page -->
 <context>
     <name>OverviewPage</name>
     <message>
@@ -1022,7 +1454,12 @@ Address: %4
         <translation>Форма</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+43"/>
+        <source>Wallet</source>
+        <translation>Кошелек</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <location line="+166"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Gostcoin network after a connection is established, but this process has not completed yet.</source>
         <translation>Отображаемая информация может быть устаревшей. Ваш бумажник автоматически синхронизируется с сетью ГОСТкойн после подключения, но этот процесс пока не завершён.</translation>
@@ -1033,17 +1470,22 @@ Address: %4
         <translation>Баланс:</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+16"/>
+        <source>Your current balance</source>
+        <translation>Ваш текущий баланс</translation>
+    </message>
+    <message>
+        <location line="+13"/>
         <source>Unconfirmed:</source>
         <translation>Не подтверждено:</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <source>Wallet</source>
-        <translation>Бумажник</translation>
+        <location line="+17"/>
+        <source>Total of transactions that have yet to be confirmed, and do not yet count toward the current balance</source>
+        <translation>Общая сумма всех транзакций, которые до сих пор не подтверждены, и до сих пор не учитываются в текущем балансе</translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+13"/>
         <source>Immature:</source>
         <translation>Незрелые:</translation>
     </message>
@@ -1058,30 +1500,24 @@ Address: %4
         <translation>&lt;b&gt;Последние транзакции&lt;/b&gt;</translation>
     </message>
     <message>
-        <location line="-101"/>
-        <source>Your current balance</source>
-        <translation>Ваш текущий баланс</translation>
-    </message>
-    <message>
-        <location line="+29"/>
-        <source>Total of transactions that have yet to be confirmed, and do not yet count toward the current balance</source>
-        <translation>Общая сумма всех транзакций, которые до сих пор не подтверждены, и до сих пор не учитываются в текущем балансе</translation>
-    </message>
-    <message>
         <location filename="../overviewpage.cpp" line="+116"/>
         <location line="+1"/>
         <source>out of sync</source>
         <translation>не синхронизировано</translation>
     </message>
 </context>
+
+<!-- Payment server -->
 <context>
     <name>PaymentServer</name>
     <message>
-        <location filename="../paymentserver.cpp" line="+107"/>
+        <location filename="../paymentserver.cpp" line="+109"/>
         <source>Cannot start gostcoin: click-to-pay handler</source>
         <translation>Не удаётся запустить gostcoin: обработчик click-to-pay</translation>
     </message>
 </context>
+
+<!-- QR Code dialog -->
 <context>
     <name>QRCodeDialog</name>
     <message>
@@ -1095,12 +1531,7 @@ Address: %4
         <translation>Запросить платёж</translation>
     </message>
     <message>
-        <location line="+56"/>
-        <source>Amount:</source>
-        <translation>Количество:</translation>
-    </message>
-    <message>
-        <location line="-44"/>
+        <location line="+12"/>
         <source>Label:</source>
         <translation>Метка:</translation>
     </message>
@@ -1110,14 +1541,19 @@ Address: %4
         <translation>Сообщение:</translation>
     </message>
     <message>
-        <location line="+71"/>
+        <location line="+25"/>
+        <source>Amount:</source>
+        <translation>Количество:</translation>
+    </message>
+    <message>
+        <location line="+46"/>
         <source>&amp;Save As...</source>
         <translation>&amp;Сохранить как...</translation>
     </message>
     <message>
-        <location filename="../qrcodedialog.cpp" line="+62"/>
+        <location filename="../qrcodedialog.cpp" line="+64"/>
         <source>Error encoding URI into QR Code.</source>
-        <translation>Ошибка кодирования URI в QR-код</translation>
+        <translation>Ошибка кодирования URI в QR-код.</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -1140,10 +1576,27 @@ Address: %4
         <translation>PNG Изображения (*.png)</translation>
     </message>
 </context>
+
+<!-- RPC console -->
 <context>
     <name>RPCConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="+46"/>
+        <location filename="../forms/rpcconsole.ui" line="+14"/>
+        <source>Gostcoin - Debug window</source>
+        <translation>ГОСТкойн - Окно отладки</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>&amp;Information</source>
+        <translation>&amp;Информация</translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Gostcoin Core</source>
+        <translation>Ядро ГОСТкойн</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Client name</source>
         <translation>Имя клиента</translation>
     </message>
@@ -1157,27 +1610,27 @@ Address: %4
         <location line="+53"/>
         <location line="+23"/>
         <location line="+23"/>
-        <location filename="../rpcconsole.cpp" line="+339"/>
+        <location filename="../rpcconsole.cpp" line="+341"/>
         <source>N/A</source>
         <translation>Н/Д</translation>
     </message>
     <message>
-        <location line="-217"/>
+        <location line="+13"/>
         <source>Client version</source>
         <translation>Версия клиента</translation>
     </message>
     <message>
-        <location line="-45"/>
-        <source>&amp;Information</source>
-        <translation>&amp;Информация</translation>
-    </message>
-    <message>
-        <location line="+68"/>
+        <location line="+23"/>
         <source>Using OpenSSL version</source>
         <translation>Используется версия OpenSSL</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="+23"/>
+        <source>Build date</source>
+        <translation>Дата сборки</translation>
+    </message>
+     <message>
+        <location line="+23"/>
         <source>Startup time</source>
         <translation>Время запуска</translation>
     </message>
@@ -1216,8 +1669,18 @@ Address: %4
         <source>Last block time</source>
         <translation>Время последнего блока</translation>
     </message>
-    <message>
-        <location line="+52"/>
+   <message>
+        <location line="+42"/>
+        <source>Debug log file</source>
+        <translation>Отладочный лог-файл</translation>
+    </message>
+   <message>
+        <location line="+7"/>
+        <source>Open the Gostcoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Открыть отладочный лог-файл ГОСТкойн из текущего каталога данных. Это может занять несколько секунд для больших лог-файлов.</translation>
+    </message>
+     <message>
+        <location line="+3"/>
         <source>&amp;Open</source>
         <translation>&amp;Открыть</translation>
     </message>
@@ -1239,35 +1702,10 @@ Address: %4
     <message>
         <location line="+24"/>
         <source>&amp;Console</source>
-        <translation>Консоль</translation>
+        <translation>&amp;Консоль</translation>
     </message>
     <message>
-        <location line="-260"/>
-        <source>Build date</source>
-        <translation>Дата сборки</translation>
-    </message>
-    <message>
-        <location line="-104"/>
-        <source>Gostcoin - Debug window</source>
-        <translation>ГОСТкойн - Окно отладки</translation>
-    </message>
-    <message>
-        <location line="+25"/>
-        <source>Gostcoin Core</source>
-        <translation>Ядро ГОСТкойн</translation>
-    </message>
-    <message>
-        <location line="+279"/>
-        <source>Debug log file</source>
-        <translation>Отладочный лог-файл</translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <source>Open the Gostcoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Открыть отладочный лог-файл ГОСТкойн из текущего каталога данных. Это может занять несколько секунд для больших лог-файлов.</translation>
-    </message>
-    <message>
-        <location line="+102"/>
+        <location line="+49"/>
         <source>Clear console</source>
         <translation>Очистить консоль</translation>
     </message>
@@ -1287,11 +1725,13 @@ Address: %4
         <translation>Напишите &lt;b&gt;help&lt;/b&gt; для просмотра доступных команд.</translation>
     </message>
 </context>
+
+<!-- Send coins dialog -->
 <context>
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+124"/>
+        <location filename="../sendcoinsdialog.cpp" line="+179"/>
         <location line="+5"/>
         <location line="+5"/>
         <location line="+5"/>
@@ -1301,8 +1741,79 @@ Address: %4
         <source>Send Coins</source>
         <translation>Отправка</translation>
     </message>
+
+    <message>
+        <location line="+76"/>
+        <source>Coin Control Features</source>
+        <translation>Функции Контроля Монет</translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Inputs...</source>
+        <translation>Входы...</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>automatically selected</source>
+        <translation>автоматически выбрано</translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Insufficient funds!</source>
+        <translation>Недостаточно средств!</translation>
+    </message>
+    <message>
+        <location line="+77"/>
+        <source>Quantity:</source>
+        <translation>Количество:</translation>
+    </message>
+    <message>
+        <location line="+38"/>
+        <source>Bytes:</source>
+        <translation>Байт:</translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>Amount:</source>
+        <translation>Сумма:</translation>
+    </message>
+    <message>
+        <location line="+35"/>
+        <source>Priority:</source>
+        <translation>Приоритет:</translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>Fee:</source>
+        <translation>Комиссия:</translation>
+    </message>
+    <message>
+        <location line="+35"/>
+        <source>Low Output:</source>
+        <translation>Малый выход:</translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>After Fee:</source>
+        <translation>После комиссии:</translation>
+    </message>
+    <message>
+        <location line="+35"/>
+        <source>Change:</source>
+        <translation>Размен:</translation>
+    </message>
     <message>
         <location line="+50"/>
+        <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
+        <translation>Если это выбрано, но адрес сдачи пустой или неверный, сдача будет отправлена на новый сгенерированный адрес.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Custom change address</source>
+        <translation>Свой адрес для сдачи</translation>
+    </message>
+    <message>
+        <location line="+106"/>
         <source>Send to multiple recipients at once</source>
         <translation>Отправить нескольким получателям одновременно</translation>
     </message>
@@ -1327,12 +1838,7 @@ Address: %4
         <translation>Баланс:</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>123.456 BTC</source>
-        <translation>123.456 BTC</translation>
-    </message>
-    <message>
-        <location line="+31"/>
+        <location line="+41"/>
         <source>Confirm the send action</source>
         <translation>Подтвердить отправку</translation>
     </message>
@@ -1342,7 +1848,52 @@ Address: %4
         <translation>&amp;Отправить</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-59"/>
+        <location filename="../sendcoinsdialog.cpp" line="-170"/>
+        <source>Enter a Gostcoin address (e.g. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</source>
+        <translation>Введите адрес Gostcoin (напр. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Copy quantity</source>
+        <translation>Копировать количество</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy amount</source>
+        <translation>Скопировать сумму</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy fee</source>
+        <translation>Копировать комиссию</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy after fee</source>
+        <translation>Копировать после комиссии</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy bytes</source>
+        <translation>Копировать байты</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy priority</source>
+        <translation>Копировать приоритет</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy low output</source>
+        <translation>Копировать малый выход</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy change</source>
+        <translation>Копировать размен</translation>
+    </message>
+    <message>
+        <location line="+86"/>
         <source>&lt;b&gt;%1&lt;/b&gt; to %2 (%3)</source>
         <translation>&lt;b&gt;%1&lt;/b&gt; адресату %2 (%3)</translation>
     </message>
@@ -1362,7 +1913,7 @@ Address: %4
         <translation> и </translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+27"/>
         <source>The recipient address is not valid, please recheck.</source>
         <translation>Адрес получателя неверный, пожалуйста, перепроверьте.</translation>
     </message>
@@ -1374,17 +1925,17 @@ Address: %4
     <message>
         <location line="+5"/>
         <source>The amount exceeds your balance.</source>
-        <translation>Количество отправляемых монет превышает Ваш баланс</translation>
+        <translation>Количество отправляемых монет превышает Ваш баланс.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>The total exceeds your balance when the %1 transaction fee is included.</source>
-        <translation>Сумма превысит Ваш баланс, если комиссия в размере %1 будет добавлена к транзакции</translation>
+        <translation>Сумма превысит Ваш баланс, если комиссия в размере %1 будет добавлена к транзакции.</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Duplicate address found, can only send to each address once per send operation.</source>
-        <translation>Обнаружен дублирующийся адрес. Отправка на один и тот же адрес возможна только один раз за одну операцию отправки</translation>
+        <translation>Обнаружен дублирующийся адрес. Отправка на один и тот же адрес возможна только один раз за одну операцию отправки.</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -1394,9 +1945,26 @@ Address: %4
     <message>
         <location line="+5"/>
         <source>Error: The transaction was rejected. This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Ошибка: В транзакции отказано.  Такое может произойти, если некоторые монеты уже были потрачены, например, если Вы используете одну копию файла wallet.dat, а монеты были потрачены из другой копии, но не были отмечены как потраченные в этой.</translation>
+        <translation>Ошибка: В транзакции отказано. Такое может произойти, если некоторые монеты уже были потрачены, например, если Вы используете одну копию файла wallet.dat, а монеты были потрачены из другой копии, но не были отмечены как потраченные в этой.</translation>
+    </message>
+    <message>
+        <location line="+271"/>
+        <source>Warning: Invalid Gostcoin address</source>
+        <translation>Внимание: неверный адрес Gostcoin</translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>(no label)</source>
+        <translation>[нет метки]</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Warning: Unknown change address</source>
+        <translation>Внимание: неизвестный адрес для сдачи</translation>
     </message>
 </context>
+
+<!--  -->
 <context>
     <name>SendCoinsEntry</name>
     <message>
@@ -1415,52 +1983,44 @@ Address: %4
         <translation>Полу&amp;чатель:</translation>
     </message>
     <message>
-        <location line="+34"/>
-        <source>The address to send the payment to (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Адрес, на который будет выслан платёж (например Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <location line="+16"/>
+        <source>&amp;Label:</source>
+        <translation>&amp;Метка:</translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location line="+18"/>
+        <source>The address to send the payment to (e.g. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</source>
+        <translation>Адрес, на который будет выслан платёж (например GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Choose address from address book</source>
+        <translation>Выберите адрес из адресной книги</translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Paste address from clipboard</source>
+        <translation>Вставить адрес из буфера обмена</translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Remove this recipient</source>
+        <translation>Удалить этого получателя</translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <location filename="../sendcoinsentry.cpp" line="+26"/>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>Введите метку для данного адреса (для добавления в адресную книгу)</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <source>&amp;Label:</source>
-        <translation>&amp;Метка:</translation>
-    </message>
-    <message>
-        <location line="+28"/>
-        <source>Choose address from address book</source>
-        <translation>Выберите адрес из адресной книги</translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>Alt+A</source>
-        <translation>Alt+A</translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <source>Paste address from clipboard</source>
-        <translation>Вставить адрес из буфера обмена</translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>Alt+P</source>
-        <translation>Alt+P</translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <source>Remove this recipient</source>
-        <translation>Удалить этого получателя</translation>
-    </message>
-    <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Gostcoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Введите ГОСТкойн-адрес (например 1LA5FtQhnnWnkK6zjFfutR7Stiit4wKd63)</translation>
+        <source>Enter a Gostcoin address (e.g. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</source>
+        <translation>Введите ГОСТкойн-адрес (например GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</translation>
     </message>
 </context>
+
+<!--  -->
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
@@ -1480,8 +2040,8 @@ Address: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Адрес, которым вы хотите подписать сообщение  (напр. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address to sign the message with (e.g. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</source>
+        <translation>Адрес, которым вы хотите подписать сообщение  (напр. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1490,23 +2050,12 @@ Address: %4
         <translation>Выберите адрес из адресной книги</translation>
     </message>
     <message>
-        <location line="-203"/>
-        <location line="+213"/>
-        <source>Alt+A</source>
-        <translation>Alt+A</translation>
-    </message>
-    <message>
-        <location line="-203"/>
+        <location line="-194"/>
         <source>Paste address from clipboard</source>
         <translation>Вставить адрес из буфера обмена</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>Alt+P</source>
-        <translation>Alt+P</translation>
-    </message>
-    <message>
-        <location line="+12"/>
+        <location line="+22"/>
         <source>Enter the message you want to sign here</source>
         <translation>Введите сообщение для подписи</translation>
     </message>
@@ -1553,8 +2102,8 @@ Address: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Адрес, которым было подписано сообщение (напр. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address the message was signed with (e.g. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</source>
+        <translation>Адрес, которым было подписано сообщение (напр. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -1574,8 +2123,8 @@ Address: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Gostcoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Введите адрес ГОСТкойн (напр. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a Gostcoin address (e.g. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</source>
+        <translation>Введите адрес ГОСТкойн (напр. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1591,7 +2140,7 @@ Address: %4
         <location line="+82"/>
         <location line="+81"/>
         <source>The entered address is invalid.</source>
-        <translation>Введённый адрес неверен</translation>
+        <translation>Введённый адрес неверен.</translation>
     </message>
     <message>
         <location line="-81"/>
@@ -1605,7 +2154,7 @@ Address: %4
         <location line="-81"/>
         <location line="+81"/>
         <source>The entered address does not refer to a key.</source>
-        <translation>Введённый адрес не связан с ключом</translation>
+        <translation>Введённый адрес не связан с ключом.</translation>
     </message>
     <message>
         <location line="-73"/>
@@ -1615,17 +2164,17 @@ Address: %4
     <message>
         <location line="+8"/>
         <source>Private key for the entered address is not available.</source>
-        <translation>Для введённого адреса недоступен закрытый ключ</translation>
+        <translation>Для введённого адреса недоступен закрытый ключ.</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Message signing failed.</source>
-        <translation>Не удалось подписать сообщение</translation>
+        <translation>Не удалось подписать сообщение.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Message signed.</source>
-        <translation>Сообщение подписано</translation>
+        <translation>Сообщение подписано.</translation>
     </message>
     <message>
         <location line="+59"/>
@@ -1654,23 +2203,52 @@ Address: %4
         <translation>Сообщение проверено.</translation>
     </message>
 </context>
+
+<!--  -->
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../splashscreen.cpp" line="+22"/>
-        <source>The Gostcoin developers</source>
-        <translation>Разработчики ГОСТкойн</translation>
+        <location filename="../splashscreen.cpp" line="+25"/>
+        <source>Version %1</source>
+        <translation>Версия %1 </translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>[testnet]</source>
-        <translation>[тестовая сеть]</translation>
+        <source>The Bitcoin developers</source>
+        <translation>Разработчики Bitcoin</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The Litecoin developers</source>
+        <translation>Разработчики Litecoin</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The Anoncoin developers</source>
+        <translation>Разработчики Anoncoin</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The i2pd developers</source>
+        <translation>Разработчики I2Pd</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The Gostcoin developers</source>
+        <translation>Разработчики Gostcoin</translation>
     </message>
 </context>
+
+<!--  -->
 <context>
     <name>TransactionDesc</name>
+    <message numerus="yes">
+        <location filename="../transactiondesc.cpp" line="+18"/>
+        <source>Open for %n more block(s)</source>
+        <translation><numerusform>Открыто для ещё %n блока</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform></translation>
+    </message>
     <message>
-        <location filename="../transactiondesc.cpp" line="+20"/>
+        <location line="+2"/>
         <source>Open until %1</source>
         <translation>Открыто до %1</translation>
     </message>
@@ -1694,8 +2272,13 @@ Address: %4
         <source>Status</source>
         <translation>Статус</translation>
     </message>
+    <message>
+        <location line="+5"/>
+        <source>, has not been successfully broadcast yet</source>
+        <translation>, ещё не было успешно разослано</translation>
+    </message>
     <message numerus="yes">
-        <location line="+7"/>
+        <location line="+2"/>
         <source>, broadcast through %n node(s)</source>
         <translation><numerusform>, разослано через %n узел</numerusform><numerusform>, разослано через %n узла</numerusform><numerusform>, разослано через %n узлов</numerusform></translation>
     </message>
@@ -1728,7 +2311,12 @@ Address: %4
         <translation>Для</translation>
     </message>
     <message>
-        <location line="-77"/>
+        <location line="-81"/>
+        <source>unknown</source>
+        <translation>неизвестно</translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <location line="+2"/>
         <source>own address</source>
         <translation>свой адрес</translation>
@@ -1783,7 +2371,7 @@ Address: %4
     <message>
         <location line="+2"/>
         <source>Comment</source>
-        <translation>Комментарий:</translation>
+        <translation>Комментарий</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -1825,22 +2413,9 @@ Address: %4
         <source>false</source>
         <translation>ложь</translation>
     </message>
-    <message>
-        <location line="-209"/>
-        <source>, has not been successfully broadcast yet</source>
-        <translation>, ещё не было успешно разослано</translation>
-    </message>
-    <message numerus="yes">
-        <location line="-35"/>
-        <source>Open for %n more block(s)</source>
-        <translation><numerusform>Открыто для ещё %n блока</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform></translation>
-    </message>
-    <message>
-        <location line="+70"/>
-        <source>unknown</source>
-        <translation>неизвестно</translation>
-    </message>
 </context>
+
+<!--  -->
 <context>
     <name>TransactionDescDialog</name>
     <message>
@@ -1854,6 +2429,8 @@ Address: %4
         <translation>Данный диалог показывает детализированную статистику по выбранной транзакции</translation>
     </message>
 </context>
+
+<!--  -->
 <context>
     <name>TransactionTableModel</name>
     <message>
@@ -1886,20 +2463,20 @@ Address: %4
         <source>Open until %1</source>
         <translation>Открыто до %1</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location line="+3"/>
-        <source>Offline (%1 confirmations)</source>
-        <translation>Оффлайн (%1 подтверждений)</translation>
+        <source>Offline (%n confirmations)</source>
+        <translation><numerusform>Оффлайн (%n подтверждение)</numerusform><numerusform>Оффлайн (%n подтверждения)</numerusform><numerusform>Оффлайн (%n подтверждений)</numerusform></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Unconfirmed (%1 of %2 confirmations)</source>
         <translation>Не подтверждено (%1 из %2 подтверждений)</translation>
     </message>
-    <message>
+    <message numerus="yes">
         <location line="+3"/>
-        <source>Confirmed (%1 confirmations)</source>
-        <translation>Подтверждено (%1 подтверждений)</translation>
+        <source>Confirmed (%n confirmations)</source>
+        <translation><numerusform>Подтверждено (%n подтверждение)</numerusform><numerusform>Подтверждено (%n подтверждения)</numerusform><numerusform>Подтверждено (%n подтверждений)</numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+8"/>
@@ -1972,6 +2549,8 @@ Address: %4
         <translation>Сумма, добавленная, или снятая с баланса.</translation>
     </message>
 </context>
+
+<!--  -->
 <context>
     <name>TransactionView</name>
     <message>
@@ -2141,6 +2720,8 @@ Address: %4
         <translation>до</translation>
     </message>
 </context>
+
+<!--  -->
 <context>
     <name>WalletModel</name>
     <message>
@@ -2149,10 +2730,12 @@ Address: %4
         <translation>Отправка</translation>
     </message>
 </context>
+
+<!--  -->
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="+42"/>
+        <location filename="../walletview.cpp" line="+46"/>
         <source>&amp;Export</source>
         <translation>&amp;Экспорт</translation>
     </message>
@@ -2162,7 +2745,7 @@ Address: %4
         <translation>Экспортировать данные из вкладки в файл</translation>
     </message>
     <message>
-        <location line="+193"/>
+        <location line="+197"/>
         <source>Backup Wallet</source>
         <translation>Сделать резервную копию бумажника</translation>
     </message>
@@ -2192,121 +2775,12 @@ Address: %4
         <translation>Данные бумажника успешно сохранены в новое место.</translation>
     </message>
 </context>
+
+<!--  -->
 <context>
     <name>bitcoin-core</name>
     <message>
-        <location filename="../bitcoinstrings.cpp" line="+94"/>
-        <source>Gostcoin version</source>
-        <translation>Версия</translation>
-    </message>
-    <message>
-        <location line="+102"/>
-        <source>Usage:</source>
-        <translation>Использование:</translation>
-    </message>
-    <message>
-        <location line="-29"/>
-        <source>Send command to -server or gostcoind</source>
-        <translation>Отправить команду на -server или gostcoind</translation>
-    </message>
-    <message>
-        <location line="-23"/>
-        <source>List commands</source>
-        <translation>Список команд
-</translation>
-    </message>
-    <message>
-        <location line="-12"/>
-        <source>Get help for a command</source>
-        <translation>Получить помощь по команде</translation>
-    </message>
-    <message>
-        <location line="+24"/>
-        <source>Options:</source>
-        <translation>Опции:</translation>
-    </message>
-    <message>
-        <location line="+24"/>
-        <source>Specify configuration file (default: gostcoin.conf)</source>
-        <translation>Указать конфигурационный файл (по умолчанию: gostcoin.conf)</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Specify pid file (default: gostcoind.pid)</source>
-        <translation>Задать pid-файл (по умолчанию: gostcoin.pid)</translation>
-    </message>
-    <message>
-        <location line="-1"/>
-        <source>Specify data directory</source>
-        <translation>Задать каталог данных</translation>
-    </message>
-    <message>
-        <location line="-9"/>
-        <source>Set database cache size in megabytes (default: 25)</source>
-        <translation>Установить размер кэша базы данных в мегабайтах (по умолчанию: 25)</translation>
-    </message>
-    <message>
-        <location line="-28"/>
-        <source>Listen for connections on &lt;port&gt; (default: 9333 or testnet: 19333)</source>
-        <translation>Принимать входящие подключения на &lt;port&gt; (по умолчанию: 9333 или 19333 в тестовой сети)</translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Maintain at most &lt;n&gt; connections to peers (default: 125)</source>
-        <translation>Поддерживать не более &lt;n&gt; подключений к узлам (по умолчанию: 125)</translation>
-    </message>
-    <message>
-        <location line="-48"/>
-        <source>Connect to a node to retrieve peer addresses, and disconnect</source>
-        <translation>Подключиться к узлу, чтобы получить список адресов других участников и отключиться</translation>
-    </message>
-    <message>
-        <location line="+82"/>
-        <source>Specify your own public address</source>
-        <translation>Укажите ваш собственный публичный адрес</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Threshold for disconnecting misbehaving peers (default: 100)</source>
-        <translation>Порог для отключения неправильно ведущих себя узлов (по умолчанию: 100)</translation>
-    </message>
-    <message>
-        <location line="-134"/>
-        <source>Number of seconds to keep misbehaving peers from reconnecting (default: 86400)</source>
-        <translation>Число секунд блокирования неправильно ведущих себя узлов (по умолчанию: 86400)</translation>
-    </message>
-    <message>
-        <location line="-29"/>
-        <source>An error occurred while setting up the RPC port %u for listening on IPv4: %s</source>
-        <translation>Произошла ошибка при открытии RPC-порта %u для прослушивания на IPv4: %s</translation>
-    </message>
-    <message>
-        <location line="+27"/>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 9332 or testnet: 19332)</source>
-        <translation>Прослушивать подключения JSON-RPC на &lt;порту&gt; (по умолчанию: 9332 или для testnet: 19332)</translation>
-    </message>
-    <message>
-        <location line="+37"/>
-        <source>Accept command line and JSON-RPC commands</source>
-        <translation>Принимать командную строку и команды JSON-RPC</translation>
-    </message>
-    <message>
-        <location line="+76"/>
-        <source>Run in the background as a daemon and accept commands</source>
-        <translation>Запускаться в фоне как демон и принимать команды</translation>
-    </message>
-    <message>
-        <location line="+37"/>
-        <source>Use the test network</source>
-        <translation>Использовать тестовую сеть</translation>
-    </message>
-    <message>
-        <location line="-112"/>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Принимать подключения извне (по умолчанию: 1, если не используется -proxy или -connect)</translation>
-    </message>
-    <message>
-        <location line="-80"/>
+        <location filename="../bitcoinstrings.cpp" line="+9"/>
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
@@ -2331,7 +2805,17 @@ rpcpassword=%s
 </translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+12"/>
+        <source>Acceptable ciphers (default: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</source>
+        <translation>Разрешённые алгоритмы (по умолчанию: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>An error occurred while setting up the RPC port %u for listening on IPv4: %s</source>
+        <translation>Произошла ошибка при открытии RPC-порта %u для прослушивания на IPv4: %s</translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>An error occurred while setting up the RPC port %u for listening on IPv6, falling back to IPv4: %s</source>
         <translation>Произошла ошибка при открытии на прослушивание IPv6 RCP-порта %u, возвращаемся к IPv4: %s</translation>
     </message>
@@ -2366,17 +2850,42 @@ rpcpassword=%s
         <translation>Выполнить команду, когда меняется транзакция в бумажнике (%s в команде заменяется на TxID)</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+3"/>
+        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
+        <translation>Выполнить команду, когда появляется новый блок (%s в команде заменяется на хэш блока)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 9332 or testnet: 19332)</source>
+        <translation>Прослушивать подключения JSON-RPC на &lt;порту&gt; (по умолчанию: 9332 или для testnet: 19332)</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Number of seconds to keep misbehaving peers from reconnecting (default: 86400)</source>
+        <translation>Число секунд блокирования неправильно ведущих себя узлов (по умолчанию: 86400)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: 27000)</source>
         <translation>Максимальный размер высокоприоритетных/низкокомиссионных транзакций в байтах (по умолчанию: 27000)</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+3"/>
+        <source>Set the number of script verification threads (up to 16, 0 = auto, &lt;0 = leave that many cores free, default: 0)</source>
+        <translation>Задать число потоков проверки скрипта (вплоть до 16, 0=авто, &lt;0 = оставить столько ядер свободными, по умолчанию: 0)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
         <translation>Это пре-релизная тестовая сборка - используйте на свой страх и риск - не используйте для добычи или торговых приложений</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+3"/>
+        <source>Unable to bind to %s on this computer. Gostcoin is probably already running.</source>
+        <translation>Невозможно привязаться к %s на этом компьютере.  Возможно, ГОСТкойн уже работает.</translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
         <translation>Внимание: установлено очень большое значение -paytxfee. Это комиссия, которую вы заплатите при проведении транзакции.</translation>
     </message>
@@ -2401,24 +2910,93 @@ rpcpassword=%s
         <translation>Внимание: wallet.dat повреждён, данные спасены! Оригинальный wallet.dat сохранён как wallet.{timestamp}.bak в %s; если ваш баланс или транзакции некорректны, вы должны восстановить файл из резервной копии.</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+4"/>
+        <source>You must set rpcpassword=&lt;password&gt; in the configuration file:
+%s
+If the file does not exist, create it with owner-readable-only file permissions.</source>
+        <translation>Вы должны установить rpcpassword=&lt;password&gt; в конфигурационном файле:
+%s
+Если файл не существует, создайте его и установите права доступа только для владельца.</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Accept command line and JSON-RPC commands</source>
+        <translation>Принимать командную строку и команды JSON-RPC</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
+        <translation>Принимать подключения извне (по умолчанию: 1, если не используется -proxy или -connect)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Add a node to connect to and attempt to keep the connection open</source>
+        <translation>Добавить узел для подключения и пытаться поддерживать соединение открытым</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
+        <translation>Разрешить поиск в DNS для -addnode, -seednode и -connect</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Allow JSON-RPC connections from specified IP address</source>
+        <translation>Разрешить подключения JSON-RPC с указанного IP</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Attempt to recover private keys from a corrupt wallet.dat</source>
         <translation>Попытаться восстановить приватные ключи из повреждённого wallet.dat</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Block creation options:</source>
         <translation>Параметры создания блоков:</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+1"/>
+        <source>Cannot downgrade wallet</source>
+        <translation>Не удаётся понизить версию бумажника</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Cannot resolve -bind address: &apos;%s&apos;</source>
+        <translation>Не удаётся разрешить адрес в параметре -bind: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Cannot resolve -externalip address: &apos;%s&apos;</source>
+        <translation>Не удаётся разрешить адрес в параметре -externalip: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Cannot write default address</source>
+        <translation>Не удаётся записать адрес по умолчанию</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Connect only to the specified node(s)</source>
         <translation>Подключаться только к указанному узлу(ам)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+1"/>
+        <source>Connect through socks proxy</source>
+        <translation>Подключаться через socks прокси</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Connect to a node to retrieve peer addresses, and disconnect</source>
+        <translation>Подключиться к узлу, чтобы получить список адресов других участников и отключиться</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Corrupted block database detected</source>
         <translation>БД блоков повреждена</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Creating SAM session...</source>
+        <translation>Создание SAM сессии...</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2431,7 +3009,12 @@ rpcpassword=%s
         <translation>Пересобрать БД блоков прямо сейчас?</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>Done loading</source>
+        <translation>Загрузка завершена</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Error initializing block database</source>
         <translation>Ошибка инициализации БД блоков</translation>
     </message>
@@ -2446,24 +3029,44 @@ rpcpassword=%s
         <translation>Ошибка чтения базы данных блоков</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+1"/>
+        <source>Error loading wallet.dat</source>
+        <translation>Ошибка при загрузке wallet.dat</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Error loading wallet.dat: Wallet corrupted</source>
+        <translation>Ошибка загрузки wallet.dat: Бумажник поврежден</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Error loading wallet.dat: Wallet requires newer version of Gostcoin</source>
+        <translation>Ошибка загрузки wallet.dat: бумажник требует более новую версию ГОСТкойн</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Error opening block database</source>
         <translation>Не удалось открыть БД блоков</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>Error</source>
+        <translation>Ошибка</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Error: Disk space is low!</source>
         <translation>Ошибка: мало места на диске!</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Error: Wallet locked, unable to create transaction!</source>
-        <translation>Ошибка: бумажник заблокирован, невозможно создать транзакцию!</translation>
+        <source>Error: system error: </source>
+        <translation>Ошибка: системная ошибка:</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Error: system error: </source>
-        <translation>Ошибка: системная ошибка:</translation>
+        <source>Error: Wallet locked, unable to create transaction!</source>
+        <translation>Ошибка: бумажник заблокирован, невозможно создать транзакцию!</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2521,7 +3124,12 @@ rpcpassword=%s
         <translation>Не удалось записать данные для отмены</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>Fee per KB to add to transactions you send</source>
+        <translation>Комиссия на килобайт, добавляемая к вашим транзакциям</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Find peers using DNS lookup (default: 1 unless -connect)</source>
         <translation>Искать узлы с помощью DNS (по умолчанию: 1, если не указан -connect)</translation>
     </message>
@@ -2531,7 +3139,17 @@ rpcpassword=%s
         <translation>Включить добычу монет (по умолчанию: 0)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>Get help for a command</source>
+        <translation>Получить помощь по команде</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Gostcoin version</source>
+        <translation>Версия</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>How many blocks to check at startup (default: 288, 0 = all)</source>
         <translation>Сколько блоков проверять при запуске (по умолчанию: 288, 0 = все)</translation>
     </message>
@@ -2541,49 +3159,24 @@ rpcpassword=%s
         <translation>Насколько тщательно проверять блок (0-4, по умолчанию: 3)</translation>
     </message>
     <message>
-        <location line="+19"/>
-        <source>Not enough file descriptors available.</source>
-        <translation>Недостаточно файловых дескрипторов.</translation>
-    </message>
-    <message>
-        <location line="+8"/>
-        <source>Rebuild block chain index from current blk000??.dat files</source>
-        <translation>Перестроить индекс цепи блоков из текущих файлов blk000??.dat</translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>Set the number of threads to service RPC calls (default: 4)</source>
-        <translation>Задать число потоков выполнения(по умолчанию: 4)</translation>
-    </message>
-    <message>
-        <location line="+26"/>
-        <source>Verifying blocks...</source>
-        <translation>Проверка блоков...</translation>
-    </message>
-    <message>
         <location line="+1"/>
-        <source>Verifying wallet...</source>
-        <translation>Проверка бумажника...</translation>
-    </message>
-    <message>
-        <location line="-69"/>
         <source>Imports blocks from external blk000??.dat file</source>
         <translation>Импортировать блоки из внешнего файла blk000??.dat</translation>
     </message>
     <message>
-        <location line="-76"/>
-        <source>Set the number of script verification threads (up to 16, 0 = auto, &lt;0 = leave that many cores free, default: 0)</source>
-        <translation>Задать число потоков проверки скрипта (вплоть до 16, 0=авто, &lt;0 = оставить столько ядер свободными, по умолчанию: 0)</translation>
-    </message>
-    <message>
-        <location line="+77"/>
+        <location line="+1"/>
         <source>Information</source>
         <translation>Информация</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Invalid -tor address: &apos;%s&apos;</source>
-        <translation>Неверный адрес -tor: &apos;%s&apos;</translation>
+        <location line="+1"/>
+        <source>Insufficient funds</source>
+        <translation>Недостаточно монет</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Invalid -proxy address: &apos;%s&apos;</source>
+        <translation>Неверный адрес -proxy: &apos;%s&apos;</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2596,12 +3189,52 @@ rpcpassword=%s
         <translation>Неверное количество в параметре -mintxfee=&lt;кол-во&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+1"/>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Неверное количество в параметре -paytxfee=&lt;кол-во&gt;: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Invalid amount</source>
+        <translation>Неверное количество</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>List commands</source>
+        <translation>Список команд</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Listen for connections on &lt;port&gt; (default: 9333 or testnet: 19333)</source>
+        <translation>Принимать входящие подключения на &lt;port&gt; (по умолчанию: 9333 или 19333 в тестовой сети)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Loading addresses...</source>
+        <translation>Загрузка адресов...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Loading block index...</source>
+        <translation>Загрузка индекса блоков...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Loading wallet...</source>
+        <translation>Загрузка бумажника...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Maintain a full transaction index (default: 0)</source>
         <translation>Держать полный индекс транзакций (по умолчанию: 0)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>Maintain at most &lt;n&gt; connections to peers (default: 125)</source>
+        <translation>Поддерживать не более &lt;n&gt; подключений к узлам (по умолчанию: 125)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>
         <translation>Максимальный размер буфера приёма на соединение, &lt;n&gt;*1000 байт (по умолчанию: 5000)</translation>
     </message>
@@ -2611,9 +3244,14 @@ rpcpassword=%s
         <translation>Максимальный размер буфера отправки на соединение, &lt;n&gt;*1000 байт (по умолчанию: 1000)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>Not enough file descriptors available.</source>
+        <translation>Недостаточно файловых дескрипторов.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Only accept block chain matching built-in checkpoints (default: 1)</source>
-        <translation>Принимать цепь блоков, только если она соответствует встроенным контрольным точкам (по умолчанию: 1)</translation>
+        <translation>Разрешить только блокчейн, с совпадающими чекпоинтами (по умолчанию: 1)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2621,7 +3259,12 @@ rpcpassword=%s
         <translation>Подключаться только к узлам из сети &lt;net&gt; (IPv4, IPv6 или Tor)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>Options:</source>
+        <translation>Опции:</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Output extra debugging information. Implies all other -debug* options</source>
         <translation>Выводить больше отладочной информации. Включает все остальные опции -debug*</translation>
     </message>
@@ -2631,15 +3274,49 @@ rpcpassword=%s
         <translation>Выводить дополнительную сетевую отладочную информацию</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>Password for JSON-RPC connections</source>
+        <translation>Пароль для подключений JSON-RPC</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Prepend debug output with timestamp</source>
         <translation>Дописывать отметки времени к отладочному выводу</translation>
     </message>
     <message>
-        <location line="+5"/>
-        <source>SSL options: (see the Gostcoin Wiki for SSL setup instructions)</source>
-        <translation>
-Параметры SSL: (см. Gostcoin Wiki для инструкций по настройке SSL)</translation>
+        <location line="+1"/>
+        <source>Rebuild block chain index from current blk000??.dat files</source>
+        <translation>Перестроить индекс цепи блоков из текущих файлов blk000??.dat</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Rescan the block chain for missing wallet transactions</source>
+        <translation>Перепроверить цепь блоков на предмет отсутствующих в бумажнике транзакций</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Rescanning...</source>
+        <translation>Сканирование...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Run in the background as a daemon and accept commands</source>
+        <translation>Запускаться в фоне как демон и принимать команды</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>SAM session created</source>
+        <translation>SAM сессия создана</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>SAM session failed</source>
+        <translation>Не удалось создать SAM сессию</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>SAM session terminated</source>
+        <translation>SAM сессия закрыта</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2647,7 +3324,17 @@ rpcpassword=%s
         <translation>Выбрать версию SOCKS-прокси (4-5, по умолчанию: 5)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+1"/>
+        <source>Send command to -server or gostcoind</source>
+        <translation>Отправить команду на -server или gostcoind</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Send commands to node running on &lt;ip&gt; (default: 127.0.0.1)</source>
+        <translation>Посылать команды узлу, запущенному на &lt;ip&gt; (по умолчанию: 127.0.0.1)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Send trace/debug info to console instead of debug.log file</source>
         <translation>Выводить информацию трассировки/отладки на консоль вместо файла debug.log</translation>
     </message>
@@ -2657,7 +3344,27 @@ rpcpassword=%s
         <translation>Отправлять информацию трассировки/отладки в отладчик</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+1"/>
+        <source>Server certificate file (default: server.cert)</source>
+        <translation>Файл серверного сертификата (по умолчанию: server.cert)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Server private key (default: server.pem)</source>
+        <translation>Приватный ключ сервера (по умолчанию: server.pem)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Set database cache size in megabytes (default: 25)</source>
+        <translation>Установить размер кэша базы данных в мегабайтах (по умолчанию: 25)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Set key pool size to &lt;n&gt; (default: 100)</source>
+        <translation>Установить размер запаса ключей в &lt;n&gt; (по умолчанию: 100)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Set maximum block size in bytes (default: 250000)</source>
         <translation>Максимальный размер блока в байтах (по умолчанию: 250000)</translation>
     </message>
@@ -2667,7 +3374,12 @@ rpcpassword=%s
         <translation>Минимальный размер блока в байтах (по умолчанию: 0)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>Set the number of threads to service RPC calls (default: 4)</source>
+        <translation>Задать число потоков выполнения(по умолчанию: 4)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
         <translation>Сжимать файл debug.log при запуске клиента (по умолчанию: 1, если нет -debug)</translation>
     </message>
@@ -2677,17 +3389,62 @@ rpcpassword=%s
         <translation>Не удалось подписать транзакцию</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>Specify configuration file (default: gostcoin.conf)</source>
+        <translation>Указать конфигурационный файл (по умолчанию: gostcoin.conf)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Specify connection timeout in milliseconds (default: 5000)</source>
         <translation>Таймаут соединения в миллисекундах (по умолчанию: 5000)</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+1"/>
+        <source>Specify data directory</source>
+        <translation>Задать каталог данных</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Specify pid file (default: gostcoind.pid)</source>
+        <translation>Задать pid-файл (по умолчанию: gostcoin.pid)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Specify your own public address</source>
+        <translation>Укажите ваш собственный публичный адрес</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>SSL options: (see the Gostcoin Wiki for SSL setup instructions)</source>
+        <translation>Параметры SSL: (см. ГОСТКоин Wiki для инструкций по настройке SSL)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>System error: </source>
         <translation>Системная ошибка:</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+1"/>
+        <source>Terminating SAM session...</source>
+        <translation>Закрытие SAM сессии...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This help message</source>
+        <translation>Эта справка</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Threshold for disconnecting misbehaving peers (default: 100)</source>
+        <translation>Порог для отключения неправильно ведущих себя узлов (по умолчанию: 100)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>To use the %s option</source>
+        <translation>Чтобы использовать опцию %s</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Transaction amount too small</source>
         <translation>Объём транзакции слишком мал</translation>
     </message>
@@ -2702,14 +3459,34 @@ rpcpassword=%s
         <translation>Транзакция слишком большая</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <source>Use UPnP to map the listening port (default: 0)</source>
-        <translation>Использовать UPnP для проброса порта (по умолчанию: 0)</translation>
+        <location line="+1"/>
+        <source>Unable to bind to %s on this computer (bind returned error %d, %s)</source>
+        <translation>Невозможно привязаться к %s на этом компьютере (bind вернул ошибку %d, %s)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Use UPnP to map the listening port (default: 1 when listening)</source>
-        <translation>Использовать UPnP для проброса порта (по умолчанию: 1, если используется прослушивание)</translation>
+        <source>Unknown -socks proxy version requested: %i</source>
+        <translation>В параметре -socks запрошена неизвестная версия: %i</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>В параметре -onlynet указана неизвестная сеть: &apos;%s&apos;</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Upgrade wallet to latest format</source>
+        <translation>Обновить бумажник до последнего формата</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Usage:</source>
+        <translation>Использование:</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Use OpenSSL (https) for JSON-RPC connections</source>
+        <translation>Использовать OpenSSL (https) для подключений JSON-RPC</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2717,12 +3494,37 @@ rpcpassword=%s
         <translation>Использовать прокси для скрытых сервисов (по умолчанию: тот же, что и в -proxy)</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>Use the test network</source>
+        <translation>Использовать тестовую сеть</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Username for JSON-RPC connections</source>
         <translation>Имя для подключений JSON-RPC</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+1"/>
+        <source>Verifying blocks...</source>
+        <translation>Проверка блоков...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Verifying wallet...</source>
+        <translation>Проверка бумажника...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Wallet needed to be rewritten: restart Gostcoin to complete</source>
+        <translation>Необходимо перезаписать бумажник, перезапустите ГОСТкойн для завершения операции</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>wallet.dat corrupt, salvage failed</source>
+        <translation>wallet.dat повреждён, спасение данных не удалось</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Warning</source>
         <translation>Внимание</translation>
     </message>
@@ -2735,215 +3537,6 @@ rpcpassword=%s
         <location line="+1"/>
         <source>You need to rebuild the databases using -reindex to change -txindex</source>
         <translation>Вам необходимо пересобрать базы данных с помощью -reindex, чтобы изменить -txindex</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>wallet.dat corrupt, salvage failed</source>
-        <translation>wallet.dat повреждён, спасение данных не удалось</translation>
-    </message>
-    <message>
-        <location line="-50"/>
-        <source>Password for JSON-RPC connections</source>
-        <translation>Пароль для подключений JSON-RPC</translation>
-    </message>
-    <message>
-        <location line="-67"/>
-        <source>Allow JSON-RPC connections from specified IP address</source>
-        <translation>Разрешить подключения JSON-RPC с указанного IP</translation>
-    </message>
-    <message>
-        <location line="+76"/>
-        <source>Send commands to node running on &lt;ip&gt; (default: 127.0.0.1)</source>
-        <translation>Посылать команды узлу, запущенному на &lt;ip&gt; (по умолчанию: 127.0.0.1)</translation>
-    </message>
-    <message>
-        <location line="-120"/>
-        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
-        <translation>Выполнить команду, когда появляется новый блок (%s в команде заменяется на хэш блока)</translation>
-    </message>
-    <message>
-        <location line="+147"/>
-        <source>Upgrade wallet to latest format</source>
-        <translation>Обновить бумажник до последнего формата</translation>
-    </message>
-    <message>
-        <location line="-21"/>
-        <source>Set key pool size to &lt;n&gt; (default: 100)</source>
-        <translation>Установить размер запаса ключей в &lt;n&gt; (по умолчанию: 100)</translation>
-    </message>
-    <message>
-        <location line="-12"/>
-        <source>Rescan the block chain for missing wallet transactions</source>
-        <translation>Перепроверить цепь блоков на предмет отсутствующих в бумажнике транзакций</translation>
-    </message>
-    <message>
-        <location line="+35"/>
-        <source>Use OpenSSL (https) for JSON-RPC connections</source>
-        <translation>Использовать OpenSSL (https) для подключений JSON-RPC</translation>
-    </message>
-    <message>
-        <location line="-26"/>
-        <source>Server certificate file (default: server.cert)</source>
-        <translation>Файл серверного сертификата (по умолчанию: server.cert)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Server private key (default: server.pem)</source>
-        <translation>Приватный ключ сервера (по умолчанию: server.pem)</translation>
-    </message>
-    <message>
-        <location line="-151"/>
-        <source>Acceptable ciphers (default: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</source>
-        <translation>Разрешённые алгоритмы (по умолчанию: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</translation>
-    </message>
-    <message>
-        <location line="+165"/>
-        <source>This help message</source>
-        <translation>Эта справка</translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Unable to bind to %s on this computer (bind returned error %d, %s)</source>
-        <translation>Невозможно привязаться к %s на этом компьютере (bind вернул ошибку %d, %s)</translation>
-    </message>
-    <message>
-        <location line="-91"/>
-        <source>Connect through socks proxy</source>
-        <translation>Подключаться через socks прокси</translation>
-    </message>
-    <message>
-        <location line="-10"/>
-        <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
-        <translation>Разрешить поиск в DNS для -addnode, -seednode и -connect</translation>
-    </message>
-    <message>
-        <location line="+55"/>
-        <source>Loading addresses...</source>
-        <translation>Загрузка адресов...</translation>
-    </message>
-    <message>
-        <location line="-35"/>
-        <source>Error loading wallet.dat: Wallet corrupted</source>
-        <translation>Ошибка загрузки wallet.dat: Бумажник поврежден</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Gostcoin</source>
-        <translation>Ошибка загрузки wallet.dat: бумажник требует более новую версию ГОСТкойн</translation>
-    </message>
-    <message>
-        <location line="+93"/>
-        <source>Wallet needed to be rewritten: restart Gostcoin to complete</source>
-        <translation>Необходимо перезаписать бумажник, перезапустите ГОСТкойн для завершения операции.</translation>
-    </message>
-    <message>
-        <location line="-95"/>
-        <source>Error loading wallet.dat</source>
-        <translation>Ошибка при загрузке wallet.dat</translation>
-    </message>
-    <message>
-        <location line="+28"/>
-        <source>Invalid -proxy address: &apos;%s&apos;</source>
-        <translation>Неверный адрес -proxy: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location line="+56"/>
-        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
-        <translation>В параметре -onlynet указана неизвестная сеть: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location line="-1"/>
-        <source>Unknown -socks proxy version requested: %i</source>
-        <translation>В параметре -socks запрошена неизвестная версия: %i</translation>
-    </message>
-    <message>
-        <location line="-96"/>
-        <source>Cannot resolve -bind address: &apos;%s&apos;</source>
-        <translation>Не удаётся разрешить адрес в параметре -bind: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Cannot resolve -externalip address: &apos;%s&apos;</source>
-        <translation>Не удаётся разрешить адрес в параметре -externalip: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location line="+44"/>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos;</source>
-        <translation>Неверное количество в параметре -paytxfee=&lt;кол-во&gt;: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Invalid amount</source>
-        <translation>Неверное количество</translation>
-    </message>
-    <message>
-        <location line="-6"/>
-        <source>Insufficient funds</source>
-        <translation>Недостаточно монет</translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>Loading block index...</source>
-        <translation>Загрузка индекса блоков...</translation>
-    </message>
-    <message>
-        <location line="-57"/>
-        <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>Добавить узел для подключения и пытаться поддерживать соединение открытым</translation>
-    </message>
-    <message>
-        <location line="-25"/>
-        <source>Unable to bind to %s on this computer. Gostcoin is probably already running.</source>
-        <translation>Невозможно привязаться к %s на этом компьютере.  Возможно, ГОСТкойн уже работает.</translation>
-    </message>
-    <message>
-        <location line="+64"/>
-        <source>Fee per KB to add to transactions you send</source>
-        <translation>Комиссия на килобайт, добавляемая к вашим транзакциям</translation>
-    </message>
-    <message>
-        <location line="+19"/>
-        <source>Loading wallet...</source>
-        <translation>Загрузка бумажника...</translation>
-    </message>
-    <message>
-        <location line="-52"/>
-        <source>Cannot downgrade wallet</source>
-        <translation>Не удаётся понизить версию бумажника</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Cannot write default address</source>
-        <translation>Не удаётся записать адрес по умолчанию</translation>
-    </message>
-    <message>
-        <location line="+64"/>
-        <source>Rescanning...</source>
-        <translation>Сканирование...</translation>
-    </message>
-    <message>
-        <location line="-57"/>
-        <source>Done loading</source>
-        <translation>Загрузка завершена</translation>
-    </message>
-    <message>
-        <location line="+82"/>
-        <source>To use the %s option</source>
-        <translation>Чтобы использовать опцию %s</translation>
-    </message>
-    <message>
-        <location line="-74"/>
-        <source>Error</source>
-        <translation>Ошибка</translation>
-    </message>
-    <message>
-        <location line="-31"/>
-        <source>You must set rpcpassword=&lt;password&gt; in the configuration file:
-%s
-If the file does not exist, create it with owner-readable-only file permissions.</source>
-        <translation>Вы должны установить rpcpassword=&lt;password&gt; в конфигурационном файле:
-%s
-Если файл не существует, создайте его и установите права доступа только для владельца.</translation>
     </message>
 </context>
 </TS>

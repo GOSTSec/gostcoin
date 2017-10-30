@@ -4,36 +4,36 @@
 #include "clientmodel.h"
 #include "clientversion.h"
 
-// Copyright year (2009-this)
-// Todo: update this when changing our copyright comments in the source
-const int ABOUTDIALOG_COPYRIGHT_YEAR = 2017;
-
 AboutDialog::AboutDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::AboutDialog)
+	QDialog(parent),
+	ui(new Ui::AboutDialog)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 
-    // Set current copyright year
-    ui->copyrightLabel->setText(tr("Copyright") + QString(" &copy; 2009-%1 ").arg(COPYRIGHT_YEAR) + tr("The Bitcoin developers") + QString("<br>") + tr("Copyright") + QString(" &copy; ") + tr("2011-%1 The Litecoin developers").arg(ABOUTDIALOG_COPYRIGHT_YEAR) + QString("<br>") + tr("Copyright") + QString(" &copy; ") + tr("2013-%1 The Anoncoin developers").arg(ABOUTDIALOG_COPYRIGHT_YEAR) +
-	QString("<br>") + tr("Copyright") + QString(" &copy; ") + tr("2015-%1 The i2pd developers").arg(ABOUTDIALOG_COPYRIGHT_YEAR) +
-	QString("<br>") + tr("Copyright") + QString(" &copy; ") + tr("%1 The Gostcoin developers").arg(ABOUTDIALOG_COPYRIGHT_YEAR));
+	// Set current copyright year
+	ui->copyrightLabel->setText(
+		tr("Copyright") + QString(" &copy; 2009-%1 ").arg(COPYRIGHT_YEAR) + tr("The Bitcoin developers")  + QString("<br>") + 
+		tr("Copyright") + QString(" &copy; 2011-%1 ").arg(COPYRIGHT_YEAR) + tr("The Litecoin developers") + QString("<br>") + 
+		tr("Copyright") + QString(" &copy; 2013-%1 ").arg(COPYRIGHT_YEAR) + tr("The Anoncoin developers") + QString("<br>") + 
+		tr("Copyright") + QString(" &copy; 2015-%1 ").arg(COPYRIGHT_YEAR) + tr("The i2pd developers")     + QString("<br>") + 
+		tr("Copyright") + QString(" &copy;      %1 ").arg(COPYRIGHT_YEAR) + tr("The Gostcoin developers")
+	);
 }
 
 void AboutDialog::setModel(ClientModel *model)
 {
-    if(model)
-    {
-        ui->versionLabel->setText(model->formatFullVersion());
-    }
+	if(model)
+	{
+		ui->versionLabel->setText(model->formatFullVersion());
+	}
 }
 
 AboutDialog::~AboutDialog()
 {
-    delete ui;
+	delete ui;
 }
 
 void AboutDialog::on_buttonBox_accepted()
 {
-    close();
+	close();
 }

@@ -95,7 +95,7 @@ bool PaymentServer::ipcSendCommandLine()
 
 PaymentServer::PaymentServer(QApplication* parent) : QObject(parent), saveURIs(true)
 {
-    // Install global event filter to catch QFileOpenEvents on the mac (sent when you click bitcoin: links)
+    // Install global event filter to catch QFileOpenEvents on the mac (sent when you click gostcoin: links)
     parent->installEventFilter(this);
 
     QString name = ipcServerName();

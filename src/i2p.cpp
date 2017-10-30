@@ -95,7 +95,7 @@ bool StreamSessionAdapter::StartSession (
         const std::string& minVer        /*= SAM_DEFAULT_MIN_VER*/,
         const std::string& maxVer        /*= SAM_DEFAULT_MAX_VER*/)
 {
-	std::cout << "Creating SAM session ..." << std::endl;
+	std::cout << "Creating SAM session..." << std::endl;
 	auto s = std::make_shared<SAM::StreamSession>(nickname, SAMHost, SAMPort, myDestination, i2pOptions, minVer, maxVer);
 	sessionHolder_ = std::make_shared<SessionHolder>(s);
 	bool isReady = s->isReady ();
@@ -108,7 +108,7 @@ bool StreamSessionAdapter::StartSession (
 
 void StreamSessionAdapter::StopSession ()
 {
-	std::cout << "Terminating SAM session ..." << std::endl;
+	std::cout << "Terminating SAM session..." << std::endl;
 	sessionHolder_ = nullptr;
 	std::cout << "SAM session terminated" << std::endl;
 }

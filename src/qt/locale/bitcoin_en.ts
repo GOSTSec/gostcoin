@@ -932,8 +932,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Suppress notifications and tray animations</source>
-        <translation>Suppress notifications and tray animations</translation>
+        <source>Suppress notifications and tray animations.</source>
+        <translation>Suppress notifications and tray animations.</translation>
     </message>
     <message>
         <location line="+3"/>
