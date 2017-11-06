@@ -5,7 +5,7 @@ build/
 debug/
 release/
 Makefile*
-qrc_bitcoin.cpp
+qrc_gostcoin.cpp
 gostcoin-qt
 gostcoind
 gostcoind.exe

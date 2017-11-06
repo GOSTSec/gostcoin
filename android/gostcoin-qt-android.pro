@@ -404,7 +404,7 @@ greaterThan(QT_MAJOR_VERSION, 4): {
 
 # for lrelease/lupdate
 # also add new translations to ../src/qt/gostcoin.qrc under translations/
-TRANSLATIONS = $$files(../src/qt/locale/bitcoin_*.ts)
+TRANSLATIONS = $$files(../src/qt/locale/gostcoin_*.ts)
 
 isEmpty(QMAKE_LRELEASE) {
     QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
