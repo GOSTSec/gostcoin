@@ -1220,9 +1220,10 @@ void ThreadSocketHandler()
 
 
 static const char *strI2PDNSSeed[][2] = {
-   {"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p","cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p"}, // xcps
-    {"6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p","6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p"}, // R4SAS
-{"xq7jlz5t5n3phb62ro2zicg4zzhibzlflgci4xnhsdi3wr6ihixq.b32.i2p","xq7jlz5t5n3phb62ro2zicg4zzhibzlflgci4xnhsdi3wr6ihixq.b32.i2p"} // pisekot
+	{"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p","cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p"}, // xcps
+	{"6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p","6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p"}, // R4SAS
+	{"xq7jlz5t5n3phb62ro2zicg4zzhibzlflgci4xnhsdi3wr6ihixq.b32.i2p","xq7jlz5t5n3phb62ro2zicg4zzhibzlflgci4xnhsdi3wr6ihixq.b32.i2p"}, // pisekot
+	{"hwzq7fjamed457qurgl23ck5z3jhziqjtwrag24t34qs3jugzr7q.b32.i2p","hwzq7fjamed457qurgl23ck5z3jhziqjtwrag24t34qs3jugzr7q.b32.i2p"}  // pool.gostcoin.i2p
 };
 
 // DNS seeds
@@ -1230,16 +1231,18 @@ static const char *strI2PDNSSeed[][2] = {
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetDNSSeed[][2] = {
-    {"gostco.in", "dnsseed.gostco.in"},
-    {"failover", "dnsseed1.gostco.in"},
-    {"pisekot", "neko.pisekot.ru"},
-    // {"anoncoin.net", "dnsseed01.anoncoin.net"},
-    {NULL, NULL}
+	{"gostco.in", "dnsseed.gostco.in"},
+	{"failover", "dnsseed1.gostco.in"},
+	{"pisekot", "neko.pisekot.ru"},
+	{"pool.gostco.in","pool.gostco.in"},
+
+	// {"anoncoin.net", "dnsseed01.anoncoin.net"},
+	{NULL, NULL}
 };
 
 static const char *strTestNetDNSSeed[][2] = {
-	{"gostco.in", "dnsseed.gostco.in"},	
-    {NULL, NULL}
+	{"gostco.in", "dnsseed.gostco.in"},
+	{NULL, NULL}
 };
 
 void ThreadDNSAddressSeed()
@@ -1306,9 +1309,9 @@ unsigned int pnSeed[] =
 };
 
 const std::string pstrI2PSeed[] = {
-    "7nY-~dTIV1dCuRkOJHTDDs-nUtfL-eLUkVOYAnJhaXeCAcHOhLrklw8uUqCmr6N1o~k1RfWbOTuxnAldnTH6OqHMaINHpKrFmeJ7ITROPoXpB88E5OSOtRX6EjGRtOzy6T6G0HeRcjIhEBeH1Omu0A1VfvwJotxAK7Y0ohgFFr7AsTysziBKN0urBe4LKZbgRLTk~zHmMGLx62tE8jfErfqE8eNGuZ7BRneOs703kWBtWTBhtAj4VwlhFUxt6sTvYhy3VBeV1Tf8ohx2Cwmy7VKeyMqPIZXNiP8V8Xi3qI8xTkJJ4j-LQmoehQ7TS~TzQ8TCgM9STnTBUIOnmEK~h8aRsu~7LmW60OlCcjZwyOUGXg7nG3Lo2pDXlNlLbnNcANVSHd237wb5gWhKP0is7c37epvGhn4D1qw85j4qjtWsOg7EAMd-0m6dBqHiUbpW0gFggWvoMfc3Oj310FT4YJ2hS9zA0BI~zJZBOmMDBsiFIBTwwXviP8zz-pOhGt3rBQAEAAcAAA==",
-	"zhTPnWXKSq0AS3TAMwVq9c-mGo2ShLXT3eVaOGlCCsDAQfcUb0bnGPXH8cUPXlqGT3FYPfI~VeqicfO0gk~y5Jjrob7FL5893KKoZM5~o1tnFZPD8UHbhuZ~XoZObn3Sg1fvCOwAe~1OdbXvKH63cuXQ-Ivlu6rzMk~Gio~THGvHf~1n53gwk6M6ez5w8qIFGqZekR1uGOuw9KOZ9ylpfxMKawQS08YWjAaSl1B2r3TvaQX1FR~awAdx-HjDTw3pL2wC2QaOPpGEsmG15SgTempjoEzN-xkEDSmdynxVI9eqLkx~GDDKhtfuhawJKeIOfTKFn9XPlRGmjfbcsOPtyKVbN16RsRmz9eq3Tw4InaGVk14Y4K-AV0kWzhW7AAkvkrB9VbV4qzUnV4F3EkOZc91LPwxDLONBpfn0QOYaJW48TzIMZ1wXQwzrwlsNHs4ghjRW2LA9A76FxsfIBD3CHmdiEFUf~nlBO9hFNujffKfxvEnHLXK5qjIScJ0cjY1xBQAEAAcAAA=="
-
+	"7nY-~dTIV1dCuRkOJHTDDs-nUtfL-eLUkVOYAnJhaXeCAcHOhLrklw8uUqCmr6N1o~k1RfWbOTuxnAldnTH6OqHMaINHpKrFmeJ7ITROPoXpB88E5OSOtRX6EjGRtOzy6T6G0HeRcjIhEBeH1Omu0A1VfvwJotxAK7Y0ohgFFr7AsTysziBKN0urBe4LKZbgRLTk~zHmMGLx62tE8jfErfqE8eNGuZ7BRneOs703kWBtWTBhtAj4VwlhFUxt6sTvYhy3VBeV1Tf8ohx2Cwmy7VKeyMqPIZXNiP8V8Xi3qI8xTkJJ4j-LQmoehQ7TS~TzQ8TCgM9STnTBUIOnmEK~h8aRsu~7LmW60OlCcjZwyOUGXg7nG3Lo2pDXlNlLbnNcANVSHd237wb5gWhKP0is7c37epvGhn4D1qw85j4qjtWsOg7EAMd-0m6dBqHiUbpW0gFggWvoMfc3Oj310FT4YJ2hS9zA0BI~zJZBOmMDBsiFIBTwwXviP8zz-pOhGt3rBQAEAAcAAA==",
+	"zhTPnWXKSq0AS3TAMwVq9c-mGo2ShLXT3eVaOGlCCsDAQfcUb0bnGPXH8cUPXlqGT3FYPfI~VeqicfO0gk~y5Jjrob7FL5893KKoZM5~o1tnFZPD8UHbhuZ~XoZObn3Sg1fvCOwAe~1OdbXvKH63cuXQ-Ivlu6rzMk~Gio~THGvHf~1n53gwk6M6ez5w8qIFGqZekR1uGOuw9KOZ9ylpfxMKawQS08YWjAaSl1B2r3TvaQX1FR~awAdx-HjDTw3pL2wC2QaOPpGEsmG15SgTempjoEzN-xkEDSmdynxVI9eqLkx~GDDKhtfuhawJKeIOfTKFn9XPlRGmjfbcsOPtyKVbN16RsRmz9eq3Tw4InaGVk14Y4K-AV0kWzhW7AAkvkrB9VbV4qzUnV4F3EkOZc91LPwxDLONBpfn0QOYaJW48TzIMZ1wXQwzrwlsNHs4ghjRW2LA9A76FxsfIBD3CHmdiEFUf~nlBO9hFNujffKfxvEnHLXK5qjIScJ0cjY1xBQAEAAcAAA==",
+	"vWGwHiSr3P2uN-cp4RhwHVlv88h1V4RGC8ESDdxpMCm2-dPkhmG8fndMBxPA2XEPr8Uw~4xGKmXLEAZNPhjuXSLZ2r5Hkq012inR616JQ26s6MI2VucZFtf29mPT5Ci17XCC8DZjQG2xPAUn5bF9zPKQw9Ey5X1idnqfBteoYteEQW1A89NPb~~d9iUa6RjBQpW0fwvfV4-OwQ0Iyw8QUS6yxDKnRLCctYrnm85UtBmHKK0bOJ14D6Nn~qXwU7ssXsPPC5eWOf0SIzbfYAdz3Ym8iaib53S49Jm0QwPaDwQOFWb8tIS23rh4R5e4TILszsUwDkKB~fgzlF70msrpQsSQaaxafxmDcJMBar7sfL6bvmb68VnJ-po295cnY~UCHej3ljW~A2NUHEWtol8excVoOm9BpQQE87ZHqD2jVQC0sgLefKyBG363USx91LcQVOZP4V6BMMbKbFIxNLekqtjBPFBhuDHovCb36RjzlpgDvZk8s5hy5W9zUxmZFs5bBQAEAAcAAA=="
 };
 
 void DumpAddresses()
