@@ -1226,11 +1226,13 @@ static const char *strMainNetI2PDNSSeed[][2] = {
 	{"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p","cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p"}, // xcps
 	{"6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p","6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p"}, // R4SAS
 	{"xq7jlz5t5n3phb62ro2zicg4zzhibzlflgci4xnhsdi3wr6ihixq.b32.i2p","xq7jlz5t5n3phb62ro2zicg4zzhibzlflgci4xnhsdi3wr6ihixq.b32.i2p"}, // pisekot
-	{"hwzq7fjamed457qurgl23ck5z3jhziqjtwrag24t34qs3jugzr7q.b32.i2p","hwzq7fjamed457qurgl23ck5z3jhziqjtwrag24t34qs3jugzr7q.b32.i2p"}  // pool.gostcoin.i2p
+	{"hwzq7fjamed457qurgl23ck5z3jhziqjtwrag24t34qs3jugzr7q.b32.i2p","hwzq7fjamed457qurgl23ck5z3jhziqjtwrag24t34qs3jugzr7q.b32.i2p"}, // pool.gostcoin.i2p
+	{NULL, NULL}
 };
 
 static const char *strTestNetI2PDNSSeed[][2] = {
-	{"mok4u7ifgpdyv6dfo63l2xw63dy7gwjvxekvc3rs4cejyl64lomq.b32.i2p","mok4u7ifgpdyv6dfo63l2xw63dy7gwjvxekvc3rs4cejyl64lomq.b32.i2p"}  // pool.gostcoin.i2p
+	{"mok4u7ifgpdyv6dfo63l2xw63dy7gwjvxekvc3rs4cejyl64lomq.b32.i2p","mok4u7ifgpdyv6dfo63l2xw63dy7gwjvxekvc3rs4cejyl64lomq.b32.i2p"}, // pool.gostcoin.i2p
+	{NULL, NULL}
 };
 
 static const char *strMainNetDNSSeed[][2] = {
@@ -1256,14 +1258,16 @@ void ThreadDNSAddressSeed()
     printf("Loading addresses from DNS seeds (could take a while)\n");
 
     if (IsI2PEnabled()) {
-        for (unsigned int seed_idx = 0; seed_idx < ARRAYLEN(strI2PDNSSeed); seed_idx++) {
+        for (unsigned int seed_idx = 0; strI2PDNSSeed[seed_idx][0] != NULL; seed_idx++) {
             if (HaveNameProxy()) {
                 AddOneShot(strI2PDNSSeed[seed_idx][1]);
             } else {
                 vector<CNetAddr> vaddr;
                 vector<CAddress> vAdd;
-                if (LookupHost(strI2PDNSSeed[seed_idx][1], vaddr)) {
-                    BOOST_FOREACH(CNetAddr& ip, vaddr) {
+                if (LookupHost(strI2PDNSSeed[seed_idx][1], vaddr))
+                {
+                    BOOST_FOREACH(CNetAddr& ip, vaddr)
+                    {
                         int nOneDay = 24*3600;
                         CAddress addr = CAddress(CService(ip, GetDefaultPort()));
                         addr.nTime = GetTime() - 3*nOneDay - GetRand(4*nOneDay); // use a random age between 3 and 7 days old
