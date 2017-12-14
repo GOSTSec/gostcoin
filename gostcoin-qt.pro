@@ -321,17 +321,10 @@ DEFINES += BITCOIN_QT_TEST
   macx: CONFIG -= app_bundle
 }
 
-contains(USE_SSE2, 1) {
-DEFINES += USE_SSE2
-gccsse2.input  = SOURCES_SSE2
-gccsse2.output = $$PWD/build/${QMAKE_FILE_BASE}.o
-gccsse2.commands = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o ${QMAKE_FILE_OUT} ${QMAKE_FILE_NAME} -msse2 -mstackrealign
-QMAKE_EXTRA_COMPILERS += gccsse2
-#SOURCES_SSE2 += src/scrypt-sse2.cpp
+greaterThan(QT_MAJOR_VERSION, 4): {
+} else {
+    CODECFORTR = UTF-8
 }
-
-# Todo: Remove this line when switching to Qt5, as that option was removed
-CODECFORTR = UTF-8
 
 # for lrelease/lupdate
 # also add new translations to src/qt/gostcoin.qrc under translations/
