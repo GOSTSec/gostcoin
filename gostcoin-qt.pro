@@ -61,7 +61,8 @@ win32:LIBS *= -lstdc++ -lpthread
 contains(USE_QRCODE, 1) {
     message(Building with QRCode support)
     DEFINES += USE_QRCODE
-    LIBS += -lqrencode
+    # defining for linux later, in dynamic section
+    win32:LIBS += -lqrencode
 }
 
 
@@ -437,6 +438,11 @@ contains(RELEASE, 1) {
         LIBS += -Wl,-Bdynamic
     }
 }
+
+contains(USE_QRCODE, 1) {
+    !win32:LIBS += -lqrencode
+}
+
 # Add LibDL firstly here
 !win32:LIBS += -ldl
 
