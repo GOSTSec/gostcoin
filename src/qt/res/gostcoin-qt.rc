@@ -4,6 +4,10 @@ IDI_ICON2 ICON DISCARDABLE "icons/gostcoin_testnet.ico"
 #include <windows.h>             // needed for VERSIONINFO
 #include "../../clientversion.h" // holds the needed client version information
 
+#ifdef HAVE_BUILD_INFO
+	#include "../../../build/build.h"
+#endif
+
 #define VER_PRODUCTVERSION     CLIENT_VERSION_MAJOR,CLIENT_VERSION_MINOR,CLIENT_VERSION_REVISION,CLIENT_VERSION_BUILD
 #define VER_PRODUCTVERSION_STR STRINGIZE(CLIENT_VERSION_MAJOR) "." STRINGIZE(CLIENT_VERSION_MINOR) "." STRINGIZE(CLIENT_VERSION_REVISION) "." STRINGIZE(CLIENT_VERSION_BUILD)
 #define VER_FILEVERSION        VER_PRODUCTVERSION
@@ -22,7 +26,11 @@ BEGIN
         BEGIN
             VALUE "CompanyName",        "GOSTSec"
             VALUE "FileDescription",    "Gostcoin-Qt (OSS GUI client for Gostcoin)"
+#if defined(BUILD_DESC)
+            VALUE "FileVersion",        BUILD_DESC
+#else
             VALUE "FileVersion",        VER_FILEVERSION_STR
+#endif
             VALUE "InternalName",       "gostcoin-qt"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."

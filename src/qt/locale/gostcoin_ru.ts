@@ -269,8 +269,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR LITECOINS&lt;/b&gt;!</source>
-        <translation>Внимание: если вы зашифруете бумажник и потеряете пароль, вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ ВАШИ ГОСТКОИНЫ&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR GOSTCOINS&lt;/b&gt;!</source>
+        <translation>Внимание: если вы зашифруете бумажник и потеряете пароль, вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ ВАШИ ГОСТКОЙНЫ&lt;/b&gt;!</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -3508,7 +3508,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
     <message>
         <location line="+1"/>
         <source>SSL options: (see the Gostcoin Wiki for SSL setup instructions)</source>
-        <translation>Параметры SSL: (см. ГОСТКоин Wiki для инструкций по настройке SSL)</translation>
+        <translation>Параметры SSL: (см. ГОСТКойн Wiki для инструкций по настройке SSL)</translation>
     </message>
     <message>
         <location line="+1"/>
