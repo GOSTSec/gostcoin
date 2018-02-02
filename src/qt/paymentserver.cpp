@@ -113,7 +113,7 @@ PaymentServer::PaymentServer(QApplication* parent) : QObject(parent), saveURIs(t
 
 bool PaymentServer::eventFilter(QObject *object, QEvent *event)
 {
-    // clicking on bitcoin: URLs creates FileOpen events on the Mac:
+    // clicking on gostcoin: URLs creates FileOpen events on the Mac:
     if (event->type() == QEvent::FileOpen)
     {
         QFileOpenEvent* fileEvent = static_cast<QFileOpenEvent*>(event);

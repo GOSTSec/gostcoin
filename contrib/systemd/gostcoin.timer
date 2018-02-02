@@ -1,0 +1,15 @@
+# It is not recommended to modify this file in-place, because it will
+# be overwritten during package upgrades. If you want to add further
+# options or overwrite existing ones then use
+# $ systemctl edit gostcoin.
+# See "man systemd.timer" for details.
+
+[Unit]
+Description=GOSTcoin startup timer
+After=i2pd.service
+
+[Timer]
+OnActiveSec=90
+
+[Install]
+WantedBy=multi-user.target

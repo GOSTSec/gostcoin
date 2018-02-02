@@ -1,0 +1,24 @@
+# It is not recommended to modify this file in-place, because it will
+# be overwritten during package upgrades. If you want to add further
+# options or overwrite existing ones then use
+# $ systemctl edit gostcoin.service
+# See "man systemd.service" for details.
+
+# Note that almost all daemon options could be specified in
+# /etc/gostcoin/gostcoin.conf
+
+[Unit]
+Description=GOSTcoin daemon
+After=network.target
+After=i2pd.service
+
+[Service]
+ExecStart=/usr/sbin/gostcoind -daemon -datadir=/var/lib/gostcoin -conf=/etc/gostcoin/gostcoin.conf -pid=/run/gostcoind/gostcoind.pid
+ExecStop=/usr/sbin/gostcoind -conf=/etc/gostcoin/gostcoin.conf stop
+# Creates /run/gostcoind owned by gostcoin
+RuntimeDirectory=gostcoind
+User=gostcoin
+Type=forking
+PIDFile=/run/gostcoind/gostcoind.pid
+Restart=always
+PrivateTmp=true
