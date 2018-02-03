@@ -36,11 +36,6 @@ Building GOSTCoin
 
     git clone https://github.com/GOSTSec/gostcoin.git ~/gostcoin
 
-**Build dependencies:**
-
-    cd ~/gostcoin/i2psam/
-    make -f makefile.unix
-
 **Build gostcoind:**
 
     cd ~/gostcoin/src
