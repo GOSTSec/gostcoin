@@ -145,8 +145,10 @@ public:
 	{
 		const BIGNUM * priv = EC_KEY_get0_private_key(pkey);
 		BIGNUM * d = BN_bin2bn (hash.begin (), 32, nullptr); 
-		ECDSA_SIG *sig = ECDSA_SIG_new ();	
-		i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->Sign (priv, d, sig->r, sig->s);
+        BIGNUM * r = BN_new (), * s = BN_new ();
+		i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->Sign (priv, d, r, s);
+        ECDSA_SIG *sig = ECDSA_SIG_new ();	
+        ECDSA_SIG_set0 (sig, r, s);
 		// encode signature is in DER format		
 		auto nSize = ECDSA_size (pkey); // max size
 		vchSig.resize(nSize);
@@ -166,7 +168,9 @@ public:
 		d2i_ECDSA_SIG (&sig, &p, vchSig.size());	
 		const EC_POINT * pub = EC_KEY_get0_public_key(pkey);
 		BIGNUM * d = BN_bin2bn (hash.begin (), 32, nullptr);
-		bool ret = i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->Verify (pub, d, sig->r, sig->s);
+        const BIGNUM * r, * s;
+		ECDSA_SIG_get0 (sig, &r, &s);
+		bool ret = i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->Verify (pub, d, r, s);
 		BN_free (d); 
 		ECDSA_SIG_free(sig);
 		return ret;
@@ -178,13 +182,15 @@ public:
         ECDSA_SIG *sig = ECDSA_SIG_new ();
 		const BIGNUM * priv = EC_KEY_get0_private_key(pkey);
 		BIGNUM * d = BN_bin2bn (hash.begin (), 32, nullptr);
-		i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->Sign (priv, d, sig->r, sig->s);
+        BIGNUM * r = BN_new (), * s = BN_new ();
+		i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA)->Sign (priv, d, r, s);
+        ECDSA_SIG_set0 (sig, r, s);
 		BN_free (d);
         if (sig==NULL)
             return false;
         memset(p64, 0, 64);
-        int nBitsR = BN_num_bits(sig->r);
-        int nBitsS = BN_num_bits(sig->s);
+        int nBitsR = BN_num_bits(r);
+        int nBitsS = BN_num_bits(s);
         if (nBitsR <= 256 && nBitsS <= 256) {
             CPubKey pubkey;
             GetPubKey(pubkey, true);
@@ -201,8 +207,8 @@ public:
                 }
             }
             assert(fOk);
-            BN_bn2bin(sig->r,&p64[32-(nBitsR+7)/8]);
-            BN_bn2bin(sig->s,&p64[64-(nBitsS+7)/8]);
+            BN_bn2bin(r,&p64[32-(nBitsR+7)/8]);
+            BN_bn2bin(s,&p64[64-(nBitsS+7)/8]);
         }
         ECDSA_SIG_free(sig);
         return fOk;
