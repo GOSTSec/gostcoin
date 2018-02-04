@@ -2,6 +2,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "Crypto.h"
 #include "Gost.h"
 #include "key.h"
 
@@ -57,7 +58,9 @@ static int ECDSA_SIG_recover_key_GFp(EC_KEY *eckey, ECDSA_SIG *ecsig, const unsi
     if (!eckey) return 0;
 	BIGNUM * d = BN_bin2bn (msg, msglen, nullptr); 
 	const auto& curve = i2p::crypto::GetGOSTR3410Curve (i2p::crypto::eGOSTR3410CryptoProA);
-	EC_POINT * pub = curve->RecoverPublicKey (d, ecsig->r, ecsig->s, recid % 2);
+    const BIGNUM * r, * s;
+	ECDSA_SIG_get0 (ecsig, &r, &s);
+	EC_POINT * pub = curve->RecoverPublicKey (d, r, s, recid % 2);
 	BN_free (d);
 	if (!pub) return 0;
 	EC_KEY_set_public_key(eckey, pub);	
@@ -214,8 +217,9 @@ public:
         if (rec<0 || rec>=3)
             return false;
         ECDSA_SIG *sig = ECDSA_SIG_new();
-        BN_bin2bn(&p64[0],  32, sig->r);
-        BN_bin2bn(&p64[32], 32, sig->s);
+        auto r = BN_bin2bn(&p64[0],  32, NULL);
+        auto s = BN_bin2bn(&p64[32], 32, NULL);
+        ECDSA_SIG_set0 (sig, r, s);
         bool ret = ECDSA_SIG_recover_key_GFp(pkey, sig, (unsigned char*)&hash, sizeof(hash), rec, 0) == 1;
         ECDSA_SIG_free(sig);
         return ret;

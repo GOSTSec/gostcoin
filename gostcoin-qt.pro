@@ -201,6 +201,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/ui_interface.h \
     src/qt/rpcconsole.h \
     src/i2p.h \
+    src/Crypto.h \
     src/Gost.h \
     src/version.h \
     src/netbase.h \
