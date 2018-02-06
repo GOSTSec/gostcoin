@@ -96,11 +96,10 @@ public:
     }
 
     void SetSecretBytes(const unsigned char vch[32]) {
-        BIGNUM bn;
-        BN_init(&bn);
-        assert(BN_bin2bn(vch, 32, &bn));
-        assert(EC_KEY_regenerate_key(pkey, &bn));
-        BN_clear_free(&bn);
+        BIGNUM * bn = BN_new ();
+        assert(BN_bin2bn(vch, 32, bn));
+        assert(EC_KEY_regenerate_key(pkey, bn));
+        BN_clear_free(bn);
     }
 
     void GetPrivKey(CPrivKey &privkey, bool fCompressed) {
