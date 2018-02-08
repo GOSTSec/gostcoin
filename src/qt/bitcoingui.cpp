@@ -336,21 +336,20 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
         createTrayIconMenu();
 
         // Keep up to date with client
-        setNumConnections(clientModel->getNumConnections());
-        connect(clientModel, SIGNAL(numConnectionsChanged(int)), this, SLOT(setNumConnections(int)));
-
-        setNumI2PConnections(clientModel->getNumI2PConnections());
-        connect(clientModel, SIGNAL(numI2PConnectionsChanged(int)), this, SLOT(setNumI2PConnections(int)));
 
         if (clientModel->isI2POnly())
         {
             labelI2POnly->setText("I2P");
             labelI2POnly->setToolTip(tr("Wallet is using I2P-network only"));
+            setNumI2PConnections(clientModel->getNumI2PConnections());
+            connect(clientModel, SIGNAL(numI2PConnectionsChanged(int)), this, SLOT(setNumI2PConnections(int)));
         }
         else
         {
             labelI2POnly->setText("CLR");
             labelI2POnly->setToolTip(tr("Wallet is using mixed or non-I2P (clear) network"));
+            setNumConnections(clientModel->getNumConnections());
+            connect(clientModel, SIGNAL(numConnectionsChanged(int)), this, SLOT(setNumConnections(int)));
         }
 
         if (clientModel->isI2PAddressGenerated())
