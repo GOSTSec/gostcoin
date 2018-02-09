@@ -147,12 +147,14 @@ void WalletFrame::unlockWallet()
         walletView->unlockWallet();
 }
 
+#ifdef USE_QRCODE
 void WalletFrame::printPaperWallet()
 {
     WalletView *walletView = currentWalletView();
     if (walletView)
         walletView->printPaperWallet();
 }
+#endif
 
 void WalletFrame::setEncryptionStatus()
 {
