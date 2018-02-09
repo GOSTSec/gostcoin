@@ -307,9 +307,11 @@ FORMS += src/qt/forms/sendcoinsdialog.ui \
     src/qt/forms/showi2paddresses.ui
 
 contains(USE_QRCODE, 1) {
-HEADERS += src/qt/qrcodedialog.h
-SOURCES += src/qt/qrcodedialog.cpp
+HEADERS += src/qt/qrcodedialog.h src/qt/paperwallet.h
+SOURCES += src/qt/qrcodedialog.cpp src/qt/paperwallet.cpp
 FORMS += src/qt/forms/qrcodedialog.ui
+RESOURCES += src/qt/paperwallet.qrc
+QT += printsupport
 }
 
 contains(BITCOIN_QT_TEST, 1) {

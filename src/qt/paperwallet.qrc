@@ -1,0 +1,5 @@
+<!DOCTYPE RCC><RCC version="1.0">
+	<qresource prefix="/html">
+        <file alias="paperwallet">res/html/paperwallet.html</file>
+    </qresource>
+</RCC>
