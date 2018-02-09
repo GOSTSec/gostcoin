@@ -82,7 +82,7 @@ public slots:
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
     /** Show Sign/Verify Message dialog and switch to verify message tab */
-    void gotoVerifyMessageTab(QString addr = "");
+    void gotoVerifyMessageTab(QString addr = "");	
 
     /** Show incoming transaction notification for new transactions.
 
@@ -97,6 +97,11 @@ public slots:
     void changePassphrase();
     /** Ask for passphrase to unlock wallet temporarily */
     void unlockWallet();
+
+#ifdef USE_QRCODE
+	/** Print paper wallet addresses */
+    void printPaperWallet();
+#endif
 
     void setEncryptionStatus();
 };

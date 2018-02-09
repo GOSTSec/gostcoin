@@ -105,7 +105,9 @@ private:
     QAction *changePassphraseAction;
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
-
+#ifdef USE_QRCODE
+	QAction *printPaperWalletAction;
+#endif
     QSystemTrayIcon *trayIcon;
     Notificator *notificator;
     TransactionView *transactionView;

@@ -18,6 +18,10 @@
 #include "askpassphrasedialog.h"
 #include "ui_interface.h"
 
+#ifdef USE_QRCODE
+#include "paperwallet.h"
+#endif
+
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QAction>
@@ -272,3 +276,10 @@ void WalletView::unlockWallet()
         dlg.exec();
     }
 }
+
+#ifdef USE_QRCODE
+void WalletView::printPaperWallet()
+{
+	PrintPaperWallet (this);
+}
+#endif

@@ -147,6 +147,13 @@ void WalletFrame::unlockWallet()
         walletView->unlockWallet();
 }
 
+void WalletFrame::printPaperWallet()
+{
+    WalletView *walletView = currentWalletView();
+    if (walletView)
+        walletView->printPaperWallet();
+}
+
 void WalletFrame::setEncryptionStatus()
 {
     WalletView *walletView = currentWalletView();

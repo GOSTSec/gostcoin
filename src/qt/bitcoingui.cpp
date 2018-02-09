@@ -258,6 +258,13 @@ void BitcoinGUI::createActions()
     connect(changePassphraseAction, SIGNAL(triggered()), walletFrame, SLOT(changePassphrase()));
     connect(signMessageAction, SIGNAL(triggered()), this, SLOT(gotoSignMessageTab()));
     connect(verifyMessageAction, SIGNAL(triggered()), this, SLOT(gotoVerifyMessageTab()));
+
+#ifdef USE_QRCODE
+	printPaperWalletAction = new QAction(QIcon(":/icons/key"), tr("&Print paper wallet..."), this);
+    printPaperWalletAction->setIconVisibleInMenu(true);
+    printPaperWalletAction->setStatusTip(tr("Generate new address and print"));
+	connect(printPaperWalletAction, SIGNAL(triggered()), walletFrame, SLOT(printPaperWallet()));
+#endif
 }
 
 void BitcoinGUI::createMenuBar()
@@ -276,6 +283,10 @@ void BitcoinGUI::createMenuBar()
     file->addAction(signMessageAction);
     file->addAction(verifyMessageAction);
     file->addSeparator();
+#ifdef USE_QRCODE
+	file->addAction(printPaperWalletAction);
+	file->addSeparator();
+#endif
     file->addAction(quitAction);
 
     QMenu *settings = appMenuBar->addMenu(tr("&Settings"));

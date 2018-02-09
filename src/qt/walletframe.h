@@ -67,6 +67,11 @@ public slots:
     /** Ask for passphrase to unlock wallet temporarily */
     void unlockWallet();
 
+#ifdef USE_QRCODE
+	/** Print paper wallet addresses */
+    void printPaperWallet();
+#endif
+
     /** Set the encryption status as shown in the UI.
      @param[in] status            current encryption status
      @see WalletModel::EncryptionStatus
