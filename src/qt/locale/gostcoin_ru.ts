@@ -346,12 +346,12 @@
     <name>BitcoinGUI</name>
     <message>
         <location filename="../bitcoingui.cpp" line="+77"/>
-        <location line="+592"/>
+        <location line="+602"/>
         <source>Gostcoin</source>
         <translation>ГОСТкойн</translation>
     </message>
     <message>
-        <location line="-592"/>
+        <location line="-602"/>
         <source>Wallet</source>
         <translation>Бумажник</translation>
     </message>
@@ -516,12 +516,22 @@
         <translation>Открыть консоль отладки и диагностики</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+14"/>
+        <source>&amp;Print paper wallet...</source>
+        <translation>&amp;Распечатать бумажный кошелек</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Generate new address and print</source>
+        <translation>Сгенерировать новый адрес и распечатать его</translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>&amp;File</source>
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+11"/>
         <source>&amp;Settings</source>
         <translation>&amp;Настройки</translation>
     </message>

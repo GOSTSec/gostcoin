@@ -1,9 +1,12 @@
 <!DOCTYPE RCC><RCC version="1.0">
-	<qresource prefix="/html">
-        <file alias="paperwallet">res/html/paperwallet.html</file>
-    </qresource>
-    <qresource prefix="/icons">
-        <file alias="cash">res/icons/cash.png</file>
-        <file alias="cash_print">res/icons/cash_print.png</file>    
-    </qresource>    
+	<qresource prefix="/html" lang="en">
+		<file alias="paperwallet">res/html/paperwallet_en.html</file>
+	</qresource>
+	<qresource prefix="/html" lang="ru">
+		<file alias="paperwallet">res/html/paperwallet_ru.html</file>
+	</qresource>
+	<qresource prefix="/icons">
+		<file alias="cash">res/icons/cash.png</file>
+		<file alias="cash_print">res/icons/cash_print.png</file>
+	</qresource>
 </RCC>
