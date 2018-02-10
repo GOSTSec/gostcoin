@@ -44,15 +44,20 @@ Building GOSTCoin
 **Optional: Build QT GUI**
 
     # install requirements 
-    apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev
+    apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler 
     # build GUI
     cd ~/gostcoin
     qmake && make
+    
+    # build GUI with QR codes and paper wallet
+    apt-get install libqrencode-dev
+    cd ~/gostcoin
+    qmake "USE_QRCODE=1" && make
 
 Mining tools
 ------------
 
-Dedicated mining tools are available: [cpuminer for CPU](https://github.com/GOSTSec/cpuminer-x11-gost) and [ccminer for GPU](https://github.com/GOSTSec/ccminer)
+Dedicated mining tools are available: [cpuminer for CPU](https://github.com/GOSTSec/cpuminer-x11-gost), [ccminer for NVIDIA GPU](https://github.com/GOSTSec/ccminer) and [sgminer for AMD GPU](https://github.com/GOSTSec/sgminer)  
 
 License
 -------
