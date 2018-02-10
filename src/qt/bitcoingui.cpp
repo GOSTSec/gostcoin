@@ -260,7 +260,7 @@ void BitcoinGUI::createActions()
     connect(verifyMessageAction, SIGNAL(triggered()), this, SLOT(gotoVerifyMessageTab()));
 
 #ifdef USE_QRCODE
-	printPaperWalletAction = new QAction(QIcon(":/icons/key"), tr("&Print paper wallet..."), this);
+	printPaperWalletAction = new QAction(QIcon(":/icons/cash"), tr("&Print paper wallet..."), this);
     printPaperWalletAction->setIconVisibleInMenu(true);
     printPaperWalletAction->setStatusTip(tr("Generate new address and print"));
 	connect(printPaperWalletAction, SIGNAL(triggered()), walletFrame, SLOT(printPaperWallet()));
