@@ -1,5 +1,5 @@
 // Copyright 2013 The Anoncoin Developers
-// Copyright 2017 The Gostcoin Developers
+// Copyright 2017-2018 The Gostcoin Developers
 
 #include <QApplication>
 #include <QMessageBox>

@@ -16,7 +16,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
 		tr("Copyright") + QString(" &copy; 2011-%1 ").arg(COPYRIGHT_YEAR) + tr("The Litecoin developers") + QString("<br>") + 
 		tr("Copyright") + QString(" &copy; 2013-%1 ").arg(COPYRIGHT_YEAR) + tr("The Anoncoin developers") + QString("<br>") + 
 		tr("Copyright") + QString(" &copy; 2015-%1 ").arg(COPYRIGHT_YEAR) + tr("The i2pd developers")     + QString("<br>") + 
-		tr("Copyright") + QString(" &copy;      %1 ").arg(COPYRIGHT_YEAR) + tr("The Gostcoin developers")
+		tr("Copyright") + QString(" &copy; 2017-%1 ").arg(COPYRIGHT_YEAR) + tr("The Gostcoin developers")
 	);
 }
 

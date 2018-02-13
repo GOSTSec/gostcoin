@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2017-2018 The Gostcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -143,13 +144,6 @@ public:
 }
 instance_of_cinit;
 
-
-
-
-
-
-
-
 void RandAddSeed()
 {
     // Seed with CPU performance counter
@@ -211,12 +205,6 @@ uint256 GetRandHash()
     RAND_bytes((unsigned char*)&hash, sizeof(hash));
     return hash;
 }
-
-
-
-
-
-
 
 //
 // OutputDebugStringF (aka printf -- there is a #define that we really
@@ -398,7 +386,6 @@ void ParseString(const string& str, char c, vector<string>& v)
     }
 }
 
-
 string FormatMoney(int64 n, bool fPlus)
 {
     // Note: not using straight sprintf here because we do NOT want
@@ -421,7 +408,6 @@ string FormatMoney(int64 n, bool fPlus)
         str.insert((unsigned int)0, 1, '+');
     return str;
 }
-
 
 bool ParseMoney(const string& str, int64& nRet)
 {
@@ -467,7 +453,6 @@ bool ParseMoney(const char* pszIn, int64& nRet)
     nRet = nValue;
     return true;
 }
-
 
 static const signed char phexdigit[256] =
 { -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
@@ -623,7 +608,6 @@ bool SoftSetBoolArg(const std::string& strArg, bool fValue)
     else
         return SoftSetArg(strArg, std::string("0"));
 }
-
 
 string EncodeBase64(const unsigned char* pch, size_t len)
 {
@@ -952,7 +936,6 @@ string DecodeBase32(const string& str)
     return string((const char*)&vchRet[0], vchRet.size());
 }
 
-
 bool WildcardMatch(const char* psz, const char* mask)
 {
     loop
@@ -981,7 +964,6 @@ bool WildcardMatch(const string& str, const string& mask)
 {
     return WildcardMatch(str.c_str(), mask.c_str());
 }
-
 
 // Anoncoin
 // Write config file
@@ -1021,12 +1003,6 @@ bool writeFirstConfig(bool i2pOnlyEnabled, bool i2pEnabled)
     // Write file
     return writeConfig(GetConfigFile().string().c_str(), pt);
 }
-
-
-
-
-
-
 
 static std::string FormatException(std::exception* pex, const char* pszThread)
 {
@@ -1259,7 +1235,6 @@ bool TruncateFile(FILE *file, unsigned int length) {
 #endif
 }
 
-
 // this function tries to raise the file descriptor limit to the requested number.
 // It returns the actual file descriptor limit (which may be more or less than nMinFD)
 int RaiseFileDescriptorLimit(int nMinFD) {
@@ -1347,15 +1322,8 @@ void ShrinkDebugFile()
         }
     }
     else if(file != NULL)
-	     fclose(file);
+        fclose(file);
 }
-
-
-
-
-
-
-
 
 //
 // "Never go to sea with two chronometers; take one or three."

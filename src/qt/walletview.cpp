@@ -1,9 +1,11 @@
-/*
- * Qt4 bitcoin GUI.
- *
- * W.J. van der Laan 2011-2012
- * The Bitcoin Developers 2011-2013
- */
+// Qt bitcoin GUI.
+//
+// Copyright (c) 2011-2012 W.J. van der Laan
+// Copyright (c) 2011-2012 The Bitcoin Developers
+// Copyright (c) 2017-2018 The Gostcoin Developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "walletview.h"
 #include "bitcoingui.h"
 #include "transactiontablemodel.h"

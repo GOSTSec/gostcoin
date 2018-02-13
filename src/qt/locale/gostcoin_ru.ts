@@ -1,6 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.0">
-
-<!-- About Dialog -->
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ru" sourcelanguage="en">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -17,46 +17,48 @@
         <location line="+57"/>
         <source>
 &lt;p&gt;This is experimental software.&lt;/p&gt;
-&lt;p&gt;Distributed under the MIT/X11 software license, see the accompanying file COPYING or &lt;a href="http://www.opensource.org/licenses/mit-license.php"&gt;http://www.opensource.org/licenses/mit-license.php&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (&lt;a href="http://www.openssl.org/"&gt;http://www.openssl.org/&lt;/a&gt;) and cryptographic software written by Eric Young (eay@cryptsoft.com).&lt;/p&gt;</source>
+&lt;p&gt;Distributed under the MIT/X11 software license, see the accompanying file COPYING or &lt;a href=&quot;http://www.opensource.org/licenses/mit-license.php&quot;&gt;http://www.opensource.org/licenses/mit-license.php&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (&lt;a href=&quot;http://www.openssl.org/&quot;&gt;http://www.openssl.org/&lt;/a&gt;) and cryptographic software written by Eric Young (eay@cryptsoft.com).&lt;/p&gt;</source>
         <translation>
 &lt;p&gt;Это экспериментальная программа.&lt;/p&gt;
-&lt;p&gt;Распространяется на правах лицензии MIT/X11, см. файл COPYING или &lt;a href="http://www.opensource.org/licenses/mit-license.php"&gt;http://www.opensource.org/licenses/mit-license.php&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Этот продукт включает ПО, разработанное OpenSSL Project для использования в OpenSSL Toolkit (&lt;a href="http://www.openssl.org/"&gt;http://www.openssl.org/&lt;/a&gt;) и криптографическое ПО, написанное Eric Young (eay@cryptsoft.com).&lt;/p&gt;</translation>
+&lt;p&gt;Распространяется на правах лицензии MIT/X11, см. файл COPYING или &lt;a href=&quot;http://www.opensource.org/licenses/mit-license.php&quot;&gt;http://www.opensource.org/licenses/mit-license.php&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Этот продукт включает ПО, разработанное OpenSSL Project для использования в OpenSSL Toolkit (&lt;a href=&quot;http://www.openssl.org/&quot;&gt;http://www.openssl.org/&lt;/a&gt;) и криптографическое ПО, написанное Eric Young (eay@cryptsoft.com).&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="+14"/>
+        <location filename="../aboutdialog.cpp" line="+15"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <location line="+1"/>
         <source>Copyright</source>
         <translation>Все права защищены</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="-4"/>
         <source>The Bitcoin developers</source>
         <translation>Разработчики Bitcoin</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="+1"/>
         <source>The Litecoin developers</source>
         <translation>Разработчики Litecoin</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="+1"/>
         <source>The Anoncoin developers</source>
         <translation>Разработчики Anoncoin</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="+1"/>
         <source>The i2pd developers</source>
         <translation>Разработчики I2Pd</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="+1"/>
         <source>The Gostcoin developers</source>
         <translation>Разработчики Gostcoin</translation>
     </message>
 </context>
-
-<!-- Address Book -->
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -198,8 +200,6 @@
         <translation>[нет метки]</translation>
     </message>
 </context>
-
-<!-- Passphrase dialog -->
 <context>
     <name>AskPassphraseDialog</name>
     <message>
@@ -279,11 +279,12 @@
     </message>
     <message>
         <location line="+9"/>
+        <location line="+58"/>
         <source>Wallet encrypted</source>
         <translation>Бумажник зашифрован</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-56"/>
         <source>Gostcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your gostcoins from being stolen by malware infecting your computer.</source>
         <translation>Сейчас программа закроется для завершения процесса шифрования. Помните, что шифрование вашего бумажника не может полностью защитить ваши ГОСТкойны от кражи инфицированием вашего компьютера вредоносным ПО.</translation>
     </message>
@@ -293,7 +294,7 @@
         <translation>ВАЖНО: все предыдущие резервные копии вашего кошелька должны быть заменены новым зашифрованным файлом. В целях безопасности предыдущие резервные копии нешифрованного кошелька станут бесполезны, как только вы начнёте использовать новый шифрованный кошелёк.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+9"/>
         <location line="+7"/>
         <location line="+42"/>
         <location line="+6"/>
@@ -340,12 +341,10 @@
         <translation>Внимание: Caps Lock включен!</translation>
     </message>
 </context>
-
-<!-- GUI -->
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="+77"/>
+        <location filename="../bitcoingui.cpp" line="+79"/>
         <location line="+602"/>
         <source>Gostcoin</source>
         <translation>ГОСТкойн</translation>
@@ -426,7 +425,7 @@
         <translation>Показать информацию о ГОСТкойн&apos;е</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+2"/>
         <source>About &amp;Qt</source>
         <translation>О &amp;Qt</translation>
     </message>
@@ -552,17 +551,17 @@
         <translation>[тестовая сеть]</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+17"/>
         <source>Wallet is using I2P-network only</source>
         <translation>Кошелек работает только в I2P</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+7"/>
         <source>Wallet is using mixed or non-I2P (clear) network</source>
         <translation>Кошелек работает смешанном режиме, или без I2P</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+8"/>
         <source>Wallet is running with a random generated I2P-address</source>
         <translation>Кошелек работает со случайно сгенерированным I2P адресом</translation>
     </message>
@@ -579,12 +578,20 @@
     <message numerus="yes">
         <location line="+141"/>
         <source>%n active connection(s) to Gostcoin network</source>
-        <translation><numerusform>%n активное соединение с сетью</numerusform><numerusform>%n активных соединения с сетью</numerusform><numerusform>%n активных соединений с сетью</numerusform></translation>
+        <translation>
+            <numerusform>%n активное соединение с сетью</numerusform>
+            <numerusform>%n активных соединения с сетью</numerusform>
+            <numerusform>%n активных соединений с сетью</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <location line="+15"/>
         <source>%n active connection(s) to I2P-Gostcoin network</source>
-        <translation><numerusform>%n активное соединение с I2P сетью</numerusform><numerusform>%n активных соединения с I2P сетью</numerusform><numerusform>%n активных соединений с I2P сетью</numerusform></translation>
+        <translation>
+            <numerusform>%n активное соединение с I2P сетью</numerusform>
+            <numerusform>%n активных соединения с I2P сетью</numerusform>
+            <numerusform>%n активных соединений с I2P сетью</numerusform>
+        </translation>
     </message>
     <message>
         <location line="+12"/>
@@ -624,17 +631,29 @@
     <message numerus="yes">
         <location line="+14"/>
         <source>%n hour(s)</source>
-        <translation><numerusform>%n час</numerusform><numerusform>%n часа</numerusform><numerusform>%n часов</numerusform></translation>
+        <translation>
+            <numerusform>%n час</numerusform>
+            <numerusform>%n часа</numerusform>
+            <numerusform>%n часов</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n day(s)</source>
-        <translation><numerusform>%n день</numerusform><numerusform>%n дня</numerusform><numerusform>%n дней</numerusform></translation>
+        <translation>
+            <numerusform>%n день</numerusform>
+            <numerusform>%n дня</numerusform>
+            <numerusform>%n дней</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n week(s)</source>
-        <translation><numerusform>%n неделя</numerusform><numerusform>%n недели</numerusform><numerusform>%n недель</numerusform></translation>
+        <translation>
+            <numerusform>%n неделя</numerusform>
+            <numerusform>%n недели</numerusform>
+            <numerusform>%n недель</numerusform>
+        </translation>
     </message>
     <message>
         <location line="+4"/>
@@ -727,7 +746,7 @@ Address: %4
         <translation>Бумажник &lt;b&gt;зашифрован&lt;/b&gt; и в настоящее время &lt;b&gt;заблокирован&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+164"/>
+        <location filename="../gostcoin.cpp" line="+166"/>
         <source>A fatal error occurred. Gostcoin can no longer continue safely and will quit.</source>
         <translation>Произошла неисправимая ошибка. ГОСТкойн не может безопасно продолжать работу и будет закрыт.</translation>
     </message>
@@ -741,25 +760,71 @@ Address: %4
         <source>Failed to load the stylesheet provided.</source>
         <translation>Не удалось загрузить указанный файл стиля.</translation>
     </message>
+    <message>
+        <location filename="../setupdarknet.cpp" line="+15"/>
+        <source>Do you run I2P on your computer?
+If so, press yes to let Gostcoin configure it&apos;s connection to the I2P</source>
+        <translation>Используете ли вы I2P на своем компьютере?
+Если это так, то нажмите &quot;Да&quot; чтобы ГОСТкойн сконфигурировал подключение через I2P</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Gostcoin Wizard - Step #1</source>
+        <translation>Конфигурирование ГОСТкойн - шаг #1</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Do you want to install I2P, and continue I2P setup?
+If you select yes Gostcoin will quit, so you can continue the wizard after installing I2P.
+If you select no, Gostcoin will write a default clearnet (regular internet) config file for you. (unsafe mode)
+</source>
+        <translation>Вы хотите установить I2P и продолжить конфигурирование I2P?
+Если вы выберете &quot;Да&quot;, ГОСТкойн будет закрыт, и вы сможете продолжить настройку после установки I2P.
+Если вы выберете &quot;Нет&quot;, ГОСТкойн запишет стандатную конфигурацию работающую через интернет. (не безопасно)
+</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Gostcoin Wizard - Step #2</source>
+        <translation>Конфигурирование ГОСТкойн - шаг #2</translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Shared</source>
+        <translation>Смешанный</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>I2P only</source>
+        <translation>Только I2P</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Ok, last question!
+Do you want to run shared (which means you work as a bridge between the I2P and internet) or only I2P?</source>
+        <translation>Хорошо, последний вопрос!
+Хотите ли вы запустить кошелек в смешанном (значит что вы будете работать в режиме моста между I2P и интернетом) или только-I2P режиме?</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Thanks! That was all. Enjoy your wallet :)</source>
+        <translation>Спасибо, это всё. Наслаждайтесь вашим кошельком :)</translation>
+    </message>
 </context>
-
-<!-- Client Model -->
 <context>
     <name>ClientModel</name>
     <message>
-        <location filename="../clientmodel.cpp" line="+104"/>
+        <location filename="../clientmodel.cpp" line="+114"/>
         <source>Network Alert</source>
         <translation>Сетевое оповещение</translation>
     </message>
 </context>
-
-<!-- Coin control dialog -->
 <context>
     <name>CoinControlDialog</name>
     <message>
         <location filename="../forms/coincontroldialog.ui" line="+14"/>
-        <source>Coin Control Address Selection</source>
-        <translation>Выбор адреса контроля монет</translation>
+        <source>Coin Control</source>
+        <translation>Контроль монет</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -923,12 +988,60 @@ Address: %4
         <translation>самый высокий</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>higher</source>
-        <translation>выше</translation>
+        <location line="+199"/>
+        <source>DUST</source>
+        <translation>ПЫЛЬ</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>This label turns red, if the transaction size is bigger than 10000 bytes.
+
+This means a fee of at least %1 per kb is required.
+
+Can vary +/- 1 Byte per input.</source>
+        <translation>Эта пометка становится красной, если размер транзакции больше 10000 байт.
+
+Это значит, что требуется комиссия как минимум %1 на КБ.
+
+Может отличаться на +/- 1 байт на вход.</translation>
     </message>
     <message>
         <location line="+1"/>
+        <source>Transactions with higher priority get more likely into a block.
+
+This label turns red, if the priority is smaller than &quot;medium&quot;.
+
+This means a fee of at least %1 per kb is required.</source>
+        <translation>Транзакции с более высоким приоритетом будут вероятнее других включены в блок.
+
+Эта пометка становится красной, если приоритет ниже, чем &quot;средний&quot;.
+
+Это значит, что требуется комиссия как минимум %1 на КБ.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This label turns red, if any recipient receives an amount smaller than %1.
+
+This means a fee of at least %2 is required. 
+
+Amounts below 0.546 times the minimum relay fee are shown as DUST.</source>
+        <translation>Эта пометка становится красной, если какой-либо из адресатов получает сумму менее %1.
+
+Это значит, что требуется комиссия как минимум %2.
+
+Суммы ниже, чем 0.546 минимальных комиссий ретрансляции, показаны как пыль.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This label turns red, if the change is smaller than %1.
+
+This means a fee of at least %2 is required.</source>
+        <translation>Эта пометка становится красной, если сдача меньше %1.
+
+Это значит, что требуется комиссия как минимум %2.</translation>
+    </message>
+    <message>
+        <location line="-211"/>
         <source>high</source>
         <translation>высокий</translation>
     </message>
@@ -955,7 +1068,7 @@ Address: %4
     <message>
         <location line="+1"/>
         <source>lower</source>
-        <translation>ниже</translation>
+        <translation>наинизший</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -963,47 +1076,24 @@ Address: %4
         <translation>самый низкий</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location filename="../forms/coincontroldialog.ui" line="-73"/>
+        <location filename="../coincontroldialog.cpp" line="+11"/>
         <source>(%1 locked)</source>
         <translation>(%1 заблокировано)</translation>
     </message>
     <message>
-        <location line="+178"/>
-        <source>Dust</source>
-        <translation>Пыль</translation>
-    </message>
-    <message>
-        <location line="+0"/>
+        <location filename="../coincontroldialog.cpp" line="+178"/>
         <source>yes</source>
         <translation>да</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location filename="../forms/coincontroldialog.ui" line="-169"/>
+        <location filename="../coincontroldialog.cpp" line="+0"/>
         <source>no</source>
         <translation>нет</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>This label turns red, if the transaction size is bigger than 10000 bytes.\n\nThis means a fee of at least %1 per kb is required.\n\nCan vary +/- 1 Byte per input.</source>
-        <translation>Эта пометка становится красной, если размер транзакции больше 1000 байт.\n\nЭто значит, что требуется комиссия как минимум %1 на КБ.Может отличаться на +/- 1 байт на вход.</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Transactions with higher priority get more likely into a block.\n\nThis label turns red, if the priority is smaller than \"medium\".\n\nThis means a fee of at least %1 per kb is required.</source>
-        <translation>Транзакции с более высоким приоритетом будут вероятнее других включены в блок.\n\nЭта пометка становится красной, если приоритет ниже, чем &quot;средний&quot;.\n\nЭто значит, что требуется комиссия как минимум %1 на КБ.</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>This label turns red, if any recipient receives an amount smaller than %1.\n\nThis means a fee of at least %2 is required. \n\nAmounts below 0.546 times the minimum relay fee are shown as DUST.</source>
-        <translation>Эта пометка становится красной, если какой-либо из адресатов получает сумму менее %1.\n\nЭто значит, что требуется комиссия как минимум %2.\n\nСуммы ниже, чем 0.546 минимальных комиссий ретрансляции, показаны как пыль.</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>This label turns red, if the change is smaller than %1.\n\nThis means a fee of at least %2 is required.</source>
-        <translation>Эта пометка становится красной, если сдача меньше %1.\n\nЭто значит, что требуется комиссия как минимум %2.</translation>
-    </message>
-    <message>
-        <location line="+37"/>
+        <location filename="../coincontroldialog.cpp" line="+50"/>
         <location line="+66"/>
         <source>(no label)</source>
         <translation>[нет метки]</translation>
@@ -1019,8 +1109,6 @@ Address: %4
         <translation>(размен)</translation>
     </message>
 </context>
-
-<!-- Address editing dialog -->
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -1089,8 +1177,6 @@ Address: %4
         <translation>Генерация нового ключа не удалась.</translation>
     </message>
 </context>
-
-<!-- Help Message box -->
 <context>
     <name>GUIUtil::HelpMessageBox</name>
     <message>
@@ -1135,8 +1221,6 @@ Address: %4
         <translation>Показывать сплэш при запуске (по умолчанию: 1)</translation>
     </message>
 </context>
-
-<!-- Options dialog -->
 <context>
     <name>OptionsDialog</name>
     <message>
@@ -1145,7 +1229,7 @@ Address: %4
         <translation>Настройки</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+19"/>
         <source>&amp;Main</source>
         <translation>&amp;Главная</translation>
     </message>
@@ -1275,7 +1359,7 @@ Address: %4
         <translation>Здесь можно выбрать язык интерфейса. Настройки вступят в силу после перезапуска ГОСТкойн.</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+14"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>&amp;Отображать суммы в единицах: </translation>
     </message>
@@ -1450,59 +1534,6 @@ Address: %4
         <translation>Адрес прокси неверен.</translation>
     </message>
 </context>
-
-<!-- Show I2P address window -->
-<context>
-    <name>ShowI2PAddresses</name>
-    <message>
-        <location filename="../forms/showi2paddresses.ui" line="+40"/>
-        <source>Dialog</source>
-        <translation>Диалог</translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>If you want to use a permanent I2P-address you have to set a &apos;mydestination&apos; option in the configuration file:</source>
-        <translation>Если вы хотите использовать постоянный I2P адрес, добавьте параметр &apos;mydestination&apos; в конфигурационный файл:</translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>Ready to save parameter (If you want to use this address save this text in the configuration file and keep it secret):</source>
-        <translation>Сохраните этот параметр (если вы хотите использовать данный адрес, сохраните этот текст в конфигурационный файл и держите его в сектрете):</translation>
-    </message>
-    <message>
-        <location line="+23"/>
-        <source>Address (you can publish it):</source>
-        <translation>Адрес (вы можете публиковать его):</translation>
-    </message>
-    <message>
-        <location line="+20"/>
-        <source>Short base32-address:</source>
-        <translation>Короткий base32 адрес:</translation>
-    </message>
-    <message>
-        <location line="+22"/>
-        <source>Copy &quot;mydestination&quot; parameter
-to the clipboard</source>
-        <translation>Скопировать параметр &quot;mydestination&quot;
-в буфер обмена</translation>
-    </message>
-    <message>
-        <location line="+8"/>
-        <source>Copy public address
-to the clipboard</source>
-        <translation>Скопировать публичный адрес
-в буфер обмена</translation>
-    </message>
-    <message>
-        <location line="+8"/>
-        <source>Copy b32-address
-to the clipboard</source>
-        <translation>Скопировать b32 адрес
-в буфер обмена</translation>
-    </message>
-</context>
-
-<!-- Overview page -->
 <context>
     <name>OverviewPage</name>
     <message>
@@ -1537,7 +1568,7 @@ to the clipboard</source>
         <translation>Не подтверждено:</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+16"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the current balance</source>
         <translation>Общая сумма всех транзакций, которые до сих пор не подтверждены, и до сих пор не учитываются в текущем балансе</translation>
     </message>
@@ -1563,18 +1594,14 @@ to the clipboard</source>
         <translation>не синхронизировано</translation>
     </message>
 </context>
-
-<!-- Payment server -->
 <context>
     <name>PaymentServer</name>
     <message>
-        <location filename="../paymentserver.cpp" line="+109"/>
+        <location filename="../paymentserver.cpp" line="+110"/>
         <source>Cannot start gostcoin: click-to-pay handler</source>
         <translation>Не удаётся запустить gostcoin: обработчик click-to-pay</translation>
     </message>
 </context>
-
-<!-- QR Code dialog -->
 <context>
     <name>QRCodeDialog</name>
     <message>
@@ -1633,8 +1660,6 @@ to the clipboard</source>
         <translation>PNG Изображения (*.png)</translation>
     </message>
 </context>
-
-<!-- RPC console -->
 <context>
     <name>RPCConsole</name>
     <message>
@@ -1660,7 +1685,7 @@ to the clipboard</source>
     <message>
         <location line="+10"/>
         <location line="+23"/>
-        <location line="+26"/>
+        <location line="+23"/>
         <location line="+23"/>
         <location line="+23"/>
         <location line="+36"/>
@@ -1672,7 +1697,7 @@ to the clipboard</source>
         <translation>Н/Д</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-214"/>
         <source>Client version</source>
         <translation>Версия клиента</translation>
     </message>
@@ -1686,7 +1711,7 @@ to the clipboard</source>
         <source>Build date</source>
         <translation>Дата сборки</translation>
     </message>
-     <message>
+    <message>
         <location line="+23"/>
         <source>Startup time</source>
         <translation>Время запуска</translation>
@@ -1726,17 +1751,17 @@ to the clipboard</source>
         <source>Last block time</source>
         <translation>Время последнего блока</translation>
     </message>
-   <message>
+    <message>
         <location line="+42"/>
         <source>Debug log file</source>
         <translation>Отладочный лог-файл</translation>
     </message>
-   <message>
+    <message>
         <location line="+7"/>
         <source>Open the Gostcoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation>Открыть отладочный лог-файл ГОСТкойн из текущего каталога данных. Это может занять несколько секунд для больших лог-файлов.</translation>
     </message>
-     <message>
+    <message>
         <location line="+3"/>
         <source>&amp;Open</source>
         <translation>&amp;Открыть</translation>
@@ -1782,8 +1807,6 @@ to the clipboard</source>
         <translation>Напишите &lt;b&gt;help&lt;/b&gt; для просмотра доступных команд.</translation>
     </message>
 </context>
-
-<!-- Send coins dialog -->
 <context>
     <name>SendCoinsDialog</name>
     <message>
@@ -1798,7 +1821,6 @@ to the clipboard</source>
         <source>Send Coins</source>
         <translation>Отправка</translation>
     </message>
-
     <message>
         <location line="+76"/>
         <source>Coin Control Features</source>
@@ -1840,7 +1862,12 @@ to the clipboard</source>
         <translation>Приоритет:</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+19"/>
+        <source>medium</source>
+        <translation>средний</translation>
+    </message>
+    <message>
+        <location line="+32"/>
         <source>Fee:</source>
         <translation>Комиссия:</translation>
     </message>
@@ -1850,7 +1877,12 @@ to the clipboard</source>
         <translation>Малый выход:</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+19"/>
+        <source>no</source>
+        <translation>нет</translation>
+    </message>
+    <message>
+        <location line="+32"/>
         <source>After Fee:</source>
         <translation>После комиссии:</translation>
     </message>
@@ -1905,12 +1937,12 @@ to the clipboard</source>
         <translation>&amp;Отправить</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-170"/>
+        <location filename="../sendcoinsdialog.cpp" line="-175"/>
         <source>Enter a Gostcoin address (e.g. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</source>
         <translation>Введите адрес Gostcoin (напр. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>Copy quantity</source>
         <translation>Копировать количество</translation>
     </message>
@@ -1950,12 +1982,13 @@ to the clipboard</source>
         <translation>Копировать размен</translation>
     </message>
     <message>
-        <location line="+86"/>
+        <location line="+87"/>
+        <location line="+2"/>
         <source>&lt;b&gt;%1&lt;/b&gt; to %2 (%3)</source>
         <translation>&lt;b&gt;%1&lt;/b&gt; адресату %2 (%3)</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Confirm send coins</source>
         <translation>Подтвердите отправку монет</translation>
     </message>
@@ -2020,8 +2053,6 @@ to the clipboard</source>
         <translation>Внимание: неизвестный адрес для сдачи</translation>
     </message>
 </context>
-
-<!--  -->
 <context>
     <name>SendCoinsEntry</name>
     <message>
@@ -2076,8 +2107,55 @@ to the clipboard</source>
         <translation>Введите ГОСТкойн-адрес (например GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</translation>
     </message>
 </context>
-
-<!--  -->
+<context>
+    <name>ShowI2PAddresses</name>
+    <message>
+        <location filename="../forms/showi2paddresses.ui" line="+20"/>
+        <source>Dialog</source>
+        <translation>Диалог</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>If you want to use a permanent I2P-address you have to set a &apos;mydestination&apos; option in the configuration file:</source>
+        <translation>Если вы хотите использовать постоянный I2P адрес, добавьте параметр &apos;mydestination&apos; в конфигурационный файл:</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Ready to save parameter (If you want to use this address save this text in the configuration file and keep it secret):</source>
+        <translation>Сохраните этот параметр (если вы хотите использовать данный адрес, сохраните этот текст в конфигурационный файл и держите его в сектрете):</translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Address (you can publish it):</source>
+        <translation>Адрес (вы можете публиковать его):</translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Short base32-address:</source>
+        <translation>Короткий base32 адрес:</translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Copy &quot;mydestination&quot; parameter
+to the clipboard</source>
+        <translation>Скопировать параметр &quot;mydestination&quot;
+в буфер обмена</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Copy public address
+to the clipboard</source>
+        <translation>Скопировать публичный адрес
+в буфер обмена</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Copy b32-address
+to the clipboard</source>
+        <translation>Скопировать b32 адрес
+в буфер обмена</translation>
+    </message>
+</context>
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
@@ -2098,7 +2176,7 @@ to the clipboard</source>
     <message>
         <location line="+18"/>
         <source>The address to sign the message with (e.g. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</source>
-        <translation>Адрес, которым вы хотите подписать сообщение  (напр. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</translation>
+        <translation>Адрес, которым вы хотите подписать сообщение (напр. GbD2JSQHBHCKLa9WTHmigJRpyFgmBj4woG)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -2107,7 +2185,7 @@ to the clipboard</source>
         <translation>Выберите адрес из адресной книги</translation>
     </message>
     <message>
-        <location line="-194"/>
+        <location line="-193"/>
         <source>Paste address from clipboard</source>
         <translation>Вставить адрес из буфера обмена</translation>
     </message>
@@ -2260,12 +2338,10 @@ to the clipboard</source>
         <translation>Сообщение проверено.</translation>
     </message>
 </context>
-
-<!--  -->
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../splashscreen.cpp" line="+25"/>
+        <location filename="../splashscreen.cpp" line="+26"/>
         <source>Version %1</source>
         <translation>Версия %1 </translation>
     </message>
@@ -2295,14 +2371,16 @@ to the clipboard</source>
         <translation>Разработчики Gostcoin</translation>
     </message>
 </context>
-
-<!--  -->
 <context>
     <name>TransactionDesc</name>
     <message numerus="yes">
         <location filename="../transactiondesc.cpp" line="+18"/>
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Открыто для ещё %n блока</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform></translation>
+        <translation>
+            <numerusform>Открыто для ещё %n блока</numerusform>
+            <numerusform>Открыто для ещё %n блоков</numerusform>
+            <numerusform>Открыто для ещё %n блоков</numerusform>
+        </translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2337,7 +2415,11 @@ to the clipboard</source>
     <message numerus="yes">
         <location line="+2"/>
         <source>, broadcast through %n node(s)</source>
-        <translation><numerusform>, разослано через %n узел</numerusform><numerusform>, разослано через %n узла</numerusform><numerusform>, разослано через %n узлов</numerusform></translation>
+        <translation>
+            <numerusform>, разослано через %n узел</numerusform>
+            <numerusform>, разослано через %n узла</numerusform>
+            <numerusform>, разослано через %n узлов</numerusform>
+        </translation>
     </message>
     <message>
         <location line="+4"/>
@@ -2395,7 +2477,11 @@ to the clipboard</source>
     <message numerus="yes">
         <location line="-102"/>
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>будет доступно через %n блок</numerusform><numerusform>будет доступно через %n блока</numerusform><numerusform>будет доступно через %n блоков</numerusform></translation>
+        <translation>
+            <numerusform>будет доступно через %n блок</numerusform>
+            <numerusform>будет доступно через %n блока</numerusform>
+            <numerusform>будет доступно через %n блоков</numerusform>
+        </translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2471,8 +2557,6 @@ to the clipboard</source>
         <translation>ложь</translation>
     </message>
 </context>
-
-<!--  -->
 <context>
     <name>TransactionDescDialog</name>
     <message>
@@ -2486,8 +2570,6 @@ to the clipboard</source>
         <translation>Данный диалог показывает детализированную статистику по выбранной транзакции</translation>
     </message>
 </context>
-
-<!--  -->
 <context>
     <name>TransactionTableModel</name>
     <message>
@@ -2513,7 +2595,11 @@ to the clipboard</source>
     <message numerus="yes">
         <location line="+57"/>
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Открыто для ещё %n блока</numerusform><numerusform>Открыто для ещё %n блоков</numerusform><numerusform>Открыто для ещё %n блоков</numerusform></translation>
+        <translation>
+            <numerusform>Открыто для ещё %n блока</numerusform>
+            <numerusform>Открыто для ещё %n блоков</numerusform>
+            <numerusform>Открыто для ещё %n блоков</numerusform>
+        </translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2523,7 +2609,11 @@ to the clipboard</source>
     <message numerus="yes">
         <location line="+3"/>
         <source>Offline (%n confirmations)</source>
-        <translation><numerusform>Оффлайн (%n подтверждение)</numerusform><numerusform>Оффлайн (%n подтверждения)</numerusform><numerusform>Оффлайн (%n подтверждений)</numerusform></translation>
+        <translation>
+            <numerusform>Оффлайн (%n подтверждение)</numerusform>
+            <numerusform>Оффлайн (%n подтверждения)</numerusform>
+            <numerusform>Оффлайн (%n подтверждений)</numerusform>
+        </translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2533,12 +2623,20 @@ to the clipboard</source>
     <message numerus="yes">
         <location line="+3"/>
         <source>Confirmed (%n confirmations)</source>
-        <translation><numerusform>Подтверждено (%n подтверждение)</numerusform><numerusform>Подтверждено (%n подтверждения)</numerusform><numerusform>Подтверждено (%n подтверждений)</numerusform></translation>
+        <translation>
+            <numerusform>Подтверждено (%n подтверждение)</numerusform>
+            <numerusform>Подтверждено (%n подтверждения)</numerusform>
+            <numerusform>Подтверждено (%n подтверждений)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <location line="+8"/>
         <source>Mined balance will be available when it matures in %n more block(s)</source>
-        <translation><numerusform>Добытыми монетами можно будет воспользоваться через %n блок</numerusform><numerusform>Добытыми монетами можно будет воспользоваться через %n блока</numerusform><numerusform>Добытыми монетами можно будет воспользоваться через %n блоков</numerusform></translation>
+        <translation>
+            <numerusform>Добытыми монетами можно будет воспользоваться через %n блок</numerusform>
+            <numerusform>Добытыми монетами можно будет воспользоваться через %n блока</numerusform>
+            <numerusform>Добытыми монетами можно будет воспользоваться через %n блоков</numerusform>
+        </translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2606,8 +2704,6 @@ to the clipboard</source>
         <translation>Сумма, добавленная, или снятая с баланса.</translation>
     </message>
 </context>
-
-<!--  -->
 <context>
     <name>TransactionView</name>
     <message>
@@ -2712,7 +2808,7 @@ to the clipboard</source>
         <translation>Показать подробности транзакции</translation>
     </message>
     <message>
-        <location line="+139"/>
+        <location line="+143"/>
         <source>Export Transaction Data</source>
         <translation>Экспортировать данные транзакций</translation>
     </message>
@@ -2777,22 +2873,26 @@ to the clipboard</source>
         <translation>до</translation>
     </message>
 </context>
-
-<!--  -->
+<context>
+    <name>WalletFrame</name>
+    <message>
+        <location filename="../walletframe.cpp" line="+31"/>
+        <source>No wallet has been loaded.</source>
+        <translation>Кошелек не был загружен.</translation>
+    </message>
+</context>
 <context>
     <name>WalletModel</name>
     <message>
-        <location filename="../walletmodel.cpp" line="+193"/>
+        <location filename="../walletmodel.cpp" line="+206"/>
         <source>Send Coins</source>
         <translation>Отправка</translation>
     </message>
 </context>
-
-<!--  -->
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="+46"/>
+        <location filename="../walletview.cpp" line="+52"/>
         <source>&amp;Export</source>
         <translation>&amp;Экспорт</translation>
     </message>
@@ -2832,8 +2932,6 @@ to the clipboard</source>
         <translation>Данные бумажника успешно сохранены в новое место.</translation>
     </message>
 </context>
-
-<!--  -->
 <context>
     <name>bitcoin-core</name>
     <message>
@@ -3083,7 +3181,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
     <message>
         <location line="+1"/>
         <source>Enable I2P-only mode</source>
-        <translation>Включить режим работы "только в I2P"</translation>
+        <translation>Включить режим работы &quot;только в I2P&quot;</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3642,7 +3740,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location line="+1"/>
-        <source>You need to rebuild the databases using -reindex to change -txindex</source>
+        <source>You need to rebuild the database using -reindex to change -txindex</source>
         <translation>Вам необходимо пересобрать базы данных с помощью -reindex, чтобы изменить -txindex</translation>
     </message>
     <message>

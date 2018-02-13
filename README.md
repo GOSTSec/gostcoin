@@ -8,7 +8,7 @@ Why GOSTCoin?
 -------------
 
 GOSTCoin uses Soviet and Russian government standard cryptography: 
-GOST R 34.10-2012 for signature and GOST R 34.11-2012 for hash. 
+[GOST R 34.10-2012](https://tools.ietf.org/html/rfc7091) for signature and [GOST R 34.11-2012](https://tools.ietf.org/html/rfc6986) for hash. 
 [More info about crypto](https://github.com/GOSTSec/gostcoin/wiki/Cryptography).
 
 GOSTCoin is using [Invisible Internet](https://github.com/PurpleI2P/i2pd) (I2P) as a secure network layer.
