@@ -28,7 +28,7 @@ SplashScreen::SplashScreen(const QPixmap &pixmap, Qt::WindowFlags f) :
     QString copyrightText2   = QChar(0xA9)+QString(" 2011-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Litecoin developers"));
     QString copyrightText3   = QChar(0xA9)+QString(" 2013-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Anoncoin developers"));
     QString copyrightText4   = QChar(0xA9)+QString(" 2015-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The i2pd developers"));
-    QString copyrightText5   = QChar(0xA9)+QString(" %1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Gostcoin developers"));
+    QString copyrightText5   = QChar(0xA9)+QString(" 2017-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Gostcoin developers"));
 
     QString font            = "Arial";
 
