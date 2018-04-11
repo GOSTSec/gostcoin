@@ -39,7 +39,7 @@ class CNetAddr
 {
     protected:
         unsigned char ip[16]; // in network byte order
-        unsigned char i2pDest[NATIVE_I2P_DESTINATION_SIZE]; // I2P Destination
+        std::string i2pDest; // I2P Destination
 
     public:
         CNetAddr();

@@ -24,7 +24,7 @@
 #endif
 
 #define SAM_BUFSIZE         65536
-#define I2P_DESTINATION_SIZE 521  // EcDSA, GOST and EdDSA, actual size is 524 with trailing A==
+#define I2P_DESTINATION_SIZE 521  // EcDSA, GOST and EdDSA, actual size is 524 with trailing AAA== or AAQ==
 
 namespace SAM
 {

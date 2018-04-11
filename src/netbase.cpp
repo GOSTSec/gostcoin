@@ -581,13 +581,13 @@ bool ConnectSocketByName(CService &addr, SOCKET& hSocketRet, const char *pszDest
 void CNetAddr::Init()
 {
     memset(ip, 0, sizeof(ip));
-    memset(i2pDest, 0, NATIVE_I2P_DESTINATION_SIZE);
+    i2pDest = "";
 }
 
 void CNetAddr::SetIP(const CNetAddr& ipIn)
 {
     memcpy(ip, ipIn.ip, sizeof(ip));
-    memcpy(i2pDest, ipIn.i2pDest, NATIVE_I2P_DESTINATION_SIZE);
+    i2pDest = ipIn.i2pDest;
 }
 
 
@@ -596,10 +596,15 @@ bool CNetAddr::SetSpecial(const std::string &strName)
     const bool isBase32Addr = (strName.size() == NATIVE_I2P_B32ADDR_SIZE) && (strName.substr(strName.size() - 8, 8) == ".b32.i2p");
     const std::string addr = isBase32Addr ? I2PSession::Instance().namingLookup(strName) : strName;
 
-    if ((addr.size() == NATIVE_I2P_DESTINATION_SIZE) && (addr.substr(addr.size() - 5, 5) == "AAA==")) { // last 5 symbols of b64-destination must be AAA==
-        memcpy(i2pDest, addr.c_str(), NATIVE_I2P_DESTINATION_SIZE);
-        return true;
-    }
+    if ((addr.length() == NATIVE_I2P_DESTINATION_SIZE))
+	{	
+		auto trailer = addr.substr(addr.size() - 5, 5);
+		if (trailer == "AAA==" || trailer == "AAQ==") 
+		{ // last 5 symbols of b64-destination must be AAA== (ElGamal) or AAQ== (ECIES)
+		    i2pDest = addr;
+		    return true;
+		}
+	}
     return false;
 }
 
@@ -612,14 +617,14 @@ CNetAddr::CNetAddr(const struct in_addr& ipv4Addr)
 {
     memcpy(ip,    pchIPv4, 12);
     memcpy(ip+12, &ipv4Addr, 4);
-    memset(i2pDest, 0, NATIVE_I2P_DESTINATION_SIZE);
+    i2pDest = "";
 }
 
 #ifdef USE_IPV6
 CNetAddr::CNetAddr(const struct in6_addr& ipv6Addr)
 {
     memcpy(ip, &ipv6Addr, 16);
-    memset(i2pDest, 0, NATIVE_I2P_DESTINATION_SIZE);
+    i2pDest = "";
 }
 #endif
 
@@ -713,13 +718,12 @@ bool CNetAddr::IsRFC4843() const
 
 bool CNetAddr::IsNativeI2P() const
 {
-    static const unsigned char pchAAA[] = {'A','A','A','=','='}; // EdDSA, TODO:
-    return (memcmp(i2pDest + NATIVE_I2P_DESTINATION_SIZE - sizeof(pchAAA), pchAAA, sizeof(pchAAA)) == 0);
+    return !i2pDest.empty ();
 }
 
 std::string CNetAddr::GetI2PDestination() const
 {
-    return std::string(i2pDest, i2pDest + NATIVE_I2P_DESTINATION_SIZE);
+    return i2pDest;
 }
 
 bool CNetAddr::IsLocal() const
@@ -834,17 +838,17 @@ std::string CNetAddr::ToString() const
 
 bool operator==(const CNetAddr& a, const CNetAddr& b)
 {
-    return (memcmp(a.ip, b.ip, 16) == 0 && memcmp(a.i2pDest, b.i2pDest, NATIVE_I2P_DESTINATION_SIZE) == 0);
+    return (memcmp(a.ip, b.ip, 16) == 0 && a.i2pDest == b.i2pDest);
 }
 
 bool operator!=(const CNetAddr& a, const CNetAddr& b)
 {
-    return (memcmp(a.ip, b.ip, 16) != 0 || memcmp(a.i2pDest, b.i2pDest, NATIVE_I2P_DESTINATION_SIZE) != 0);
+    return (memcmp(a.ip, b.ip, 16) != 0 || a.i2pDest != b.i2pDest);
 }
 
 bool operator<(const CNetAddr& a, const CNetAddr& b)
 {
-    return (memcmp(a.ip, b.ip, 16) < 0 || (memcmp(a.ip, b.ip, 16) == 0 && memcmp(a.i2pDest, b.i2pDest, NATIVE_I2P_DESTINATION_SIZE) < 0));
+    return (memcmp(a.ip, b.ip, 16) < 0 || (memcmp(a.ip, b.ip, 16) == 0 && a.i2pDest < b.i2pDest));
 }
 
 bool CNetAddr::GetInAddr(struct in_addr* pipv4Addr) const
@@ -876,9 +880,9 @@ std::vector<unsigned char> CNetAddr::GetGroup() const
 
     if (IsNativeI2P())
     {
-        vchRet.resize(NATIVE_I2P_DESTINATION_SIZE + 1);
+        vchRet.resize(i2pDest.length () + 1);
         vchRet[0] = NET_NATIVE_I2P;
-        memcpy(&vchRet[1], i2pDest, NATIVE_I2P_DESTINATION_SIZE);
+        memcpy(&vchRet[1], i2pDest.c_str (), i2pDest.length ());
         return vchRet;
     }
 
@@ -938,7 +942,7 @@ std::vector<unsigned char> CNetAddr::GetGroup() const
 
 uint64 CNetAddr::GetHash() const
 {
-    uint256 hash = IsNativeI2P() ? Hash(i2pDest, i2pDest + NATIVE_I2P_DESTINATION_SIZE) : Hash(&ip[0], &ip[16]);
+    uint256 hash = IsNativeI2P() ? Hash(i2pDest.c_str (), i2pDest.c_str () + i2pDest.length ()) : Hash(&ip[0], &ip[16]);
     uint64 nRet;
     memcpy(&nRet, &hash, sizeof(nRet));
     return nRet;
@@ -1160,8 +1164,8 @@ std::vector<unsigned char> CService::GetKey() const
      std::vector<unsigned char> vKey;
      if (IsNativeI2P())
      {
-         vKey.resize(NATIVE_I2P_DESTINATION_SIZE);
-         memcpy(&vKey[0], i2pDest, NATIVE_I2P_DESTINATION_SIZE);
+         vKey.resize(i2pDest.length ());
+         memcpy(&vKey[0], i2pDest.c_str (), i2pDest.length ());
          return vKey;
      }
      vKey.resize(18);
