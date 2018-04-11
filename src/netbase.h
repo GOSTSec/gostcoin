@@ -91,7 +91,7 @@ class CNetAddr
              READWRITE(FLATDATA(ip));
              if (!(nType & SER_IPADDRONLY))
              {
-                READWRITE(FLATDATA(i2pDest));
+                READWRITE(i2pDest);
              }
             )
 };
@@ -136,7 +136,7 @@ class CService : public CNetAddr
              READWRITE(FLATDATA(ip));
 	     if (!(nType & SER_IPADDRONLY))
 	     {
-	         READWRITE(FLATDATA(i2pDest));
+	         READWRITE(i2pDest);
 	     }
              unsigned short portN = htons(port);
              READWRITE(portN);
