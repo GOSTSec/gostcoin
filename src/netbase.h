@@ -1,5 +1,4 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017-2018 The Gostcoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_NETBASE_H
@@ -39,7 +38,7 @@ class CNetAddr
 {
     protected:
         unsigned char ip[16]; // in network byte order
-        std::string i2pDest; // I2P Destination
+        unsigned char i2pDest[NATIVE_I2P_DESTINATION_SIZE]; // I2P Destination (should be array for serialization)
 
     public:
         CNetAddr();
@@ -91,7 +90,7 @@ class CNetAddr
              READWRITE(FLATDATA(ip));
              if (!(nType & SER_IPADDRONLY))
              {
-                READWRITE(i2pDest);
+                READWRITE(FLATDATA(i2pDest));
              }
             )
 };
@@ -136,7 +135,7 @@ class CService : public CNetAddr
              READWRITE(FLATDATA(ip));
 	     if (!(nType & SER_IPADDRONLY))
 	     {
-	         READWRITE(i2pDest);
+	         READWRITE(FLATDATA(i2pDest));
 	     }
              unsigned short portN = htons(port);
              READWRITE(portN);
