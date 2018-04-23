@@ -5,9 +5,13 @@ Replace `<treads>` to number of threads (cores) used to build.
 
 ### Preparing to build
 ```bash
-$ pacman -Suy diff git make tar mingw-w64-i686-gcc mingw-w64-i686-boost mingw-w64-i686-libpng mingw-w64-i686-openssl mingw-w64-i686-zlib
+$ pacman -S diff git make tar mingw-w64-i686-gcc mingw-w64-i686-boost mingw-w64-i686-libpng mingw-w64-i686-openssl mingw-w64-i686-zlib
 $ mkdir /c/devel && cd /c/devel
 ```
+#### Caveat
+If you are an Arch Linux user, refrain from updating system with `pacman -Syu`.
+Always update runtime separately as described on the home page,
+otherwise you might end up with DLLs incompatibility problems.
 #### Building Berkley DB
 ```bash
 $ wget http://download.oracle.com/berkeley-db/db-4.8.30.tar.gz
