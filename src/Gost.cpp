@@ -10,6 +10,7 @@
 #include <array>
 #include <openssl/sha.h>
 #include <openssl/evp.h>
+#include "Crypto.h"
 #include "Gost.h"
 
 namespace i2p
@@ -28,6 +29,7 @@ namespace crypto
 		EC_POINT_set_affine_coordinates_GFp (m_Group, P, x, y, ctx);
 		EC_GROUP_set_generator (m_Group, P, q, nullptr);
 		EC_GROUP_set_curve_name (m_Group, NID_id_GostR3410_2001);
+        EC_GROUP_set_asn1_flag (m_Group, OPENSSL_EC_EXPLICIT_CURVE); // encode parameters explicitly
 		EC_POINT_free(P);
 		BN_CTX_free (ctx);
 	}

@@ -27,6 +27,9 @@ inline int EVP_CIPHER_CTX_reset(EVP_CIPHER_CTX *ctx)
 // ssl
 #define TLS_method TLSv1_method
 
+// ASN1
+#define OPENSSL_EC_EXPLICIT_CURVE 0
+
 #endif
 
 #endif
