@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = gostcoin-qt
 macx:TARGET = "GOSTCoin-Qt"
-VERSION = 0.8.5.11
+VERSION = 0.8.5.12
 INCLUDEPATH += src src/json src/qt src/i2psam
 QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
