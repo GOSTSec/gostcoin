@@ -23,7 +23,7 @@
       </sizepolicy>
      </property>
      <property name="pixmap">
-      <pixmap resource="../gostcoin.qrc">:/images/mask</pixmap>
+      <pixmap resource="../gostcoin.qrc">:/images/splash-small</pixmap>
      </property>
     </widget>
    </item>
