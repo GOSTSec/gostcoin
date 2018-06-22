@@ -1,0 +1,25 @@
+Requirements:
+
+ - Brew
+ - OpenSSL
+ - Boost
+ - BerkeleyDB 4
+ - Qt
+ - QREncode (optional)
+ - DBUS (optional)
+ 
+Installing:
+
+$ xcode-select --install
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ brew install make boost openssl berkeley-db@4 qt 
+(optional)$ brew install qrencode dbus
+
+Building:
+$ export PATH="/usr/local/opt/qt/bin:$PATH"
+$ git clone https://github.com/GOSTSec/gostcoin.git
+$ cd gostcoin
+$ qmake RELEASE=1 USE_BUILD_INFO=1 [USE_QRCODE=1] [USE_DBUS=1]
+$ make
+
+Find GOSTCoin-Qt app in current directory.
