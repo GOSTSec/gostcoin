@@ -34,6 +34,7 @@ LIBS += \
 	-lboost_filesystem$(BOOST_LIB_SUFFIX) \
 	-lboost_program_options$(BOOST_LIB_SUFFIX) \
 	-lboost_thread$(BOOST_LIB_SUFFIX) \
+	-lboost_chrono$(BOOST_LIB_SUFFIX) \
 	-ldb_cxx$(BDB_LIB_SUFFIX) \
 	-lssl \
 	-lcrypto
