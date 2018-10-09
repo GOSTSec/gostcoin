@@ -2,22 +2,11 @@ TEMPLATE = app
 TARGET = gostcoin-qt
 VERSION = 0.8.5.12
 INCLUDEPATH += ../src ../src/json ../src/qt ../src/i2psam
-QT += core gui network androidextras
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_NO_CXX11_SCOPED_ENUMS
+QT += core gui network widgets androidextras
+DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_NO_CXX11_SCOPED_ENUMS _FILE_OFFSET_BITS=64 ANDROID=1 __ANDROID__
 CONFIG += no_include_pwd
 CONFIG += thread
-QMAKE_CXXFLAGS=-fstack-protector-strong -DANDROID -fno-builtin-memmove --sysroot=/home/user/SDKS/ANDROID/NDK/android-ndk-r13b/platforms/android-9/arch-arm/ -std=c++11
-
-# for boost 1.37, add -mt to the boost libraries
-# use: qmake BOOST_LIB_SUFFIX=-mt
-# for boost thread win32 with _win32 sufix
-# use: BOOST_THREAD_LIB_SUFFIX=_win32-...
-# or when linking against a specific BerkelyDB version: BDB_LIB_SUFFIX=-4.8
-
-# Dependency library locations can be customized with:
-#    BOOST_INCLUDE_PATH, BOOST_LIB_PATH, BDB_INCLUDE_PATH,
-#    BDB_LIB_PATH, OPENSSL_INCLUDE_PATH and OPENSSL_LIB_PATH respectively
+QMAKE_CXXFLAGS = -std=c++11 -fstack-protector-strong -fno-builtin-memmove
 
 OBJECTS_DIR = build
 MOC_DIR = build
@@ -27,116 +16,64 @@ USE_IPV6=0
 USE_LEVELDB=1
 USE_ASM=1
 
-android {
-        message("Using Android settings")
+# git clone https://github.com/PurpleI2P/Boost-for-Android-Prebuilt.git
+# git clone https://github.com/PurpleI2P/OpenSSL-for-Android-Prebuilt.git
+# git clone https://github.com/PurpleI2P/MiniUPnP-for-Android-Prebuilt.git
+# git clone https://github.com/GOSTSec/android-ifaddrs-from-android-source.git
+MAIN_PATH = /path/to/libraries
+ANDROID_NDK_PLATFORM = /path/to/android-ndk
+ANDROID_PLATFORM = android-14
 
-        # change to your own path, where you will store all needed libraries with 'git clone' commands below.
-        MAIN_PATH = /path/to/libraries
-        # change to your own Android NDK path
-        NDK_PATH = /home/user/SDKS/ANDROID/NDK/android-ndk-r13b
+QMAKE_CXXFLAGS += -DANDROID --sysroot=$$ANDROID_NDK_ROOT/platforms/$$ANDROID_PLATFORM/arch-arm/ -std=c++11
 
-        # git clone https://github.com/PurpleI2P/MiniUPnP-for-Android-Prebuilt.git
-        # git clone git@github.com:hypnosis-i2p/android-ifaddrs-from-android-source.git
-        #boost 53, 62 are not ok
-        BOOST_PATH = $$MAIN_PATH/take3/boost_1_57_0
-#/stage/lib
-        OPENSSL_PATH = $$MAIN_PATH/take3/openssl-1.0.2l
-        #MINIUPNP_PATH = $$MAIN_PATH/MiniUPnP-for-Android-Prebuilt
-        IFADDRS_PATH = $$MAIN_PATH/android-ifaddrs-from-android-source
-        BDB_PATH = $$MAIN_PATH/take3/db-6.0.20/build_unix
+BOOST_PATH = $$MAIN_PATH/Boost-for-Android-Prebuilt/boost_1_64_0
+OPENSSL_PATH = $$MAIN_PATH/OpenSSL-for-Android-Prebuilt/openssl-1.1.1
+IFADDRS_PATH = $$MAIN_PATH/android-ifaddrs-from-android-source
+BDB_PATH = $$MAIN_PATH/db-6.0.20/build_unix
 
-        DEFINES += ANDROID=1
-        DEFINES += __ANDROID__
+BOOST_LIB_PATH = $$BOOST_PATH/$$ANDROID_TARGET_ARCH/lib
+OPENSSL_LIB_PATH = $$OPENSSL_PATH/$$ANDROID_TARGET_ARCH/lib
 
-        CONFIG += mobility
+CONFIG += mobility
 
-        MOBILITY =
+MOBILITY =
 
-        INCLUDEPATH += \
-                $$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/include \
-                $$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include \
-                $$BOOST_PATH \
-                $$OPENSSL_PATH/include \
-                $$IFADDRS_PATH \
-                $$BDB_PATH \
-                build
-#                $$NDK_PATH/platforms/android-9/arch-arm/usr/include/ \
-#                $$NDK_PATH/sources/cxx-stl/stlport/stlport/ -I $NDK_PATH/sources/cxx-stl/system/include/
+INCLUDEPATH += \
+        $$ANDROID_NDK_ROOT/sources/cxx-stl/gnu-libstdc++/4.9/include \
+        $$ANDROID_NDK_ROOT/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include \
+        $$BOOST_PATH/include \
+        $$OPENSSL_PATH/include \
+        $$IFADDRS_PATH \
+        $$BDB_PATH \
+        build
 
-#\
-#		$$MINIUPNP_PATH/miniupnp-2.0/include \
-        DISTFILES += AndroidManifest.xml
+DISTFILES += AndroidManifest.xml
 
-        ANDROID_PACKAGE_SOURCE_DIR = $$PWD/
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/
 
-        SOURCES += $$IFADDRS_PATH/ifaddrs.cpp $$IFADDRS_PATH/bionic_netlink.cpp
-        HEADERS += $$IFADDRS_PATH/ifaddrs.h $$IFADDRS_PATH/ErrnoRestorer.h $$IFADDRS_PATH/bionic_netlink.h $$IFADDRS_PATH/bionic_macros.h
+SOURCES += $$IFADDRS_PATH/ifaddrs.cpp $$IFADDRS_PATH/bionic_netlink.cpp
+HEADERS += $$IFADDRS_PATH/ifaddrs.h $$IFADDRS_PATH/ErrnoRestorer.h $$IFADDRS_PATH/bionic_netlink.h $$IFADDRS_PATH/bionic_macros.h
 
-        equals(ANDROID_TARGET_ARCH, armeabi-v7a){
-                DEFINES += ANDROID_ARM7A
-                # http://stackoverflow.com/a/30235934/529442
-#                LIBS += -L$$BOOST_PATH/boost_1_53_0/armeabi-v7a/lib \
-#                        -lboost_system-gcc-mt-1_53 -lboost_atomic-gcc-mt-1_53 \
-#                        -lboost_filesystem-gcc-mt-1_53 -lboost_chrono-gcc-mt-1_53 -lboost_thread-gcc-mt-1_53 -lboost_program_options-gcc-mt-1_53 \
-#                        -L$$OPENSSL_PATH/armeabi-v7a/lib/ -lcrypto -lssl
-#\
-#			-L$$MINIUPNP_PATH/miniupnp-2.0/armeabi-v7a/lib/ -lminiupnpc
-                BOOST_POSTFIX=-gcc-mt-1_57
-                LIBS += -L$$BOOST_PATH/stage/lib \
-                        -lboost_atomic$$BOOST_POSTFIX \
-                        -lboost_chrono$$BOOST_POSTFIX \
-                        -lboost_filesystem$$BOOST_POSTFIX \
-                        -lboost_program_options$$BOOST_POSTFIX \
-                        -lboost_system$$BOOST_POSTFIX \
-                        -lboost_thread$$BOOST_POSTFIX \
-                        -L$$OPENSSL_PATH -lcrypto -lssl
-#\
-#			-L$$MINIUPNP_PATH/miniupnp-2.0/armeabi-v7a/lib/ -lminiupnpc
+#LIBS += -Wl,-Bstatic
 
-                PRE_TARGETDEPS += $$OPENSSL_PATH/libcrypto.a \
-                        $$OPENSSL_PATH/libssl.a
-                DEPENDPATH += $$OPENSSL_PATH/include
-
-#                ANDROID_EXTRA_LIBS += $$OPENSSL_PATH/armeabi-v7a/lib/libcrypto_1_0_0.so \
-#                        $$OPENSSL_PATH/armeabi-v7a/lib/libssl_1_0_0.so
-#\
-#			$$MINIUPNP_PATH/miniupnp-2.0/armeabi-v7a/lib/libminiupnpc.so
-        }
-
-        equals(ANDROID_TARGET_ARCH, x86){
-                error("Android BDB: don't know how to build BDB for Android x86")
-
-                # http://stackoverflow.com/a/30235934/529442
-                LIBS += -L$$BOOST_PATH/boost_1_62_0/x86/lib \
-                        -lboost_system-gcc-mt-1_62 -lboost_date_time-gcc-mt-1_62 \
-                        -lboost_filesystem-gcc-mt-1_62 -lboost_program_options-gcc-mt-1_62 \
-                        -L$$OPENSSL_PATH/openssl-1.1.0/x86/lib/ -lcrypto -lssl
-#\
-#			-L$$MINIUPNP_PATH/miniupnp-2.0/x86/lib/ -lminiupnpc
-
-                PRE_TARGETDEPS += $$OPENSSL_PATH/openssl-1.1.0/x86/lib/libcrypto.a \
-                        $$OPENSSL_PATH/openssl-1.1.0/x86/lib/libssl.a
-
-                DEPENDPATH += $$OPENSSL_PATH/openssl-1.1.0/include
-
-                ANDROID_EXTRA_LIBS += $$OPENSSL_PATH/openssl-1.1.0/x86/lib/libcrypto_1_0_0.so \
-                        $$OPENSSL_PATH/openssl-1.1.0/x86/lib/libssl_1_0_0.so
-#\
-#			$$MINIUPNP_PATH/miniupnp-2.0/x86/lib/libminiupnpc.so
-        }
+equals(ANDROID_TARGET_ARCH, armeabi-v7a){
+    DEFINES += ANDROID_ARM7A
+    LIBS += $${BOOST_LIB_PATH}/libboost_atomic.a \
+            $${BOOST_LIB_PATH}/libboost_chrono.a \
+            $${BOOST_LIB_PATH}/libboost_filesystem.a \
+            $${BOOST_LIB_PATH}/libboost_program_options.a \
+            $${BOOST_LIB_PATH}/libboost_system.a \
+            $${BOOST_LIB_PATH}/libboost_thread.a \
+            $${OPENSSL_LIB_PATH}/libssl.a \
+            $${OPENSSL_LIB_PATH}/libcrypto.a
 }
 
-!win32 {
-    # for extra security against potential buffer overflows: enable GCCs Stack Smashing Protection
-#    QMAKE_CXXFLAGS *= -fstack-protector-all
-#    QMAKE_CFLAGS *= -fstack-protector-all
-#    QMAKE_LFLAGS *= -fstack-protector-all
-    # Exclude on Windows cross compile with MinGW 4.2.x, as it will result in a non-working executable!
-    # This can be enabled for Windows, when we switch to MinGW >= 4.4.x.
+equals(ANDROID_TARGET_ARCH, x86){
+    error("Android BDB: don't know how to build BDB for Android x86")
 }
-# for extra security (see: https://wiki.debian.org/Hardening): this flag is GCC compiler-specific
-#-D_FORTIFY_SOURCE=2
-QMAKE_CXXFLAGS *= -std=c++11
+
+# linking with libdb-c++
+LIBS += $$BDB_PATH/libdb_cxx.a
 
 # use: qmake "USE_QRCODE=1"
 # libqrencode (http://fukuchi.org/works/qrencode/index.en.html) must be installed for support
@@ -144,13 +81,6 @@ contains(USE_QRCODE, 1) {
     message(Building with QRCode support)
     DEFINES += USE_QRCODE
     LIBS += -lqrencode
-}
-
-# use: qmake "USE_DBUS=1"
-contains(USE_DBUS, 1) {
-    message(Building with DBUS (Freedesktop notifications) support)
-    DEFINES += USE_DBUS
-    QT += dbus
 }
 
 # use: qmake "USE_IPV6=1" ( enabled by default; default)
@@ -172,22 +102,23 @@ contains(BITCOIN_NEED_QT_PLUGINS, 1) {
 
 INCLUDEPATH += ../src/leveldb/include ../src/leveldb/helpers
 LIBS += $$PWD/../src/leveldb/libleveldb.a $$PWD/../src/leveldb/libmemenv.a
-!win32 {
-    # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
-    !android {
-        genleveldb.commands = echo "QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS" && cd $$PWD/../src/leveldb && TARGET_OS=OS_ANDROID_CROSSCOMPILE CC=$$QMAKE_CC CXX=$$QMAKE_CXX AR=$$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar $(MAKE) OPT=\"-I $$NDK_PATH/platforms/android-9/arch-arm/usr/include/ -I $$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/include -I $$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include/ $$QMAKE_CXXFLAGS \" libleveldb.a libmemenv.a
-    }
-}
-genleveldb.target = $$PWD/../src/leveldb/libleveldb.a
-genleveldb.depends = FORCE
-PRE_TARGETDEPS += $$PWD/../src/leveldb/libleveldb.a
-QMAKE_EXTRA_TARGETS += genleveldb
+
+# TODO: rewrite!
+#!android {
+#    genleveldb.commands = echo "QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS" && cd $$PWD/../src/leveldb && TARGET_OS=OS_ANDROID_CROSSCOMPILE CC=$$QMAKE_CC CXX=$$QMAKE_CXX AR=$$ANDROID_NDK_ROOT/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar $(MAKE) OPT=\"-I $$ANDROID_NDK_ROOT/platforms/$$ANDROID_PLATFORM/arch-arm/usr/include/ -I $$ANDROID_NDK_ROOT/sources/cxx-stl/gnu-libstdc++/4.9/include -I $$ANDROID_NDK_ROOT/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include/ $$QMAKE_CXXFLAGS \" libleveldb.a libmemenv.a
+#}
+#genleveldb.target = $$PWD/../src/leveldb/libleveldb.a
+#genleveldb.depends = FORCE
+
+#PRE_TARGETDEPS += $$PWD/../src/leveldb/libleveldb.a
+#QMAKE_EXTRA_TARGETS += genleveldb
 # Gross ugly hack that depends on qmake internals, unfortunately there is no other way to do it.
-QMAKE_CLEAN += $$PWD/../src/leveldb/libleveldb.a; cd $$PWD/../src/leveldb ; $(MAKE) clean
+#QMAKE_CLEAN += $$PWD/../src/leveldb/libleveldb.a; cd $$PWD/../src/leveldb ; $(MAKE) clean
 
 # regenerate ../src/build.h
-#!win32|contains(USE_BUILD_INFO, 1) {
+#contains(USE_BUILD_INFO, 1) {
 #    genbuild.depends = FORCE
+#    # TODO: make it compatible with android
 #    genbuild.commands = cd $$PWD; /bin/sh ../share/genbuild.sh $$OUT_PWD/build/build.h
 #    genbuild.target = $$OUT_PWD/build/build.h
 #    PRE_TARGETDEPS += $$OUT_PWD/build/build.h
@@ -195,7 +126,8 @@ QMAKE_CLEAN += $$PWD/../src/leveldb/libleveldb.a; cd $$PWD/../src/leveldb ; $(MA
 #    DEFINES += HAVE_BUILD_INFO
 #}
 
-QMAKE_CXXFLAGS_WARN_ON = -fdiagnostics-show-option -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector
+#QMAKE_CXXFLAGS_WARN_ON = -fdiagnostics-show-option -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector
+QMAKE_CXXFLAGS_WARN_ON = -Wno-unused-parameter
 
 # Input
 DEPENDPATH += ../src ../src/json ../src/qt
@@ -381,25 +313,20 @@ FORMS += ../src/qt/forms/sendcoinsdialog.ui \
     ../src/qt/forms/showi2paddresses.ui
 
 contains(USE_QRCODE, 1) {
-HEADERS += ../src/qt/qrcodedialog.h
-SOURCES += ../src/qt/qrcodedialog.cpp
-FORMS += ../src/qt/forms/qrcodedialog.ui
+    HEADERS += ../src/qt/qrcodedialog.h
+    SOURCES += ../src/qt/qrcodedialog.cpp
+    FORMS += ../src/qt/forms/qrcodedialog.ui
 }
 
 contains(BITCOIN_QT_TEST, 1) {
-SOURCES += ../src/qt/test/test_main.cpp \
-    ../src/qt/test/uritests.cpp
-HEADERS += ../src/qt/test/uritests.h
-DEPENDPATH += ../src/qt/test
-QT += testlib
-TARGET = anoncoin-qt_test
-DEFINES += BITCOIN_QT_TEST
-  macx: CONFIG -= app_bundle
-}
-
-greaterThan(QT_MAJOR_VERSION, 4): {
-} else {
-    CODECFORTR = UTF-8
+    SOURCES += ../src/qt/test/test_main.cpp \
+        ../src/qt/test/uritests.cpp
+    HEADERS += ../src/qt/test/uritests.h
+    DEPENDPATH += ../src/qt/test
+    QT += testlib
+    TARGET = anoncoin-qt_test
+    DEFINES += BITCOIN_QT_TEST
+    macx: CONFIG -= app_bundle
 }
 
 # for lrelease/lupdate
@@ -429,51 +356,12 @@ OTHER_FILES += README.md \
     ../src/qt/test/*.cpp \
     ../src/qt/test/*.h
 
-# platform specific defaults, if not overridden on command line
-
-isEmpty(BOOST_THREAD_LIB_SUFFIX) {
-    BOOST_THREAD_LIB_SUFFIX = $$BOOST_LIB_SUFFIX
-}
-
-isEmpty(BDB_LIB_SUFFIX) {
-    android:BDB_LIB_SUFFIX = -6.0
-}
-
-!win32:!macx {
-    android {
-        #LIBS += $$BDB_PATH/libdb.a $$BDB_PATH/libdb_cxx.a
-        LIBS += -L$$BDB_PATH
-    }
-    # _FILE_OFFSET_BITS=64 lets 32-bit fopen transparently support large files.
-    DEFINES += _FILE_OFFSET_BITS=64
-}
-
-# Set libraries and includes at end, to use platform-defined defaults if not overridden
-INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH
-LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
-LIBS += -lssl -lcrypto
-LIBS += -lz
-!win32:LIBS += -ldl
-
-android {
-    CXXFLAGS += -O0 -g
-#    LIBS += $$NDK_PATH/sources/cxx-stl/stlport/libs/armeabi-v7a/libstlport_static.a
-    LIBS +=$$BDB_PATH/libdb_cxx.a $$BDB_PATH/libdb.a
-}
-
 system($$QMAKE_LRELEASE -silent $$TRANSLATIONS)
-
-android {
-    DISTFILES += \
-        AndroidManifest.xml \
-        res/values/libs.xml
-}
 
 DISTFILES += \
     ../../../S2_ATHOME/git_gostcoin/gostcoin/android/AndroidManifest.xml \
     ../../../S2_ATHOME/git_gostcoin/gostcoin/android/res/values/libs.xml \
     ../../../S2_ATHOME/git_gostcoin/gostcoin/android/build.gradle \
-    ../docs/gost_android_take3.txt
-
-
-
+    ../docs/gost_android_take3.txt \
+    AndroidManifest.xml \
+    res/values/libs.xml

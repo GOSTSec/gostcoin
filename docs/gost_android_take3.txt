@@ -1,17 +1,20 @@
 ARMV7
 
-export NDK_PATH=/home/user/SDKS/ANDROID/NDK/android-ndk-r13b
-export ANDROID_DEV=$NDK_PATH/platforms/android-9/arch-arm/usr
+export NDK_PATH=/path/to/android-ndk
+export ANDROID_DEV=$NDK_PATH/platforms/android-14/arch-arm/usr
 export AR=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar
 export AS=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-as
 export CC=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc
-export CFLAGS=--sysroot=$NDK_PATH/platforms/android-9/arch-arm/
+export CFLAGS=--sysroot=$NDK_PATH/platforms/android-14/arch-arm/
 export CPP=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-cpp
-export CPPFLAGS=--sysroot=$NDK_PATH/platforms/android-9/arch-arm/
+export CPPFLAGS=--sysroot=$NDK_PATH/platforms/android-14/arch-arm/
 export CXX=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-g++
-export CXXFLAGS="--sysroot=$NDK_PATH/platforms/android-9/arch-arm/ -I$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/include -I$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include"
+export CXXFLAGS="--sysroot=$NDK_PATH/platforms/android-14/arch-arm/ -I$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/include -I$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a/include"
 export LD=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ld
 export NDK_PROJECT_PATH=$NDK_PATH
+export ANDROID_NDK_ROOT=$NDK_PATH
+export ANDROID_NDK_TOOLCHAIN_VERSION=4.9
+export ANDROID_NDK_HOST=linux-x86_64
 export RANLIB=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ranlib
 export PATH=$NDK_PATH/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/:$PATH
 
@@ -53,7 +56,7 @@ option.set keep-going : false ;
 
 Вернитесь в командную строку и введите:
 
-./b2 --layout=versioned --build-type=complete --with-chrono --with-filesystem --with-program_options --with-system --with-thread toolset=gcc-arm variant=release link=static threading=multi threadapi=pthread target-os=android define=BOOST_MATH_DISABLE_FLOAT128 include=$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/include include=$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi/include include=$NDK_PATH/platforms/android-9/arch-arm/usr/include
+./b2 --layout=versioned --build-type=complete --with-chrono --with-filesystem --with-program_options --with-system --with-thread toolset=gcc-arm variant=release link=static threading=multi threadapi=pthread target-os=android define=BOOST_MATH_DISABLE_FLOAT128 include=$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/include include=$NDK_PATH/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi/include include=$NDK_PATH/platforms/android-14/arch-arm/usr/include
 
 После выполнения этой команды в папке /path/to/libraries/take3/boost_1_57_0/stage/lib должны появиться следующие файлы:
 libboost_atomic-gcc-mt-s-1_57.a
@@ -88,15 +91,15 @@ https://github.com/GOSTSec/android-ifaddrs-from-android-source
 1. Добавить путь C:\Android\android-ndk-r10d\toolchains\x86-4.9\prebuilt\linux-x86_64\bin в переменную PATH
 2. Изменить системные переменные так:
 
-ANDROID_DEV /c/Android/android-ndk-r10d/platforms/android-9/arch-x86/usr
+ANDROID_DEV /c/Android/android-ndk-r10d/platforms/android-14/arch-x86/usr
 AR /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-ar
 AS /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-as
 CC /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-gcc
-CFLAGS --sysroot=/c/Android/android-ndk-r10d/platforms/android-9/arch-x86/
+CFLAGS --sysroot=/c/Android/android-ndk-r10d/platforms/android-14/arch-x86/
 CPP /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-cpp
-CPPFLAGS --sysroot=/c/Android/android-ndk-r10d/platforms/android-9/arch-x86/
+CPPFLAGS --sysroot=/c/Android/android-ndk-r10d/platforms/android-14/arch-x86/
 CXX /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-g++
-CXXFLAGS --sysroot=/c/Android/android-ndk-r10d/platforms/android-9/arch-x86/ -I/c/Android/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include -I/c/Android/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86/include
+CXXFLAGS --sysroot=/c/Android/android-ndk-r10d/platforms/android-14/arch-x86/ -I/c/Android/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/include -I/c/Android/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86/include
 LD /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-ld
 NDK_PROJECT_PATH C:\Android\android-ndk-r10d
 RANLIB /c/Android/android-ndk-r10d/toolchains/x86-4.9/prebuilt/linux-x86_64/bin/i686-linux-android-ranlib
@@ -117,11 +120,11 @@ using gcc : x86 : i686-linux-android-g++.exe ;
 using gcc : arm : arm-linux-androideabi-g++.exe ;
 
 и выполнить
-b2 --build-type=complete --with-chrono --with-filesystem --with-program_options --with-system --with-thread toolset=gcc variant=release link=static threading=multi threadapi=pthread target-os=android define=BOOST_MATH_DISABLE_FLOAT128 include=C:\Android\android-ndk-r10d\sources\cxx-stl\gnu-libstdc++\4.9\include include=C:\Android\android-ndk-r10d\sources\cxx-stl\gnu-libstdc++\4.9\libs\x86\include include=C:\Android\android-ndk-r10d\platforms\android-9\arch-x86\usr\include
+b2 --build-type=complete --with-chrono --with-filesystem --with-program_options --with-system --with-thread toolset=gcc variant=release link=static threading=multi threadapi=pthread target-os=android define=BOOST_MATH_DISABLE_FLOAT128 include=C:\Android\android-ndk-r10d\sources\cxx-stl\gnu-libstdc++\4.9\include include=C:\Android\android-ndk-r10d\sources\cxx-stl\gnu-libstdc++\4.9\libs\x86\include include=C:\Android\android-ndk-r10d\platforms\android-14\arch-x86\usr\include
 
 вместо
 
-b2 --build-type=complete --with-chrono --with-filesystem --with-program_options --with-system --with-thread toolset=gcc-arm variant=release link=static threading=multi threadapi=pthread target-os=android define=BOOST_MATH_DISABLE_FLOAT128 include=C:\Android\android-ndk-r10d\sources\cxx-stl\gnu-libstdc++\4.9\include include=C:\Android\android-ndk-r10d\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi\include include=C:\Android\android-ndk-r10d\platforms\android-9\arch-arm\usr\include
+b2 --build-type=complete --with-chrono --with-filesystem --with-program_options --with-system --with-thread toolset=gcc-arm variant=release link=static threading=multi threadapi=pthread target-os=android define=BOOST_MATH_DISABLE_FLOAT128 include=C:\Android\android-ndk-r10d\sources\cxx-stl\gnu-libstdc++\4.9\include include=C:\Android\android-ndk-r10d\sources\cxx-stl\gnu-libstdc++\4.9\libs\armeabi\include include=C:\Android\android-ndk-r10d\platforms\android-14\arch-arm\usr\include
 
 6. В QtCreator выбирать Android для X86 вместо Android для armeabi-v7a
 
