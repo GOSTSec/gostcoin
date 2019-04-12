@@ -1234,7 +1234,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend,
                 {
                     // Fill a vout to ourself
                     // TODO: pass in scriptChange instead of reservekey so
-                    // change transaction isn't always pay-to-bitcoin-address
+                    // change transaction isn't always pay-to-gostcoin-address
                     CScript scriptChange;
                     
                     // coin control: send change to custom address
@@ -1419,7 +1419,7 @@ string CWallet::SendMoneyToDestination(const CTxDestination& address, int64 nVal
     if (nValue + nTransactionFee > GetBalance())
         return _("Insufficient funds");
 
-    // Parse Bitcoin address
+    // Parse GOSTCoin address
     CScript scriptPubKey;
     scriptPubKey.SetDestination(address);
 
