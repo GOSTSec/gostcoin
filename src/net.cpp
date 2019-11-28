@@ -1226,7 +1226,7 @@ void ThreadSocketHandler()
 static const char *strMainNetI2PDNSSeed[][2] = {
 	{"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p","cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p"}, // xcps
 	{"6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p","6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p"}, // R4SAS
-	{"hwzq7fjamed457qurgl23ck5z3jhziqjtwrag24t34qs3jugzr7q.b32.i2p","hwzq7fjamed457qurgl23ck5z3jhziqjtwrag24t34qs3jugzr7q.b32.i2p"}, // pool.gostcoin.i2p
+	{"wlsuodjjvfwportou7lbc3pjdnd4ts2likyrosd6iqhamwr7gw5q.b32.i2p","wlsuodjjvfwportou7lbc3pjdnd4ts2likyrosd6iqhamwr7gw5q.b32.i2p"}, // pool.gostcoin.i2p
 	{NULL, NULL}
 };
 
