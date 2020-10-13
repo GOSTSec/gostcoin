@@ -630,7 +630,11 @@ class AcceptedConnectionImpl : public AcceptedConnection
 {
 public:
     AcceptedConnectionImpl(
+#if (BOOST_VERSION >= 107000) // boost >= 1.70
+			asio::io_context& io_service,
+#else
             asio::io_service& io_service,
+#endif
             ssl::context &context,
             bool fUseSSL) :
         sslStream(io_service, context),
