@@ -591,7 +591,7 @@ public:
     bool connect(const std::string& server, const std::string& port)
     {
 #if (BOOST_VERSION >= 107000) // boost >= 1.70
-		ip::tcp::resolver resolver(stream.get_executor().context());
+		ip::tcp::resolver resolver(*rpc_io_service);
 #else
         ip::tcp::resolver resolver(stream.get_io_service());
 #endif
@@ -630,11 +630,7 @@ class AcceptedConnectionImpl : public AcceptedConnection
 {
 public:
     AcceptedConnectionImpl(
-#if (BOOST_VERSION >= 107000) // boost >= 1.70
-			asio::io_context& io_service,
-#else
             asio::io_service& io_service,
-#endif
             ssl::context &context,
             bool fUseSSL) :
         sslStream(io_service, context),
@@ -686,7 +682,7 @@ static void RPCListen(boost::shared_ptr< basic_socket_acceptor<Protocol, SocketA
 {
     // Accept connection
 #if (BOOST_VERSION >= 107000) // boost >= 1.70
-	AcceptedConnectionImpl<Protocol>* conn = new AcceptedConnectionImpl<Protocol>(acceptor->get_executor().context(), context, fUseSSL);
+	AcceptedConnectionImpl<Protocol>* conn = new AcceptedConnectionImpl<Protocol>(*rpc_io_service, context, fUseSSL);
 #else
     AcceptedConnectionImpl<Protocol>* conn = new AcceptedConnectionImpl<Protocol>(acceptor->get_io_service(), context, fUseSSL);
 #endif
