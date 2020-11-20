@@ -173,6 +173,7 @@ void OptionsModel::Init()
     FormatI2POptionsString(i2pOptionsTemp, SAM_NAME_OUTBOUND_ALLOWZEROHOP  , std::make_pair(settings.contains(SAM_NAME_OUTBOUND_ALLOWZEROHOP  ), i2pOutboundAllowZeroHop));
     FormatI2POptionsString(i2pOptionsTemp, SAM_NAME_OUTBOUND_IPRESTRICTION , std::make_pair(settings.contains(SAM_NAME_OUTBOUND_IPRESTRICTION ), i2pOutboundIPRestriction));
     FormatI2POptionsString(i2pOptionsTemp, SAM_NAME_OUTBOUND_PRIORITY      , std::make_pair(settings.contains(SAM_NAME_OUTBOUND_PRIORITY      ), i2pOutboundPriority));
+	FormatI2POptionsString(i2pOptionsTemp, SAM_NAME_I2CP_LEASESET_ENC_TYPE, std::make_pair(true, std::string (SAM_DEFAULT_I2CP_LEASESET_ENC_TYPE))); // i2cp.leaseSetEncType=0,4 TODO: make it configurable
 
     if (!i2pOptionsTemp.empty())
         SoftSetArg(I2P_SAM_I2P_OPTIONS_PARAM, i2pOptionsTemp);
