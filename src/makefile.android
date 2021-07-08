@@ -13,21 +13,19 @@ endif
 
 # CHANGE IT FOR YOU
 #
-STANDALONE=/home/lialh4/Android/Sdk/ndk/arm-linux-androideabi/
-SYSROOT=--sysroot=$(STANDALONE)/sysroot
-CXFLAGS=$SYSROOT
-ARCH=armv7a
-V=28
-CXX=$(STANDALONE)/bin/clang++
-CC=$(STANDALONE)/bin/clang 
+#STANDALONE=/home/lialh4/Android/Sdk/ndk/arm-linux-androideabi/
+SYSROOT=--sysroot=$(ANDROID_SYSROOT)
+CXFLAGS=$(SYSROOT)
+CXX=$(ANDROID_TOOLCHAIN)/arm-linux-androideabi-g++
+CC=$(ANDROID_TOOLCHAIN)/arm-linux-androideabi-gcc
 #
 # #
 LINK:=$(CXX)
 LDFLAGS=
 DEFS=-DBOOST_SPIRIT_THREADSAFE -DBOOST_THREAD_USE_LIB -DBOOST_NO_CXX11_SCOPED_ENUMS -DBOOST_ASIO_ENABLE_OLD_SERVICES -D_FILE_OFFSET_BITS=64 -DUSE_NATIVE_I2P
 
-DEFS += $(addprefix -I,$(CURDIR) $(CURDIR)/obj $(CURDIR)/i2psam $(BOOST_INCLUDE_PATH) $(BDB_INCLUDE_PATH) $(OPENSSL_INCLUDE_PATH) $(ANDROID_INCLUDE_PATH) $(STANDALONE)/sysroot/usr/include/)
-LIBS = $(addprefix -L,$(BOOST_LIB_PATH) $(BDB_LIB_PATH) $(OPENSSL_LIB_PATH) $(ANDROID_LIB_PATH) $(STANDALONE)/sysroot/usr/lib/$(ARCH)-linux-android)
+DEFS += $(addprefix -I,$(CURDIR) $(CURDIR)/obj $(CURDIR)/i2psam $(BOOST_INCLUDE_PATH) $(BDB_INCLUDE_PATH) $(OPENSSL_INCLUDE_PATH) $(ANDROID_INCLUDE_PATH) $(ANDROID_DEV)/include $(ANDROID_SYSROOT)/usr/include)
+LIBS = $(addprefix -L,$(BOOST_LIB_PATH) $(BDB_LIB_PATH) $(OPENSSL_LIB_PATH) $(ANDROID_LIB_PATH) $(ANDROID_DEV)/lib)
 
 LMODE = static
 LMODE2 = dynamic
