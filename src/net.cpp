@@ -1224,7 +1224,7 @@ void ThreadSocketHandler()
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetI2PDNSSeed[][2] = {
-	{"cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p","cxlrsrjc7kwcoqm6mnhsrjw6pkglt5hk5q5ctrullz5wyhfv2ylq.b32.i2p"}, // xcps
+	{"fgk23qeerln5ajlwba6x4rxuib2vvl3uzywtxcanz5erbjae6ina.b32.i2p","fgk23qeerln5ajlwba6x4rxuib2vvl3uzywtxcanz5erbjae6ina.b32.i2p"}, // gostco.in
 	{"6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p","6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p"}, // R4SAS
 	{"wlsuodjjvfwportou7lbc3pjdnd4ts2likyrosd6iqhamwr7gw5q.b32.i2p","wlsuodjjvfwportou7lbc3pjdnd4ts2likyrosd6iqhamwr7gw5q.b32.i2p"}, // pool.gostcoin.i2p
 	{NULL, NULL}
