@@ -1438,13 +1438,13 @@ This means a fee of at least %2 is required.</source>
         <location line="-137"/>
         <location line="+158"/>
         <source>length</source>
-        <translation>длинна</translation>
+        <translation>длина</translation>
     </message>
     <message>
         <location line="-134"/>
         <location line="+155"/>
         <source>lengthVariance</source>
-        <translation>изменения длинны</translation>
+        <translation>изменения длины</translation>
     </message>
     <message>
         <location line="-134"/>
@@ -1456,7 +1456,7 @@ This means a fee of at least %2 is required.</source>
         <location line="-141"/>
         <location line="+155"/>
         <source>allowZeroHop</source>
-        <translation>разрешить нулевую длинну</translation>
+        <translation>разрешить нулевую длину</translation>
     </message>
     <message>
         <location line="-124"/>
