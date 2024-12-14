@@ -1,11 +1,12 @@
 ### Debian/Ubuntu
 
 $ sudo apt-get install build-essential libtool git libboost-system-dev libboost-program-options-dev \
-	libboost-filesystem-dev libboost-thread-dev libdb++-dev libssl-dev zlib1g-dev qt4-qmake \
-	libqt4-dev libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools \
+	libboost-filesystem-dev libboost-thread-dev libdb++-dev libssl-dev zlib1g-dev \
+	libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools \
 	libprotobuf-dev protobuf-compiler libqrencode-dev
 
 $ git clone https://github.com/GOSTSec/gostcoin.git
 $ cd gostcoin
 $ qmake -qt=5 RELEASE=1 USE_QRCODE=1 USE_IPV6=1 USE_BUILD_INFO=1
+$ export CXXFLAGS=-DBOOST_NO_CXX11_SCOPED_ENUMS
 $ make -j2
