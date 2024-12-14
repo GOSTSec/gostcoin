@@ -39,6 +39,7 @@ Building GOSTCoin
 **Build gostcoind:**
 
     cd ~/gostcoin/src
+    export CXXFLAGS=-DBOOST_NO_CXX11_SCOPED_ENUMS
     make -f makefile.unix
 
 **Optional: Build QT GUI**
