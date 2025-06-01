@@ -9,6 +9,8 @@
 #include "walletdb.h" // for BackupWallet
 #include "base58.h"
 
+#undef loop  // Prevent macro collision with Qt parameter names
+
 #include <QSet>
 #include <QTimer>
 

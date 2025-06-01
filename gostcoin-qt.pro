@@ -94,7 +94,12 @@ INCLUDEPATH += src/leveldb/include src/leveldb/helpers
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
 !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
-    genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a
+    macx {
+        # For macOS, include SDK path for C++ standard library headers
+        genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk\" libleveldb.a libmemenv.a
+    } else {
+        genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a
+    }
     cleanleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) clean
 } else {
     # make an educated guess about what the ranlib command is called
@@ -364,7 +369,7 @@ OTHER_FILES += README.md \
 
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
-    macx:BOOST_LIB_SUFFIX = -mt
+    macx:BOOST_LIB_SUFFIX = 
     win32:BOOST_LIB_SUFFIX = -mt
 }
 
@@ -373,7 +378,7 @@ isEmpty(BOOST_THREAD_LIB_SUFFIX) {
 }
 
 isEmpty(BDB_LIB_PATH) {
-    macx:BDB_LIB_PATH = /usr/local/opt/berkeley-db@4/lib
+    macx:BDB_LIB_PATH = /opt/homebrew/opt/berkeley-db@4/lib
     win32:BDB_LIB_PATH = /usr/local/lib
 }
 
@@ -382,37 +387,37 @@ isEmpty(BDB_LIB_SUFFIX) {
 }
 
 isEmpty(BDB_INCLUDE_PATH) {
-    macx:BDB_INCLUDE_PATH = /usr/local/opt/berkeley-db@4/include
+    macx:BDB_INCLUDE_PATH = /opt/homebrew/opt/berkeley-db@4/include
     win32:BDB_INCLUDE_PATH = /usr/local/include
 }
 
 isEmpty(BOOST_LIB_PATH) {
-    macx:BOOST_LIB_PATH = /usr/local/opt/boost/lib
+    macx:BOOST_LIB_PATH = /opt/homebrew/opt/boost/lib
     win32:BOOST_LIB_PATH = /mingw32/lib
 }
 
 isEmpty(BOOST_INCLUDE_PATH) {
-    macx:BOOST_INCLUDE_PATH = /usr/local/opt/boost/include
+    macx:BOOST_INCLUDE_PATH = /opt/homebrew/opt/boost/include
     win32:BOOST_INCLUDE_PATH = /mingw32/include
 }
 
 isEmpty(OPENSSL_LIB_PATH) {
-    macx:OPENSSL_LIB_PATH = /usr/local/opt/openssl/lib
+    macx:OPENSSL_LIB_PATH = /opt/homebrew/opt/openssl@3/lib
     win32:OPENSSL_LIB_PATH = /mingw32/lib
 }
 
 isEmpty(OPENSSL_INCLUDE_PATH) {
-    macx:OPENSSL_INCLUDE_PATH = /usr/local/opt/openssl/include
+    macx:OPENSSL_INCLUDE_PATH = /opt/homebrew/opt/openssl@3/include
     win32:OPENSSL_INCLUDE_PATH = /mingw32/include
 }
 
 isEmpty(QRENCODE_LIB_PATH) {
-    macx:QRENCODE_LIB_PATH = /usr/local/opt/qrencode/lib
+    macx:QRENCODE_LIB_PATH = /opt/homebrew/opt/qrencode/lib
     win32:QRENCODE_LIB_PATH = /mingw32/lib
 }
 
 isEmpty(QRENCODE_INCLUDE_PATH) {
-    macx:QRENCODE_INCLUDE_PATH = /usr/local/opt/qrencode/include
+    macx:QRENCODE_INCLUDE_PATH = /opt/homebrew/opt/qrencode/include
     win32:QRENCODE_INCLUDE_PATH = /mingw32/include
 }
 

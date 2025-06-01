@@ -241,11 +241,11 @@ int main(int argc, char *argv[])
     // - Then load the more specific locale translator
 
     // Load e.g. qt_de.qm
-    if (qtTranslatorBase.load("qt_" + lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+    if (qtTranslatorBase.load("qt_" + lang, QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
         app.installTranslator(&qtTranslatorBase);
 
     // Load e.g. qt_de_DE.qm
-    if (qtTranslator.load("qt_" + lang_territory, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+    if (qtTranslator.load("qt_" + lang_territory, QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
         app.installTranslator(&qtTranslator);
 
     // Load e.g. bitcoin_de.qm (shortcut "de" needs to be defined in gostcoin.qrc)
@@ -279,7 +279,7 @@ int main(int argc, char *argv[])
     }
 #endif
 
-    SplashScreen splash(QPixmap(), 0);
+    SplashScreen splash(QPixmap(), Qt::Widget);
     if (GetBoolArg("-splash", true) && !GetBoolArg("-min"))
     {
         splash.show();
