@@ -13,6 +13,7 @@
 #include "transactiontablemodel.h"
 
 #include "i2p.h"
+#undef loop  // Prevent conflict between util.h macro and Qt parameter names
 #include "net.h"
 
 #include "alert.h"
@@ -63,11 +64,11 @@ int ClientModel::getNumBlocksAtStartup()
 QDateTime ClientModel::getLastBlockDate() const
 {
     if (pindexBest)
-        return QDateTime::fromTime_t(pindexBest->GetBlockTime());
+        return QDateTime::fromSecsSinceEpoch(pindexBest->GetBlockTime());
     else if(!isTestNet())
-        return QDateTime::fromTime_t(1370190760); // Genesis block's time
+        return QDateTime::fromSecsSinceEpoch(1370190760); // Genesis block's time
     else
-        return QDateTime::fromTime_t(1296688602); // Genesis block's time (testnet)
+        return QDateTime::fromSecsSinceEpoch(1296688602); // Genesis block's time (testnet)
 }
 
 double ClientModel::getVerificationProgress() const
@@ -202,7 +203,7 @@ QString ClientModel::clientName() const
 
 QString ClientModel::formatClientStartupTime() const
 {
-    return QDateTime::fromTime_t(nClientStartupTime).toString();
+    return QDateTime::fromSecsSinceEpoch(nClientStartupTime).toString();
 }
 
 // Handlers for core signals

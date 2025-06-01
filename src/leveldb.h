@@ -17,7 +17,7 @@ public:
     leveldb_error(const std::string &msg) : std::runtime_error(msg) {}
 };
 
-void HandleError(const leveldb::Status &status) throw(leveldb_error);
+void HandleError(const leveldb::Status &status) noexcept(false);
 
 // Batch of changes queued to be written to a CLevelDB
 class CLevelDBBatch
@@ -80,7 +80,7 @@ public:
     CLevelDB(const boost::filesystem::path &path, size_t nCacheSize, bool fMemory = false, bool fWipe = false);
     ~CLevelDB();
 
-    template<typename K, typename V> bool Read(const K& key, V& value) throw(leveldb_error) {
+    template<typename K, typename V> bool Read(const K& key, V& value) noexcept(false) {
         CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         ssKey.reserve(ssKey.GetSerializeSize(key));
         ssKey << key;
@@ -103,13 +103,13 @@ public:
         return true;
     }
 
-    template<typename K, typename V> bool Write(const K& key, const V& value, bool fSync = false) throw(leveldb_error) {
+    template<typename K, typename V> bool Write(const K& key, const V& value, bool fSync = false) noexcept(false) {
         CLevelDBBatch batch;
         batch.Write(key, value);
         return WriteBatch(batch, fSync);
     }
 
-    template<typename K> bool Exists(const K& key) throw(leveldb_error) {
+    template<typename K> bool Exists(const K& key) noexcept(false) {
         CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         ssKey.reserve(ssKey.GetSerializeSize(key));
         ssKey << key;
@@ -126,20 +126,20 @@ public:
         return true;
     }
 
-    template<typename K> bool Erase(const K& key, bool fSync = false) throw(leveldb_error) {
+    template<typename K> bool Erase(const K& key, bool fSync = false) noexcept(false) {
         CLevelDBBatch batch;
         batch.Erase(key);
         return WriteBatch(batch, fSync);
     }
 
-    bool WriteBatch(CLevelDBBatch &batch, bool fSync = false) throw(leveldb_error);
+    bool WriteBatch(CLevelDBBatch &batch, bool fSync = false) noexcept(false);
 
     // not available for LevelDB; provide for compatibility with BDB
     bool Flush() {
         return true;
     }
 
-    bool Sync() throw(leveldb_error) {
+    bool Sync() noexcept(false) {
         CLevelDBBatch batch;
         return WriteBatch(batch, true);
     }

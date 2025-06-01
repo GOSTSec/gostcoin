@@ -964,7 +964,7 @@ void AddXor512(const void *a,const void *b,void *c)
 void F(unsigned char *state)
 {
 	unsigned long long return_state[8];
-	register unsigned long long r = 0;
+	unsigned long long r = 0;
 	r ^= T[0][state[56]];
 	r ^= T[1][state[48]];
 	r ^= T[2][state[40]];

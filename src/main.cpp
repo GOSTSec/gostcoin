@@ -1103,7 +1103,6 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
     const CBlockIndex *BlockLastSolved = pindexLast;
     const CBlockIndex *BlockReading = pindexLast;
     const CBlockHeader *BlockCreating = pblock;
-                        BlockCreating = BlockCreating;
     uint64 PastBlocksMass = 0;
     int64 PastRateActualSeconds = 0;
     int64 PastRateTargetSeconds = 0;
@@ -2626,7 +2625,7 @@ bool AbortNode(const std::string &strMessage) {
 
 bool CheckDiskSpace(uint64 nAdditionalBytes)
 {
-    uint64 nFreeBytesAvailable = filesystem::space(GetDataDir()).available;
+    uint64 nFreeBytesAvailable = boost::filesystem::space(GetDataDir()).available;
 
     // Check for nMinDiskSpace bytes (currently 50MB)
     if (nFreeBytesAvailable < nMinDiskSpace + nAdditionalBytes)

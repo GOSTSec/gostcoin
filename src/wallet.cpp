@@ -11,6 +11,8 @@
 #include "base58.h"
 #include "coincontrol.h"
 #include <boost/algorithm/string/replace.hpp>
+#include <random>
+#include <algorithm>
 
 using namespace std;
 
@@ -1047,7 +1049,10 @@ bool CWallet::SelectCoinsMinConf(int64 nTargetValue, int nConfMine, int nConfThe
     vector<pair<int64, pair<const CWalletTx*,unsigned int> > > vValue;
     int64 nTotalLower = 0;
 
-    random_shuffle(vCoins.begin(), vCoins.end(), GetRandInt);
+    // Use modern std::shuffle instead of deprecated random_shuffle
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(vCoins.begin(), vCoins.end(), g);
 
     BOOST_FOREACH(COutput output, vCoins)
     {
