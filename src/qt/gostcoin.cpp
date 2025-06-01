@@ -241,11 +241,19 @@ int main(int argc, char *argv[])
     // - Then load the more specific locale translator
 
     // Load e.g. qt_de.qm
+#ifdef Q_OS_MAC
     if (qtTranslatorBase.load("qt_" + lang, QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
+#else
+    if (qtTranslatorBase.load("qt_" + lang, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+#endif
         app.installTranslator(&qtTranslatorBase);
 
     // Load e.g. qt_de_DE.qm
+#ifdef Q_OS_MAC
     if (qtTranslator.load("qt_" + lang_territory, QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
+#else
+    if (qtTranslator.load("qt_" + lang_territory, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+#endif
         app.installTranslator(&qtTranslator);
 
     // Load e.g. bitcoin_de.qm (shortcut "de" needs to be defined in gostcoin.qrc)
