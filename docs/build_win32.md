@@ -5,7 +5,7 @@ Replace `<treads>` to number of threads (cores) used to build.
 
 ### Preparing to build
 ```bash
-$ pacman -S diff git make tar mingw-w64-i686-gcc mingw-w64-i686-boost mingw-w64-i686-libpng mingw-w64-i686-openssl mingw-w64-i686-zlib mingw-w64-x86_64-db
+$ pacman -S diff git make tar mingw-w64-x86_64-gcc mingw-w64-x86_64-boost mingw-w64-x86_64-libpng mingw-w64-x86_64-openssl mingw-w64-x86_64-zlib mingw-w64-x86_64-db
 $ mkdir /c/devel && cd /c/devel
 ```
 #### Caveat
