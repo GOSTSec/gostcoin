@@ -1225,6 +1225,8 @@ void ThreadSocketHandler()
 // The second name should resolve to a list of seed addresses.
 static const char *strMainNetI2PDNSSeed[][2] = {
 	{"fgk23qeerln5ajlwba6x4rxuib2vvl3uzywtxcanz5erbjae6ina.b32.i2p","fgk23qeerln5ajlwba6x4rxuib2vvl3uzywtxcanz5erbjae6ina.b32.i2p"}, // gostco.in
+    {"cblulrose7qdxdgl6qpnduazj6vc6syg7rcrg7hb3giziovo7hdq.b32.i2p", "cblulrose7qdxdgl6qpnduazj6vc6syg7rcrg7hb3giziovo7hdq.b32.i2p"},
+    {"btku63jav65l6rgzvb5edjfl3znnaw476kvkzwrlj37uxvjzrhxq.b32.i2p", "btku63jav65l6rgzvb5edjfl3znnaw476kvkzwrlj37uxvjzrhxq.b32.i2p"}, 
 	{"6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p","6kpijk3ykvn7yqloxmkmudoow326dubsrzrxqbkwstrxb73z4auq.b32.i2p"}, // R4SAS
 	{"wlsuodjjvfwportou7lbc3pjdnd4ts2likyrosd6iqhamwr7gw5q.b32.i2p","wlsuodjjvfwportou7lbc3pjdnd4ts2likyrosd6iqhamwr7gw5q.b32.i2p"}, // pool.gostcoin.i2p
 	{NULL, NULL}
