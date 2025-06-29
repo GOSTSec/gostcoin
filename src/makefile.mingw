@@ -22,7 +22,6 @@ USE_DEBUG:=0
 
 DEPSDIR?=/usr/local
 WINDRES = windres
-BOOST_SUFFIX?=-mt
 
 INCLUDEPATHS= \
  -I"$(CURDIR)" \
@@ -36,14 +35,14 @@ LIBPATHS= \
 LIBS= \
  -lleveldb \
  -lmemenv \
- -lboost_system$(BOOST_SUFFIX) \
- -lboost_filesystem$(BOOST_SUFFIX) \
- -lboost_program_options$(BOOST_SUFFIX) \
- -lboost_thread$(BOOST_SUFFIX) \
- -lboost_chrono$(BOOST_SUFFIX) \
- -ldb_cxx \
- -lssl \
- -lcrypto
+ $(MINGW_PREFIX)/lib/libboost_filesystem-mt.a \
+ $(MINGW_PREFIX)/lib/libboost_program_options-mt.a \
+ $(MINGW_PREFIX)/lib/libboost_thread-mt.a \
+ $(MINGW_PREFIX)/lib/libboost_chrono-mt.a \
+ $(MINGW_PREFIX)/lib/libssl.a \
+ $(MINGW_PREFIX)/lib/libcrypto.a \
+ -lcrypt32 \
+ -ldb_cxx
 
 DEFS=-D_MT -DWIN32 -D_WINDOWS -DWIN32_LEAN_AND_MEAN -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE -DBOOST_ASIO_ENABLE_OLD_SERVICES -DUSE_NATIVE_I2P
 
@@ -51,9 +50,9 @@ ifneq (${USE_DEBUG}, 0)
 	DEBUGFLAGS=-g
 endif
 
-CFLAGS=-mthreads -O2 -fPIC -w -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
+CFLAGS= -std=c++17 -mthreads -O2 -fPIC -w -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
 # enable: ASLR, DEP and large address aware
-LDFLAGS=-Wl,--dynamicbase -Wl,--nxcompat -Wl,--large-address-aware -Wl,-Bstatic -Wl,-rpath,/usr/local/lib -L/usr/local/lib -static-libgcc -static-libstdc++
+LDFLAGS=-Wl,--dynamicbase -Wl,--nxcompat -Wl,-Bstatic -Wl,-rpath,/usr/local/lib -L/usr/local/lib -static-libgcc -static-libstdc++
 
 TESTDEFS = -DTEST_DATA_DIR=$(abspath test/data)
 
