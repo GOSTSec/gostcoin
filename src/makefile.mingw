@@ -41,8 +41,8 @@ LIBS= \
  $(MINGW_PREFIX)/lib/libboost_chrono-mt.a \
  $(MINGW_PREFIX)/lib/libssl.a \
  $(MINGW_PREFIX)/lib/libcrypto.a \
- -lcrypt32 \
- -ldb_cxx
+ $(MINGW_PREFIX)/lib/libdb_cxx.a \
+ -lcrypt32
 
 DEFS=-D_MT -DWIN32 -D_WINDOWS -DWIN32_LEAN_AND_MEAN -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE -DBOOST_ASIO_ENABLE_OLD_SERVICES -DUSE_NATIVE_I2P
 
