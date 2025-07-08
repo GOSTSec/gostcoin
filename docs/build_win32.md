@@ -33,6 +33,12 @@ $ cd gostcoin
 $ cd src
 $ make -f makefile.mingw -j <threads>
 ```
+### Building QT GUI wallet
+```bash
+$ pacman -S mingw-w64-x86_64-qt5-base  mingw-w64-x86_64-qt5-tools
+$ qmake
+$ make -j <threads>
+```
 
 ### Building Qt 5.9 Opensource staticly
 **[!] Requires Python 2.7**
