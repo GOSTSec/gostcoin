@@ -50,11 +50,8 @@ contains(RELEASE, 1) {
 QMAKE_CXXFLAGS *= -D_FORTIFY_SOURCE=2 -std=c++17
 # for extra security on Windows: enable ASLR and DEP via GCC linker flags
 win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat
-# on Windows: enable GCC large address aware linker flag
-win32:QMAKE_LFLAGS *= -Wl,--large-address-aware
 # i686-w64-mingw32
 win32:QMAKE_LFLAGS *= -static-libgcc -static-libstdc++
-win32:LIBS *= -lstdc++ -lpthread 
 
 # use: qmake "USE_QRCODE=1"
 # libqrencode (http://fukuchi.org/works/qrencode/index.en.html) must be installed for support
@@ -393,32 +390,32 @@ isEmpty(BDB_INCLUDE_PATH) {
 
 isEmpty(BOOST_LIB_PATH) {
     macx:BOOST_LIB_PATH = /opt/homebrew/opt/boost/lib
-    win32:BOOST_LIB_PATH = /mingw32/lib
+    win32:BOOST_LIB_PATH = $(MINGW_PREFIX)/lib
 }
 
 isEmpty(BOOST_INCLUDE_PATH) {
     macx:BOOST_INCLUDE_PATH = /opt/homebrew/opt/boost/include
-    win32:BOOST_INCLUDE_PATH = /mingw32/include
+    win32:BOOST_INCLUDE_PATH = $(MINGW_PREFIX)/include
 }
 
 isEmpty(OPENSSL_LIB_PATH) {
     macx:OPENSSL_LIB_PATH = /opt/homebrew/opt/openssl@3/lib
-    win32:OPENSSL_LIB_PATH = /mingw32/lib
+    win32:OPENSSL_LIB_PATH = $(MINGW_PREFIX)/lib
 }
 
 isEmpty(OPENSSL_INCLUDE_PATH) {
     macx:OPENSSL_INCLUDE_PATH = /opt/homebrew/opt/openssl@3/include
-    win32:OPENSSL_INCLUDE_PATH = /mingw32/include
+    win32:OPENSSL_INCLUDE_PATH = $(MINGW_PREFIX)/include
 }
 
 isEmpty(QRENCODE_LIB_PATH) {
     macx:QRENCODE_LIB_PATH = /opt/homebrew/opt/qrencode/lib
-    win32:QRENCODE_LIB_PATH = /mingw32/lib
+    win32:QRENCODE_LIB_PATH = $(MINGW_PREFIX)/lib
 }
 
 isEmpty(QRENCODE_INCLUDE_PATH) {
     macx:QRENCODE_INCLUDE_PATH = /opt/homebrew/opt/qrencode/include
-    win32:QRENCODE_INCLUDE_PATH = /mingw32/include
+    win32:QRENCODE_INCLUDE_PATH = $(MINGW_PREFIX)/include
 }
 
 
@@ -458,14 +455,26 @@ INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$
 LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
 LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX -lz
 # -lgdi32 has to happen after -lcrypto (see  #681)
-win32:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
-LIBS += -lboost_system$$BOOST_LIB_SUFFIX \
+win32 {
+	LIBS +=  $(MINGW_PREFIX)/lib/libboost_filesystem-mt.a \
+ 	$(MINGW_PREFIX)/lib/libboost_program_options-mt.a \
+ 	$(MINGW_PREFIX)/lib/libboost_thread-mt.a \
+ 	$(MINGW_PREFIX)/lib/libboost_chrono-mt.a \
+ 	$(MINGW_PREFIX)/lib/libssl.a \
+ 	$(MINGW_PREFIX)/lib/libcrypto.a \
+ 	$(MINGW_PREFIX)/lib/libdb_cxx.a
+	LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32 -lcrypt32
+}
+!win32 {
+	LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
+	LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX -lz \
+	-lboost_system$$BOOST_LIB_SUFFIX \
 	-lboost_filesystem$$BOOST_LIB_SUFFIX \
 	-lboost_program_options$$BOOST_LIB_SUFFIX \
 	-lboost_thread$$BOOST_THREAD_LIB_SUFFIX \
 	-lboost_chrono$$BOOST_THREAD_LIB_SUFFIX
-
-win32|macx {
+}
+macx {
     LIBS += -lboost_chrono$$BOOST_LIB_SUFFIX
 }
 
