@@ -5,7 +5,7 @@ VERSION = 0.8.5.12
 INCLUDEPATH += src src/json src/qt src/i2psam
 QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_NO_CXX11_SCOPED_ENUMS BOOST_ASIO_ENABLE_OLD_SERVICES
+DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_NO_CXX11_SCOPED_ENUMS BOOST_ASIO_ENABLE_OLD_SERVICES OPENSSL_SUPPRESS_DEPRECATED
 CONFIG += no_include_pwd
 CONFIG += thread
 
@@ -59,7 +59,7 @@ contains(USE_QRCODE, 1) {
     message(Building with QRCode support)
     DEFINES += USE_QRCODE
     # defining for linux later, in dynamic section
-    win32:LIBS += -lqrencode
+    win32:LIBS += $(MINGW_PREFIX)/lib/libqrencode.a
 }
 
 
@@ -117,7 +117,7 @@ CLEAN_DEPS += cleanleveldb
 #QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
 
 # regenerate src/build.h
-!win32|contains(USE_BUILD_INFO, 1) {
+contains(USE_BUILD_INFO, 1) {
     genbuild.depends = FORCE
     genbuild.commands = cd $$PWD; /bin/sh share/genbuild.sh $$OUT_PWD/build/build.h
     genbuild.target = $$OUT_PWD/build/build.h
@@ -126,7 +126,7 @@ CLEAN_DEPS += cleanleveldb
     DEFINES += HAVE_BUILD_INFO
 }
 
-QMAKE_CXXFLAGS_WARN_ON = -fdiagnostics-show-option -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector
+QMAKE_CXXFLAGS_WARN_ON = -fdiagnostics-show-option -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter -Wno-deprecated-copy -Wstack-protector
 
 # Input
 DEPENDPATH += src src/json src/qt
@@ -453,16 +453,15 @@ macx:QMAKE_INFO_PLIST = share/qt/Info.plist
 # Set libraries and includes at end, to use platform-defined defaults if not overridden
 INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH
 LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
-LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX -lz
 # -lgdi32 has to happen after -lcrypto (see  #681)
 win32 {
 	LIBS +=  $(MINGW_PREFIX)/lib/libboost_filesystem-mt.a \
- 	$(MINGW_PREFIX)/lib/libboost_program_options-mt.a \
- 	$(MINGW_PREFIX)/lib/libboost_thread-mt.a \
- 	$(MINGW_PREFIX)/lib/libboost_chrono-mt.a \
- 	$(MINGW_PREFIX)/lib/libssl.a \
- 	$(MINGW_PREFIX)/lib/libcrypto.a \
- 	$(MINGW_PREFIX)/lib/libdb_cxx.a
+	$(MINGW_PREFIX)/lib/libboost_program_options-mt.a \
+	$(MINGW_PREFIX)/lib/libboost_thread-mt.a \
+	$(MINGW_PREFIX)/lib/libboost_chrono-mt.a \
+	$(MINGW_PREFIX)/lib/libssl.a \
+	$(MINGW_PREFIX)/lib/libcrypto.a \
+	$(MINGW_PREFIX)/lib/libdb_cxx-6.0.a
 	LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32 -lcrypt32
 }
 !win32 {
