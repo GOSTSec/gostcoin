@@ -1,5 +1,6 @@
 // Copyright (c) 2012-2013 giv
 // Copyright (c) 2017-2018 orignal
+// Copyright (c) 2018-2025 PurpleI2P team
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //--------------------------------------------------------------------------------------------------
@@ -24,7 +25,7 @@
 #define I2P_SAM_MY_DESTINATION_DEFAULT  SAM_GENERATE_MY_DESTINATION
 
 #define I2P_SAM_I2P_OPTIONS_PARAM       "-i2poptions"
-#define I2P_SAM_I2P_OPTIONS_DEFAULT     SAM_NAME_I2CP_LEASESET_ENC_TYPE "=" SAM_DEFAULT_I2CP_LEASESET_ENC_TYPE // i2cp.leaseSetEncType=0,4
+#define I2P_SAM_I2P_OPTIONS_DEFAULT     SAM_NAME_I2CP_LEASESET_ENC_TYPE "=" SAM_DEFAULT_I2CP_LEASESET_ENC_TYPE // i2cp.leaseSetEncType=6,4,0
 
 #define I2P_SAM_GENERATE_DESTINATION_PARAM "-generatei2pdestination"
 

@@ -63,7 +63,7 @@
 #define SAM_NAME_OUTBOUND_PRIORITY          "outbound.priority"
 #define SAM_DEFAULT_OUTBOUND_PRIORITY       0
 #define SAM_NAME_I2CP_LEASESET_ENC_TYPE     "i2cp.leaseSetEncType"
-#define SAM_DEFAULT_I2CP_LEASESET_ENC_TYPE  "0,4"
+#define SAM_DEFAULT_I2CP_LEASESET_ENC_TYPE  "6,4,0"
 
 namespace SAM
 {
