@@ -461,7 +461,7 @@ win32 {
 	$(MINGW_PREFIX)/lib/libboost_chrono-mt.a \
 	$(MINGW_PREFIX)/lib/libssl.a \
 	$(MINGW_PREFIX)/lib/libcrypto.a \
-	$(MINGW_PREFIX)/lib/libdb_cxx-6.0.a
+	$(MINGW_PREFIX)/lib/libdb_cxx.a
 	LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32 -lcrypt32
 }
 !win32 {
